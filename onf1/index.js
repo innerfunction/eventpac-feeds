@@ -6,7 +6,7 @@ var mods = {
 var utils = require('semo/eventpac/utils');
 
 exports.active = true;
-exports.schedule = '*';
+exports.schedule = '@hourly';
 exports.download = function(cx) {
 
 	var BaseURL = 'http://onf1.com.mx/api/onf1/%s';
@@ -28,11 +28,11 @@ exports.download = function(cx) {
     .posts()
     .map(function( post ) {
 		return {
-			id:         post.id,
-       	    modified:   post.modified,
-       	    title:      post.title,
-       		nationality:post.nationality,
-			type:	'performers'
+			id:             post.id,
+       	    modified:       post.modified,
+       	    title:          post.title,
+       		nationality:    post.nationality,
+			type:	        'performers'
        	}
 	});
 
@@ -40,12 +40,12 @@ exports.download = function(cx) {
     .posts()
     .map(function( post ) {
 		return {
-			id:         post.id,
-       	   	status:     post.status,
-           	modified:   post.modified,
-           	title:      post.title,
-           	nationality:post.nationality,
-			type:		'groups'
+			id:             post.id,
+       	   	status:         post.status,
+           	modified:       post.modified,
+           	title:          post.title,
+           	nationality:    post.nationality,
+			type:		    'groups'
 		}
     });
 
