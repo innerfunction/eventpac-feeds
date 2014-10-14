@@ -15,35 +15,6 @@ exports.download = function(cx) {
 
 	var BaseURL = 'http://onf1.com.mx/api/onf1/%s';
     
-	var performers = cx.get( BaseURL, 'performers' )
-    .posts(function( data ) {
-        return data.posts;
-    })
-    .map(function( post ) {
-		return {
-			id:         post.id,
-       	    modified:   post.modified,
-       	    title:      post.title,
-       		nationality:post.nationality,
-			type:	'performers'
-       	}
-	});
-
-	var groups = cx.get( BaseURL, 'groups' )
-    .posts(function( data ) {
-        return data.posts;
-    })
-    .map(function( post ) {
-		return {
-			id:         post.id,
-       	   	status:     post.status,
-           	modified:   post.modified,
-           	title:      post.title,
-           	nationality:post.nationality,
-			type:		'groups'
-		}
-    });
-
 	var resultsTeam = cx.get( BaseURL, 'results/groups' )
     .posts(function( data ) {
         return data.posts;
@@ -51,7 +22,7 @@ exports.download = function(cx) {
     .map(function( post ) {
 		return {
 			id:				'resultsTeam-'+post.id,
-			pos:            post.id,            // Is the position
+			pos:            post.id,
         	title:          post.title,
         	points:         post.points,
         	nationality:    post.nationality,
@@ -66,7 +37,7 @@ exports.download = function(cx) {
     .map(function( post ) {
 		return {
 			id:				'resultsIndividual-'+post.id,	
-			pos:            post.id,            // Is the position
+			pos:            post.id,
 			title:          post.title,
 			nationality:    post.nationality,
 			team:           post.group[0].title || '',
@@ -84,8 +55,6 @@ exports.download = function(cx) {
 		return {
 			id:         post.id,
 			status:     post.status,
-			modified:   post.modified,
-			url:        post.url,    // The permalink url
             title:      utils.filterHTML( post.title ),
             content:    utils.filterContent( post.content ),
 			image:      post.photo,
@@ -93,7 +62,6 @@ exports.download = function(cx) {
 			location:   utils.cuval( post.locations ),
 			start:      mods.df( post.startDateTime, 'dd/mm/yyyy'),
 			end:        mods.df( post.endDateTime, 'dd/mm/yyyy'),
-			modified:   post.modifierDateTime,
 			laps:               post.laps,
 			distance:           post.distance,
 			longitude:          post.longitude,
@@ -117,54 +85,21 @@ exports.download = function(cx) {
     .map(function( post ) {
 		return {
 			id:         post.id,
-			status:     post.status,
+			title:      post.title,
 			author:     post.author,
 			modified:   post.modifiedDateTime,
 			created:    post.createdDateTime,
-			url:        post.url,       // The permalink url
-			title:      post.title,
 			content:    post.content,
 			image:      post.photo,
-			//attachments:post.attachments,
-			website:    post.website,        // A custom field to
 			type:		'news',
 		}
     });
 
-	var pages = cx.get( BaseURL, 'pages' )
-    .posts(function( data ) {
-        return data.posts;
-    })
-    .map(function( post ) {
-		return {
-			id:             post.id,
-			modified:       post.modified,
-			slug:           post.slug,
-			url:            post.url,   // The permalink url
-			title:          post.title,
-			content:        post.content,
-			attachments:    post.attachments,
-			type:			'pages',
-		}
-    });	
-
-	cx.write(performers);
-	cx.write(groups);
 	cx.write(resultsIndividual);
 	cx.write(resultsTeam);
 	cx.write(events);
 	cx.write(news);
-	cx.write(pages);
     
-	/*cx.record({
-		performers: performers,
-		groups: groups,
-		resultsIndividual: resultsIndividual,
-		events: events,
-		news: news,
-		pages: pages
-    });*/
-
 }
 exports.build = function(cx) {
 
@@ -201,25 +136,43 @@ exports.build = function(cx) {
 		return posts;
 	}, {});
 
+	postsByType['results'] = {resultsIndividual: postsByType.resultsIndividual, resultsTeam: postsByType.resultsTeam};
+	var newsFiles = cx.eval('templates/news-detail.html', postsByType.news, 'news-{id}.html');
+	cx.eval('templates/event-detail.html', postsByType.events, 'events-{id}.html');
+	cx.eval('templates/event-results.html', postsByType.events, 'event-results-{id}.html');
+	cx.eval('templates/all-results.html', postsByType.results, 'results.html');
+
 	var updates = [];
 
 	for (var type in postsByType) {	
+
+		if( type == 'results' || type == 'resultsIndividual' || type == 'resultsTeam') continue;
+		
 		var updatesForType = postsByType[type].map(function( post) {
+			var description, action;
 			switch (post.type) {
 				case 'news':
-					var description = post.author + ' ' + post.modified;
+					description = post.author + ' ' + post.modified;
+					var file = newsFiles.get( post.id );
+					if( file ) {
+						action = file.uri('subs:')
+						.then(function( uri ) {
+							return 'nav/open+view@view:DefaultWebView+html@'+uri;
+						});
+					}
 					break;
 				case 'events':
-					var description = post.title + ' ' + post.circuit;
-					break;
-				case 'resultsIndividual':
-				case 'resultsTeam':
-					var description = post.nationality + ' ' + post.points;
+					description = post.circuit;
+					action = 'nav/open+view@view:EventDetail+eventID@'+post.id;
 					break;
 			}
 			var image;
 			if( post.image ) {
-				image = post.image.uri('subs:');
+				//image = post.image.uri('subs:');
+				image = post.image.href()
+				.then(function( href ) {
+					return 'subs:/onf1/'+href;
+				});
 			}
 			return {
 				id:				post.id,
@@ -227,7 +180,7 @@ exports.build = function(cx) {
 				title:			post.title,
 				description:	description,
 				image:			image,
-				action:			post.action,
+				action:			action,
 				startTime:		post.start,
 				endTime:		post.end,
 			}
@@ -242,12 +195,6 @@ exports.build = function(cx) {
 		}
 	}
 	cx.json( manifest, 'manifest.json', 4);
-
-	postsByType['results'] = {resultsIndividual: postsByType.resultsIndividual, resultsTeam: postsByType.resultsTeam};
-	cx.eval('templates/news-detail.html', postsByType.news, 'news-{id}.html');
-	cx.eval('templates/event-detail.html', postsByType.events, 'events-{id}.html');
-	cx.eval('templates/event-results.html', postsByType.events, 'event-results-{id}.html');
-	cx.eval('templates/all-results.html', postsByType.results, 'results.html');
 
 }
 exports.inPath = require('path').dirname(module.filename);
