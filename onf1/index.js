@@ -6,51 +6,48 @@ var mods = {
 var utils = require('semo/eventpac/utils');
 
 exports.active = true;
-exports.schedule = '@hourly';
+exports.schedule = '*';
 exports.download = function(cx) {
 
+	cx.clean(function(post) {
+		return !(post.id && post.id.indexOf('resultsIndividual.') == 0);
+	});
+
 	var BaseURL = 'http://onf1.com.mx/api/onf1/%s';
-
-	/*
-		cx.get().posts('data.posts').map(...)
-		cx.get().posts(function(data) { return data.posts }).map(...)
-		cx.get().posts().map(...)
-	*/
-
-	/**
-	 * Download a feed data
-	 * 
-	 * @param {string} BaseURL Base URL from where you want to download the feed
-	 * @param {string} feed Feed name to add to the base URL
-	 * @return {object} Returns a Feed object representing the downloaded data.
-	 */
+    
 	var performers = cx.get( BaseURL, 'performers' )
-    .posts()
+    .posts(function( data ) {
+        return data.posts;
+    })
     .map(function( post ) {
 		return {
-			id:             post.id,
-       	    modified:       post.modified,
-       	    title:          post.title,
-       		nationality:    post.nationality,
-			type:	        'performers'
+			id:         post.id,
+       	    modified:   post.modified,
+       	    title:      post.title,
+       		nationality:post.nationality,
+			type:	'performers'
        	}
 	});
 
 	var groups = cx.get( BaseURL, 'groups' )
-    .posts()
+    .posts(function( data ) {
+        return data.posts;
+    })
     .map(function( post ) {
 		return {
-			id:             post.id,
-       	   	status:         post.status,
-           	modified:       post.modified,
-           	title:          post.title,
-           	nationality:    post.nationality,
-			type:		    'groups'
+			id:         post.id,
+       	   	status:     post.status,
+           	modified:   post.modified,
+           	title:      post.title,
+           	nationality:post.nationality,
+			type:		'groups'
 		}
     });
 
 	var resultsTeam = cx.get( BaseURL, 'results/groups' )
-    .posts()
+    .posts(function( data ) {
+        return data.posts;
+    })
     .map(function( post ) {
 		return {
 			id:				'resultsTeam-'+post.id,
@@ -63,7 +60,9 @@ exports.download = function(cx) {
     });
 
 	var resultsIndividual = cx.get( BaseURL, 'results/performers' )
-    .posts()
+    .posts(function( data ) {
+        return data.posts;
+    })
     .map(function( post ) {
 		return {
 			id:				'resultsIndividual-'+post.id,	
@@ -78,7 +77,9 @@ exports.download = function(cx) {
     });
 	
 	var events = cx.get( BaseURL, 'events' )
-    .posts()
+    .posts(function( data ) {
+        return data.posts;
+    })
     .map(function( post ) {
 		return {
 			id:         post.id,
@@ -90,8 +91,8 @@ exports.download = function(cx) {
 			image:      post.photo,
 			circuit:    post.circuit,
 			location:   utils.cuval( post.locations ),
-			start:      post.startDateTime,
-			end:        post.endDateTime,
+			start:      mods.df( post.startDateTime, 'dd/mm/yyyy'),
+			end:        mods.df( post.endDateTime, 'dd/mm/yyyy'),
 			modified:   post.modifierDateTime,
 			laps:               post.laps,
 			distance:           post.distance,
@@ -110,7 +111,9 @@ exports.download = function(cx) {
     });
 
 	var news = cx.get( BaseURL, 'news' )
-    .posts()
+    .posts(function( data ) {
+        return data.posts;
+    })
     .map(function( post ) {
 		return {
 			id:         post.id,
@@ -122,13 +125,16 @@ exports.download = function(cx) {
 			title:      post.title,
 			content:    post.content,
 			image:      post.photo,
+			//attachments:post.attachments,
 			website:    post.website,        // A custom field to
 			type:		'news',
 		}
     });
 
 	var pages = cx.get( BaseURL, 'pages' )
-    .posts()
+    .posts(function( data ) {
+        return data.posts;
+    })
     .map(function( post ) {
 		return {
 			id:             post.id,
@@ -149,25 +155,34 @@ exports.download = function(cx) {
 	cx.write(events);
 	cx.write(news);
 	cx.write(pages);
+    
+	/*cx.record({
+		performers: performers,
+		groups: groups,
+		resultsIndividual: resultsIndividual,
+		events: events,
+		news: news,
+		pages: pages
+    });*/
+
 }
 exports.build = function(cx) {
 
-		
 	cx.file([
-		'templates/theme/css/bootstrap.min.css',
-		'templates/theme/js/jquery.min.js',
-		'templates/theme/js/bootstrap.min.js',
-		'templates/theme/css/flags16.css',
-		'templates/theme/css/flags32.css',
-		'templates/css/style.css',
-		'templates/theme/css/font-awesome.css',
-		'templates/theme/images',
-		'templates/images',
-		'templates/about.html',
-		'templates/share.html',
-		'templates/twitter.html',
-		'html/sponsor.html'
-	]).cp();
+			'templates/theme/css/bootstrap.min.css',
+        	'templates/theme/js/jquery.min.js',
+        	'templates/theme/js/bootstrap.min.js',
+       		'templates/theme/css/flags16.css',
+       		'templates/theme/css/flags32.css',
+       		'templates/css/style.css',
+       		'templates/theme/css/font-awesome.css',
+       		'templates/theme/images',
+			'templates/images',
+			'templates/about.html',
+			'templates/share.html',
+			'templates/twitter.html',
+			'html/sponsor.html'
+		]).cp();
 
 	var types = ['news', 'events', 'resultsIndividual', 'resultsTeam'];
 	
@@ -182,9 +197,51 @@ exports.build = function(cx) {
 		.filter(function( url ) {
 			return !!url;
 		});
-		cx.images( imageURLs, true ).mapTo( posts[type], 'image');
+		cx.images( imageURLs ).resize({ width: 500}, true).mapTo( posts[type], 'image');
 		return posts;
 	}, {});
+
+	var updates = [];
+
+	for (var type in postsByType) {	
+		var updatesForType = postsByType[type].map(function( post) {
+			switch (post.type) {
+				case 'news':
+					var description = post.author + ' ' + post.modified;
+					break;
+				case 'events':
+					var description = post.title + ' ' + post.circuit;
+					break;
+				case 'resultsIndividual':
+				case 'resultsTeam':
+					var description = post.nationality + ' ' + post.points;
+					break;
+			}
+			var image;
+			if( post.image ) {
+				image = post.image.uri('subs:');
+			}
+			return {
+				id:				post.id,
+				type:			post.type,
+				title:			post.title,
+				description:	description,
+				image:			image,
+				action:			post.action,
+				startTime:		post.start,
+				endTime:		post.end,
+			}
+		});
+		updates = updates.concat( updatesForType );
+	}
+	var manifest = {
+		db: {
+			updates: {
+				posts: updates
+			}
+		}
+	}
+	cx.json( manifest, 'manifest.json', 4);
 
 	postsByType['results'] = {resultsIndividual: postsByType.resultsIndividual, resultsTeam: postsByType.resultsTeam};
 	cx.eval('templates/news-detail.html', postsByType.news, 'news-{id}.html');
