@@ -178,7 +178,7 @@ exports.build = function(cx) {
 			}
 			var thumbnail;
 			if( post.thumbnail ) {
-                thumbnail = post.thumbnail.uri('subs');
+                thumbnail = post.thumbnail.uri('@subs');
 			}
 			return {
 				id:				post.id,
@@ -193,13 +193,7 @@ exports.build = function(cx) {
 		});
 		updates = updates.concat( updatesForType );
 	}
-	var manifest = {
-		db: {
-			updates: {
-				posts: updates
-			}
-		}
-	}
+    var manifest = eputils.manifest({ posts: updates });
 	cx.json( manifest, 'manifest.json', 4);
 
 }
