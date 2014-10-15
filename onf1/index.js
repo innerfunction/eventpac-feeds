@@ -6,7 +6,8 @@ var mods = {
 var utils = require('semo/eventpac/utils');
 
 exports.active = true;
-exports.schedule = '@hourly';
+//exports.schedule = '@hourly';
+exports.schedule = { minute: 52, second: 12 };
 exports.download = function(cx) {
 
 	var BaseURL = 'http://onf1.com.mx/api/onf1/%s';
