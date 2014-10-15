@@ -63,6 +63,7 @@ exports.download = function(cx) {
             title:      utils.filterHTML( post.title ),
             content:    utils.filterContent( post.content ),
 			image:      post.photo,
+            thumbnail:  post.photo,
 			circuit:    post.circuit,
 			location:   utils.cuval( post.locations ),
 			start:      mods.df( post.startDateTime, 'dd/mm/yyyy'),
@@ -96,6 +97,7 @@ exports.download = function(cx) {
 			created:    post.createdDateTime,
 			content:    post.content,
 			image:      post.photo,
+            thumbnail:  post.photo,
 			type:		'news',
 		}
     });
@@ -137,7 +139,9 @@ exports.build = function(cx) {
 		.filter(function( url ) {
 			return !!url;
 		});
-		cx.images( imageURLs ).resize({ width: 500}, true).mapTo( posts[type], 'image');
+        var images = cx.images( imageURLs );
+        images.resize( { width: 100, format: 'jpeg' }, '{name}-{width}.{format}' ).mapTo( posts[type], 'thumbnail' );
+		images.resize( { width: 500, format: 'jpeg' }, true ).mapTo( posts[type], 'image' );
 		return posts;
 	}, {});
 
@@ -164,12 +168,6 @@ exports.build = function(cx) {
 					var file = newsFiles.get( post.id );
 					if( file ) {
                         action = eputils.action('DefaultWebView', { html: file.uri('subs') });
-                        /*
-						action = file.uri('subs:')
-						.then(function( uri ) {
-							return 'nav/open+view@view:DefaultWebView+html@'+uri;
-						});
-                        */
 					}
 					break;
 				case 'events':
@@ -178,23 +176,16 @@ exports.build = function(cx) {
                     action = eputils.action('EventDetail', { 'eventID': post.id });
 					break;
 			}
-			var image;
-			if( post.image ) {
-                image = post.image.uri('subs');
-				//image = post.image.uri('subs:');
-                /*
-				image = post.image.href()
-				.then(function( href ) {
-					return 'subs:/onf1/'+href;
-				});
-                */
+			var thumbnail;
+			if( post.thumbnail ) {
+                thumbnail = post.thumbnail.uri('subs');
 			}
 			return {
 				id:				post.id,
 				type:			post.type,
 				title:			post.title,
 				description:	description,
-				image:			image,
+				image:			thumbnail,
 				action:			action,
 				startTime:		post.start,
 				endTime:		post.end,
