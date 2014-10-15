@@ -1,5 +1,7 @@
+var q = require('semo/lib/q');
 var format = require('util').format;
 
+// Functions for generating EP URIs, by scheme.
 exports.schemes = function( feedid ) {
     return {
         'subs': function() {
@@ -11,6 +13,22 @@ exports.schemes = function( feedid ) {
     }
 }
 
-exports.action = function( viewName, pname, pvalue ) {
-    return 'nav/open+view@%s+%s@%s', viewName, pname, value );
+// Function for generating an action URI.
+// @viewName:   An EP view name.
+// @viewParams: An object mapping parameter names to values. Values may be deferred promises.
+exports.action = function( viewName, viewParams ) {
+    var params = Object.keys( viewParams )
+    .map(function( name ) {
+        return q.Q( viewParams[name] )
+        .then(function( value ) {
+            return [ name, value ];
+        });
+    });
+    return q.all( params )
+    .then(function( params ) {
+        params = params.reduce(function( result, param ) {
+            return result+(result.length&&'+')+param[0]+'@'+param[1];
+        }, '');
+        return format('nav/open+view@%s%s', viewName, params );
+    });
 }
