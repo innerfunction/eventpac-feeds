@@ -4,11 +4,14 @@ var mods = {
 	tt:		require('semo/lib/tinytemper')
 }
 var utils = require('semo/eventpac/utils');
+var eputils = require('../eputils');
 
 exports.active = true;
 //exports.schedule = '@hourly';
 exports.schedule = { minute: 52, second: 12 };
-
+exports.exts = {
+    uriSchemes: eputils.schemes('onf1')
+}
 exports.download = function(cx) {
 
 	cx.clean(function(post) {
@@ -138,7 +141,10 @@ exports.build = function(cx) {
 		return posts;
 	}, {});
 
-	postsByType['results'] = {resultsIndividual: postsByType.resultsIndividual, resultsTeam: postsByType.resultsTeam};
+	postsByType['results'] = {
+            resultsIndividual: postsByType.resultsIndividual,
+            resultsTeam: postsByType.resultsTeam
+        };
 	var newsFiles = cx.eval('templates/news-detail.html', postsByType.news, 'news-{id}.html');
 	cx.eval('templates/event-detail.html', postsByType.events, 'events-{id}.html');
 	cx.eval('templates/event-results.html', postsByType.events, 'event-results-{id}.html');
@@ -157,24 +163,31 @@ exports.build = function(cx) {
 					description = post.author + ' ' + post.modified;
 					var file = newsFiles.get( post.id );
 					if( file ) {
+                        action = eputils.action('DefaultWebView', { html: file.uri('subs') });
+                        /*
 						action = file.uri('subs:')
 						.then(function( uri ) {
 							return 'nav/open+view@view:DefaultWebView+html@'+uri;
 						});
+                        */
 					}
 					break;
 				case 'events':
 					description = post.circuit;
-					action = 'nav/open+view@view:EventDetail+eventID@'+post.id;
+					//action = 'nav/open+view@view:EventDetail+eventID@'+post.id;
+                    action = eputils.action('EventDetail', { 'eventID': post.id });
 					break;
 			}
 			var image;
 			if( post.image ) {
+                image = post.image.uri('subs');
 				//image = post.image.uri('subs:');
+                /*
 				image = post.image.href()
 				.then(function( href ) {
 					return 'subs:/onf1/'+href;
 				});
+                */
 			}
 			return {
 				id:				post.id,

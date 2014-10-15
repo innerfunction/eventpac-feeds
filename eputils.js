@@ -27,7 +27,7 @@ exports.action = function( viewName, viewParams ) {
     return q.all( params )
     .then(function( params ) {
         params = params.reduce(function( result, param ) {
-            return result+(result.length&&'+')+param[0]+'@'+param[1];
+            return result+'+'+param[0]+'@'+param[1];
         }, '');
         return format('nav/open+view@%s%s', viewName, params );
     });
