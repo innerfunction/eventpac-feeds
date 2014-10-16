@@ -9,12 +9,6 @@ exports.schemes = function( feedid ) {
             .then(function( href ) {
                 return format('subs:/%s/%s', feedid, href );
             });
-        },
-        '@subs': function() {
-            return schemes.subs()
-            .then(function( uri ) {
-                return '@'+uri;
-            });
         }
     };
     return schemes;
