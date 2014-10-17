@@ -3,14 +3,15 @@ var format = require('util').format;
 
 // Functions for generating EP URIs, by scheme.
 exports.schemes = function( feedid ) {
-    return {
+    var schemes = {
         'subs': function() {
             return this.href()
             .then(function( href ) {
                 return format('subs:/%s/%s', feedid, href );
             });
         }
-    }
+    };
+    return schemes;
 }
 
 // Function for generating an action URI.
@@ -31,4 +32,11 @@ exports.action = function( viewName, viewParams ) {
         }, '');
         return format('nav/open+view@%s%s', viewName, params );
     });
+}
+
+exports.manifest = function( db ) {
+    for( var table in db ) {
+        db[table] = { updates: db[table] };
+    }
+    return { db: db };
 }
