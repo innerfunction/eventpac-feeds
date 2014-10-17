@@ -150,8 +150,7 @@ exports.build = function(cx) {
             resultsTeam: postsByType.resultsTeam
         };
 	var newsFiles = cx.eval('templates/news-detail.html', postsByType.news, 'news-{id}.html');
-	cx.eval('templates/event-detail.html', postsByType.events, 'events-{id}.html');
-	cx.eval('templates/event-results.html', postsByType.events, 'event-results-{id}.html');
+    cx.eval('templates/events.html', postsByType.events, 'events-{id}.html');
 	cx.eval('templates/all-results.html', postsByType.results, 'results.html');
 
 	var updates = [];
