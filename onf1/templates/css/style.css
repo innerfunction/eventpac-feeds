@@ -258,6 +258,9 @@ div.btn-social, .btn-social {
 .results > table.fixed-rp {
 	top:50px;
 } 
+.results > table.fixed-rp-event {
+	top:104px;
+}
 	
 /*}*/
 
