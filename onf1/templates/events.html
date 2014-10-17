@@ -2,17 +2,17 @@
 <html>
 <head>
 
-	<title>{title}</title>
-	<meta charset="utf-8">
+    <title>{title}</title>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="bootstrap.min.css" />
-	<link rel="stylesheet" href="flags32.css" />
-	<link rel="stylesheet" href="flags16.css" />
-	<link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="flags32.css" />
+    <link rel="stylesheet" href="flags16.css" />
+    <link rel="stylesheet" href="style.css" />
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap.min.js"></script>
@@ -33,213 +33,229 @@
 <body >
 
     <div id="event-details" style="display: visible;">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="cold-md-12 col-sm-12 col-xs-12 event-header-title event-header">
-				       <h1>{title} </h1>
-			</div>	
+            <div class="container-fluid">
+                <div   class="row tabs-result">
+                    <div class="cold-md-6 col-sm-6 col-xs-6" id="details">
+                        <a class="tab-btn active "  href="event-details">Detalles</a>
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6" id="results">
+                        <a class="tab-btn " href="event-results">Resultados</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cold-md-12 col-sm-12 col-xs-12 event-header-title event-header">
+                               <h1>{title} </h1>
+                    </div>  
 
-			<div class="cold-md-12 col-sm-12 col-xs-12 event-header">
-				       <h1>{title} </h1>
-				       <h2>{circuit}</h2>
-				       <p class="date"> Desde {start}, hasta {end} </p>
-			</div>
-			<div class="cold-md-12 col-sm-12 col-xs-12 main-image">
-				<!-- <img class="img-responsive" title="Race" src="images/races/australia.png" /> -->
-				{#image}
-                <!-- <div class="image image-banner img-responsive"></div> -->
-                <img class="img-responsive" title="Race" src="{src}" />
-             
-                {/image}
-				<div class="favourite-btn"></div>
-				<!-- TODO: add active class when the user press the favourite-btn and add the race to the favourite list -->
-			</div>
-		</div>
+                    <div class="cold-md-12 col-sm-12 col-xs-12 event-header">
+                               <h1>{title} </h1>
+                               <h2>{circuit}</h2>
+                               <p class="date"> Desde {start}, hasta {end} </p>
+                    </div>
+                    <div class="cold-md-12 col-sm-12 col-xs-12 main-image">
+                        <!-- <img class="img-responsive" title="Race" src="images/races/australia.png" /> -->
+                        {#image}
+                        <!-- <div class="image image-banner img-responsive"></div> -->
+                        <img class="img-responsive" title="Race" src="{src}" />
+                     
+                        {/image}
+                        <div class="favourite-btn"></div>
+                        <!-- TODO: add active class when the user press the favourite-btn and add the race to the favourite list -->
+                    </div>
+                </div>
 
 
-		<div class="row event-detail">
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-  					<dt>Vueltas</dt>
+                <div class="row event-detail">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Vueltas</dt>
 
-			</div>
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-					<dd>{laps}</dd>
-			</div>
-		</div>
-		<div class="row event-detail">
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-  					<dt>Longitud</dt>
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dd>{laps}</dd>
+                    </div>
+                </div>
+                <div class="row event-detail">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Longitud</dt>
 
-			</div>
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-					<dd>{longitude}</dd>
-			</div>
-		</div>
-		<div class="row event-detail">
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-  					<dt>Distancia</dt>
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dd>{longitude}</dd>
+                    </div>
+                </div>
+                <div class="row event-detail">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Distancia</dt>
 
-			</div>
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-					<dd>{distance}</dd>
-			</div>
-		</div>
-		<div class="row event-detail">
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-  					<dt>Numero de curvas</dt>
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dd>{distance}</dd>
+                    </div>
+                </div>
+                <div class="row event-detail">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Numero de curvas</dt>
 
-			</div>
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-					<dd>{turnNumber}</dd>
-			</div>
-		</div>
-		<div class="row event-detail">
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-  					<dt>Uso de acelerador</dt>
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dd>{turnNumber}</dd>
+                    </div>
+                </div>
+                <div class="row event-detail">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Uso de acelerador</dt>
 
-			</div>
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-					<dd>{throttleLapUsePercentaje}</dd>
-			</div>
-		</div>
-		<div class="row event-detail">
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-					<dt>Curvas importantes</dt>
-			</div>
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-				<dd>
-					<ul>
-						{#importantLaps}
-							<li>- {.}</li>
-						{/importantLaps}
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dd>{throttleLapUsePercentaje}</dd>
+                    </div>
+                </div>
+                <div class="row event-detail">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Curvas importantes</dt>
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                        <dd>
+                            <ul>
+                                {#importantLaps}
+                                    <li>- {.}</li>
+                                {/importantLaps}
 
-					</ul>
-				</dd>
-			</div>
-		</div>
-		<div class="row event-detail">
-			<div class="cold-md-6 col-sm-6 col-xs-6">
-  					<dt>Récord Vuelta</dt>
-  			</div>
-  			<div class="cold-md-6 col-sm-6 col-xs-6">
-  					<dd>
-  						<ul>
-	  						<li>- {fastestLapTime} </li>
-	  						<li>- {fastestLapDriver} </li>
-	  						{?fastestLapCarYear}
-	  							<li>- {fastestLapCarYear}</li>
-	  						{/fastestLapCarYear}
-	  					</ul>
-  					</dd>
-  			</div>
-		</div>
-		<div class="row event">
-			<div class="cold-md-12 col-sm-12 col-xs-12 divider"></div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row race-description">
-			<div class="cold-md-12 col-sm-12 col-xs-12">
-				<p>{content|s}</p>
-			</div>
-		</div>
-	</div>
+                            </ul>
+                        </dd>
+                    </div>
+                </div>
+                <div class="row event-detail">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Récord Vuelta</dt>
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dd>
+                                <ul>
+                                    <li>- {fastestLapTime} </li>
+                                    <li>- {fastestLapDriver} </li>
+                                    {?fastestLapCarYear}
+                                        <li>- {fastestLapCarYear}</li>
+                                    {/fastestLapCarYear}
+                                </ul>
+                            </dd>
+                    </div>
+                </div>
+                <div class="row event">
+                    <div class="cold-md-12 col-sm-12 col-xs-12 divider"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row race-description">
+                    <div class="cold-md-12 col-sm-12 col-xs-12">
+                        <p>{content|s}</p>
+                    </div>
+                </div>
+            </div>
     </div>
 
     <div id="event-results" style="display: none;">
-	    <div class="container-fluid">
-	        <div class="row">
-			<div class="cold-md-12 col-sm-12 col-xs-12 event-header-title event-header">
-		       <h1>{title} </h1>
-			</div>	
+        <div class="container-fluid">
+            <div   class="row tabs-result">
+                <div class="cold-md-6 col-sm-6 col-xs-6" id="details">
+                    <a class="tab-btn  "  href="event-details">Detalles</a>
+                </div>
+                <div class="cold-md-6 col-sm-6 col-xs-6" id="results">
+                    <a class="tab-btn active" href="event-results">Resultados</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cold-md-12 col-sm-12 col-xs-12 event-header-title event-header">
+                   <h1>{title} </h1>
+                </div>  
 
-			<div class="cold-md-12 col-sm-12 col-xs-12 event-header">
-		       <h1>{title} </h1>
-			</div>
-			<div class="cold-md-12 col-sm-12 col-xs-12 results">
-				<table class="table fixed fixed-rp event-results ">
-					<colgroup>
-						<col width="10%">
-						<col width="11%">
-						<col width="25%">
-						<col width="13%">
-						<col width="7%">
-						<col width="15%">
-						<col width="4%">
-					</colgroup>
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>No</th>
-							<th>Piloto</th>
-							<th>ESC</th>
-							<th>VUE</th>
-							<th>Tiempo</th>
-							<th>Puntos</th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			</div>
-		</div>
+                <div class="cold-md-12 col-sm-12 col-xs-12 event-header">
+                   <h1>{title} </h1>
+                </div>
+                <div class="cold-md-12 col-sm-12 col-xs-12 results">
+                    <table class="table fixed fixed-rp event-results ">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="11%">
+                            <col width="25%">
+                            <col width="13%">
+                            <col width="7%">
+                            <col width="15%">
+                            <col width="4%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>No</th>
+                                <th>Piloto</th>
+                                <th>ESC</th>
+                                <th>VUE</th>
+                                <th>Tiempo</th>
+                                <th>Puntos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-			<div class="row">
-				<div class="cold-md-12 col-sm-12 col-xs-12 results">
-					<table class="table table-striped event-results">
-						<colgroup>
-							<col width="10%">
-							<col width="11%">
-							<col width="25%">
-							<col width="13%">
-							<col width="7%">
-							<col width="15%">
-							<col width="4%">
-						</colgroup>
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>No</th>
-								<th>Piloto</th>
-								<th>ESC</th>
-								<th>VUE</th>
-								<th>Tiempo</th>
-								<th>Puntos</th>
-							</tr>
-						</thead>
-						<tbody>
-	                        {#individualResults}
-							<tr class="f16">
-								<td>{id}</td>
-								<td>{performer_id}</td>
-								<td colspan="4"><span class="flag {nationality}"></span>{title}</td>
-							
-								<td>{points}</td>
-							</tr>
-							<tr class="f16">
-								<td colspan="3">
-								<td>{teamInitials}</td>
-								<td>{laps}</td>
-								<td colspan="2">{timeOrRetired}</td>
-							</tr>
-   	                     	{/individualResults}
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+            <div class="row content-result">
+                <div class="cold-md-12 col-sm-12 col-xs-12 results">
+                    <table class="table table-striped event-results">
+                        <colgroup>
+                            <col width="10%">
+                            <col width="11%">
+                            <col width="25%">
+                            <col width="13%">
+                            <col width="7%">
+                            <col width="15%">
+                            <col width="4%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>No</th>
+                                <th>Piloto</th>
+                                <th>ESC</th>
+                                <th>VUE</th>
+                                <th>Tiempo</th>
+                                <th>Puntos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {#individualResults}
+                            <tr class="f16">
+                                <td>{id}</td>
+                                <td>{performer_id}</td>
+                                <td colspan="4"><span class="flag {nationality}"></span>{title}</td>
+                            
+                                <td>{points}</td>
+                            </tr>
+                            <tr class="f16">
+                                <td colspan="3">
+                                <td>{teamInitials}</td>
+                                <td>{laps}</td>
+                                <td colspan="2">{timeOrRetired}</td>
+                            </tr>
+                            {/individualResults}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
-		$(document).ready(function() {
-			$('.tab-btn').bind('click', function(e) {
-				e.preventDefault();
-				var target = $(this).attr('href')+'-section';
+        $(document).ready(function() {
+            $('.tab-btn').bind('click', function(e) {
+                e.preventDefault();
+                var target = $(this).attr('href');
 
-				$('#' + $(this).parent().parent().parent().parent().attr('id')).css('display', 'none');
-				$('#' + target).css('display', 'visible');
-			});
-		});
-	</script>
+                $('#' + $(this).parent().parent().parent().parent().attr('id')).css('display', 'none');
+                $('#' + target).css('display', 'visible');
+            });
+        });
+    </script>
 
 </body>
 </html>
