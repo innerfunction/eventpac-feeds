@@ -168,6 +168,7 @@ dd > .record-details{
 	font-weight:100;
 	text-align:center;
 	font-size:18px;
+	margin-top: 54px;
 }
 .event-header.event-header-title{
 	position: fixed;
@@ -235,12 +236,12 @@ div.btn-social, .btn-social {
 .row.tabs-result{
 	position: fixed;
 	width:100%;
-	z-index: 2;
+	z-index: 3;
 	top : 0;
 	margin-top:0;
 
 }
-.row.content-result{
+.row.content-tabs{
 	margin-top:54px;
 }
 .results > table.fixed {
@@ -280,7 +281,7 @@ a.tab-btn:hover{
 .btn-twitter {
 	background-color: #8DD0E5;
 }
-#individual, #team{
+#individual, #team, #details, #results{
 	padding:0 ;
 	text-align: center;
 	font-size: 22px;
