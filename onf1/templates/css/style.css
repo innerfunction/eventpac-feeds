@@ -386,7 +386,9 @@ a.tab-btn:hover{
 .eventpac-content a, .sponsor-contact a{
 	color: #FFF;
 }
-
+.sponsor-contact button {
+    width: 75%;
+}
 #twitter-container {
 	text-align: center;
 }
