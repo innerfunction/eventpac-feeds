@@ -216,6 +216,12 @@ div.btn-social, .btn-social {
 .event-results>tbody>tr:nth-child(4n+4)>td, .stage-class>tbody>tr:nth-child(4n+4)>td
 {    background-color: #ffffff;
 }
+.event-results .second-r td{
+	padding-top:2px;
+}
+.event-results .first-r td{
+	padding-bottom: 2px;
+}
 
 /* Results */
 /*.results > table.fixed {
