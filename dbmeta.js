@@ -1,0 +1,180 @@
+function deepeq( obj1, obj2 ) {
+    // Test object equality based on obj1's type.
+    switch( typeof obj1 ) {
+    case 'undefined':
+        // Undefined value - obj2 must also be undefined.
+        return obj2 === undefined;
+    case 'boolean':
+    case 'number':
+    case 'string':
+        // Primitive value - use straight equality test.
+        return obj1 == obj2;
+    default:
+        // If value is null then obj2 must also be null.
+        if( obj1 == null ) {
+            return obj2 === null;
+        }
+        // Iterate over obj1's properties and compare to corresponding
+        // property on obj2.
+        for( var key in obj1 ) {
+            if( obj1.hasOwnProperty( key ) ) {
+                if( !deepeq( obj1[key], obj2[key] ) ) {
+                    return false;
+                }
+            }
+        }
+    }
+    // No differences found so return true.
+    return true;
+}
+
+// Utility functions related to DB meta data.
+exports.metaHandler = {
+    // Test whether new meta data is different from old meta data.
+    hasChanges: function( newMeta, oldMeta ) {
+        if( !oldMeta ) {
+            return true;
+        }
+        return deepeq( newMeta.db, oldMeta.db );
+    },
+    // Perform a diff between two sets of meta data.
+    // Used when generating incremental downloads.
+    // Compares the two sets of db updates on the 'db' property of each meta data object.
+    // Updates must be presented in the following format:
+    //      update ::= {
+    //          <table name> : {
+    //              <record ID> : { <record values> } *
+    //          } *
+    //      }
+    // i.e. an update object,
+    // - whose keys are table names, mapped to a set of updates
+    // - each update set is keyed by table record unique ID, onto
+    //   an object of column name/value pairs.
+    // The function will return a single update object in the above format,
+    // with record deletions marked as record IDs mapped to null.
+    diff: function( newMeta, oldMeta ) {
+        var currUpdates = newMeta.db;
+        var prevUpdates = oldMeta.db;
+        var result = currUpdates;
+        if( prevUpdates ) {
+            result = {};
+            for( var table in currUpdates ) {
+                var prevTableUpdates = prevUpdates[table];
+                var currTableUpdates = currUpdates[table];
+                if( prevTableUpdates ) {
+                    var tableResult = {};
+                    // Compare records in the current update with the previous update,
+                    // and record any changes.
+                    for( var recordID in currTableUpdates ) {
+                        var currRecord = currTableUpdates[recordID];
+                        var prevRecord = prevTableUpdates[recordID];
+                        if( !(prevRecord && deepeq( currRecord, prevRecord ) ) {
+                            tableResult[recordID] = currRecord;
+                        }
+                    }
+                    // Detect any records in the previous update but not in the current update,
+                    // and mark them as deletions.
+                    for( recordID in prevTableUpdates ) {
+                        if( !currTableUpdates[recordID] ) {
+                            tableResult[recordID] = null;
+                        }
+                    }
+                    if( Object.keys( tableResult ).length > 0 ) {
+                        result[table] = tableResult;
+                    }
+                }
+                else if( Object.keys( currTableUpdates ).length > 0 ) {
+                    result[table] = currTableUpdates;
+                }
+            }
+        }
+        return result;
+    },
+    // Convert DB meta data to JSON.
+    toJSON: function( meta ) {
+        var allUpdates = meta.db;
+        var result = {};
+        // For each table in the update...
+        for( var table in allUpdates ) {
+            var tableUpdates = allUpdates[table];
+            // Prepare a list of updated and deleted records.
+            var updates = [], deletes = [];
+            // For each record in the update...
+            for( var recordID in tableUpdates ) {
+                var update = tableUpdates[recordID];
+                // If the updated record isn't null, then output as an update...
+                if( update !== null ) {
+                    updates.push( update );
+                }
+                else {
+                    // ...elese record the record ID as a deletion.
+                    deletes.push( recordID );
+                }
+            }
+            // Generate the result for the current table.
+            result[table] = {
+                updates: updates,
+                deletes: deletes
+            }
+        }
+        return { db: result };
+    }
+}
+
+var utils = require('semo-build/lib/utils');
+
+// Merge a partial DB update into the complete DB record.
+// A partial DB update is one generated by an incremental build, when only some records
+// are updated, but non-updated records may still be active. The two arguments are in
+// the same format as used by diffDBUpdates(). The partial argument may specify records
+// for deletion by mapping their record ID to null or false. The partial argument may
+// contain properties mapped to deferred promises; these will be resolved before the
+// merge takes place. The function returns a deferred promise resolving to the new
+// set of complete DB updates.
+// Use this function from within a build script performing an incremental build.
+exports.mergeDBUpdates = function( complete, partial ) {
+    complete = complete||{};
+    // Stringify and re-parse the partial argument, to resolve any deferred promises.
+    utils.resolveAllPromises( partial )
+    .then(function( partial ) {
+        // Iterate over the tables in the partial update.
+        for( var table in partial ) {
+            var partialTable = partial[table];
+            var completeTable = complete[table];
+            if( completeTable ) {
+                // Iterate over the record IDs in the partial update.
+                for( var recordID in partialTable ) {
+                    // If the record ID is mapped to null/false, then delete from the complete set.
+                    if( !partialTable[recordID] ) {
+                        delete complete[recordID];
+                    }
+                    else {
+                        // ...else copy the updated record to the complete set.
+                        complete[recordID] = partial[recordID];
+                    }
+                }
+            }
+            else {
+                // If table not found in complete set then copy the full update, less any deletions.
+                completeTable = {};
+                for( var recordID in partialTable ) {
+                    if( partialTable[recordID] ) {
+                        completeTable[recordID] = partialTable[recordID];
+                    }
+                }
+                complete[table] = completeTable;
+            }
+        }
+        return complete;
+    });
+}
+
+// TODO: To complete
+// 1. The build system will store build meta data alongside other build info in the db
+// 2. The build script should return the build meta data, straight or as a promise
+// 3. mergeDBUpdate is to be used by the build script to update the db portion of the build meta data
+//    Incremental builds use merge; complete builds just regenerate the full db set
+// 4. diffDBUpdate is used by the build process when generating incremental downloads
+// 5. the serializeDBUpdate is used by the build process when generating manifest.json
+// 6. Use of (diff|serialize)DBUpdate should be configurable in the build system via settings
+
