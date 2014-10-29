@@ -12,13 +12,16 @@ exports.schedule = { minute: [ 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 ] };
 exports.exts = {
     uriSchemes: eputils.schemes('onf1')
 }
+
+var BaseURL = 'http://onf1.com.mx/api/onf1/%s';
+
 exports.download = function(cx) {
 
 	cx.clean(function(post) {
 		return !(post.id && post.id.indexOf('resultsIndividual.') == 0);
 	});
 
-	var BaseURL = 'http://onf1.com.mx/api/onf1/%s';
+    var downloadTime = new Date().toString();
     
 	var resultsTeam = cx.get( BaseURL, 'results/groups' )
     .posts(function( data ) {
@@ -31,7 +34,8 @@ exports.download = function(cx) {
         	title:          post.title,
         	points:         post.points,
         	nationality:    post.nationality,
-			type:			'resultsTeam'
+			type:			'resultsTeam',
+            downloadTime:   downloadTime
 		}
     });
 
@@ -48,7 +52,8 @@ exports.download = function(cx) {
 			team:           post.group[0].title || '',
 			teamInitials:	post.group[0].teamInitials,
 			points:         post.points,
-			type:			'resultsIndividual'
+			type:			'resultsIndividual',
+            downloadTime:   downloadTime
 		}
     });
 	
@@ -58,16 +63,16 @@ exports.download = function(cx) {
     })
     .map(function( post ) {
 		return {
-			id:         post.id,
-			status:     post.status,
-            title:      utils.filterHTML( post.title ),
-            content:    utils.filterContent( post.content ),
-			image:      post.photo,
-            thumbnail:  post.photo,
-			circuit:    post.circuit,
-			location:   utils.cuval( post.locations ),
-			start:      mods.df( post.startDateTime, 'dd/mm/yyyy'),
-			end:        mods.df( post.endDateTime, 'dd/mm/yyyy'),
+			id:                 post.id,
+			status:             post.status,
+            title:              utils.filterHTML( post.title ),
+            content:            utils.filterContent( post.content ),
+			image:              post.photo,
+            thumbnail:          post.photo,
+			circuit:            post.circuit,
+			location:           utils.cuval( post.locations ),
+			start:              mods.df( post.startDateTime, 'dd/mm/yyyy'),
+			end:                mods.df( post.endDateTime, 'dd/mm/yyyy'),
 			laps:               post.laps,
 			distance:           post.distance,
 			longitude:          post.longitude,
@@ -81,6 +86,7 @@ exports.download = function(cx) {
 			throttleLapUsePercentaje:	post.throttleLapUsePercentaje,
 			importantLaps:		post.importantLaps,
 			type:				'events',
+            downloadTime:       downloadTime
 		}
     });
 
@@ -90,15 +96,16 @@ exports.download = function(cx) {
     })
     .map(function( post ) {
 		return {
-			id:         post.id,
-			title:      post.title,
-			author:     post.author,
-			modified:   post.modifiedDateTime,
-			created:    post.createdDateTime,
-			content:    post.content,
-			image:      post.photo,
-            thumbnail:  post.photo,
-			type:		'news',
+			id:                 post.id,
+			title:              post.title,
+			author:             post.author,
+			modified:           post.modifiedDateTime,
+			created:            post.createdDateTime,
+			content:            post.content,
+			image:              post.photo,
+            thumbnail:          post.photo,
+			type:		        'news',
+            downloadTime:       downloadTime
 		}
     });
 
@@ -107,6 +114,9 @@ exports.download = function(cx) {
 	cx.write(events);
 	cx.write(news);
     
+    cx.clean(function( post ) {
+        return post.downloadTime == downloadTime;
+    });
 }
 exports.build = function(cx) {
 
@@ -187,6 +197,7 @@ exports.build = function(cx) {
 				action:			action,
 				startTime:		post.start,
 				endTime:		post.end,
+                modifiedTime:   post.modified
 			}
 		});
 		updates = updates.concat( updatesForType );
