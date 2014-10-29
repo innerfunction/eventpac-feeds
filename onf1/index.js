@@ -159,7 +159,7 @@ exports.build = function(cx) {
 
 		if( type == 'results' || type == 'resultsIndividual' || type == 'resultsTeam') continue;
 		
-		var updatesForType = postsByType[type].map(function( post) {
+		var updatesForType = postsByType[type].map(function( post ) {
 			var description, action;
 			switch (post.type) {
 				case 'news':
@@ -171,7 +171,6 @@ exports.build = function(cx) {
 					break;
 				case 'events':
 					description = post.circuit;
-					//action = 'nav/open+view@view:EventDetail+eventID@'+post.id;
                     action = eputils.action('EventDetail', { 'eventID': post.id });
 					break;
 			}
@@ -192,8 +191,13 @@ exports.build = function(cx) {
 		});
 		updates = updates.concat( updatesForType );
 	}
-    var manifest = eputils.manifest({ posts: updates });
-	cx.json( manifest, 'manifest.json', 4);
-
+    // Rewrite db update format to sets of per-table updates, keyed by record ID.
+    var posts = updates
+    .reduce(function( posts, record ) {
+        posts[record.id] = record;
+        return posts;
+    }, {});
+    // Return build meta data with db updates.
+    return { db: { posts: posts } };
 }
 exports.inPath = require('path').dirname(module.filename);
