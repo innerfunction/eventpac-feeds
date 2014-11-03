@@ -62,31 +62,46 @@ exports.download = function(cx) {
         return data.posts;
     })
     .map(function( post ) {
+        // Reduce the occurrences array to a map of occurrences
+        // keyed by name.
+        var occurrences = post.occurrences
+        .reduce(function( result, occ ) {
+            result[occ.occurrenceName] = occ;
+            return result;
+        }, {});
+        // Get GP and Race occurrence.
+        var gpOcc = occurrences.GP;
+        var raceOcc = occurrences.Race||gpOcc;
+        // Generate result.
 		return {
-			id:                 post.id,
-			status:             post.status,
-            title:              utils.filterHTML( post.title ),
-            content:            utils.filterContent( post.content ),
-			image:              post.photo,
-            thumbnail:          post.photo,
-			circuit:            post.circuit,
-			location:           utils.cuval( post.locations ),
-			start:              mods.df( post.startDateTime, 'dd/mm/yyyy'),
-			end:                mods.df( post.endDateTime, 'dd/mm/yyyy'),
-			laps:               post.laps,
-			distance:           post.distance,
-			longitude:          post.longitude,
-			fastestLap:         post.fastestLap,
-			fastestLapDriver:   post.fastestLapDriver,
-			fastestLapTime:     post.fastestLapTime,
-			fastestLapCarYear:  post.fastestLapCarYear,
-			individualResults:  post.individualResults,
-			teamResults:        post.teamResults,
-			turnNumber:			post.turnNumber,
+			id:                         post.id,
+			status:                     post.status,
+            title:                      utils.filterHTML( post.title ),
+            content:                    utils.filterContent( post.content ),
+			image:                      post.photo,
+            thumbnail:                  post.photo,
+			circuit:                    post.circuit,
+			location:                   utils.cuval( post.locations ),
+            
+			start:                      mods.df( gpOcc.startDateTime, 'dd/mm/yyyy'),
+			end:                        mods.df( gpOcc.endDateTime, 'dd/mm/yyyy'),
+			startTime:                  raceOcc.startDateTime,
+			endTime:                    raceOcc.endDateTime,
+
+			laps:                       post.laps,
+			distance:                   post.distance,
+			longitude:                  post.longitude,
+			fastestLap:                 post.fastestLap,
+			fastestLapDriver:           post.fastestLapDriver,
+			fastestLapTime:             post.fastestLapTime,
+			fastestLapCarYear:          post.fastestLapCarYear,
+			individualResults:          post.individualResults,
+			teamResults:                post.teamResults,
+			turnNumber:			        post.turnNumber,
 			throttleLapUsePercentaje:	post.throttleLapUsePercentaje,
-			importantLaps:		post.importantLaps,
-			type:				'events',
-            downloadTime:       downloadTime
+			importantLaps:		        post.importantLaps,
+			type:				        'events',
+            downloadTime:               downloadTime
 		}
     });
 
@@ -96,16 +111,16 @@ exports.download = function(cx) {
     })
     .map(function( post ) {
 		return {
-			id:                 post.id,
-			title:              post.title,
-			author:             post.author,
-			modified:           post.modifiedDateTime,
-			created:            post.createdDateTime,
-			content:            post.content,
-			image:              post.photo,
-            thumbnail:          post.photo,
-			type:		        'news',
-            downloadTime:       downloadTime
+			id:             post.id,
+			title:          post.title,
+			author:         post.author,
+			modified:       post.modifiedDateTime,
+			created:        post.createdDateTime,
+			content:        post.content,
+			image:          post.photo,
+            thumbnail:      post.photo,
+			type:		    'news',
+            downloadTime:   downloadTime
 		}
     });
 
@@ -195,7 +210,7 @@ exports.build = function(cx) {
 				description:	description,
 				image:			thumbnail,
 				action:			action,
-				startTime:		post.start,
+				startTime:		post.startTime,
 				endTime:		post.end,
                 modifiedTime:   post.modified
 			}
@@ -211,4 +226,4 @@ exports.build = function(cx) {
     // Return build meta data with db updates.
     return { db: { posts: posts } };
 }
-exports.inPath = require('path').dirname(module.filename);
+exports.inPath = require('path').dirname( module.filename );
