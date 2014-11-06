@@ -25,7 +25,7 @@ exports.download = function( cx ) {
         return {
             id:             post.id,
             title:          post.title,
-            occurences:     post.occurences,
+            occurrences:     post.occurrences,
             content:        post.content,
             type:           post.postType
         }
@@ -52,6 +52,7 @@ exports.build = function( cx ) {
     cx.file([
     'templates/images',
     'templates/css',
+    'templates/programme.html',
     'templates/contact.html'
     ]).cp();
 
@@ -77,31 +78,46 @@ exports.build = function( cx ) {
     var eventFiles = cx.eval('templates/event-detail.html', postsByType.events, 'event-{id}.html');
     cx.eval('templates/speaker-detail.html', postsByType.performers, 'speaker-{id}.html');
     
-    /*
+    
     var updates = [];
 
     for ( var type in postsByType ) {
-        if (type == 'performers') continue;
 
         var updatesForType = postsByType[type].map(function( post ) {
-            var description, action;
+            var description, action, startTime, endTime;
 
             switch (post.type) {
                 case 'events':
                     description = post.title;
-                    actions = eputils.action('EventDetail', { 'eventID': post.id });
+                    action = eputils.action('EventDetail', { 'eventID': post.id });
+                    startTime = post.occurrences[0].startDateTime;
+                    endTime = post.occurrences[0].endDateTime;
                     break;
+                case 'performers':
+                    description = post.title,
+                    action = eputils.action('SpeakerDetail', { 'speakerID': post.id });
             }
+            console.log(startTime);
             return {
                 id:             post.id,
                 type:           post.type,
                 title:          post.title,
                 description:    description,
-                image:          post.image,
+                startTime:      startTime,
+                endTime:        endTime,
                 action:         action
             }
         });
         updates = updates.concat( updatesForType );
-    }*/
+    }
+
+        // Rewrite db update format to sets of per-table updates, keyed by record ID.
+    var posts = updates
+    .reduce(function( posts, record ) {
+        posts[record.id] = record;
+        return posts;
+    }, {});
+    // Return build meta data with db updates.
+    return { db: { posts: posts } };
 }
 exports.inPath = require('path').dirname(module.filename);
