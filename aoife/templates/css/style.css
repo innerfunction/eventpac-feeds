@@ -182,11 +182,13 @@ header.event-page > h1{
 
 header.contact { 
 	background: #000;
-	font-family: helvetica;
+	
 	font-weight: 100;
 }
 header.contact >h1 {
-	font-weight: 100
+	font-weight: 100;
+	margin-bottom:50px;
+	font-family: 'Roboto', helvetica;
 }
 .image-container > p.logo{
 	margin-top: 53px;
@@ -196,21 +198,28 @@ header.contact >h1 {
 }
 
 .button{
-	border-radius: 10px;
-	width: 100%;
 	text-align: center;	
-	padding:10px;
+	
 }
 .button >a { 
+	padding:10px;
 	text-decoration: none;
 	color:#fff;
+	display: block;
+	border-radius: 10px;
+	width: 100%;
+
 }
 #contact-us{
+	border-radius: 10px;
 	background-color:#21B0BD;
 }
 #call-us{
+	border-radius: 10px;
 	background-color:#C9DA3B;
+	margin-bottom: 50px;
 }
-#contact-us:active, #call-us:active{
+#contact-us:active, #call-us:active, #contact-us:hover, #call-us:hover{
 	background: #D31A54 ;
+	
 }
