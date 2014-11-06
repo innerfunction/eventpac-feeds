@@ -1,11 +1,21 @@
+var mods = {
+	df: 	require('dateformat'),
+	path:	require('path'),
+	tt:		require('semo/lib/tinytemper')
+}
+var utils = require('semo/eventpac/utils');
+var eputils = require('../eputils');
+
 exports.active = true;
 
 exports.schedule = { minute: [ 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 ] };
 exports.exts = {
     uriSchemes: eputils.schemes('aoife')
 }
+
+var BaseURL = 'http://aoife.eventpac.com/api/aoife/%s';
+
 exports.download = function( cx ) {
-    var BaseURL = '';
 
     var events = cx.get( BaseURL, 'events' )
     .posts(function( data ) {
@@ -15,14 +25,13 @@ exports.download = function( cx ) {
         return {
             id:             post.id,
             title:          post.title,
-            description:    post.description,
-            startDate:      post.startDate,
-            time:           post.startDate, // is the time separated from the date ?
-            content:        post.content
+            occurences:     post.occurences,
+            content:        post.content,
+            type:           post.postType
         }
     });
     
-    var events = cx.get( BaseURL, 'speakers' )
+    var performers = cx.get( BaseURL, 'performers' )
     .posts(function( data ) {
         return data.posts
     })
@@ -30,28 +39,24 @@ exports.download = function( cx ) {
         return {
             id:             post.id,
             title:          post.title,
-            name:           post.name,
-            role:           post.role,
-            description:    post.description,
-            content:        post.content
+            content:        post.content,
+            type:           post.postType
         }
     });
 
     cx.write(events);
-    cx.write(speakers);
+    cx.write(performers);
 }
 exports.build = function( cx ) {
 
     cx.file([
     'templates/images',
     'templates/css',
-    'templates/contact.html' // static html ?
-    ]);
+    'templates/contact.html'
+    ]).cp();
 
-    var types = ['events', 'speakers'];
+    var types = ['events', 'performers'];
 
-	var types = ['news', 'events', 'resultsIndividual', 'resultsTeam'];
-	
 	var postsByType = types.reduce(function( posts, type ) {
 		posts[type] = cx.data.posts.filter(function( post ) {
 			return post.type == type;
@@ -64,14 +69,39 @@ exports.build = function( cx ) {
 			return !!url;
 		});
         var images = cx.images( imageURLs );
-        images.resize( { width: 100, format: 'jpeg' }, '{name}-{width}.{format}' ).mapTo( posts[type], 'thumbnail' );
-		images.resize( { width: 500, format: 'jpeg' }, true ).mapTo( posts[type], 'image' );
+        //images.resize( { width: 100, format: 'jpeg' }, '{name}-{width}.{format}' ).mapTo( posts[type], 'thumbnail' );
+		images.mapTo( posts[type], 'image' );
 		return posts;
 	}, {});
 
-    var eventFiles = cx.eval('template/events-details.html', postsByType.events, 'events-{id}.html');
-    cx.eval('template/speakers-details.html', postsByType.speakers, 'speakers-{id}.html');
+    var eventFiles = cx.eval('templates/event-detail.html', postsByType.events, 'event-{id}.html');
+    cx.eval('templates/speaker-detail.html', postsByType.performers, 'speaker-{id}.html');
+    
+    /*
+    var updates = [];
 
+    for ( var type in postsByType ) {
+        if (type == 'performers') continue;
 
+        var updatesForType = postsByType[type].map(function( post ) {
+            var description, action;
+
+            switch (post.type) {
+                case 'events':
+                    description = post.title;
+                    actions = eputils.action('EventDetail', { 'eventID': post.id });
+                    break;
+            }
+            return {
+                id:             post.id,
+                type:           post.type,
+                title:          post.title,
+                description:    description,
+                image:          post.image,
+                action:         action
+            }
+        });
+        updates = updates.concat( updatesForType );
+    }*/
 }
-exports.inpath = require('path').dirname(module.filename);
+exports.inPath = require('path').dirname(module.filename);
