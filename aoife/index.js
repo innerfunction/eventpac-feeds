@@ -1,6 +1,6 @@
 exports.active = true;
 
-exports.schedule = { minute: 52, second: 12};
+exports.schedule = { minute: [ 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 ] };
 exports.exts = {
     uriSchemes: eputils.schemes('aoife')
 }
@@ -13,7 +13,12 @@ exports.download = function( cx ) {
     })
     .map(function( post ) {
         return {
-
+            id:             post.id,
+            title:          post.title,
+            description:    post.description,
+            startDate:      post.startDate,
+            time:           post.startDate, // is the time separated from the date ?
+            content:        post.content
         }
     });
     
@@ -23,14 +28,24 @@ exports.download = function( cx ) {
     })
     .map(function( post ) {
         return {
-
+            id:             post.id,
+            title:          post.title,
+            name:           post.name,
+            role:           post.role,
+            description:    post.description,
+            content:        post.content
         }
     });
+
+    cx.write(events);
+    cx.write(speakers);
 }
 exports.build = function( cx ) {
 
     cx.file([
-
+    'templates/images',
+    'templates/css',
+    'templates/contact.html' // static html ?
     ]);
 
     var types = ['events', 'speakers'];
