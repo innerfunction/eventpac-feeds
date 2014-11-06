@@ -8,17 +8,20 @@ var eputils = require('../eputils');
 
 exports.active = true;
 //exports.schedule = '@hourly';
-exports.schedule = { minute: 52, second: 12 };
+exports.schedule = { minute: [ 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 ] };
 exports.exts = {
     uriSchemes: eputils.schemes('onf1')
 }
+
+var BaseURL = 'http://onf1.com.mx/api/onf1/%s';
+
 exports.download = function(cx) {
 
 	cx.clean(function(post) {
 		return !(post.id && post.id.indexOf('resultsIndividual.') == 0);
 	});
 
-	var BaseURL = 'http://onf1.com.mx/api/onf1/%s';
+    var downloadTime = new Date().toString();
     
 	var resultsTeam = cx.get( BaseURL, 'results/groups' )
     .posts(function( data ) {
@@ -31,7 +34,8 @@ exports.download = function(cx) {
         	title:          post.title,
         	points:         post.points,
         	nationality:    post.nationality,
-			type:			'resultsTeam'
+			type:			'resultsTeam',
+            downloadTime:   downloadTime
 		}
     });
 
@@ -48,7 +52,8 @@ exports.download = function(cx) {
 			team:           post.group[0].title || '',
 			teamInitials:	post.group[0].teamInitials,
 			points:         post.points,
-			type:			'resultsIndividual'
+			type:			'resultsIndividual',
+            downloadTime:   downloadTime
 		}
     });
 	
@@ -57,30 +62,46 @@ exports.download = function(cx) {
         return data.posts;
     })
     .map(function( post ) {
+        // Reduce the occurrences array to a map of occurrences
+        // keyed by name.
+        var occurrences = post.occurrences
+        .reduce(function( result, occ ) {
+            result[occ.occurrenceName] = occ;
+            return result;
+        }, {});
+        // Get GP and Race occurrence.
+        var gpOcc = occurrences.GP;
+        var raceOcc = occurrences.Race||gpOcc;
+        // Generate result.
 		return {
-			id:         post.id,
-			status:     post.status,
-            title:      utils.filterHTML( post.title ),
-            content:    utils.filterContent( post.content ),
-			image:      post.photo,
-            thumbnail:  post.photo,
-			circuit:    post.circuit,
-			location:   utils.cuval( post.locations ),
-			start:      mods.df( post.startDateTime, 'dd/mm/yyyy'),
-			end:        mods.df( post.endDateTime, 'dd/mm/yyyy'),
-			laps:               post.laps,
-			distance:           post.distance,
-			longitude:          post.longitude,
-			fastestLap:         post.fastestLap,
-			fastestLapDriver:   post.fastestLapDriver,
-			fastestLapTime:     post.fastestLapTime,
-			fastestLapCarYear:  post.fastestLapCarYear,
-			individualResults:  post.individualResults,
-			teamResults:        post.teamResults,
-			turnNumber:			post.turnNumber,
+			id:                         post.id,
+			status:                     post.status,
+            title:                      utils.filterHTML( post.title ),
+            content:                    utils.filterContent( post.content ),
+			image:                      post.photo,
+            thumbnail:                  post.photo,
+			circuit:                    post.circuit,
+			location:                   utils.cuval( post.locations ),
+            
+			start:                      mods.df( gpOcc.startDateTime, 'dd/mm/yyyy'),
+			end:                        mods.df( gpOcc.endDateTime, 'dd/mm/yyyy'),
+			startTime:                  raceOcc.startDateTime,
+			endTime:                    raceOcc.endDateTime,
+
+			laps:                       post.laps,
+			distance:                   post.distance,
+			longitude:                  post.longitude,
+			fastestLap:                 post.fastestLap,
+			fastestLapDriver:           post.fastestLapDriver,
+			fastestLapTime:             post.fastestLapTime,
+			fastestLapCarYear:          post.fastestLapCarYear,
+			individualResults:          post.individualResults,
+			teamResults:                post.teamResults,
+			turnNumber:			        post.turnNumber,
 			throttleLapUsePercentaje:	post.throttleLapUsePercentaje,
-			importantLaps:		post.importantLaps,
-			type:				'events',
+			importantLaps:		        post.importantLaps,
+			type:				        'events',
+            downloadTime:               downloadTime
 		}
     });
 
@@ -90,15 +111,16 @@ exports.download = function(cx) {
     })
     .map(function( post ) {
 		return {
-			id:         post.id,
-			title:      post.title,
-			author:     post.author,
-			modified:   post.modifiedDateTime,
-			created:    post.createdDateTime,
-			content:    post.content,
-			image:      post.photo,
-            thumbnail:  post.photo,
-			type:		'news',
+			id:             post.id,
+			title:          post.title,
+			author:         post.author,
+			modified:       post.modifiedDateTime,
+			created:        post.createdDateTime,
+			content:        post.content,
+			image:          post.photo,
+            thumbnail:      post.photo,
+			type:		    'news',
+            downloadTime:   downloadTime
 		}
     });
 
@@ -107,6 +129,9 @@ exports.download = function(cx) {
 	cx.write(events);
 	cx.write(news);
     
+    cx.clean(function( post ) {
+        return post.downloadTime == downloadTime;
+    });
 }
 exports.build = function(cx) {
 
@@ -159,7 +184,7 @@ exports.build = function(cx) {
 
 		if( type == 'results' || type == 'resultsIndividual' || type == 'resultsTeam') continue;
 		
-		var updatesForType = postsByType[type].map(function( post) {
+		var updatesForType = postsByType[type].map(function( post ) {
 			var description, action;
 			switch (post.type) {
 				case 'news':
@@ -171,7 +196,6 @@ exports.build = function(cx) {
 					break;
 				case 'events':
 					description = post.circuit;
-					//action = 'nav/open+view@view:EventDetail+eventID@'+post.id;
                     action = eputils.action('EventDetail', { 'eventID': post.id });
 					break;
 			}
@@ -186,14 +210,20 @@ exports.build = function(cx) {
 				description:	description,
 				image:			thumbnail,
 				action:			action,
-				startTime:		post.start,
+				startTime:		post.startTime,
 				endTime:		post.end,
+                modifiedTime:   post.modified
 			}
 		});
 		updates = updates.concat( updatesForType );
 	}
-    var manifest = eputils.manifest({ posts: updates });
-	cx.json( manifest, 'manifest.json', 4);
-
+    // Rewrite db update format to sets of per-table updates, keyed by record ID.
+    var posts = updates
+    .reduce(function( posts, record ) {
+        posts[record.id] = record;
+        return posts;
+    }, {});
+    // Return build meta data with db updates.
+    return { db: { posts: posts } };
 }
-exports.inPath = require('path').dirname(module.filename);
+exports.inPath = require('path').dirname( module.filename );
