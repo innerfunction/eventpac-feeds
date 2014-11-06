@@ -204,11 +204,13 @@ header.contact >h1 {
 .button >a { 
 	text-decoration: none;
 	color:#fff;
-
 }
 #contact-us{
 	background-color:#21B0BD;
 }
 #call-us{
 	background-color:#C9DA3B;
+}
+#contact-us:active, #call-us:active{
+	background: #D31A54 ;
 }
