@@ -191,9 +191,11 @@ header.contact {
 	font-weight: 100;
 }
 header.contact >h1 {
-	font-weight: 100;
+	font-weight: bold;
+	font-size: 1.8em;
 	margin-bottom:50px;
 	font-family: 'Roboto', helvetica;
+	padding-bottom:40px;
 }
 .image-container > p.logo{
 	margin-top: 53px;
