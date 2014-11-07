@@ -1,4 +1,5 @@
 exports.feeds = {
     'onf1': require('./onf1'),
-    'aoife': require('./aoife')
+    'aoife': require('./aoife'),
+    'nagp': require('./nagp')
 }
