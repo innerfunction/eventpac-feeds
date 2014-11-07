@@ -4,7 +4,7 @@ body {
 	background-color: #fff;
 	color: #000;
 	font-family: 'Roboto', helvetica;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	font-weight: 100;
 	padding: 0 ;
 	margin: 0;
@@ -141,19 +141,19 @@ header.event-page {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bd1664', endColorstr='#f37324',GradientType=1 ); /* IE6-9 */
 }
 header.event-page > .date {
-	font-size:  1.8em;
+	font-size:  .8em;
 	font-weight: 400;
 	margin: 8px;
 }
 header.event-page > h1{
-	font-size: 2.75em;
+	font-size: 1.75em;
 	line-height: 120%;
 	margin:8px;
 
 }
 .time { 
 	background-color: #fff;
-	font-size:  1.8em;
+	font-size:  .8em;
 	font-weight: 300;
 	border-radius: 100%;
 	height:175px;
