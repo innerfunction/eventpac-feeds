@@ -96,10 +96,7 @@ p > strong {
 	height: 50%;
 	max-height: 50%;
 	padding-top: 40%;
-	background-size: cover;
-
 }
-
 
 .event > .banner >img { 
 	width: 100%;
@@ -111,22 +108,23 @@ p > strong {
 	display: table;
 	width:100%;
 }
+
 .event > .details-container> .details {
 	
-	line-height: 1.3;
+	line-height: 1;
 	display: table-cell;
 	padding:10px;
 	background-color: #fff;
-
 } 
+
 .event > .details-container> .details > .date {
-	font-size: 1em;
+	font-size: .8em;
 	font-weight: bold;
 	margin:0;
 }
 
 .event > .details-container > .details > h1.description { 
-	font-size: .8em;
+	font-size: .6em;
 	font-weight: 300;
 	margin:0;
 }
@@ -135,10 +133,31 @@ p > strong {
 	vertical-align: middle;
 	display: table-cell;
 	background-color: #fff;
-	padding-right:20px;
+	padding-right:10px;
+}
+/*  for ios */
+@media screen and (min-height: 462px){
+	.event > .details-container> .details {
+		line-height: 1.2;
+	} 
+
+	.event > .details-container> .details > .date {
+		font-size: .9em;
+	}
+
+	.event > .details-container > .details > h1.description { 
+		font-size: .7em;
+	}
+
+	.event > .details-container >  .arrow {
+		padding-right:20px;
+	}
+	.event { 
+		padding-top: 48%;
+	}	
 }
 
- .details-container:active >  .arrow >img , .event > .details-container:hover >  .arrow >img {
+.details-container:active >  .arrow >img , .event > .details-container:hover >  .arrow >img {
 	vertical-align: middle;
 }
 
