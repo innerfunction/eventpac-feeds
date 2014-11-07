@@ -2,26 +2,26 @@
 <html lang="en" x-manifest="cache.manifest">
     <head>
         <meta charset="utf-8">
-        <title>speaker</title>
+        <title>Speaker</title>
         <link rel="stylesheet" href="css/style.css">      
     </head>
 
     <body>
         <header>
             <p>
-                <img class="speaker" src="images/speaker.png" alt="speaker" title="speaker" width="175" height="175"/> 
+                {#image}
+                <img class="speaker" src="{src}" alt="speaker" title="speaker" width="175" height="175"/> 
+                {/image}
             </p>
-            <h1>Dr. Patrick Collins</h1>    
+            <h1>{title}</h1>    
         </header>
 
         <div class="content">
-            <p>
+            <!--<p>
                 Author of The Creative Edge Policy Tool Kit “Supporting the Development of the Creative Economy – policy prompts for Festival and Events”.
-            </p>
+            </p>-->
 
-            <p>
-                Patrick Collins is an economic geographer that has published in areas of regional development, the Information Society, and the impact of telecommunications provision. More recently in he has turned his attention to the development of the Irish economy within a global framework. This has involved focusing on multinational companies operating out of Ireland, and the place of Irish affiliates within their respective networks of global production. Alongside this work, Patrick has investigated the economic contribution of Creative and Cultural industries to Galway and the West of Ireland more generally.
-            </p>
+            <p>{content|s}</p>
         </div>
 
     </body>
