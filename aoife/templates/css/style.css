@@ -231,7 +231,6 @@ header.contact {
 }
 header.contact >h1 {
 	font-weight: bold;
-	font-size: 1.8em;
 	margin-bottom:50px;
 	font-family: 'Roboto', helvetica;
 	padding-bottom:40px;
@@ -263,6 +262,8 @@ header.contact >h1 {
 }
 .content-contact {
 	margin-top: -50px;
+	text-align: justify;
+	font-size: 1em;
 }
 
 .button{
@@ -276,6 +277,7 @@ header.contact >h1 {
 	display: block;
 	border-radius: 10px;
 	width: 100%;
+	font-weight: 300;
 
 }
 #contact-us{
