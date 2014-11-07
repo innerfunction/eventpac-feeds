@@ -25,7 +25,11 @@ exports.download = function( cx ) {
         return {
             id:             post.id,
             title:          post.title,
-            occurrences:     post.occurrences,
+            occurrences:    post.occurrences,
+            startDate:      mods.df(post.occurrences.startDateTime, 'mmmm dS'), //h:MM TT, mmmm dS, yyyy
+            startTime:      mods.df(post.occurrences.startDateTime, 'h:MM'),
+            endDate:        mods.df(post.occurrences.endDateTime, 'mmmm dS'),
+            endTime:        mods.df(post.occurrences.endDateTime, 'h:MM'),
             content:        post.content,
             type:           post.postType
         }
@@ -74,7 +78,6 @@ exports.build = function( cx ) {
 		images.mapTo( posts[type], 'image' );
 		return posts;
 	}, {});
-
     var eventFiles = cx.eval('templates/event-detail.html', postsByType.events, 'event-{id}.html');
     cx.eval('templates/speaker-detail.html', postsByType.performers, 'speaker-{id}.html');
     
@@ -97,7 +100,6 @@ exports.build = function( cx ) {
                     description = post.title,
                     action = eputils.action('SpeakerDetail', { 'speakerID': post.id });
             }
-            console.log(startTime);
             return {
                 id:             post.id,
                 type:           post.type,
