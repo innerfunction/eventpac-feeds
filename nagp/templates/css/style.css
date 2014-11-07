@@ -81,7 +81,7 @@ header.list > div >img{
 	display: table-cell;
 	padding:20px;
 
-	font-size: 35px;
+	font-size: 30px;
 	font-weight: 300;
 	margin:0;
 }
@@ -101,7 +101,9 @@ header.list > div >img{
 .event >  .arrow >img {
 	vertical-align: middle;
 }
-
+.date>strong { 
+	font-size: 27px
+}
 .event:active{
 	background: #5691EA ;
 	color: #fff;	

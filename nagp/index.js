@@ -59,7 +59,11 @@ exports.build = function( cx ) {
     'templates/images',
     'templates/css',
     'templates/programme.html',
-    'templates/contact.html'
+    'templates/contact.html',
+    'templates/share.html',
+    'templates/pages.html',
+    'templates/locations.html'
+
     ]).cp();
 
     var types = ['events', 'performers'];
