@@ -66,6 +66,7 @@ header h2 {
 
 .content { 
 	padding: 25px;
+	padding-top:5px;
 }
 p > strong { 
 	font-weight: 400;
@@ -180,7 +181,6 @@ header.event-page > h1{
 
 
 /* contact */
-
 header.contact { 
 	background: #000;
 	
