@@ -16,6 +16,11 @@ img.speaker {
 	margin: 0 auto;
 
 }
+a {
+	text-decoration: none;
+	color:#000;
+
+}
 header { 
 	padding:0;
 	margin:0;
@@ -64,12 +69,13 @@ header.list > div >img{
 	margin:3px 0;
 }
 
-.event {
+.event > a{
 	display: table;
 	width:100%;
+	color:#fff;
 }
 
-.event > .date {
+.event > a> .date {
 	
 	line-height: 1.3;
 	display: table-cell;
@@ -80,7 +86,7 @@ header.list > div >img{
 	margin:0;
 }
 
-.event >  .arrow {
+.event > a> .arrow {
 	vertical-align: middle;
 	display: table-cell;
 	padding-right:20px;
@@ -155,7 +161,7 @@ a.speaker-link{
 
 header.contact > h1 {
 	font-weight: 100;
-	margin-bottom:50px;
+	margin-bottom:10px;
 	color: #4D4F94;
 	font-style: normal
 }
@@ -178,7 +184,6 @@ header.contact > h1 {
 	width: 100%;
 	margin: 10px 0;
 	text-align: center;	
-	
 
 }
 .button > a {
@@ -208,8 +213,13 @@ header.contact > h1 {
 #facebook:hover, #twitter:hover, #linkedin:hover, #flickr:hover, #youtube:hover {
 	background: rgba(77,79,148,.5);
 }
-.content-contact > .button > a{
+.content-contact > .button.follow > a{
 	color:#fff;
+}
+.content-contact{
+	padding: 15px;
+	font-size: 20px ;
+	text-align: justify;
 }
 #followus {
 	padding: 0px;
