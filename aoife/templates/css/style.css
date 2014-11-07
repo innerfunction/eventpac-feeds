@@ -132,20 +132,20 @@ p > strong {
 	padding-right:20px;
 }
 
-.event > .details-container >  .arrow >img {
+ .details-container:active >  .arrow >img , .event > .details-container:hover >  .arrow >img {
 	vertical-align: middle;
 }
 
-.event:active > a {
+.event > a:active, .event > a:hover{
 	color:#fff;
-	background: #D31A54 ;
 
 }
-.event:active > .details-container >  .arrow >img { 
+ .details-container:active >  .arrow >img , .details-container:hover >  .arrow >img { 
 	content: url(../images/listArrow-white.png);
 
 }
-.event:active > .details-container >  .arrow, .event:active > .details-container>  .details  {
+.details-container:active >  .arrow, .details-container:active>  .details, 
+.details-container:hover >  .arrow, .details-container:hover>  .details   {
 	background-color: #D31A54 ;
 }
 /* event */
