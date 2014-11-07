@@ -76,7 +76,7 @@ p > strong {
 	font-weight: 400;
 }
 
-/* list */
+/* programm */
 .list { 
 	list-style: none;
 	padding: 0;
@@ -86,10 +86,14 @@ p > strong {
 .event { 
 	color: #000;
 	width: 100%;
+	height: 50%;
+	max-height: 50%;
+	padding-top: 55%%
 }
-.event > .banner { 
+
+.event > .banner >img { 
 	width: 100%;
-	min-height: 250px;
+	min-height: 140px;
 	max-height:30%;
 }
 
@@ -105,13 +109,13 @@ p > strong {
 
 } 
 .event > .details-container> .details > .date {
-	font-size: 2.2em;
+	font-size: 1.3em;
 	font-weight: bold;
 	margin:0;
 }
 
 .event > .details-container > .details > h1.description { 
-	font-size: 1.5em;
+	font-size: .8em;
 	font-weight: 300;
 	margin:0;
 }
@@ -126,9 +130,10 @@ p > strong {
 	vertical-align: middle;
 }
 
-.event:active{
-	background: #D31A54 ;
-	color: #fff;	
+.event:active >a {
+	color:#fff;
+		background: #D31A54 ;
+
 }
 .event:active > .details-container >  .arrow >img { 
 	content: url(../images/listArrow-white.png);
@@ -197,8 +202,30 @@ header.contact >h1 {
 	font-family: 'Roboto', helvetica;
 	padding-bottom:40px;
 }
-.image-container > p.logo{
-	margin-top: 53px;
+.logo-container {
+	width: 175px;
+	height: 175px;
+	padding: 4px;
+	display: table;
+	margin:0 auto;
+	margin-top: -87.5px;
+
+	text-align: center;
+	background-color: #fff;
+	border-radius: 100%;
+}
+.logo-container > p.logo{
+	display: table-cell;
+	vertical-align: middle;
+	width: 170px;
+	height: 170px;
+	background-color: #f8f8f8;
+	border-radius: 100%;
+}
+.logo-container > p img {
+	max-width: 130px;
+	width:100%;
+	height: auto;
 }
 .content-contact {
 	margin-top: -50px;
