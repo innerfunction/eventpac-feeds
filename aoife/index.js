@@ -61,11 +61,25 @@ exports.download = function( cx ) {
             type:       post.postType
         }
     });
-    
+   
+    var locations = cx.get( BaseURL, 'locations' )
+    .posts(function ( data ) {
+        return data.posts;
+    })
+    .map(function( post ) {
+        return {
+            id:         post.id,
+            title:      post.title,
+            content:    post.content,
+            type:       post.postType
+        }
+    });
+   
 
     cx.write(events);
     cx.write(performers);
     cx.write(pages);
+    cx.write(locations);
 }
 exports.build = function( cx ) {
 
@@ -78,7 +92,7 @@ exports.build = function( cx ) {
     'templates/contact.html'
     ]).cp();
 
-    var types = ['events', 'performers', 'page'];
+    var types = ['events', 'performers', 'page', 'locations'];
     
     var pages = [];
 
@@ -104,7 +118,8 @@ exports.build = function( cx ) {
     
     var eventFiles = cx.eval('templates/event-detail.html', postsByType.events, 'event-{id}.html');
     cx.eval('templates/speaker-detail.html', postsByType.performers, 'speaker-{id}.html');
-    cx.eval('templates/pages.html', pages, 'pages.html'); 
+    cx.eval('templates/pages.html', pages, 'pages.html');
+    cx.eval('templates/locations.html', postsByType.locations, 'locations.html');
     
     var updates = [];
 
