@@ -4,7 +4,7 @@ body {
 	background-color: #fff;
 	color: #000;
 	font-family: 'Roboto', helvetica;
-	font-size: 25px;
+	font-size: 1.5em;
 	font-weight: 100;
 	padding: 0 ;
 	margin: 0;
@@ -49,14 +49,14 @@ header > p.dash{
 	line-height: 1;
 }
 header h1 {
-	font-size: 50px;
+	font-size: 3em;
 	line-height: 130%;
 	font-weight: 300;
 	margin: 10px;
 }
 
 header h2 {
-	font-size: 35px;
+	font-size: 2.2em;
 	font-weight: 300;
 	font-style: italic;
 	line-height: 120%;
@@ -100,13 +100,13 @@ p > strong {
 
 } 
 .event > .details-container> .details > .date {
-	font-size: 35px;
+	font-size: 2.2em;
 	font-weight: bold;
 	margin:0;
 }
 
 .event > .details-container > .details > h1.description { 
-	font-size: 25px;
+	font-size: 1.5em;
 	font-weight: 300;
 	margin:0;
 }
@@ -141,19 +141,19 @@ header.event-page {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bd1664', endColorstr='#f37324',GradientType=1 ); /* IE6-9 */
 }
 header.event-page > .date {
-	font-size:  30px;
+	font-size:  1.8em;
 	font-weight: 400;
 	margin: 8px;
 }
 header.event-page > h1{
-	font-size: 45px;
+	font-size: 2.75em;
 	line-height: 120%;
 	margin:8px;
 
 }
 .time { 
 	background-color: #fff;
-	font-size:  30px;
+	font-size:  1.8em;
 	font-weight: 300;
 	border-radius: 100%;
 	height:175px;
