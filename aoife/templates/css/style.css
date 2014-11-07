@@ -17,6 +17,7 @@ header {
 	text-align: center;
 	padding: 40px;
 	color: #fff;
+    padding-top: 5px;
 	/*position: relative;*/
 
 	background: #00a9e1; /* Old browsers */
@@ -70,9 +71,14 @@ header h2 {
 }
 
 .content { 
-	padding: 25px;
+	padding: 15px;
 	padding-top:5px;
 }
+
+.content p {
+    margin-top: 5px;
+}
+
 p > strong { 
 	font-weight: 400;
 }
@@ -160,7 +166,7 @@ header.event-page {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bd1664', endColorstr='#f37324',GradientType=1 ); /* IE6-9 */
 }
 header.event-page > .date {
-	font-size:  .8em;
+	font-size:  25pt;
 	font-weight: 400;
 	margin: 8px;
 }
