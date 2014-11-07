@@ -162,7 +162,6 @@ header.event-page > h1{
 	height:175px;
 	width:175px;
 	text-align: center;
-	vertical-align: middle;
 	margin:0 auto;
 	margin-top: -87.5px;
 	padding:4px;
@@ -175,12 +174,11 @@ header.event-page > h1{
 	display: table-cell;
 	border-radius: 100%;
 	background-color: #f8f8f8;
-	padding-top:25px;
-	height:150px;
-	width:175px;
-	margin:0;
+	height:170px;
+	width:170px;
+	margin:0 auto;
+	vertical-align: middle;
 }
-
 
 /* contact */
 header.contact { 
