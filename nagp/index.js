@@ -75,7 +75,6 @@ exports.build = function( cx ) {
 		.filter(function( url ) {
 			return !!url;
 		});
-        console.log(imageURLs);
         var images = cx.images( imageURLs );
         //images.resize( { width: 100, format: 'jpeg' }, '{name}-{width}.{format}' ).mapTo( posts[type], 'thumbnail' );
 		images.resize( { width: 500, format: 'jpeg' }, true ).mapTo( posts[type], 'image' );
