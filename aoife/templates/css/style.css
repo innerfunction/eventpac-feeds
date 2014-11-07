@@ -89,8 +89,11 @@ p > strong {
 	width: 100%;
 	height: 50%;
 	max-height: 50%;
-	padding-top: 55%%
+	padding-top: 50%;
+	background-size: cover;
+
 }
+
 
 .event > .banner >img { 
 	width: 100%;
@@ -106,11 +109,12 @@ p > strong {
 	
 	line-height: 1.3;
 	display: table-cell;
-	padding:20px;
+	padding:10px;
+	background-color: #fff;
 
 } 
 .event > .details-container> .details > .date {
-	font-size: 1.3em;
+	font-size: 1em;
 	font-weight: bold;
 	margin:0;
 }
@@ -124,6 +128,7 @@ p > strong {
 .event > .details-container >  .arrow {
 	vertical-align: middle;
 	display: table-cell;
+	background-color: #fff;
 	padding-right:20px;
 }
 
@@ -131,15 +136,18 @@ p > strong {
 	vertical-align: middle;
 }
 
-.event:active >a {
+.event:active > a {
 	color:#fff;
-		background: #D31A54 ;
+	background: #D31A54 ;
 
 }
 .event:active > .details-container >  .arrow >img { 
 	content: url(../images/listArrow-white.png);
-}
 
+}
+.event:active > .details-container >  .arrow, .event:active > .details-container>  .details  {
+	background-color: #D31A54 ;
+}
 /* event */
 header.event-page {
 	background: #bd1664; /* Old browsers */
