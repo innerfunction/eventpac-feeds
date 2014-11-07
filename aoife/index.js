@@ -130,7 +130,7 @@ exports.build = function( cx ) {
 
             switch (post.type) {
                 case 'events':
-                    description = post.title;
+                    description = post.startTime;
                     action = eputils.action('EventDetail', { 'eventID': post.id });
                     startTime = post.occurrences[0].startDateTime;
                     endTime = post.occurrences[0].endDateTime;
