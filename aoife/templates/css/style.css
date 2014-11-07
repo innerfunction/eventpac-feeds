@@ -9,7 +9,10 @@ body {
 	padding: 0 ;
 	margin: 0;
 }
-
+a {
+	text-decoration: none;
+	color:#000;
+}
 header { 
 	text-align: center;
 	padding: 40px;
@@ -49,19 +52,20 @@ header > p.dash{
 	line-height: 1;
 }
 header h1 {
-	font-size: 3em;
+	font-size: 1.8em; /*3em*/
 	line-height: 130%;
 	font-weight: 300;
 	margin: 10px;
 }
 
 header h2 {
-	font-size: 2.2em;
+	font-size: 1.2em;
 	font-weight: 300;
 	font-style: italic;
 	line-height: 120%;
 	margin-top: 10px;
 	margin-bottom: 20px;
+	padding-bottom:60px;
 }
 
 .content { 
