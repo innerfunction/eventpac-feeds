@@ -10,10 +10,10 @@ exports.active = true;
 
 exports.schedule = { minute: [ 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 ] };
 exports.exts = {
-    uriSchemes: eputils.schemes('aoife')
+    uriSchemes: eputils.schemes('nagp')
 }
 
-var BaseURL = 'http://aoife.eventpac.com/api/aoife/%s';
+var BaseURL = 'http://nagp.eventpac.com/api/nagp/%s';
 
 exports.download = function( cx ) {
 
@@ -26,11 +26,12 @@ exports.download = function( cx ) {
             id:             post.id,
             title:          post.title,
             occurrences:    post.occurrences,
-            startDate:      mods.df(post.occurrences.startDateTime, 'mmmm dS'), //h:MM TT, mmmm dS, yyyy
+            startDate:      mods.df(post.occurrences.startDateTime, 'dddd, mmmm dS'), //h:MM TT, mmmm dS, yyyy
             startTime:      mods.df(post.occurrences.startDateTime, 'h:MM'),
-            endDate:        mods.df(post.occurrences.endDateTime, 'mmmm dS'),
+            endDate:        mods.df(post.occurrences.endDateTime, 'dddd, mmmm dS'),
             endTime:        mods.df(post.occurrences.endDateTime, 'h:MM'),
             content:        post.content,
+            performer:      post.performers,
             type:           post.postType
         }
     });
@@ -44,57 +45,24 @@ exports.download = function( cx ) {
             id:             post.id,
             title:          post.title,
             content:        post.content,
+            image:          post.photo,
             type:           post.postType
         }
     });
 
-    var pages = cx.get( BaseURL, 'pages' )
-    .posts(function ( data ) {
-        return data.posts;
-    })
-    .map(function( post ) {
-        return {
-            id:         post.id,
-            title:      post.title,
-            slug:       post.slug,
-            content:    post.content,
-            type:       post.postType
-        }
-    });
-   
-    var locations = cx.get( BaseURL, 'locations' )
-    .posts(function ( data ) {
-        return data.posts;
-    })
-    .map(function( post ) {
-        return {
-            id:         post.id,
-            title:      post.title,
-            content:    post.content,
-            type:       post.postType
-        }
-    });
-   
-
     cx.write(events);
     cx.write(performers);
-    cx.write(pages);
-    cx.write(locations);
 }
 exports.build = function( cx ) {
 
     cx.file([
     'templates/images',
     'templates/css',
-    'templates/theme',
-    'templates/share.html',
     'templates/programme.html',
     'templates/contact.html'
     ]).cp();
 
-    var types = ['events', 'performers', 'page', 'locations'];
-    
-    var pages = [];
+    var types = ['events', 'performers'];
 
 	var postsByType = types.reduce(function( posts, type ) {
 		posts[type] = cx.data.posts.filter(function( post ) {
@@ -107,19 +75,15 @@ exports.build = function( cx ) {
 		.filter(function( url ) {
 			return !!url;
 		});
+        console.log(imageURLs);
         var images = cx.images( imageURLs );
         //images.resize( { width: 100, format: 'jpeg' }, '{name}-{width}.{format}' ).mapTo( posts[type], 'thumbnail' );
-		images.mapTo( posts[type], 'image' );
-	    if (type == 'page') {
-            pages.push(posts[type]);
-        }
-        return posts;
+		images.resize( { width: 500, format: 'jpeg' }, true ).mapTo( posts[type], 'image' );
+		return posts;
 	}, {});
-    
     var eventFiles = cx.eval('templates/event-detail.html', postsByType.events, 'event-{id}.html');
     cx.eval('templates/speaker-detail.html', postsByType.performers, 'speaker-{id}.html');
-    cx.eval('templates/pages.html', pages, 'pages.html');
-    cx.eval('templates/locations.html', postsByType.locations, 'locations.html');
+    
     
     var updates = [];
 
@@ -130,7 +94,7 @@ exports.build = function( cx ) {
 
             switch (post.type) {
                 case 'events':
-                    description = post.startTime;
+                    description = post.title;
                     action = eputils.action('EventDetail', { 'eventID': post.id });
                     startTime = post.occurrences[0].startDateTime;
                     endTime = post.occurrences[0].endDateTime;

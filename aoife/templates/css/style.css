@@ -174,7 +174,7 @@ p > strong {
 	background-color: #D31A54 ;
 }
 /* event */
-header.event-page {
+header.event-page, header.pages {
 	background: #bd1664; /* Old browsers */
 	background: -moz-linear-gradient(left, #bd1664 0%, #f37324 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#bd1664), color-stop(100%,#f37324)); /* Chrome,Safari4+ */
@@ -194,6 +194,13 @@ header.event-page > h1{
 	line-height: 120%;
 	margin:8px;
 	margin-bottom: 40px;
+}
+
+header.pages > h1 {
+	font-size: 1.75em;
+	line-height: 120%;
+	margin:8px;
+	margin-bottom: 10px;
 }
 
 .time { 
