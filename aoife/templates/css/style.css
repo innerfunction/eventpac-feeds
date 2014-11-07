@@ -151,9 +151,10 @@ header.event-page > h1{
 	line-height: 120%;
 	margin:8px;
 	margin-bottom: 40px;
-
 }
+
 .time { 
+	display: table;
 	background-color: #fff;
 	font-size:  1.3em;
 	font-weight: 300;
@@ -161,7 +162,7 @@ header.event-page > h1{
 	height:175px;
 	width:175px;
 	text-align: center;
-	vertical-align: center;
+	vertical-align: middle;
 	margin:0 auto;
 	margin-top: -87.5px;
 	padding:4px;
@@ -171,6 +172,7 @@ header.event-page > h1{
 }
 
 .time > p {
+	display: table-cell;
 	border-radius: 100%;
 	background-color: #f8f8f8;
 	padding-top:25px;
