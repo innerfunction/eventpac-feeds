@@ -26,10 +26,10 @@ exports.download = function( cx ) {
             id:             post.id,
             title:          post.title,
             occurrences:    post.occurrences,
-            startDate:      mods.df(post.occurrences.startDateTime, 'mmmm dS'), //h:MM TT, mmmm dS, yyyy
-            startTime:      mods.df(post.occurrences.startDateTime, 'h:MM'),
-            endDate:        mods.df(post.occurrences.endDateTime, 'mmmm dS'),
-            endTime:        mods.df(post.occurrences.endDateTime, 'h:MM'),
+            startDate:      mods.df(post.occurrences[0].startDateTime, 'mmmm dS'), //h:MM TT, mmmm dS, yyyy
+            startTime:      mods.df(post.occurrences[0].startDateTime, 'h:MM'),
+            endDate:        mods.df(post.occurrences[0].endDateTime, 'mmmm dS'),
+            endTime:        mods.df(post.occurrences[0].endDateTime, 'h:MM'),
             content:        post.content,
             type:           post.postType
         }
@@ -86,7 +86,6 @@ exports.build = function( cx ) {
     cx.file([
     'templates/images',
     'templates/css',
-    'templates/theme',
     'templates/share.html',
     'templates/programme.html',
     'templates/contact.html'
@@ -115,7 +114,7 @@ exports.build = function( cx ) {
         }
         return posts;
 	}, {});
-    
+   
     var eventFiles = cx.eval('templates/event-detail.html', postsByType.events, 'event-{id}.html');
     cx.eval('templates/speaker-detail.html', postsByType.performers, 'speaker-{id}.html');
     cx.eval('templates/pages.html', pages, 'pages.html');
@@ -136,7 +135,7 @@ exports.build = function( cx ) {
                     endTime = post.occurrences[0].endDateTime;
                     break;
                 case 'performers':
-                    description = post.title,
+                    description = '',
                     action = eputils.action('SpeakerDetail', { 'speakerID': post.id });
             }
             return {
