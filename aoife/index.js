@@ -48,8 +48,24 @@ exports.download = function( cx ) {
         }
     });
 
+    var pages = cx.get( BaseURL, 'pages' )
+    .posts(function ( data ) {
+        return data.posts;
+    })
+    .map(function( post ) {
+        return {
+            id:         post.id,
+            title:      post.title,
+            slug:       post.slug,
+            content:    post.content,
+            type:       post.postType
+        }
+    });
+    
+
     cx.write(events);
     cx.write(performers);
+    cx.write(pages);
 }
 exports.build = function( cx ) {
 
@@ -62,7 +78,9 @@ exports.build = function( cx ) {
     'templates/contact.html'
     ]).cp();
 
-    var types = ['events', 'performers'];
+    var types = ['events', 'performers', 'page'];
+    
+    var pages = [];
 
 	var postsByType = types.reduce(function( posts, type ) {
 		posts[type] = cx.data.posts.filter(function( post ) {
@@ -78,11 +96,15 @@ exports.build = function( cx ) {
         var images = cx.images( imageURLs );
         //images.resize( { width: 100, format: 'jpeg' }, '{name}-{width}.{format}' ).mapTo( posts[type], 'thumbnail' );
 		images.mapTo( posts[type], 'image' );
-		return posts;
+	    if (type == 'page') {
+            pages.push(posts[type]);
+        }
+        return posts;
 	}, {});
+    
     var eventFiles = cx.eval('templates/event-detail.html', postsByType.events, 'event-{id}.html');
     cx.eval('templates/speaker-detail.html', postsByType.performers, 'speaker-{id}.html');
-    
+    cx.eval('templates/pages.html', pages, 'pages.html'); 
     
     var updates = [];
 
