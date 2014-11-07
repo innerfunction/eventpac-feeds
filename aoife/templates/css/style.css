@@ -291,3 +291,20 @@ header.contact >h1 {
 	background: #D31A54 ;
 	
 }
+
+div.btn-social, .btn-social {
+	width: 100%;
+	color: white;
+	text-align: center;
+	line-height: 3;
+	margin: 10px 0;
+	border: 0;
+	width: 100%;
+}
+.btn-social a {
+	color: white;
+}
+.btn-twitter {
+	background-color: #8DD0E5;
+}
+
