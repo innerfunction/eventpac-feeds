@@ -86,6 +86,7 @@ exports.build = function( cx ) {
     cx.file([
     'templates/images',
     'templates/css',
+    'templates/fonts',
     'templates/share.html',
     'templates/programme.html',
     'templates/contact.html'
