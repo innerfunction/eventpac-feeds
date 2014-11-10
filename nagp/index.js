@@ -8,7 +8,9 @@ var eputils = require('../eputils');
 
 exports.active = true;
 
-exports.schedule = { minute: [ 1, 6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56 ] };
+exports.schedule = function( schedule ) {
+    return { minute: new schedule.Range( 0, 60, 5 ) };
+}
 exports.exts = {
     uriSchemes: eputils.schemes('nagp')
 }
