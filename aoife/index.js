@@ -116,7 +116,7 @@ exports.build = function( cx ) {
         }
         return posts;
 	}, {});
-   
+
     var eventFiles = cx.eval('templates/event-detail.html', postsByType.events, 'event-{id}.html');
     cx.eval('templates/speaker-detail.html', postsByType.performers, 'speaker-{id}.html');
     cx.eval('templates/pages.html', pages, 'pages.html');
