@@ -382,7 +382,11 @@ a.tab-btn:hover{
 	color: red;
 }
 
-.eventpac-content, .sponsor-contact{
+.onf1-logo {
+    margin-top: 10px;
+}
+
+.eventpac-content, .sponsor-contact, .onf1-logo{
 	color: rgb(153, 153, 153);
 	font-family: Roboto, sans-serif;
 	font-size: 14px;
