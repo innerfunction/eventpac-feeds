@@ -44,6 +44,7 @@ exports.download = function( cx ) {
             id:             post.id,
             title:          post.title,
             content:        post.content,
+            image:          post.photo,
             type:           post.postType
         }
     });
@@ -108,8 +109,7 @@ exports.build = function( cx ) {
 			return !!url;
 		});
         var images = cx.images( imageURLs );
-        //images.resize( { width: 100, format: 'jpeg' }, '{name}-{width}.{format}' ).mapTo( posts[type], 'thumbnail' );
-		images.mapTo( posts[type], 'image' );
+		images.resize( { width: '175', height: '175', mode: 'crop', format: 'jpeg' }, true ).mapTo( posts[type], 'image' );
 	    if (type == 'page') {
             pages.push(posts[type]);
         }

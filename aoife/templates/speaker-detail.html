@@ -13,7 +13,11 @@
                 <h2>Director of whitaker <br/> Institute NUI Galway, Co </h2>-->
                
         </header>
-        <p class="image-container"><img src="images/speaker.png" alt="speaker" title="speaker" width="175" height="175"/> </p>
+        {#image}
+            <p class="image-container"><img src="{src}" alt="speaker" title="speaker"/> </p>
+        {:else}
+            <p class="image-container"><img src="images/speaker.png" alt="speaker" title="speaker" width="175" height="175"/> </p>
+        {/image}
         <div class="content">
             <!--<p>
                 <strong>Author of The Creative Edge Policy Tool Kit “Supporting the Development of the Creative Economy – policy prompts for Festival and Events”.</strong>
