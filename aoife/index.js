@@ -18,9 +18,7 @@ var BaseURL = 'http://aoife.eventpac.com/api/aoife/%s';
 
 exports.download = function( cx ) {
 
-    cx.clean(function(post) {
-	    return !(post.id && post.id.indexOf('events.') == 0);
-	});
+    var downloadTime = new Date().toString();
     
     var events = cx.get( BaseURL, 'events' )
     .posts(function( data ) {
@@ -36,7 +34,9 @@ exports.download = function( cx ) {
             endDate:        mods.df(post.occurrences[0].endDateTime, 'mmmm dS'),
             endTime:        mods.df(post.occurrences[0].endDateTime, 'HH:MM'),
             content:        post.content,
-            type:           post.postType
+            type:           post.postType,
+            downloadTime:   downloadTime
+
         }
     });
     
@@ -50,7 +50,9 @@ exports.download = function( cx ) {
             title:          post.title,
             content:        post.content,
             image:          post.photo,
-            type:           post.postType
+            type:           post.postType,
+            downloadTime:   downloadTime
+
         }
     });
 
@@ -64,7 +66,9 @@ exports.download = function( cx ) {
             title:      post.title,
             slug:       post.slug,
             content:    post.content,
-            type:       post.postType
+            type:       post.postType,
+            downloadTime:   downloadTime
+
         }
     });
    
@@ -77,7 +81,9 @@ exports.download = function( cx ) {
             id:         post.id,
             title:      post.title,
             content:    post.content,
-            type:       post.postType
+            type:       post.postType,
+            downloadTime:   downloadTime
+
         }
     });
    
@@ -86,6 +92,11 @@ exports.download = function( cx ) {
     cx.write(performers);
     cx.write(pages);
     cx.write(locations);
+
+    cx.clean(function( post ) {
+        return post.downloadTime == downloadTime;
+    });
+
 }
 exports.build = function( cx ) {
 
