@@ -18,6 +18,10 @@ var BaseURL = 'http://aoife.eventpac.com/api/aoife/%s';
 
 exports.download = function( cx ) {
 
+    cx.clean(function(post) {
+	    return !(post.id && post.id.indexOf('events.') == 0);
+	});
+    
     var events = cx.get( BaseURL, 'events' )
     .posts(function( data ) {
         return data.posts
