@@ -29,9 +29,9 @@ exports.download = function( cx ) {
             title:          post.title,
             occurrences:    post.occurrences,
             startDate:      mods.df(post.occurrences[0].startDateTime, 'dddd, mmmm dS'), //h:MM TT, mmmm dS, yyyy
-            startTime:      mods.df(post.occurrences[0].startDateTime, 'h:MM'),
+            startTime:      mods.df(post.occurrences[0].startDateTime, 'HH:MM'),
             endDate:        mods.df(post.occurrences[0].endDateTime, 'dddd, mmmm dS'),
-            endTime:        mods.df(post.occurrences[0].endDateTime, 'h:MM'),
+            endTime:        mods.df(post.occurrences[0].endDateTime, 'HH:MM'),
             content:        post.content,
             performer:      post.performers,
             type:           post.postType
