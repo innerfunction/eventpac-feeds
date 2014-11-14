@@ -139,6 +139,8 @@ exports.build = function( cx ) {
     
     var updates = [];
 
+    var modifiedTime = new Date().toISOString();
+
     for ( var type in postsByType ) {
 
         var updatesForType = postsByType[type].map(function( post ) {
@@ -162,7 +164,8 @@ exports.build = function( cx ) {
                 description:    description,
                 startTime:      startTime,
                 endTime:        endTime,
-                action:         action
+                action:         action,
+                modifiedTime:   modifiedTime
             }
         });
         updates = updates.concat( updatesForType );
@@ -175,6 +178,6 @@ exports.build = function( cx ) {
         return posts;
     }, {});
     // Return build meta data with db updates.
-    return { db: { posts: posts } };
+    return { db: { posts: posts }, gc: { posts: "modifiedTime is null" } };
 }
 exports.inPath = require('path').dirname(module.filename);
