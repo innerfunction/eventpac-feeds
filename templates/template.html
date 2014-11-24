@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en" x-manifest="cache.manifest">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <meta charset="utf-8">
+        <title>{title}</title>
+
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/style.css">   
+    </head>
+
+    <body>
+       
+       {?tabs}
+           <header class="tabs">
+                <div class="tabs fixed">
+                    {#tabs}
+                        <div class="tab-btn cold-md-6 col-sm-6 col-xs-6" id="{title}">
+                            <a href="{title}">{title}</a>
+                        </div>
+                    {/tabs}
+                </div>
+                <div class="title  fixed cold-md-12 col-sm-12 col-xs-12">
+                    <h1 class="title">title</h1>
+                </div>
+
+            </header>
+            {#tabs}
+                <div id="{title}">
+                    <div class="container-fluid">
+                            
+                        {#image}
+                            <div class="image-container {shape} "  style="
+                                {#banner}
+                                        background: url({src}) no-repeat top center fixed; 
+                                {/banner}  ">
+
+                                <p><span><img src="{src}"/> </span></p>
+                                <p></p>                        
+                            </div> 
+                        {/image}
+
+                        <div class="page-content {content.dropCap} ">
+                            <p>{content.html|s}</p>
+                        </div>
+                    </div>
+                </div>
+            {/tabs}
+
+       {:else}
+            <header class="fixed">
+                <h1>{title}</h1>
+            </header>
+
+            <div class="header"> 
+                <h1>{title}</h1>
+            </div>
+            
+
+            <div class=" container-fluid ">
+
+                {#image}
+                    <div class="image-container {shape} "  style="
+                        {#banner}
+                                background: url({src}) no-repeat top center fixed; 
+                        {/banner}  ">
+
+                        <p><span><img src="{src}"/> </span></p>
+                        <p></p>                        
+                    </div> 
+                {/image}
+
+                <div class="page-content {content.dropCap} ">
+                    <p>{content.html|s}</p>
+                </div>
+
+
+            </div>
+        {/tabs}
+      
+    </body>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script> 
+    <script src="js/scripts.js"></script> 
+
+    <script>
+       
+    </script>
+
+</html>
+

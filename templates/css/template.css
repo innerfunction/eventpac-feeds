@@ -1,0 +1,269 @@
+
+/*
+
+{
+	font: {
+		googleFont : 'Roboto';
+		body {
+			size: '16px',
+			family: 'roboto',
+			style: 'normal',
+			weight: 400,
+			color: #000,
+			lineHeight: 1.8
+
+		},
+		title {
+			size: '1.8em',
+			family: 'roboto',
+			style: 'italic',
+			weight: 100,
+			color: #fff,
+			lineHeight: 1.8
+		}	
+	},
+
+	color: {
+		highlight: #E51C23,
+	
+		body {
+			text: #000,
+			background: #fff;
+
+		},
+		title {
+			text: #fff,
+			background: #4dbd9d,
+		}
+
+	},
+}
+
+*/
+{#googleFont}
+	@import url(http://fonts.googleapis.com/css?family={googleFont}:400,100,300,300italic);
+{/googleFont}
+
+body {
+	font-size: {font.size.body};
+	line-height: {font.body.lineHeight};
+	font-family: {font.family.body} ;
+	color: {color.body.text};
+	font-style: {font.body.style};
+	font-weight: {font.body.weight};
+}
+
+body, div, ul, a, h1, h2, h3, span {
+	padding: 0;
+	margin: 0;
+}
+
+ul { 
+	list-style: none;
+}
+p {
+	margin: 6px 0 ;
+}
+.table-responsive {
+	margin-right: -15px;
+	margin-left: -15px;
+}
+a, a:hover { 
+	text-decoration: none; 
+	color:#000;
+}
+.position-absolute { 
+	position: absolute;
+	width:100%;
+}
+.hide { 
+	display: none;
+}
+.visible { 
+	display: visible
+}
+
+.block {
+	display: block;
+}
+
+
+/* HEADER */
+
+header, .header {
+	padding: 30px ;
+	background-color: {color.title.background};
+	text-align: center;
+}
+
+header  h1, .header  h1{ 
+	font-size: {font.title.size};
+	font-weight: {font.title.weight};
+	color: {color.title.text};	
+	font-style: {font.title.style};
+	font-family:{font.title.family};
+	line-height: {font.title.lineHeight};
+}
+
+
+header.tabs {  /* an image as header or tabs, don't need padding*/
+	padding:0px  0px;
+	margin: 0px;
+}
+
+header.tabs > h1{
+	line-height: 2;
+	margin:0 30px;
+}
+
+/* circle image */
+
+.image-container > p {
+	padding:0;
+	margin:0;
+}
+
+.image-container.circle > p > span { 
+	width: 183px;
+	padding: 4px;
+	margin: 0 auto;
+	text-align: center;
+	background-color: #fff;
+	border-radius: 100%;
+	display: block
+}
+.image-container.circle > p{
+	height:87.5px;
+}
+.image-container.circle > p:first-child{
+
+	width:100%;
+	background-color: {color.title.background};
+}
+
+.image-container.circle > p > span > img {
+	border-radius: 100%;
+	margin: 0 auto;
+}
+
+/* banner image */
+.image-container.banner { 
+	margin: 0 -15px;
+	padding: 0;
+}
+
+.image-container.banner  > p > span > img {
+	width: 100%;
+	height: 230px;
+	visibility: hidden;
+}
+
+/* CONTENT */
+.page-content { 
+	margin-top: 15px
+}
+
+.drop-cap > p:first-child:first-letter { 
+	float: left;
+	font-size: 36pt;
+	line-height: .8;
+	padding-right: 4px;
+	font-weight: 600;
+}
+/* table */
+.table-container {
+	padding:0;
+	margin:0;
+}
+thead {
+	background-color: #fff;
+}
+.table > thead > tr > th {
+	border-bottom-color:{color.highlight};
+	color:{color.highlight};
+}
+/* tabs */
+
+.tabs {
+
+}
+
+.tab-btn {
+	padding:0 ;
+	text-align: center;
+	font-size: 22px;
+}
+.tab-btn > a { 
+	background-color: {color.title.background};
+	display: block;
+	padding: 18px;
+	color: rgba(255, 255, 255, 0.68);
+	text-transform: uppercase;
+	border-bottom: solid 5px {color.title.background};
+}
+.tab-btn > a.active{
+	border-bottom: solid 5px {color.highlight};
+	color:rgba(255, 255, 255, 1);
+}
+.content-tab{
+	margin-top:54px; /* margin-top : height of the fixed elements; */
+}
+h1.title{
+	padding: 12px 0px;
+}
+
+/* fixed elements when screen is big enough*/
+.title.fixed, header.fixed { 
+ 
+}
+
+.fixed {
+	margin-top:0 ;
+	display: none;
+}
+
+.tabs.fixed { 
+	margin: -30px -30px auto ;
+	display: block;
+}
+
+@media (min-height: 450px) {
+	.fixed { 
+		display: block;
+		position: fixed;
+		z-index: 3;
+		width: 100%;
+	}
+	.tabs.fixed { 
+		top: 0;
+		left:0;
+		margin:0;
+	}
+	header .scrollable { /* if we want to allow scroll part of the header */
+		margin-top: 37px ;  /* tabsHeight - headerPadding (30) */
+	}
+	
+	.title.fixed{ /*if title with tabs*/
+		background-color:{color.title.background};
+		top: 67px; /* if tabs -> top : tabsHeight*/
+		left:0;
+		margin: 0px ;
+	}
+
+}
+
+/* buttons */
+
+.btn {
+	padding:0 ;
+	width:100%;
+}
+
+.btn > a {
+	display: block;
+	padding: 10px 6px;
+	color: #fff;
+
+}
+
+
