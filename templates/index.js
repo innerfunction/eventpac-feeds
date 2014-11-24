@@ -1,3 +1,8 @@
+var mods = {
+	df: 	require('dateformat'),
+	path:	require('path'),
+	tt:		require('semo/lib/tinytemper')
+}
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 
@@ -6,15 +11,14 @@ exports.active = true;
 exports.exts = {
     uriSchemes: eputils.schemes('templates')
 }
-exports.download = function( cx ) {
-
-	var pages = [{
+exports.download = function( cx ) {}
+var pages = [{
 			'id': 1,
 			'title' : 'Image banner',
 			'image' : {
 					'banner' : true,
 					'shape': 'banner',
-					'url' : 'friday.jpg'
+					'url' : 'images/friday.jpg'
 			},
 			'content' : {
 				'dropCap': "",
@@ -25,9 +29,9 @@ exports.download = function( cx ) {
 			'id': 2,
 			'title' : 'Image circle',
 			'image' : {
-					'banner' : true,
+					'banner' : false,
 					'shape' : 'circle',
-					'url' : 'friday.jpg'
+					'url' : 'images/friday.jpg'
 			},
 			'content' : {
 				'dropCap': "",
@@ -73,10 +77,6 @@ exports.download = function( cx ) {
 		}
 	}];
 
-	cx.write(pages);
-	cx.write(styles);
-
-}
 exports.build = function( cx ){
 	cx.file([
 		'css',
@@ -84,7 +84,7 @@ exports.build = function( cx ){
 		'images',
 		'js'
 	]).cp();
-
+    console.log(styles);
 	cx.eval('template.html', pages, 'page-{id}.html');
 	cx.eval('css/template.css', styles, 'styles.css');
 }
