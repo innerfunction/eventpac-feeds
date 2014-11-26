@@ -20,7 +20,8 @@
 			weight: 100,
 			color: #fff,
 			lineHeight: 1.8
-		}	
+		}
+		tabs:  'roboto
 	},
 
 	color: {
@@ -40,9 +41,9 @@
 }
 
 */
-{#font}
-	@import url(http://fonts.googleapis.com/css?family={googleFont}:400,100,300,300italic);
-{/font}
+{#font.googleFont}
+	@import url(http://fonts.googleapis.com/css?family={font.googleFont}:400,100,300,300italic);
+{/font.googleFont}
 
 body {
 {#font.body}
@@ -71,7 +72,7 @@ p {
 	margin-right: -15px;
 	margin-left: -15px;
 }
-a, a:hover { 
+a, a:hover, a:active, a:visited { 
 	text-decoration: none; 
 	color:#000;
 }
@@ -109,13 +110,13 @@ header  h1, .header  h1{
 }
 
 
-header.tabs {  /* an image as header or tabs, don't need padding*/
+header.tabs, .header.title {  /* an image as header or tabs, don't need padding*/
 	padding:0px  0px;
 	margin: 0px;
 }
 
-header.tabs > h1{
-	line-height: 2;
+header.tabs > h1, .header.title >h1{
+	line-height: {font.title.lineHeight};
 	margin:0 30px;
 }
 
@@ -140,13 +141,15 @@ header.tabs > h1{
 }
 .image-container.circle > p:first-child{
 
-	width:100%;
+	margin: 0 -15px;
 	background-color: {color.title.background};
 }
 
 .image-container.circle > p > span > img {
 	border-radius: 100%;
 	margin: 0 auto;
+	width: 175px;
+	height: 175px;
 }
 
 /* banner image */
@@ -187,9 +190,6 @@ thead {
 }
 /* tabs */
 
-.tabs {
-
-}
 
 .tab-btn {
 	padding:0 ;
@@ -201,7 +201,9 @@ thead {
 	display: block;
 	padding: 18px;
 	color: rgba(255, 255, 255, 0.68);
+
 	text-transform: uppercase;
+	font-family: {font.tabs};
 	border-bottom: solid 5px {color.title.background};
 }
 .tab-btn > a.active{
@@ -216,18 +218,28 @@ h1.title{
 }
 
 /* fixed elements when screen is big enough*/
-.title.fixed, header.fixed { 
- 
+.title { 
+ background-color: {color.title.background};;
 }
 
 .fixed {
 	margin-top:0 ;
 	display: none;
 }
-
-.tabs.fixed { 
-	margin: -30px -30px auto ;
+header.tabs {
 	display: block;
+}
+.tabs { 
+	display: none;
+}
+.tabs.fixed { 
+	position:relative;
+	margin: -30px -30px auto ;
+	top: 0;
+	left:0;
+	margin:0;
+	display: block;
+	width:100%;
 }
 
 @media (min-height: 450px) {
@@ -237,10 +249,11 @@ h1.title{
 		z-index: 3;
 		width: 100%;
 	}
+	.tabs { 
+		display: block;
+	}
 	.tabs.fixed { 
-		top: 0;
-		left:0;
-		margin:0;
+		position:fixed;
 	}
 	header .scrollable { /* if we want to allow scroll part of the header */
 		margin-top: 37px ;  /* tabsHeight - headerPadding (30) */
@@ -248,7 +261,7 @@ h1.title{
 	
 	.title.fixed{ /*if title with tabs*/
 		background-color:{color.title.background};
-		top: 67px; /* if tabs -> top : tabsHeight*/
+		top: 80px; /* if tabs -> top : tabsHeight*/
 		left:0;
 		margin: 0px ;
 	}

@@ -22,7 +22,7 @@ var pages = [{
 			},
 			'content' : {
 				'dropCap': "",
-				'html' : "<p>Lorem ipsum dolor sit amet,consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p>"
+				'html' : "<p>Lorem ipsum dolor sit amet,consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p>"
 			}
 
 		},{
@@ -35,9 +35,33 @@ var pages = [{
 			},
 			'content' : {
 				'dropCap': "",
-				'html' : '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p>'
+				'html' : '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p>'
 			}
 
+		},
+		{
+			'id' : 3,
+			'title' : 'page with tabs',
+			'tabs':[{
+				'title' : 'tab1',
+				'image' : {
+					'banner' :true,
+					'shape' : 'banner',
+					'url' : 'images/friday.jpg'
+				},
+				'content' : {
+					'html': '<h3>Content fortab 1 </h3><p>Lorem ipsum dolor sit amet,consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet,consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet,consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p>',
+					'dropCap' : "dropCap",
+
+				}
+			},{
+				'title' : 'tab2',
+				'content' : {
+					'html': '<h3>Conent for tab twoo</h3><p>Lorem ipsum dolor sit amet,consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet,consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet,consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie odio tortor, </p><p>id varius neque ultrices vitae. Duis pellentesque pellentesque arcu, ac placerat risus rhoncus eu. Etiam </p>',
+					'style' : "dropCap",
+					
+				}
+			}]
 		}];
 	var styles = [{
 		'font': {
@@ -86,6 +110,6 @@ exports.build = function( cx ){
 	]).cp();
     console.log(styles);
 	cx.eval('template.html', pages, 'page-{id}.html');
-	cx.eval('css/template.css', styles, 'styles.css');
+	cx.eval('css/template.css', styles, 'css/styles.css');
 }
 exports.inPath = require('path').dirname(module.filename);
