@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>tabs</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+
+</head>
+<body>
+    <div class="tabs fixed">
+
+            <div class="tab-btn cold-md-6 col-sm-6 col-xs-6" id="details">
+                <a class="active "  href="event-details">Detalles</a>
+            </div>
+            <div class=" tab-btn cold-md-6 col-sm-6 col-xs-6" id="results">
+                <a  href="event-results">Resultados</a>
+            </div>
+           
+    </div>
+    <div id="event-details" style="display: visible;">
+        <div class="container-fluid">
+            <header  class="row ">
+                        
+                <div class=" title fixed cold-md-12 col-sm-12 col-xs-12">
+                    <h1 class="title">title</h1>
+                </div>   
+
+                <div class="scrollable cold-md-12 col-sm-12 col-xs-12">
+                       <h1 class="title">title </h1>
+                       <h2>subtitle / description</h2>
+                       <p class="date"> Desde 10 / 12, hasta 16 / 12 </p>
+                </div>
+                
+            </header>
+            <div class="row">
+                <div class="cold-md-12 col-sm-12 col-xs-12 ">
+                          
+                    <div  class="image-container banner  " style="background: url(images/example.png) no-repeat fixed ">
+                        <p><span><img  src="images/example.png"></span></p>
+                    </div> 
+            
+                </div>
+            </div>
+            <div class="page-content">
+
+                <div class="row">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Vueltas</dt>
+
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dd>{laps}</dd>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Longitud</dt>
+
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dd>{longitude}</dd>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Curvas importantes</dt>
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                        <dd>
+                            <ul>
+                                    <li>- lap 1</li>
+                                    <li>- lap 2</li>
+                                    <li>- lap 3</li>
+                            </ul>
+                        </dd>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dt>Récord Vuelta</dt>
+                    </div>
+                    <div class="cold-md-6 col-sm-6 col-xs-6">
+                            <dd>
+                                <ul>
+                                    <li>- {fastestLapTime} </li>
+                                    <li>- {fastestLapDriver} </li>
+                                </ul>
+                            </dd>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cold-md-12 col-sm-12 col-xs-12">
+                        <p>
+                            <button type="button" class="btn btn-primary"> 
+                                <a href=""> button </a>
+                            </button>
+                         </p>   
+                   
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="cold-md-12 col-sm-12 col-xs-12">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-results" style="display: none;">
+        <div class="container-fluid">
+            <header  class="row ">
+                     
+                <div class=" title fixed cold-md-12 col-sm-12 col-xs-12">
+                    <h1 class="title">title</h1>
+                </div> 
+
+                <div class=" title cold-md-12 col-sm-12 col-xs-12"> 
+                    <h1 class="title">title </h1>
+                </div>
+
+            </header>
+            <div class="row fixed ">
+                <div class="cold-md-12 col-sm-12 col-xs-12 table-container ">
+
+                    <table class="table table-striped ">
+                        <colgroup>
+                            <col width="45%">
+                            <col width="45%">        
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="row ">
+                <div class="cold-md-12 col-sm-12 col-xs-12 table-container ">
+
+                    <table class="table table-striped ">
+                        <colgroup>
+                            <col width="45%">
+                            <col width="45%">        
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>{id}</td>
+                                <td>{performer_id}</td>
+                               
+                            </tr>
+                            <tr>
+                               
+                                <td>{teamInitials}</td>
+                                <td>{laps}</td>
+                            </tr>
+          
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="page-content">
+                <div class="row">
+                    <div class="cold-md-12 col-sm-12 col-xs-12">
+                        <p>Lid est laborum.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready( function() {
+
+            scrollFixedElements($("#event-details"));
+
+    
+
+            $('.tab-btn > a').bind('click', function(e) {
+                e.preventDefault();
+
+                //get info new tab
+                var $this = $(this);
+                var target = $this.attr('href');
+
+                var $currentTabContent = $('#' + target);
+
+                $($currentTabContent).css('display', 'visible');
+
+                //hide previous tab
+                var $previousTab = $(".tab-btn > .active");
+                
+
+                var $previousTabContent = $('#' + $previousTab.attr('href') );
+        
+                $( $previousTabContent).css('display', 'none');
+
+                $previousTab.removeClass('active');
+
+
+                //active current tab
+                $this.addClass('active');
+
+                resetPositions( $('.position-absolute').addClass('fixed').removeClass('position-absolute') );
+                scrollFixedElements( $currentTabContent );
+            });
+           
+        });
+      
+
+        function scrollFixedElements( $container ) {
+
+            var $banner = $container.find( $('.image-container.banner') );
+
+            var $fixedObjects =  $container.find( $('.fixed').not('.tabs') ) ;
+
+            var $lastFixedObject = $($fixedObjects[$fixedObjects.length -1] );
+
+            $( document ).scroll( function() {
+
+                if ( $(window).height() > 450 && $banner.length > 0 && $fixedObjects.length > 0 ) {
+                   
+                    var posBottomFixed = $lastFixedObject.position().top + $lastFixedObject.height();
+                    var posBottomBanner = $banner.offset().top + $banner.height();
+
+                    var offsetTop = $(this).scrollTop() + posBottomFixed ;
+
+                    if (  offsetTop  > posBottomBanner ){
+
+                        $fixedObjects.addClass('position-absolute').removeClass('fixed');
+
+                    } else { 
+                            resetPositions();        
+                    }
+                } else {                      
+                    resetPositions();                        
+                }
+                    
+            });           
+        };
+
+        function resetPositions(){
+
+            var $fixElements = $('.position-absolute');
+            if ( $fixElements.length > 0 ) {
+                $($fixElements).addClass('fixed').removeClass('position-absolute');
+            }
+        }
+
+        
+    </script>
+
+</body>
+</html>
