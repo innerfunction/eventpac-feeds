@@ -112,9 +112,12 @@ exports.extend = function( feed, _module ) {
         }
         // Copy files from last build; or use feed's base content if not previous build.
         if( !doFullBuild && build.prevBuild ) {
-            cx.file( build.prevBuild.paths.outputRoot ).cp();
+            var path = build.prevBuild.paths.outputRoot;
+            Log.debug('Copying previous build from %s', path );
+            cx.file( path ).cp();
         }
         else {
+            Log.debug('Copying base content');
             cx.file('base').cp();
         }
         // Generate list of posts in current build scope
