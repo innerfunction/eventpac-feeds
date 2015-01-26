@@ -195,14 +195,7 @@ var feed = {
                     });
                     updates = updates.concat( typeUpdates );
                 }
-                // Rewrite db update format to sets of per-table updates, keyed by record ID.
-                var posts = updates
-                .reduce(function( posts, record ) {
-                    posts[record.id] = record;
-                    return posts;
-                }, {});
-                // Return build meta data with db updates.
-                return { db: { posts: posts } };
+                return updates;
             }
         }
     }

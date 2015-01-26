@@ -6,7 +6,7 @@ var mods = {
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 
-exports.active = true;
+exports.active = false;
 //exports.schedule = '@hourly';
 exports.schedule = function( schedule ) {
     return { minute: new schedule.Range( 0, 60, 5 ) };

@@ -6,20 +6,19 @@ var mods = {
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 
-exports.active = false;
+exports.active = true;
+
 exports.schedule = function( schedule ) {
     return { minute: new schedule.Range( 0, 60, 5 ) };
 }
 exports.exts = {
-    uriSchemes: eputils.schemes('aoife')
+    uriSchemes: eputils.schemes('nagp')
 }
 
-var BaseURL = 'http://aoife.eventpac.com/api/aoife/%s';
+var BaseURL = 'http://nagp.eventpac.com/api/nagp/%s';
 
 exports.download = function( cx ) {
 
-    var downloadTime = new Date().toString();
-    
     var events = cx.get( BaseURL, 'events' )
     .posts(function( data ) {
         return data.posts
@@ -29,14 +28,13 @@ exports.download = function( cx ) {
             id:             post.id,
             title:          post.title,
             occurrences:    post.occurrences,
-            startDate:      mods.df(post.occurrences[0].startDateTime, 'mmmm dS'), //h:MM TT, mmmm dS, yyyy
+            startDate:      mods.df(post.occurrences[0].startDateTime, 'dddd, mmmm dS'), //h:MM TT, mmmm dS, yyyy
             startTime:      mods.df(post.occurrences[0].startDateTime, 'HH:MM'),
-            endDate:        mods.df(post.occurrences[0].endDateTime, 'mmmm dS'),
+            endDate:        mods.df(post.occurrences[0].endDateTime, 'dddd, mmmm dS'),
             endTime:        mods.df(post.occurrences[0].endDateTime, 'HH:MM'),
             content:        post.content,
-            type:           post.postType,
-            downloadTime:   downloadTime
-
+            performer:      post.performers,
+            type:           post.postType
         }
     });
     
@@ -50,68 +48,28 @@ exports.download = function( cx ) {
             title:          post.title,
             content:        post.content,
             image:          post.photo,
-            type:           post.postType,
-            downloadTime:   downloadTime
-
+            type:           post.postType
         }
     });
-
-    var pages = cx.get( BaseURL, 'pages' )
-    .posts(function ( data ) {
-        return data.posts;
-    })
-    .map(function( post ) {
-        return {
-            id:         post.id,
-            title:      post.title,
-            slug:       post.slug,
-            content:    post.content,
-            type:       post.postType,
-            downloadTime:   downloadTime
-
-        }
-    });
-   
-    var locations = cx.get( BaseURL, 'locations' )
-    .posts(function ( data ) {
-        return data.posts;
-    })
-    .map(function( post ) {
-        return {
-            id:         post.id,
-            title:      post.title,
-            content:    post.content,
-            type:       post.postType,
-            downloadTime:   downloadTime
-
-        }
-    });
-   
 
     cx.write(events);
     cx.write(performers);
-    cx.write(pages);
-    cx.write(locations);
-
-    cx.clean(function( post ) {
-        return post.downloadTime == downloadTime;
-    });
-
 }
 exports.build = function( cx ) {
 
     cx.file([
     'templates/images',
-    'templates/css',
     'templates/fonts',
-    'templates/share.html',
+    'templates/css',
     'templates/programme.html',
-    'templates/contact.html'
+    'templates/contact.html',
+    'templates/share.html',
+    'templates/pages.html',
+    'templates/locations.html'
+
     ]).cp();
 
-    var types = ['events', 'performers', 'page', 'locations'];
-    
-    var pages = [];
+    var types = ['events', 'performers'];
 
 	var postsByType = types.reduce(function( posts, type ) {
 		posts[type] = cx.data.posts.filter(function( post ) {
@@ -125,21 +83,15 @@ exports.build = function( cx ) {
 			return !!url;
 		});
         var images = cx.images( imageURLs );
-		images.resize( { width: '175', height: '175', mode: 'crop', format: 'jpeg' }, true ).mapTo( posts[type], 'image' );
-	    if (type == 'page') {
-            pages.push(posts[type]);
-        }
-        return posts;
+        //images.resize( { width: 100, format: 'jpeg' }, '{name}-{width}.{format}' ).mapTo( posts[type], 'thumbnail' );
+		images.resize( { width: 500, format: 'jpeg' }, true ).mapTo( posts[type], 'image' );
+		return posts;
 	}, {});
-
     var eventFiles = cx.eval('templates/event-detail.html', postsByType.events, 'event-{id}.html');
     cx.eval('templates/speaker-detail.html', postsByType.performers, 'speaker-{id}.html');
-    cx.eval('templates/pages.html', pages, 'pages.html');
-    cx.eval('templates/locations.html', postsByType.locations, 'locations.html');
+    
     
     var updates = [];
-
-    var modifiedTime = new Date().toISOString();
 
     for ( var type in postsByType ) {
 
@@ -148,13 +100,13 @@ exports.build = function( cx ) {
 
             switch (post.type) {
                 case 'events':
-                    description = post.startTime;
+                    description = post.title;
                     action = eputils.action('EventDetail', { 'eventID': post.id });
                     startTime = post.occurrences[0].startDateTime;
                     endTime = post.occurrences[0].endDateTime;
                     break;
                 case 'performers':
-                    description = '',
+                    description = post.title,
                     action = eputils.action('SpeakerDetail', { 'speakerID': post.id });
             }
             return {
@@ -164,8 +116,7 @@ exports.build = function( cx ) {
                 description:    description,
                 startTime:      startTime,
                 endTime:        endTime,
-                action:         action,
-                modifiedTime:   modifiedTime
+                action:         action
             }
         });
         updates = updates.concat( updatesForType );
@@ -178,6 +129,6 @@ exports.build = function( cx ) {
         return posts;
     }, {});
     // Return build meta data with db updates.
-    return { db: { posts: posts }, gc: { posts: "modifiedTime is null" } };
+    return { db: { posts: posts } };
 }
 exports.inPath = require('path').dirname(module.filename);

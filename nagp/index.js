@@ -6,129 +6,93 @@ var mods = {
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 
-exports.active = true;
-
-exports.schedule = function( schedule ) {
-    return { minute: new schedule.Range( 0, 60, 5 ) };
-}
-exports.exts = {
-    uriSchemes: eputils.schemes('nagp')
+function isPublished( post ) {
+    return post.status == 'published';
 }
 
-var BaseURL = 'http://nagp.eventpac.com/api/nagp/%s';
-
-exports.download = function( cx ) {
-
-    var events = cx.get( BaseURL, 'events' )
-    .posts(function( data ) {
-        return data.posts
+function buildImages( cx, updates ) {
+    var imageURLs = updates.map(function map( post ) {
+        return post.image;	
     })
-    .map(function( post ) {
-        return {
-            id:             post.id,
-            title:          post.title,
-            occurrences:    post.occurrences,
-            startDate:      mods.df(post.occurrences[0].startDateTime, 'dddd, mmmm dS'), //h:MM TT, mmmm dS, yyyy
-            startTime:      mods.df(post.occurrences[0].startDateTime, 'HH:MM'),
-            endDate:        mods.df(post.occurrences[0].endDateTime, 'dddd, mmmm dS'),
-            endTime:        mods.df(post.occurrences[0].endDateTime, 'HH:MM'),
-            content:        post.content,
-            performer:      post.performers,
-            type:           post.postType
-        }
+    .filter(function( url ) {
+        return !!url;
     });
-    
-    var performers = cx.get( BaseURL, 'performers' )
-    .posts(function( data ) {
-        return data.posts
-    })
-    .map(function( post ) {
-        return {
-            id:             post.id,
-            title:          post.title,
-            content:        post.content,
-            image:          post.photo,
-            type:           post.postType
-        }
-    });
-
-    cx.write(events);
-    cx.write(performers);
+    var images = cx.images( imageURLs );
+    images.resize({ width: 500, format: 'jpeg' }, true ).mapTo( updates, 'image' );
 }
-exports.build = function( cx ) {
 
-    cx.file([
-    'templates/images',
-    'templates/fonts',
-    'templates/css',
-    'templates/programme.html',
-    'templates/contact.html',
-    'templates/share.html',
-    'templates/pages.html',
-    'templates/locations.html'
-
-    ]).cp();
-
-    var types = ['events', 'performers'];
-
-	var postsByType = types.reduce(function( posts, type ) {
-		posts[type] = cx.data.posts.filter(function( post ) {
-			return post.type == type;
-		});
-
-		var imageURLs = posts[type].map(function(post) {
-			return post.image;	
-		})
-		.filter(function( url ) {
-			return !!url;
-		});
-        var images = cx.images( imageURLs );
-        //images.resize( { width: 100, format: 'jpeg' }, '{name}-{width}.{format}' ).mapTo( posts[type], 'thumbnail' );
-		images.resize( { width: 500, format: 'jpeg' }, true ).mapTo( posts[type], 'image' );
-		return posts;
-	}, {});
-    var eventFiles = cx.eval('templates/event-detail.html', postsByType.events, 'event-{id}.html');
-    cx.eval('templates/speaker-detail.html', postsByType.performers, 'speaker-{id}.html');
-    
-    
-    var updates = [];
-
-    for ( var type in postsByType ) {
-
-        var updatesForType = postsByType[type].map(function( post ) {
-            var description, action, startTime, endTime;
-
-            switch (post.type) {
-                case 'events':
-                    description = post.title;
-                    action = eputils.action('EventDetail', { 'eventID': post.id });
-                    startTime = post.occurrences[0].startDateTime;
-                    endTime = post.occurrences[0].endDateTime;
-                    break;
-                case 'performers':
-                    description = post.title,
-                    action = eputils.action('SpeakerDetail', { 'speakerID': post.id });
-            }
+var feed = {
+    active: true,
+    queue: 'nagp',
+    opts: {
+        exts: {
+            uriSchemes: eputils.schemes('nagp')
+        }
+    },
+    postTypes: {
+        events: function( post ) {
             return {
                 id:             post.id,
-                type:           post.type,
                 title:          post.title,
-                description:    description,
-                startTime:      startTime,
-                endTime:        endTime,
-                action:         action
+                occurrences:    post.occurrences,
+                startDate:      mods.df(post.occurrences[0].startDateTime, 'dddd, mmmm dS'), //h:MM TT, mmmm dS, yyyy
+                startTime:      mods.df(post.occurrences[0].startDateTime, 'HH:MM'),
+                endDate:        mods.df(post.occurrences[0].endDateTime, 'dddd, mmmm dS'),
+                endTime:        mods.df(post.occurrences[0].endDateTime, 'HH:MM'),
+                content:        post.content,
+                performer:      post.performers,
+                type:           post.postType
             }
-        });
-        updates = updates.concat( updatesForType );
+        },
+        performers: function( post ) {
+            return {
+                id:             post.id,
+                title:          post.title,
+                content:        post.content,
+                image:          post.photo,
+                type:           post.postType
+            }
+        }
+    },
+    targets: {
+        events: {
+            depends: 'events',
+            build: function( cx, updatesByType ) {
+                var updates = updatesByType.events.map(function map( post ) {
+                    return {
+                        id:             post.id,
+                        type:           post.type,
+                        title:          post.title,
+                        description:    post.title,
+                        startTime:      post.occurrences[0].startDateTime,
+                        endTime:        post.occurrences[0].endDateTime,
+                        action:         eputils.action('EventDetail', { 'eventID': post.id }),
+                        image:          post.image
+                    }
+                });
+                buildImages( cx, updates );
+                cx.eval('templates/event-detail.html', updates, 'event-{id}.html');
+                return updates;
+            }
+        },
+        performers: {
+            depends: 'performers',
+            build: function( cx, updatesByType ) {
+                var updates = updatesByType.events.map(function map( post ) {
+                    return {
+                        id:             post.id,
+                        type:           post.type,
+                        title:          post.title,
+                        description:    post.title,
+                        action:         eputils.action('SpeakerDetail', { 'speakerID': post.id }),
+                        image:          post.image
+                    }
+                });
+                buildImages( cx, updates );
+                cx.eval('templates/speaker-detail.html', updates, 'speaker-{id}.html');
+                return updates;
+            }
+        }
     }
-
-        // Rewrite db update format to sets of per-table updates, keyed by record ID.
-    var posts = updates
-    .reduce(function( posts, record ) {
-        posts[record.id] = record;
-        return posts;
-    }, {});
-    // Return build meta data with db updates.
-    return { db: { posts: posts } };
 }
-exports.inPath = require('path').dirname(module.filename);
+module.exports = require('../inc-build').extend( feed, module );

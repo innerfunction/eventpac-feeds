@@ -75,7 +75,11 @@ exports.extend = function( feed, _module ) {
     // deleted.
     function download( cx, url ) {
         // Download the post URL and map using the type specific map function.
-        var post = cx.get( url ).map(function map( post ) {
+        var post = cx.get( url )
+        .posts(function( data ) {
+            return data.posts
+        })
+        .map(function map( post ) {
             var status = post.status;
             var typeMap = feed.postTypes[post.type];
             if( typeMap ) {
@@ -103,6 +107,9 @@ exports.extend = function( feed, _module ) {
         // Decide whether to do a full or incremental build.
         var fullBuildEvery = feed.fullBuildEvery||10;
         var doFullBuild = (build.seq % fullBuildEvery) == 0;
+        if( doFullBuild ) {
+            Log.debug('Full build of feed %s (%d/%d)', feed.id, build.seq, fullBuildEvery );
+        }
         // Copy files from last build; or use feed's base content if not previous build.
         if( !doFullBuild && build.prevBuild ) {
             cx.file( build.prevBuild.paths.outputRoot ).cp();
@@ -133,25 +140,30 @@ exports.extend = function( feed, _module ) {
         var updatedTypes = Object.keys( updatesByType );
         // Generate list of build targets dependent on updated post types
         var targets = getDependentTargetsForPostTypes( updatedTypes, dependencies, targets );
-        // The build function result - meta data returned by the build.
-        var meta;
+        // The build function result - updated posts to be written to the db section of the build meta.
+        var posts = {};
         // Invoke each build target
         targets.forEach(function each( target ) {
             try {
+                Log.debug('Building target %s/%s', feed.id, target.id );
                 var result = target.build( cx, updatesByType );
-                // The 'meta' target is special - its result is used as the build's meta
-                // data response.
-                if( target.id == 'meta' ) {
-                    meta = result;
+                // Copy results into posts.
+                if( result ) {
+                    posts = result.reduce(function reduce( posts, record ) {
+                        posts[record.id] = record;
+                        return posts;
+                    }, posts );
                 }
             }
             catch( e ) {
                 Log.error('Building target %s of feed %s', target.id, feed.id, e );
             }
         });
+        return { db: { posts: posts } };
     }
     var _exports = {
         active:         feed.active||false,
+        queue:          feed.queue,
         fullBuildEvery: feed.fullBuildEvery,
         download:       download,
         build:          build
@@ -160,5 +172,5 @@ exports.extend = function( feed, _module ) {
         _exports[id] = feed.opts[id];
     }
     _exports.inPath = require('path').dirname( _module.filename );
-    _module.exports = _exports;
+    return _exports;
 }
