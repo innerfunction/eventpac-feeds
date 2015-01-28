@@ -67,7 +67,8 @@ var feed = {
                         startTime:      post.occurrences[0].startDateTime,
                         endTime:        post.occurrences[0].endDateTime,
                         action:         eputils.action('EventDetail', { 'eventID': post.id }),
-                        image:          post.image
+                        image:          post.image,
+                        content:        post.content
                     }
                 });
                 buildImages( cx, updates );
@@ -78,14 +79,15 @@ var feed = {
         performers: {
             depends: 'performers',
             build: function( cx, updatesByType ) {
-                var updates = updatesByType.events.map(function map( post ) {
+                var updates = updatesByType.performers.map(function map( post ) {
                     return {
                         id:             post.id,
                         type:           post.type,
                         title:          post.title,
                         description:    post.title,
                         action:         eputils.action('SpeakerDetail', { 'speakerID': post.id }),
-                        image:          post.image
+                        image:          post.image,
+                        content:        post.content
                     }
                 });
                 buildImages( cx, updates );
