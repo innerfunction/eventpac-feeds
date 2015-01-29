@@ -23,22 +23,23 @@ function buildImages( cx, updates ) {
 
 var feed = {
     active: true,
-    queue: 'nagp',
+    name: 'nagp',
     opts: {
         exts: {
             uriSchemes: eputils.schemes('nagp')
         }
     },
-    postTypes: {
+    types: {
         events: function( post ) {
+            var occurrence = post.occurrences[0];
             return {
                 id:             post.id,
                 title:          post.title,
                 occurrences:    post.occurrences,
-                startDate:      mods.df(post.occurrences[0].startDateTime, 'dddd, mmmm dS'), //h:MM TT, mmmm dS, yyyy
-                startTime:      mods.df(post.occurrences[0].startDateTime, 'HH:MM'),
-                endDate:        mods.df(post.occurrences[0].endDateTime, 'dddd, mmmm dS'),
-                endTime:        mods.df(post.occurrences[0].endDateTime, 'HH:MM'),
+                startDate:      mods.df( occurrence.startDateTime, 'dddd, mmmm dS'), //h:MM TT, mmmm dS, yyyy
+                startTime:      mods.df( occurrence.startDateTime, 'HH:MM'),
+                endDate:        mods.df( occurrence.endDateTime, 'dddd, mmmm dS'),
+                endTime:        mods.df( occurrence.endDateTime, 'HH:MM'),
                 content:        post.content,
                 performer:      post.performers,
                 type:           post.postType
@@ -59,13 +60,14 @@ var feed = {
             depends: 'events',
             build: function( cx, updatesByType ) {
                 var updates = updatesByType.events.map(function map( post ) {
+                    var occurrence = post.occurrences[0];
                     return {
                         id:             post.id,
                         type:           post.type,
                         title:          post.title,
                         description:    post.title,
-                        startTime:      post.occurrences[0].startDateTime,
-                        endTime:        post.occurrences[0].endDateTime,
+                        startTime:      post.startTime,
+                        endTime:        post.endTime,
                         action:         eputils.action('EventDetail', { 'eventID': post.id }),
                         image:          post.image,
                         content:        post.content
@@ -73,7 +75,17 @@ var feed = {
                 });
                 buildImages( cx, updates );
                 cx.eval('templates/event-detail.html', updates, 'event-{id}.html');
-                return updates;
+                return updates.map(function update( post ) {
+                    return {
+                        id:             post.id,
+                        type:           post.type,
+                        title:          post.title,
+                        description:    post.description,
+                        startTime:      post.startTime,
+                        endTime:        post.endTime,
+                        action:         post.action
+                    }
+                });
             }
         },
         performers: {
@@ -92,7 +104,15 @@ var feed = {
                 });
                 buildImages( cx, updates );
                 cx.eval('templates/speaker-detail.html', updates, 'speaker-{id}.html');
-                return updates;
+                return updates.map(function update( post ) {
+                    return {
+                        id:             post.id,
+                        type:           post.type,
+                        title:          post.title,
+                        description:    post.description,
+                        action:         post.action
+                    }
+                });
             }
         }
     }

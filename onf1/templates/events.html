@@ -19,7 +19,7 @@
 
      <style type="text/css">
         {#image}
-           /* div.image-banner {
+           /* div.image-image {
                 background: url({src}) 50% 50% no-repeat;
                 height: {height}px;
                 -moz-background-size: {width}px {height}px;
@@ -53,11 +53,8 @@
                                <p class="date"> Desde {start}, hasta {end} </p>
                     </div>
                     <div class="cold-md-12 col-sm-12 col-xs-12 main-image">
-                        <!-- <img class="img-responsive" title="Race" src="images/races/australia.png" /> -->
                         {#image}
-                        <!-- <div class="image image-banner img-responsive"></div> -->
                         <img class="img-responsive" title="Race" src="{src}" />
-                     
                         {/image}
                         <div class="favourite-btn"></div>
                         <!-- TODO: add active class when the user press the favourite-btn and add the race to the favourite list -->
@@ -175,23 +172,23 @@
                 <div class="cold-md-12 col-sm-12 col-xs-12 results">
                     <table class="table fixed fixed-rp-event event-results ">
                         <colgroup>
-                            <!--  <col width="10%">
+                            <col width="10%">
                             <col width="11%">
                             <col width="25%">
-                            <col width="13%">-->
+                            <col width="13%">
+                            <col width="7%">
                             <col width="15%">
-                            <col width="41%">
-                            <col width="41%">
+                            <col width="4%">
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>#</th>
-                               <!-- <th>No</th>-->
+                                <th>No</th>
                                 <th>Piloto</th>
                                 <th>ESC</th>
-                                <!--<th>VUE</th>
+                                <th>VUE</th>
                                 <th>Tiempo</th>
-                                <th>Puntos</th>-->
+                                <th>Puntos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -204,41 +201,40 @@
                 <div class="cold-md-12 col-sm-12 col-xs-12 results">
                     <table class="table table-striped event-results">
                         <colgroup>
-                            <!--  <col width="10%">
+                            <col width="10%">
                             <col width="11%">
                             <col width="25%">
-                            <col width="13%">-->
+                            <col width="13%">
+                            <col width="7%">
                             <col width="15%">
-                            <col width="41%">
-                            <col width="41%">
+                            <col width="4%">
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>#</th>
-                               <!-- <th>No</th>-->
+                                <th>No</th>
                                 <th>Piloto</th>
                                 <th>ESC</th>
-                                <!--<th>VUE</th>
+                                <th>VUE</th>
                                 <th>Tiempo</th>
-                                <th>Puntos</th>-->
+                                <th>Puntos</th>
                             </tr>
                         </thead>
                         <tbody>
                             {#individualResults}
                             <tr class="f16 first-r">
                                 <td>{id}</td>
-                                <!--<td>{performer_id}</td>
-                                <td colspan="4"><span class="flag {nationality}"></span>{title}</td>-->
-                                <td ><span class="flag {nationality}"></span>{title}</td>
-                                <td>{teamInitials}</td>
-                                <!--<td>{points}</td>-->
+                                <td>{performer_id}</td>
+                                <td colspan="4"><span class="flag {nationality}"></span>{title}</td>
+                            
+                                <td>{points}</td>
                             </tr>
-                            <!--<tr class="f16 second-r">
+                            <tr class="f16 second-r">
                                 <td colspan="3">
                                 <td>{teamInitials}</td>
                                 <td>{laps}</td>
                                 <td colspan="2">{timeOrRetired}</td>
-                            </tr>-->
+                            </tr>
                             {/individualResults}
                         </tbody>
                     </table>

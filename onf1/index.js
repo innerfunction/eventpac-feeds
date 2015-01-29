@@ -3,229 +3,215 @@ var mods = {
 	path:	require('path'),
 	tt:		require('semo/lib/tinytemper')
 }
+var format = require('util').format;
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 
-exports.active = false;
-//exports.schedule = '@hourly';
-exports.schedule = function( schedule ) {
-    return { minute: new schedule.Range( 0, 60, 5 ) };
-}
-exports.exts = {
-    uriSchemes: eputils.schemes('onf1')
+function isPublished( post ) {
+    return post.status == 'publish';
 }
 
-var BaseURL = 'http://onf1.com.mx/api/onf1/%s';
+function mapImages( cx, updates ) {
 
-exports.download = function(cx) {
-
-	cx.clean(function(post) {
-		return !(post.id && post.id.indexOf('resultsIndividual.') == 0);
-	});
-
-    var downloadTime = new Date().toString();
-    
-	var resultsTeam = cx.get( BaseURL, 'results/groups' )
-    .posts(function( data ) {
-        return data.posts;
+    var imageURLs = updates.map(function getImage( post ) {
+        return post.image;
     })
-    .map(function( post ) {
-		return {
-			id:				'resultsTeam-'+post.id,
-			pos:            post.id,
-        	title:          post.title,
-        	points:         post.points,
-        	nationality:    post.nationality,
-			type:			'resultsTeam',
-            downloadTime:   downloadTime
-		}
+    .filter(function hasURL( url ) {
+        return !!url;
     });
 
-	var resultsIndividual = cx.get( BaseURL, 'results/performers' )
-    .posts(function( data ) {
-        return data.posts;
-    })
-    .map(function( post ) {
-		return {
-			id:				'resultsIndividual-'+post.id,	
-			pos:            post.id,
-			title:          post.title,
-			nationality:    post.nationality,
-			team:           post.group[0].title || '',
-			teamInitials:	post.group[0].teamInitials,
-			points:         post.points,
-			type:			'resultsIndividual',
-            downloadTime:   downloadTime
-		}
-    });
-	
-	var events = cx.get( BaseURL, 'events' )
-    .posts(function( data ) {
-        return data.posts;
-    })
-    .map(function( post ) {
-        // Reduce the occurrences array to a map of occurrences
-        // keyed by name.
-        var occurrences = post.occurrences
-        .reduce(function( result, occ ) {
-            result[occ.occurrenceName] = occ;
-            return result;
-        }, {});
-        // Get GP and Race occurrence.
-        var gpOcc = occurrences.GP;
-        var raceOcc = occurrences.Race||gpOcc;
-        // Generate result.
-		return {
-			id:                         post.id,
-			status:                     post.status,
-            title:                      utils.filterHTML( post.title ),
-            content:                    utils.filterContent( post.content ),
-			image:                      post.photo,
-            thumbnail:                  post.photo,
-			circuit:                    post.circuit,
-			location:                   utils.cuval( post.locations ),
-            
-			start:                      mods.df( gpOcc.startDateTime, 'dd/mm/yyyy'),
-			end:                        mods.df( gpOcc.endDateTime, 'dd/mm/yyyy'),
-			startTime:                  raceOcc.startDateTime,
-			endTime:                    raceOcc.endDateTime,
-
-			laps:                       post.laps,
-			distance:                   post.distance,
-			longitude:                  post.longitude,
-			fastestLap:                 post.fastestLap,
-			fastestLapDriver:           post.fastestLapDriver,
-			fastestLapTime:             post.fastestLapTime,
-			fastestLapCarYear:          post.fastestLapCarYear,
-			individualResults:          post.individualResults,
-			teamResults:                post.teamResults,
-			turnNumber:			        post.turnNumber,
-			throttleLapUsePercentaje:	post.throttleLapUsePercentaje,
-			importantLaps:		        post.importantLaps,
-			type:				        'events',
-            downloadTime:               downloadTime
-		}
-    });
-
-	var news = cx.get( BaseURL, 'news' )
-    .posts(function( data ) {
-        return data.posts;
-    })
-    .map(function( post ) {
-		return {
-			id:             post.id,
-			title:          post.title,
-			author:         post.author,
-			modified:       post.modifiedDateTime,
-			created:        post.createdDateTime,
-			content:        post.content,
-			image:          post.photo,
-            thumbnail:      post.photo,
-			type:		    'news',
-            downloadTime:   downloadTime
-		}
-    });
-
-	cx.write(resultsIndividual);
-	cx.write(resultsTeam);
-	cx.write(events);
-	cx.write(news);
-    
-    cx.clean(function( post ) {
-        return post.downloadTime == downloadTime;
-    });
+    var images = cx.images( imageURLs );
+    images.resize({ width: 100, format: 'jpeg' },'{name}-{width}.{format}' ).mapTo( updates, 'thumbnail');
+    images.resize({ width: 500, format: 'jpeg' }, true ).mapTo( updates, 'image');
 }
-exports.build = function(cx) {
 
-	cx.file([
-			'templates/theme/css/bootstrap.min.css',
-        	'templates/theme/js/jquery.min.js',
-        	'templates/theme/js/bootstrap.min.js',
-       		'templates/theme/css/flags16.css',
-       		'templates/theme/css/flags32.css',
-       		'templates/css/style.css',
-       		'templates/theme/css/font-awesome.css',
-       		'templates/theme/images',
-			'templates/images',
-			'templates/about.html',
-			'templates/share.html',
-			'templates/twitter.html',
-			'html/sponsor.html'
-		]).cp();
+var feed = {
+    active: true,
+    name: 'onf1',
+    opts: {
+        exts: {
+            uriSchemes: eputils.schemes('onf1')
+        }
+    },
+    types: {
+        groupperformers: function( post ) {
+            return {
+                id:				'resultsTeam-'+post.id,
+                pos:            post.id,
+                title:          post.title,
+                points:         post.points,
+                nationality:    post.nationality,
+                type:			'resultsTeam'
+            }
+        },
+        performers: function( post ) {
+            var group = (post.group && post.group[0])||{};
+            return {
+                id:				'resultsIndividual-'+post.id,	
+                pos:            post.id,
+                title:          post.title,
+                nationality:    post.nationality,
+                team:           group.title||'',
+                teamInitials:	group.teamInitials,
+                points:         post.points,
+                type:			'resultsIndividual'
+            }
+        },
+        events: function( post ) {
+            // Reduce the occurrences array to a map of occurrences
+            // keyed by name.
+            var occurrences = post.occurrences
+            .reduce(function( result, occur ) {
+                result[occur.occurrenceName] = occur;
+                return result;
+            }, {});
+            // Get GP and Race occurrence.
+            var gpOcc = occurrences.GP;
+            var raceOcc = occurrences.Race||gpOcc;
+            // Generate result.
+            return {
+                id:                         post.id,
+                status:                     post.status,
+                title:                      utils.filterHTML( post.title ),
+                content:                    utils.filterContent( post.content ),
+                image:                      post.photo,
+                thumbnail:                  post.photo,
+                circuit:                    post.circuit,
+                location:                   utils.cuval( post.locations ),
+                
+                start:                      mods.df( gpOcc.startDateTime, 'dd/mm/yyyy'),
+                end:                        mods.df( gpOcc.endDateTime, 'dd/mm/yyyy'),
+                startTime:                  raceOcc.startDateTime,
+                endTime:                    raceOcc.endDateTime,
 
-	var types = ['news', 'events', 'resultsIndividual', 'resultsTeam'];
-	
-	var postsByType = types.reduce(function( posts, type ) {
-		posts[type] = cx.data.posts.filter(function( post ) {
-			return post.type == type;
-		});
+                laps:                       post.laps,
+                distance:                   post.distance,
+                longitude:                  post.longitude,
+                fastestLap:                 post.fastestLap,
+                fastestLapDriver:           post.fastestLapDriver,
+                fastestLapTime:             post.fastestLapTime,
+                fastestLapCarYear:          post.fastestLapCarYear,
+                individualResults:          post.individualResults,
+                teamResults:                post.teamResults,
+                turnNumber:			        post.turnNumber,
+                throttleLapUsePercentaje:	post.throttleLapUsePercentaje,
+                importantLaps:		        post.importantLaps,
+                type:				        'events'
+            }
+        },
+        post: function( post ) {
+            return {
+                id:             post.id,
+                title:          post.title,
+                author:         post.author,
+                modified:       post.modifiedDateTime,
+                created:        post.createdDateTime,
+                content:        post.content,
+                image:          post.photo,
+                thumbnail:      post.photo,
+                type:		    'news'
+            }
+        }
+    },
+    targets: {
+        events: {
+            depends: 'events',
+            build: function( cx, updatesByType ) {
 
-		var imageURLs = posts[type].map(function(post) {
-			return post.image;	
-		})
-		.filter(function( url ) {
-			return !!url;
-		});
-        var images = cx.images( imageURLs );
-        images.resize( { width: 100, format: 'jpeg' }, '{name}-{width}.{format}' ).mapTo( posts[type], 'thumbnail' );
-		images.resize( { width: 500, format: 'jpeg' }, true ).mapTo( posts[type], 'image' );
-		return posts;
-	}, {});
+                var updates = updatesByType.events.filter( isPublished );
 
-	postsByType['results'] = {
-            resultsIndividual: postsByType.resultsIndividual,
-            resultsTeam: postsByType.resultsTeam
-        };
-	var newsFiles = cx.eval('templates/news-detail.html', postsByType.news, 'news-{id}.html');
-    cx.eval('templates/events.html', postsByType.events, 'events-{id}.html');
-	cx.eval('templates/all-results.html', postsByType.results, 'results.html');
+                var imageURLs = updates.map(function getImage( post ) {
+                    return post.image;
+                })
+                .filter(function hasURL( url ) {
+                    return !!url;
+                });
 
-	var updates = [];
+                var images = cx.images( imageURLs );
+                images.resize({ width: 500, format: 'jpeg' }, true ).mapTo( updates, 'image');
 
-	for (var type in postsByType) {	
+                cx.eval('templates/events.html', updates, 'events-{id}.html');
+            }
+        },
+        results: {
+            depends: '*',
+            build: function( cx, updatesByType ) {
+                var resultsIndividual = cx.data.posts.filter(function indivResult( post ) {
+                    return post.type == 'resultsIndividual' && post.status == 'publish';
+                });
+                var resultsTeam = cx.data.posts.filter(function teamResult( post ) {
+                    return post.type == 'resultsTeam' && post.status == 'publish';
+                });
+                var results = {
+                    resultsIndividual:  resultsIndividual,
+                    resultsTeam:        resultsTeam
+                };
+                cx.eval('templates/all-results.html', results, 'results.html');
+            }
+        },
+        meta: {
+            depends: ['news','events'],
+            build: function( cx, updatesByType ) {
 
-		if( type == 'results' || type == 'resultsIndividual' || type == 'resultsTeam') continue;
-		
-		var updatesForType = postsByType[type].map(function( post ) {
-			var description, action;
-			switch (post.type) {
-				case 'news':
-					description = post.author + ' ' + post.modified;
-					var file = newsFiles.get( post.id );
-					if( file ) {
-                        action = eputils.action('DefaultWebView', { html: file.uri('subs') });
-					}
-					break;
-				case 'events':
-					description = post.circuit;
-                    action = eputils.action('EventDetail', { 'eventID': post.id });
-					break;
-			}
-			var thumbnail;
-			if( post.thumbnail ) {
-                thumbnail = post.thumbnail.uri('@subs');
-			}
-			return {
-				id:				post.id,
-				type:			post.type,
-				title:			post.title,
-				description:	description,
-				image:			thumbnail,
-				action:			action,
-				startTime:		post.startTime,
-				endTime:		post.end,
-                modifiedTime:   post.modified
-			}
-		});
-		updates = updates.concat( updatesForType );
-	}
-    // Rewrite db update format to sets of per-table updates, keyed by record ID.
-    var posts = updates
-    .reduce(function( posts, record ) {
-        posts[record.id] = record;
-        return posts;
-    }, {});
-    // Return build meta data with db updates.
-    return { db: { posts: posts } };
+                var newsUpdates = updatesByType.news, newsFiles;
+                if( newsUpdates ) {
+                    newsFiles = cx.eval('templates/news-detail.html', newsUpdates.filter( isPublished ), 'news-{id}.html');
+                }
+
+                var updates = [];
+                for( var type in updatesByType ) {	
+
+                    if( type == 'results' || type == 'resultsIndividual' || type == 'resultsTeam') continue;
+                    
+                    var typeUpdates = updatesByType[type].filter( isPublished );
+                    var thumbnailURLs = typeUpdates.map(function getImage( post ) {
+                        return post.thumbnail;
+                    })
+                    .filter(function hasURL( url ) {
+                        return !!url;
+                    });
+                    var thumbnails = cx.images( thumbnailURLs );
+                    thumbnails.resize({ width: 100, format: 'jpeg' },'{name}-{width}.{format}' ).mapTo( typeUpdates, 'thumbnail');
+
+                    typeUpdates = typeUpdates.map(function map( post ) {
+
+                        var description, action;
+                        switch( post.type ) {
+                        case 'news':
+                            description = post.author+' '+post.modified;
+                            var file = newsFiles.get( post.id );
+                            if( file ) {
+                                action = eputils.action('DefaultWebView', { html: file.uri('subs') });
+                            }
+                            break;
+                        case 'events':
+                            description = post.circuit;
+                            action = eputils.action('EventDetail', { eventID: post.id });
+                            break;
+                        }
+
+                        var thumbnail;
+                        if( post.thumbnail ) {
+                            thumbnail = post.thumbnail.uri('@subs');
+                        }
+
+                        return {
+                            id:				post.id,
+                            type:			post.type,
+                            title:			post.title,
+                            description:	description,
+                            image:			thumbnail,
+                            action:			action,
+                            startTime:		post.startTime,
+                            endTime:		post.end,
+                            modifiedTime:   post.modified
+                        }
+                    });
+                    updates = updates.concat( typeUpdates );
+                }
+                return updates;
+            }
+        }
+    }
 }
-exports.inPath = require('path').dirname( module.filename );
+module.exports = require('../inc-build').extend( feed, module );

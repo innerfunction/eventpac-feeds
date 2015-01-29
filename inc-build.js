@@ -2,6 +2,10 @@ var Log = require('log4js').getLogger('inc-build');
 var mods = {
     path: require('path')
 }
+var format = require('util').format;
+
+// Format of the URL for fetching all posts in a feed.
+var AllPostsURLFormat = 'http://%s.eventpac.com/api/%s/all-posts';
 
 /**
  * Return an object mapping post types to lists of dependent target IDs.
@@ -77,27 +81,40 @@ exports.extend = function( feed, _module ) {
     // Note that deleted posts are kept in the database for one build cycle, then
     // deleted.
     function download( cx, url ) {
+        // If no URL is specified then download all posts.
+        if( !url ) {
+            url = format( AllPostsURLFormat, feed.name, feed.name );
+        }
         // Download the post URL and map using the type specific map function.
         var post = cx.get( url )
         .posts(function( data ) {
+            Log.debug('Downloaded %s posts for feed %s', data.posts && data.posts.length, feed.name );
             return data.posts
         })
         .map(function map( post ) {
-            var status = post.status;
-            var typeMap = feed.postTypes[post.type];
-            if( typeMap ) {
-                post = typeMap( post );
+            try {
+                var $status = post.status;
+                var $type = post.postType;
+                var typeMap = feed.types[$type];
+                if( typeMap ) {
+                    post = typeMap( post );
+                }
+                post.$status = $status;
+                post.$type = $type;
+                cx.applyBuildScope( post );
+                return post;
             }
-            post.status = status;
-            cx.applyBuildScope( post );
-            return post;
+            catch( e ) {
+                Log.error('Mapping post %s (%s) of feed %s', post.id, post.postType, feed.name, e );
+            }
+            return false; // Return false to indicate no data due to error.
         });
         // Write the post to the db.
         cx.write( post );
         // Clean non-published posts from the db.
         cx.clean(function clean( post ) {
             // Delete posts which aren't published or aren't in the current build scope.
-            return post.status == 'publish' || cx.hasCurrentBuildScope( post );
+            return post.$status == 'publish' || cx.hasCurrentBuildScope( post );
         });
     }
 
@@ -105,13 +122,14 @@ exports.extend = function( feed, _module ) {
     // update posts for each post type. It will then generate a list of build targets
     // dependent on the updated post types, and then invoke each target.
     function build( cx ) {
+        var feedID = this.feed.id; // 'this' is a Build instance.
         // Get the current build object.
         var build = cx.build();
         // Decide whether to do a full or incremental build.
         var fullBuildEvery = feed.fullBuildEvery||10;
         var doFullBuild = (build.seq % fullBuildEvery) == 0;
         if( doFullBuild ) {
-            Log.debug('Full build of feed %s (%d/%d)', feed.id, build.seq, fullBuildEvery );
+            Log.debug('Full build of feed %s (%d/%d)', feedID, build.seq, fullBuildEvery );
         }
         // Copy files from last build; or use feed's base content if not previous build.
         if( !doFullBuild && build.prevBuild ) {
@@ -133,25 +151,25 @@ exports.extend = function( feed, _module ) {
         }
         // Organize list of posts by type
         var updatesByType = updates.reduce(function reduce( result, post ) {
-            var updates = result[post.type];
+            var updates = result[post.$type];
             if( updates ) {
                 updates.push( post );
             }
             else {
-                result[post.type] = [ post ];
+                result[post.$type] = [ post ];
             }
             return result;
         }, {});
         // Generate list of updated post types
         var updatedTypes = Object.keys( updatesByType );
         // Generate list of build targets dependent on updated post types
-        var targets = getDependentTargetsForPostTypes( updatedTypes, dependencies, targets );
+        var buildTargets = getDependentTargetsForPostTypes( updatedTypes, dependencies, targets );
         // The build function result - updated posts to be written to the db section of the build meta.
         var posts = {};
         // Invoke each build target
-        targets.forEach(function each( target ) {
+        buildTargets.forEach(function each( target ) {
             try {
-                Log.debug('Building target %s/%s', feed.id, target.id );
+                Log.debug('Building target %s/%s', feedID, target.id );
                 var result = target.build( cx, updatesByType );
                 // Copy results into posts.
                 if( result ) {
@@ -162,14 +180,14 @@ exports.extend = function( feed, _module ) {
                 }
             }
             catch( e ) {
-                Log.error('Building target %s of feed %s', target.id, feed.id, e );
+                Log.error('Building target %s of feed %s', target.id, feedID, e );
             }
         });
         return { db: { posts: posts } };
     }
     var _exports = {
         active:         feed.active||false,
-        queue:          feed.queue,
+        queue:          feed.name,
         fullBuildEvery: feed.fullBuildEvery,
         download:       download,
         build:          build
