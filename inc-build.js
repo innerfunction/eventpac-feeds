@@ -105,7 +105,7 @@ exports.extend = function( feed, _module ) {
                 return post;
             }
             catch( e ) {
-                Log.error('Mapping post %s (%s) of feed %s', post.id, post.postType, feed.name, e );
+                Log.error('Failed to map post %s (%s) of feed %s', post.id, post.postType, feed.name, e );
             }
             return false; // Return false to indicate no data due to error.
         });
@@ -129,7 +129,7 @@ exports.extend = function( feed, _module ) {
         var fullBuildEvery = feed.fullBuildEvery||10;
         var doFullBuild = (build.seq % fullBuildEvery) == 0;
         if( doFullBuild ) {
-            Log.debug('Full build of feed %s (%d/%d)', feedID, build.seq, fullBuildEvery );
+            Log.info('Full build of feed %s (%d/%d)', feedID, build.seq, fullBuildEvery );
         }
         // Copy files from last build; or use feed's base content if not previous build.
         if( !doFullBuild && build.prevBuild ) {
@@ -180,7 +180,7 @@ exports.extend = function( feed, _module ) {
                 }
             }
             catch( e ) {
-                Log.error('Building target %s of feed %s', target.id, feedID, e );
+                Log.error('Failed to build target %s of feed %s', target.id, feedID, e );
             }
         });
         return { db: { posts: posts } };
