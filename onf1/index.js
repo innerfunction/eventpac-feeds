@@ -41,6 +41,7 @@ var feed = {
                 title:          post.title,
                 points:         post.points,
                 nationality:    post.nationality,
+                status:         post.status,
                 type:			'resultsTeam'
             }
         },
@@ -54,6 +55,7 @@ var feed = {
                 team:           group.title||'',
                 teamInitials:	group.teamInitials,
                 points:         post.points,
+                status:         post.status,
                 type:			'resultsIndividual'
             }
         },
@@ -102,6 +104,7 @@ var feed = {
         post: function( post ) {
             return {
                 id:             post.id,
+                status:         post.status,
                 title:          post.title,
                 author:         post.author,
                 modified:       post.modifiedDateTime,
@@ -131,10 +134,83 @@ var feed = {
                 images.resize({ width: 500, format: 'jpeg' }, true ).mapTo( updates, 'image');
 
                 cx.eval('templates/events.html', updates, 'events-{id}.html');
+
+                var thumbnailURLs = updates.map(function getImage( post ) {
+                    return post.thumbnail;
+                })
+                .filter(function hasURL( url ) {
+                    return !!url;
+                });
+                var thumbnails = cx.images( thumbnailURLs );
+                thumbnails.resize({ width: 100, format: 'jpeg' },'{name}-{width}.{format}' ).mapTo( updates, 'thumbnail');
+
+                updates = updates.map(function map( post ) {
+                    return {
+                        id:				post.id,
+                        type:			post.type,
+                        title:			post.title,
+                        description:	post.circuit,
+                        image:			post.thumbnail && post.thumbnail.uri('@subs'),
+                        action:			eputils.action('EventDetail', { eventID: post.id }),
+                        startTime:		post.startTime,
+                        endTime:		post.end,
+                        modifiedTime:   post.modified
+                    }
+                });
+
+                return updates;
+            }
+        },
+        news: {
+            depends: 'post',
+            build: function( cx, updatesByType ) {
+
+                var updates = updatesByType.post.filter( isPublished );
+
+                var imageURLs = updates.map(function getImage( post ) {
+                    return post.image;
+                })
+                .filter(function hasURL( url ) {
+                    return !!url;
+                });
+
+                var images = cx.images( imageURLs );
+                images.resize({ width: 500, format: 'jpeg' }, true ).mapTo( updates, 'image');
+
+                var newsFiles = cx.eval('templates/news-detail.html', updates, 'news-{id}.html');
+
+                var thumbnailURLs = updates.map(function getImage( post ) {
+                    return post.thumbnail;
+                })
+                .filter(function hasURL( url ) {
+                    return !!url;
+                });
+                var thumbnails = cx.images( thumbnailURLs );
+                thumbnails.resize({ width: 100, format: 'jpeg' },'{name}-{width}.{format}' ).mapTo( updates, 'thumbnail');
+
+                updates = updates.map(function map( post ) {
+                    var file = newsFiles.get( post.id ), action;
+                    if( file ) {
+                        action = eputils.action('DefaultWebView', { html: file.uri('subs') });
+                    }
+                    return {
+                        id:				post.id,
+                        type:			post.type,
+                        title:			post.title,
+                        description:	post.author+' '+post.modified,
+                        image:			post.thumbnail && post.thumbnail.uri('@subs'),
+                        action:			action,
+                        startTime:		post.startTime,
+                        endTime:		post.end,
+                        modifiedTime:   post.modified
+                    }
+                });
+
+                return updates;
             }
         },
         results: {
-            depends: '*',
+            depends: ['groupperformers','performers'],
             build: function( cx, updatesByType ) {
                 var resultsIndividual = cx.data.posts.filter(function indivResult( post ) {
                     return post.type == 'resultsIndividual' && post.status == 'publish';
@@ -147,69 +223,6 @@ var feed = {
                     resultsTeam:        resultsTeam
                 };
                 cx.eval('templates/all-results.html', results, 'results.html');
-            }
-        },
-        meta: {
-            depends: ['news','events'],
-            build: function( cx, updatesByType ) {
-
-                var newsUpdates = updatesByType.news, newsFiles;
-                if( newsUpdates ) {
-                    newsFiles = cx.eval('templates/news-detail.html', newsUpdates.filter( isPublished ), 'news-{id}.html');
-                }
-
-                var updates = [];
-                for( var type in updatesByType ) {	
-
-                    if( type == 'results' || type == 'resultsIndividual' || type == 'resultsTeam') continue;
-                    
-                    var typeUpdates = updatesByType[type].filter( isPublished );
-                    var thumbnailURLs = typeUpdates.map(function getImage( post ) {
-                        return post.thumbnail;
-                    })
-                    .filter(function hasURL( url ) {
-                        return !!url;
-                    });
-                    var thumbnails = cx.images( thumbnailURLs );
-                    thumbnails.resize({ width: 100, format: 'jpeg' },'{name}-{width}.{format}' ).mapTo( typeUpdates, 'thumbnail');
-
-                    typeUpdates = typeUpdates.map(function map( post ) {
-
-                        var description, action;
-                        switch( post.type ) {
-                        case 'news':
-                            description = post.author+' '+post.modified;
-                            var file = newsFiles.get( post.id );
-                            if( file ) {
-                                action = eputils.action('DefaultWebView', { html: file.uri('subs') });
-                            }
-                            break;
-                        case 'events':
-                            description = post.circuit;
-                            action = eputils.action('EventDetail', { eventID: post.id });
-                            break;
-                        }
-
-                        var thumbnail;
-                        if( post.thumbnail ) {
-                            thumbnail = post.thumbnail.uri('@subs');
-                        }
-
-                        return {
-                            id:				post.id,
-                            type:			post.type,
-                            title:			post.title,
-                            description:	description,
-                            image:			thumbnail,
-                            action:			action,
-                            startTime:		post.startTime,
-                            endTime:		post.end,
-                            modifiedTime:   post.modified
-                        }
-                    });
-                    updates = updates.concat( typeUpdates );
-                }
-                return updates;
             }
         }
     }

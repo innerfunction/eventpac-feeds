@@ -22,7 +22,7 @@ function buildImages( cx, updates ) {
 }
 
 var feed = {
-    active: true,
+    active: false,
     name: 'nagp',
     opts: {
         exts: {
