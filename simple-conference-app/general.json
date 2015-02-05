@@ -1,0 +1,12 @@
+{
+    "performers": {
+        "name": "",
+        "location": "", 
+        "template": "",
+        "styles": {
+            "imageShape": "",
+            "header-color": "",
+            "fonts": ""
+        }
+    }
+}
