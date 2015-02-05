@@ -4,7 +4,7 @@
         "location": "",         
         "styles": {
             "header": {
-                "background" : "",
+                "backgroundColor" : "",
                 "title" : {
                     "fontSize" : "",
                     "fontColor" : "",
@@ -35,6 +35,14 @@
                     "fontFamily": "" ,
                     "fontStyle": "",
                     "backgroundColor": ""
+                },
+                "time" : {
+                    "backgroundColor": "",
+                    "shape": "",
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontFamily": "" ,
+                    "fontStyle": ""
                 }
             },
             "title" : {
@@ -43,14 +51,7 @@
                 "fontStyle": "",
                 "fontFamily": "" 
             },
-            "time" : {
-                "backgroundColor": "",
-                "shape": "",
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontFamily": "" ,
-                "fontStyle": ""
-            },
+
             "content": {
                 "fontSize" : "",
                 "fontColor" : "",
@@ -81,6 +82,7 @@
     },
     "location" : {
         "header" : {
+            "backgroundColor": "",
             "title" : {
                 "fontSize" : "",
                 "fontColor" : "",
