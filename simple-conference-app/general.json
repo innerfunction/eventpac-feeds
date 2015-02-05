@@ -10,3 +10,89 @@
         }
     }
 }
+
+
+{
+
+}
+SPEAKER 
+Header 
+    background
+
+    Title 
+        size
+        font
+        color 
+    Image 
+        shape (circle/banner)
+
+Content 
+    font 
+    size
+    color 
+    aligment
+    background color
+
+
+
+EVENT DETAILS
+Header
+    Date
+        Font size
+        color
+Title
+    size
+    font
+    color 
+
+Time 
+    background  
+    shape
+
+Content 
+    font 
+    size
+    color 
+    aligment
+    background color
+
+PROGRAMME
+Header
+
+List
+    Background color
+    Date
+        color
+        Font
+
+    Description
+        Color
+        Font
+
+LOCATION
+Header
+    Font size
+    Color
+
+CONTACT
+Header
+
+    Font size
+    color
+    image
+        shape
+
+
+Content
+    font 
+    size
+    color 
+    aligment
+    background color
+
+    Contact buttons
+        background
+        font
+        color
+        hover styles
+
