@@ -1,98 +1,130 @@
 {
     "performers": {
         "name": "",
-        "location": "", 
-        "template": "",
+        "location": "",         
         "styles": {
-            "imageShape": "",
-            "header-color": "",
-            "fonts": ""
+            "header": {
+                "background" : "",
+                "title" : {
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontStyle": "",
+                    "fontFamily": ""
+                },
+                "image":{
+                    "shape": ""
+                }
+            },
+            "content": {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "fontStyle": "",
+                "backgroundColor": "",
+                "alignment" : ""
+            },
+    },
+    "eventDetail" : {
+        "name": "",
+        "location": "", 
+        "styles" : {
+            "header" : {
+                "date" : {
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontFamily": "" ,
+                    "fontStyle": "",
+                    "backgroundColor": ""
+                }
+            },
+            "title" : {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontStyle": "",
+                "fontFamily": "" 
+            },
+            "time" : {
+                "backgroundColor": "",
+                "shape": "",
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "fontStyle": ""
+            },
+            "content": {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "fontStyle": "",
+                "backgroundColor": "",
+                "alignment" : ""
+            },
+        },
+    },
+    "programme" : {
+        "header" : "",
+        "list": {
+            "backgroundColor": "",
+            "date" :{
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "fontStyle": ""
+            },
+            "description" :{
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "fontStyle": ""
+            }
+        }
+    },
+    "location" : {
+        "header" : {
+            "title" : {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "",
+                "fontStyle": ""
+            }
+        },
+
+        "content": {
+            "fontSize" : "",
+            "fontColor" : "",
+            "fontFamily": "" ,
+            "backgroundColor": "",
+            "alignment" : ""
+        }
+    },
+    "contact" : {
+        "header" : {
+            "title" : {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": ""  ,
+                "fontStyle": "",
+            },
+            "image":{
+                "shape": ""
+            }
+        },
+        "content": {
+            "fontSize" : "",
+            "fontColor" : "",
+            "fontFamily": "" ,
+            "fontStyle": "",
+            "backgroundColor": "",
+            "alignment" : "",
+            "contactButtons": {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "backgroundColor": "",
+                "hoverBackgroundColor" : "",
+                "hoverFontColor": "",
+                "hoverFontStyle": ""
+            }
         }
     }
 }
-
-
-{
-
-}
-SPEAKER 
-Header 
-    background
-
-    Title 
-        size
-        font
-        color 
-    Image 
-        shape (circle/banner)
-
-Content 
-    font 
-    size
-    color 
-    aligment
-    background color
-
-
-
-EVENT DETAILS
-Header
-    Date
-        Font size
-        color
-Title
-    size
-    font
-    color 
-
-Time 
-    background  
-    shape
-
-Content 
-    font 
-    size
-    color 
-    aligment
-    background color
-
-PROGRAMME
-Header
-
-List
-    Background color
-    Date
-        color
-        Font
-
-    Description
-        Color
-        Font
-
-LOCATION
-Header
-    Font size
-    Color
-
-CONTACT
-Header
-
-    Font size
-    color
-    image
-        shape
-
-
-Content
-    font 
-    size
-    color 
-    aligment
-    background color
-
-    Contact buttons
-        background
-        font
-        color
-        hover styles
-
