@@ -1,0 +1,132 @@
+{
+    "performers": {
+        "name": "",
+        "location": "",         
+        "styles": {
+            "header": {
+                "backgroundColor" : "",
+                "title" : {
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontStyle": "",
+                    "fontFamily": ""
+                },
+                "image":{
+                    "shape": ""
+                }
+            },
+            "content": {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "fontStyle": "",
+                "backgroundColor": "",
+                "alignment" : ""
+            },
+    },
+    "eventDetail" : {
+        "name": "",
+        "location": "", 
+        "styles" : {
+            "header" : {
+                "date" : {
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontFamily": "" ,
+                    "fontStyle": "",
+                    "backgroundColor": ""
+                },
+                "time" : {
+                    "backgroundColor": "",
+                    "shape": "",
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontFamily": "" ,
+                    "fontStyle": ""
+                }
+            },
+            "title" : {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontStyle": "",
+                "fontFamily": "" 
+            },
+
+            "content": {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "fontStyle": "",
+                "backgroundColor": "",
+                "alignment" : ""
+            },
+        },
+    },
+    "programme" : {
+        "header" : "",
+        "list": {
+            "backgroundColor": "",
+            "date" :{
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "fontStyle": ""
+            },
+            "description" :{
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "fontStyle": ""
+            }
+        }
+    },
+    "location" : {
+        "header" : {
+            "backgroundColor": "",
+            "title" : {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "",
+                "fontStyle": ""
+            }
+        },
+
+        "content": {
+            "fontSize" : "",
+            "fontColor" : "",
+            "fontFamily": "" ,
+            "backgroundColor": "",
+            "alignment" : ""
+        }
+    },
+    "contact" : {
+        "header" : {
+            "title" : {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": ""  ,
+                "fontStyle": "",
+            },
+            "image":{
+                "shape": ""
+            }
+        },
+        "content": {
+            "fontSize" : "",
+            "fontColor" : "",
+            "fontFamily": "" ,
+            "fontStyle": "",
+            "backgroundColor": "",
+            "alignment" : "",
+            "contactButtons": {
+                "fontSize" : "",
+                "fontColor" : "",
+                "fontFamily": "" ,
+                "backgroundColor": "",
+                "hoverBackgroundColor" : "",
+                "hoverFontColor": "",
+                "hoverFontStyle": ""
+            }
+        }
+    }
+}
