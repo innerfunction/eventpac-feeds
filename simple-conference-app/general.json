@@ -43,13 +43,13 @@
                     "fontColor" : "",
                     "fontFamily": "" ,
                     "fontStyle": ""
-                }
-            },
-            "title" : {
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontStyle": "",
-                "fontFamily": "" 
+                },
+                "title" : {
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontStyle": "",
+                    "fontFamily": "" 
+                },
             },
 
             "content": {
