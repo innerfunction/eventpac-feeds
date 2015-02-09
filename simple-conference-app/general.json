@@ -5,9 +5,7 @@
         - Image shape (circle / banner)
         - Title style
 
-    Title and content style can be set generally for the whole app or individualy for each page-type.
-    We can set the mainStyle for the whole app, or setting each part individualy.
-    
+    Title and content style can be set generally for the whole app or individualy for each page-type.    
 */
 {
     "assets": {
