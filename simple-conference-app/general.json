@@ -1,12 +1,3 @@
-/*
-
-    Header have 3 settings :
-        - Background Color
-        - Image shape (circle / banner)
-        - Title style
-
-    Title and content style can be set generally for the whole app or individualy for each page-type.    
-*/
 {
     "assets": {
         "logo": "",
@@ -14,10 +5,10 @@
     }
     "generalStyle": {
         "title" : {
-            "fontSize" : "",
-            "fontColor" : "",
-            "fontStyle": "",
-            "fontFamily": ""
+            "fontSize" : "14px",
+            "fontColor" : "red",
+            "fontStyle": "none",
+            "fontFamily": "Arial"
         },
         "content": {
             "fontSize" : "",
@@ -34,11 +25,15 @@
     },
     "page-type": {
         "performers": {
-            "name": "",
-            "style" : {}
+            "name": "performers",
+            "style" : {
+                "title" : {
+                    "fontSize" : "20px"
+                }
+            }
         },
         "eventDetail" : {
-            "name": "",
+            "name": "eventDetail",
             "style" : {
                 "header" : {
                     "date" : {
@@ -60,6 +55,7 @@
             }
         },
         "programme" : {
+            "name": "programme",
             "style": {
                 "list": {
                     "backgroundColor": "",
@@ -79,10 +75,11 @@
             }
         },
         "location" : {
-            "name": "",
+            "name": "location",
             "style": {}
         },
         "contact" : {
+            "name": "contact",
             "style": {
                 "content": {
                     "fontSize" : "",
