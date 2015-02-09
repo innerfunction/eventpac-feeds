@@ -23,7 +23,8 @@
             "fontFamily": "" ,
             "fontStyle": "",
             "backgroundColor": "",
-            "alignment" : ""
+            "alignment" : "",
+            "style" : ""
         },
         "header": {
             "backgroundColor" : "",
@@ -32,19 +33,22 @@
             }
         }
     },
-    "page-type": {
+    "PageType": {
+        
         "performers": {
+            "id": "performers",
             "name": "",
             "styles": {
                 "header": {
                     "backgroundColor" : "",
                     "image":{
-                        "shape": ""
+                        "shape": "1"
                     }
                 }
             }
         },
         "eventDetail" : {
+            "id": "eventDetail",
             "name": "",
             "styles" : {
                 "header" : {
@@ -67,55 +71,64 @@
             }
         },
         "programme" : {
-            "header" : "",
-            "list": {
-                "backgroundColor": "",
-                "date" :{
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFamily": "" ,
-                    "fontStyle": ""
-                },
-                "description" :{
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFamily": "" ,
-                    "fontStyle": ""
+            "id": "programme",
+            "styles" : {
+                "list": {
+                    "backgroundColor": "",
+                    "date" :{
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": ""
+                    },
+                    "description" :{
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": ""
+                    }
                 }
             }
         },
         "location" : {
-            "header" : {
-                "backgroundColor": "",
+            "id": "location",
+            "styles":{
+                "header" : {
+                    "backgroundColor": "",
+                }
             }
         },
         "contact" : {
-            "header" : {
-                "title" : {
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFamily": ""  ,
-                    "fontStyle": "",
+            "id" : "contact",
+            "styles":{
+                "header" : {
+                    "title" : {
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": ""  ,
+                        "fontStyle": "",
+                    },
+                    "image":{
+                        "shape": ""
+                    }
                 },
-                "image":{
-                    "shape": ""
-                }
-            },
-            "content": {
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontFamily": "" ,
-                "fontStyle": "",
-                "backgroundColor": "",
-                "alignment" : "",
-                "contactButtons": {
+                "content": {
                     "fontSize" : "",
                     "fontColor" : "",
                     "fontFamily": "" ,
+                    "fontStyle": "",
                     "backgroundColor": "",
-                    "hoverBackgroundColor" : "",
-                    "hoverFontColor": "",
-                    "hoverFontStyle": ""
+                    "alignment" : "",
+                    "style" : "",
+                    "contactButtons": {
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "backgroundColor": "",
+                        "hoverBackgroundColor" : "",
+                        "hoverFontColor": "",
+                        "hoverFontStyle": ""
+                    }
                 }
 
             }

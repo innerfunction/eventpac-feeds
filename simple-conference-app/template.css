@@ -1,0 +1,199 @@
+body, div, ul, a, h1, h2, h3, span {
+	padding: 0;
+	margin: 0;
+}
+ul { 
+	list-style: none;
+}
+p {
+	margin: 6px 0 ;
+}
+.table-responsive {
+	margin-right: -15px;
+	margin-left: -15px;
+}
+a, a:hover, a:active, a:visited { 
+	text-decoration: none; 
+	color:#000;
+}
+.position-absolute { 
+	position: absolute;
+	width:100%;
+}
+.hide { 
+	display: none;
+}
+.visible { 
+	display: visible
+}
+.block {
+	display: block;
+}
+.fixed {
+	margin-top:0 ;
+	display: none;
+}
+header, .header {
+	padding: 30px ;
+	background-color: {MainStyle.header.fontColor};
+	text-align: center;
+}
+/* review to set any content in the shape */
+/* IMAGE SHAPES */
+.shape-container > p {
+	padding:0;
+	margin:0;
+}
+
+/* banner image */
+.shape-container.banner { 
+	margin: 0 -15px;
+	padding: 0;
+}
+
+.shape-container.banner  > p > span > img {
+	width: 100%;
+	height: 230px;
+	visibility: hidden;
+}
+
+/* content style classes */
+.dropCap > p:first-child:first-letter { 
+	float: left;
+	font-size: 36pt;
+	line-height: .8;
+	padding-right: 4px;
+	font-weight: 600;
+}
+
+/* buttons */
+.btn {
+	padding:0 ;
+	width:100%;
+}
+.btn > a {
+	display: block;
+	padding: 10px 6px;
+	color: #fff;
+
+}
+
+{#PageType}
+	{#styles}
+
+		{#header}
+			#{id} > header, #{id} > .header {
+				background : {backgroundColor};
+			}
+
+			{?date}
+				#{id} > header .date, #{id} > .header .date {
+					font-size: {fontSize} ;
+					color: {fontColor} ;
+					font-style: {fontStyle} ;
+					font-family: {fontFamily} ;
+					background-color: {backgroundColor}					
+				}
+
+			{/date}
+			{?time HeaderBackgroundColor=backgroundColor}
+				#{id} > header .time, #{id} > .header .time {
+					font-size: {fontSize} ;
+					color: {fontColor} ;
+					font-style: {fontStyle} ;
+					font-family: {fontFamily} ;
+					background-color: {backgroundColor}	
+				}
+				{#shape}
+					.shape-container > p > span { 
+						width: 183px;
+						padding: 4px;
+						margin: 0 auto;
+						text-align: center;
+						background-color: #fff;
+						border-radius: 100%;
+						display: block
+					}
+					.shape-container > p > span > p{
+						border-radius: 100%;
+						display: table-cell;
+						width: 175px;
+						height: 175px;
+						vertical-align: middle;
+						font-size: 20px;
+						background-color: #f8f8f8;
+					} 
+
+					.shape-container > p{
+						height:87.5px;
+					}
+					.shape-container > p:first-child{
+						margin: 0 -15px;
+						background-color: {HeaderBackgroundColor};
+					}
+				{/shape}
+
+			{/time}
+
+		{/header}
+		{#title}
+			#{id} > header > h1, #{id} > .header > h1{
+				font-size: {title.fontSize} ;
+				color: {title.fontColor} ;
+				font-style: {title.fontStyle} ;
+				font-family: {title.fontFamily} ;
+			}
+		{/title}
+		{#content}
+			#{id} > .content{
+				font-size: {fontSize} ;
+				color: {fontColor} ;
+				font-style: {fontStyle} ;
+				font-family: {fontFamily} ;
+				text-align: {alignment};
+				background-color: {backgroundColor}
+			}
+			{?contactButtons}
+				#{id} > .content .contactButton > a , 
+				#{id} > .content .contactButton > a:link,
+				#{id} > .content .contactButton > a:visited { 
+					font-size: {fontSize} ;
+					color: {fontColor} ;
+					font-style: {fontStyle} ;
+					font-family: {fontFamily} ;
+					text-align: center;
+					background-color: {backgroundColor};
+				}
+				#{id} >  .content .contactButton > a:hover {
+					color: {hoverFontColor} ;
+					font-style: {hoverFontStyle} ;
+					background-color: {hoverBackgroundColor};
+				}
+			{/contactButtons}
+		{/content}
+
+		{#list}
+			#{id}  ul li{
+				background-color: {backgroundColor};
+			}
+			{?date}
+				#{id} ul li .date{
+					color: {list.date.fontColor} ;
+					font-style: {fontStyle} ;
+					font-family: {fontFamily} ;
+					text-align: {alignment};			
+				}
+
+			{/date}
+			{?time}
+				#{id} ul li .description {
+					color: {fontColor} ;
+					font-style: {fontStyle} ;
+					font-family: {fontFamily} ;
+					text-align: {alignment};
+				}
+			{/time}
+		{/list}
+	{/styles}
+
+{/PageType}
