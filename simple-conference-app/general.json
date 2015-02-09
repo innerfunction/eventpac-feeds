@@ -10,7 +10,10 @@
     
 */
 {
-    "MainStyle": {
+    "assets": {
+
+    }
+    "generalStyle": {
         "title" : {
             "fontSize" : "",
             "fontColor" : "",
@@ -35,7 +38,7 @@
     "page-type": {
         "performers": {
             "name": "",
-            "styles": {
+            "style": {
                 "header": {
                     "backgroundColor" : "",
                     "image":{
@@ -46,7 +49,7 @@
         },
         "eventDetail" : {
             "name": "",
-            "styles" : {
+            "style" : {
                 "header" : {
                     "date" : {
                         "fontSize" : "",
@@ -67,57 +70,62 @@
             }
         },
         "programme" : {
-            "header" : "",
-            "list": {
-                "backgroundColor": "",
-                "date" :{
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFamily": "" ,
-                    "fontStyle": ""
-                },
-                "description" :{
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFamily": "" ,
-                    "fontStyle": ""
+            "style": {
+                "header" : "",
+                "list": {
+                    "backgroundColor": "",
+                    "date" :{
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": ""
+                    },
+                    "description" :{
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": ""
+                    }
                 }
             }
         },
         "location" : {
-            "header" : {
-                "backgroundColor": "",
+            "style": {
+                "header" : {
+                    "backgroundColor": "",
+                }
             }
         },
         "contact" : {
-            "header" : {
-                "title" : {
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFamily": ""  ,
-                    "fontStyle": "",
+            "style": {
+                "header" : {
+                    "title" : {
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": ""  ,
+                        "fontStyle": "",
+                    },
+                    "image":{
+                        "shape": ""
+                    }
                 },
-                "image":{
-                    "shape": ""
-                }
-            },
-            "content": {
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontFamily": "" ,
-                "fontStyle": "",
-                "backgroundColor": "",
-                "alignment" : "",
-                "contactButtons": {
+                "content": {
                     "fontSize" : "",
                     "fontColor" : "",
                     "fontFamily": "" ,
+                    "fontStyle": "",
                     "backgroundColor": "",
-                    "hoverBackgroundColor" : "",
-                    "hoverFontColor": "",
-                    "hoverFontStyle": ""
+                    "alignment" : "",
+                    "contactButtons": {
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "backgroundColor": "",
+                        "hoverBackgroundColor" : "",
+                        "hoverFontColor": "",
+                        "hoverFontStyle": ""
+                    }
                 }
-
             }
         }
     }
