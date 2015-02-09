@@ -1,115 +1,14 @@
 {
-    "performers": {
-        "name": "",
-        "location": "",         
-        "styles": {
-            "header": {
-                "backgroundColor" : "",
-                "title" : {
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontStyle": "",
-                    "fontFamily": ""
-                },
-                "image":{
-                    "shape": ""
-                }
-            },
-            "content": {
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontFamily": "" ,
-                "fontStyle": "",
-                "backgroundColor": "",
-                "alignment" : ""
-            },
+    "assets": {
+        "logo": "",
+        "splashScreen": ""
     },
-    "eventDetail" : {
-        "name": "",
-        "location": "", 
-        "styles" : {
-            "header" : {
-                "date" : {
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFamily": "" ,
-                    "fontStyle": "",
-                    "backgroundColor": ""
-                },
-                "time" : {
-                    "backgroundColor": "",
-                    "shape": "",
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFamily": "" ,
-                    "fontStyle": ""
-                }
-            },
-            "title" : {
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontStyle": "",
-                "fontFamily": "" 
-            },
-
-            "content": {
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontFamily": "" ,
-                "fontStyle": "",
-                "backgroundColor": "",
-                "alignment" : ""
-            },
-        },
-    },
-    "programme" : {
-        "header" : "",
-        "list": {
-            "backgroundColor": "",
-            "date" :{
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontFamily": "" ,
-                "fontStyle": ""
-            },
-            "description" :{
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontFamily": "" ,
-                "fontStyle": ""
-            }
-        }
-    },
-    "location" : {
-        "header" : {
-            "backgroundColor": "",
-            "title" : {
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontFamily": "",
-                "fontStyle": ""
-            }
-        },
-
-        "content": {
-            "fontSize" : "",
-            "fontColor" : "",
-            "fontFamily": "" ,
-            "backgroundColor": "",
-            "alignment" : ""
-        }
-    },
-    "contact" : {
-        "header" : {
-            "title" : {
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontFamily": ""  ,
-                "fontStyle": "",
-            },
-            "image":{
-                "shape": ""
-            }
+    "generalStyle": {
+        "title" : {
+            "fontSize" : "14px",
+            "fontColor" : "red",
+            "fontStyle": "none",
+            "fontFamily": "Arial"
         },
         "content": {
             "fontSize" : "",
@@ -118,14 +17,97 @@
             "fontStyle": "",
             "backgroundColor": "",
             "alignment" : "",
-            "contactButtons": {
-                "fontSize" : "",
-                "fontColor" : "",
-                "fontFamily": "" ,
-                "backgroundColor": "",
-                "hoverBackgroundColor" : "",
-                "hoverFontColor": "",
-                "hoverFontStyle": ""
+            "style" : ""
+        },
+        "header": {
+            "backgroundColor" : "",
+            "imageShape": "" // if true => circle
+        }
+    },
+    "PageType": {
+        
+        "performers": {
+
+            "name": "performers",
+            "style" : {
+                "title" : {
+                    "fontSize" : "20px"
+
+                }
+            }
+        },
+        "eventDetail" : {
+
+            "name": "eventDetail",
+            "style" : {
+                "header" : {
+                    "date" : {
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": "",
+                        "backgroundColor": ""
+                    },
+                    "time" : {
+                        "backgroundColor": "",
+                        "shape": "",
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": ""
+                    }
+                }
+            }
+        },
+        "programme" : {
+
+            "name": "programme",
+            "style": {
+                "list": {
+                    "backgroundColor": "",
+                    "date" :{
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": ""
+                    },
+                    "description" :{
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": ""
+                    }
+                }
+            }
+        },
+        "location" : {
+
+            "name": "location",
+            "style": {}
+        },
+        "contact" : {
+            "name": "contact",
+            "style": {
+                "content": {
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontFamily": "" ,
+                    "fontStyle": "",
+                    "backgroundColor": "",
+                    "alignment" : "",
+
+                    "style" : "",
+
+                    "contactButtons": {
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "backgroundColor": "",
+                        "hoverBackgroundColor" : "",
+                        "hoverFontColor": "",
+                        "hoverFontStyle": ""
+                    }
+                }
             }
         }
     }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" x-manifest="cache.manifest">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="styles.css">      
+    </head>
+
+    <body id="programme">
+        {#image}
+            <div class=" header fixed">
+                {#date}
+                    <p class="date"> {date} </p>
+                {/date}
+                {#title}
+                    <h1>{title} </h1>
+                {/title}
+                {#time.backgroundColor}
+                    {#shape}
+                        <div class="shape-time">
+                            <p><span><p>{time}</p> </span></p>
+                        </div> 
+                    {/shape}
+                {/time.backgroundColor}
+            </div>
+
+        {/image}
+        <header>
+            {#date}
+                <p class="date"> {date} </p>
+            {/date}
+            {#title}
+                <h1>{title} </h1>
+            {/title}
+            {#time.backgroundColor}
+                {#shape}
+                    <div class="shape-time">
+                        <p><span><p>{time}</p> </span></p>
+                    </div> 
+                {/shape}
+            {/time.backgroundColor}
+            {#image.backgroundColor}
+                {#shape}
+                    <div class="shape-image">
+                        <p><span><img src="images/friday.jpg"/></span></p>
+                    </div> 
+                {/shape}
+            {/image.backgroundColor}
+        </header>        
+        <div class="content {style}">
+            {#image.backgroundColor}
+
+            {:else}
+                <div class="shape-container  "  style=" background: url('images/friday.jpg') no-repeat top center fixed; ">
+                    <p><span><img src="images/friday.jpg"/> </span></p>
+                    <p></p>                        
+                </div> 
+
+            {/image.backgroundColor}            
+            
+            <p>{content.html|s}</p>
+
+        </div>
+    </body>
+</html>

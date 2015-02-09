@@ -35,23 +35,23 @@ a, a:hover, a:active, a:visited {
 }
 header, .header {
 	padding: 30px ;
-	background-color: {MainStyle.header.fontColor};
 	text-align: center;
 }
+
 /* review to set any content in the shape */
 /* IMAGE SHAPES */
-.shape-container > p {
+.shape-image > p, .shape-time > p {
 	padding:0;
 	margin:0;
 }
 
 /* banner image */
-.shape-container.banner { 
+.shape-image, .shape-time { 
 	margin: 0 -15px;
 	padding: 0;
 }
 
-.shape-container.banner  > p > span > img {
+.shape-image > p > span > img, .shape-time > p > span > img  {
 	width: 100%;
 	height: 230px;
 	visibility: hidden;
@@ -78,122 +78,111 @@ header, .header {
 
 }
 
-{#PageType}
-	{#styles}
 
-		{#header}
-			#{id} > header, #{id} > .header {
-				background : {backgroundColor};
-			}
 
-			{?date}
-				#{id} > header .date, #{id} > .header .date {
-					font-size: {fontSize} ;
-					color: {fontColor} ;
-					font-style: {fontStyle} ;
-					font-family: {fontFamily} ;
-					background-color: {backgroundColor}					
-				}
+{#header}
+	header,  .header {
+		background : {backgroundColor};
+	}
+{/header}
+{#date}
+	.date{
+		font-size: {fontSize} ;
+		color: {fontColor} ;
+		font-style: {fontStyle} ;
+		font-family: {fontFamily} ;
+	}
+{/date}
+{#title}
+	header > h1,  .header > h1{
+		font-size: {fontSize} ;
+		color: {fontColor} ;
+		font-style: {fontStyle} ;
+		font-family: {fontFamily} ;
+	}
+{/title}
+{#time }
+	.time {
+		font-size: {fontSize} ;
+		color: {fontColor} ;
+		font-style: {fontStyle} ;
+		font-family: {fontFamily} ;
+		background-color: {backgroundColor}	
+	}
+	{#shape}
+		.shape-time > p > span { 
+			width: 183px;
+			padding: 4px;
+			margin: 0 auto;
+			text-align: center;
+			background-color: #fff;
+			border-radius: 100%;
+			display: block
+		}
+		.shape-time > p > span > p{
+			border-radius: 100%;
+			display: table-cell;
+			width: 175px;
+			height: 175px;
+			vertical-align: middle;
+			font-size: 20px;
+			background-color: #f8f8f8;
+		} 
 
-			{/date}
-			{?time HeaderBackgroundColor=backgroundColor}
-				#{id} > header .time, #{id} > .header .time {
-					font-size: {fontSize} ;
-					color: {fontColor} ;
-					font-style: {fontStyle} ;
-					font-family: {fontFamily} ;
-					background-color: {backgroundColor}	
-				}
-				{#shape}
-					.shape-container > p > span { 
-						width: 183px;
-						padding: 4px;
-						margin: 0 auto;
-						text-align: center;
-						background-color: #fff;
-						border-radius: 100%;
-						display: block
-					}
-					.shape-container > p > span > p{
-						border-radius: 100%;
-						display: table-cell;
-						width: 175px;
-						height: 175px;
-						vertical-align: middle;
-						font-size: 20px;
-						background-color: #f8f8f8;
-					} 
+		.shape-time > p{
+			height:87.5px;
+		}
+		.shape-time > p:first-child{
+			margin: 0 -15px;
+			background-color: {backgroundColor};
+		}
+	{/shape}
 
-					.shape-container > p{
-						height:87.5px;
-					}
-					.shape-container > p:first-child{
-						margin: 0 -15px;
-						background-color: {HeaderBackgroundColor};
-					}
-				{/shape}
+{/time}
+{#image }
+	.time {
+		font-size: {fontSize} ;
+		color: {fontColor} ;
+		font-style: {fontStyle} ;
+		font-family: {fontFamily} ;
+		background-color: {backgroundColor}	
+	}
+	{#shape}
+		.shape-image > p > span { 
+			width: 183px;
+			height: 183px;
+			padding: 4px;
+			margin: 0 auto;
+			text-align: center;
+			background-color: #fff;
+			border-radius: 100%;
+			display: block
+		}
+		.shape-image > p > span > img{
+			border-radius : 100%;
+			width:100%;
+			height:100%;
+			visibility: visible;
+		} 
+		.shape-image > p{
+			height:87.5px;
+		}
+		.shape-image > p:first-child{
+			margin: 0 -15px;
+			background-color: {backgroundColor};
+		}
+	{/shape}
+{/image}
+{#content}
+	.content{
+		font-size: {fontSize} ;
+		color: {fontColor} ;
+		font-style: {fontStyle} ;
+		font-family: {fontFamily} ;
+		text-align: {alignment};
+		background-color: {backgroundColor}
+	}
 
-			{/time}
+{/content}
 
-		{/header}
-		{#title}
-			#{id} > header > h1, #{id} > .header > h1{
-				font-size: {title.fontSize} ;
-				color: {title.fontColor} ;
-				font-style: {title.fontStyle} ;
-				font-family: {title.fontFamily} ;
-			}
-		{/title}
-		{#content}
-			#{id} > .content{
-				font-size: {fontSize} ;
-				color: {fontColor} ;
-				font-style: {fontStyle} ;
-				font-family: {fontFamily} ;
-				text-align: {alignment};
-				background-color: {backgroundColor}
-			}
-			{?contactButtons}
-				#{id} > .content .contactButton > a , 
-				#{id} > .content .contactButton > a:link,
-				#{id} > .content .contactButton > a:visited { 
-					font-size: {fontSize} ;
-					color: {fontColor} ;
-					font-style: {fontStyle} ;
-					font-family: {fontFamily} ;
-					text-align: center;
-					background-color: {backgroundColor};
-				}
-				#{id} >  .content .contactButton > a:hover {
-					color: {hoverFontColor} ;
-					font-style: {hoverFontStyle} ;
-					background-color: {hoverBackgroundColor};
-				}
-			{/contactButtons}
-		{/content}
 
-		{#list}
-			#{id}  ul li{
-				background-color: {backgroundColor};
-			}
-			{?date}
-				#{id} ul li .date{
-					color: {list.date.fontColor} ;
-					font-style: {fontStyle} ;
-					font-family: {fontFamily} ;
-					text-align: {alignment};			
-				}
-
-			{/date}
-			{?time}
-				#{id} ul li .description {
-					color: {fontColor} ;
-					font-style: {fontStyle} ;
-					font-family: {fontFamily} ;
-					text-align: {alignment};
-				}
-			{/time}
-		{/list}
-	{/styles}
-
-{/PageType}

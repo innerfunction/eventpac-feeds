@@ -1,21 +1,14 @@
-/*
-
-    Header have 3 settings :
-        - Background Color
-        - Image shape (circle / banner)
-        - Title style
-
-    Title and content style can be set generally for the whole app or individualy for each page-type.
-    We can set the mainStyle for the whole app, or setting each part individualy.
-    
-*/
 {
-    "MainStyle": {
+    "assets": {
+        "logo": "",
+        "splashScreen": ""
+    },
+    "generalStyle": {
         "title" : {
-            "fontSize" : "",
-            "fontColor" : "",
-            "fontStyle": "",
-            "fontFamily": ""
+            "fontSize" : "14px",
+            "fontColor" : "red",
+            "fontStyle": "none",
+            "fontFamily": "Arial"
         },
         "content": {
             "fontSize" : "",
@@ -28,110 +21,27 @@
         },
         "header": {
             "backgroundColor" : "",
-            "image":{
-                "shape": ""
-            }
-        }
-    },
-    "PageType": {
-        
-        "performers": {
-            "id": "performers",
-            "name": "",
-            "styles": {
-                "header": {
-                    "backgroundColor" : "",
-                    "image":{
-                        "shape": "1"
-                    }
-                }
-            }
         },
-        "eventDetail" : {
-            "id": "eventDetail",
-            "name": "",
-            "styles" : {
-                "header" : {
-                    "date" : {
-                        "fontSize" : "",
-                        "fontColor" : "",
-                        "fontFamily": "" ,
-                        "fontStyle": "",
-                        "backgroundColor": ""
-                    },
-                    "time" : {
-                        "backgroundColor": "",
-                        "shape": "",
-                        "fontSize" : "",
-                        "fontColor" : "",
-                        "fontFamily": "" ,
-                        "fontStyle": ""
-                    }
-                }
-            }
+        "image":{
+            "shape": "", // if true => circle
+            "backgroundColor":""
         },
-        "programme" : {
-            "id": "programme",
-            "styles" : {
-                "list": {
-                    "backgroundColor": "",
-                    "date" :{
-                        "fontSize" : "",
-                        "fontColor" : "",
-                        "fontFamily": "" ,
-                        "fontStyle": ""
-                    },
-                    "description" :{
-                        "fontSize" : "",
-                        "fontColor" : "",
-                        "fontFamily": "" ,
-                        "fontStyle": ""
-                    }
-                }
-            }
+        "date" : {
+            "fontSize" : "",
+            "fontColor" : "",
+            "fontFamily": "" ,
+            "fontStyle": "",
+            "alignment" : ""
         },
-        "location" : {
-            "id": "location",
-            "styles":{
-                "header" : {
-                    "backgroundColor": "",
-                }
-            }
-        },
-        "contact" : {
-            "id" : "contact",
-            "styles":{
-                "header" : {
-                    "title" : {
-                        "fontSize" : "",
-                        "fontColor" : "",
-                        "fontFamily": ""  ,
-                        "fontStyle": "",
-                    },
-                    "image":{
-                        "shape": ""
-                    }
-                },
-                "content": {
-                    "fontSize" : "",
-                    "fontColor" : "",
-                    "fontFamily": "" ,
-                    "fontStyle": "",
-                    "backgroundColor": "",
-                    "alignment" : "",
-                    "style" : "",
-                    "contactButtons": {
-                        "fontSize" : "",
-                        "fontColor" : "",
-                        "fontFamily": "" ,
-                        "backgroundColor": "",
-                        "hoverBackgroundColor" : "",
-                        "hoverFontColor": "",
-                        "hoverFontStyle": ""
-                    }
-                }
-
-            }
+        "time" : {
+            "shape": "",
+            "circleBackground":""
+            "fontSize" : "",
+            "fontColor" : "",
+            "fontFamily": "" ,
+            "fontStyle": "",
+            "alignment" : "",
+            "backgroundColor":""
         }
     }
 }
