@@ -29,18 +29,13 @@
         },
         "header": {
             "backgroundColor" : "",
-            "imageShape": ""
+            "imageShape": "" // if true => circle
         }
     },
     "page-type": {
         "performers": {
             "name": "",
-            "style": {
-                "header": {
-                    "backgroundColor" : "",
-                    "imageShape": "" // if true => circle
-                }
-            }
+            "style" : {}
         },
         "eventDetail" : {
             "name": "",
@@ -66,7 +61,6 @@
         },
         "programme" : {
             "style": {
-                "header" : "",
                 "list": {
                     "backgroundColor": "",
                     "date" :{
@@ -85,23 +79,11 @@
             }
         },
         "location" : {
-            "style": {
-                "header" : {
-                    "backgroundColor": "",
-                }
-            }
+            "name": "",
+            "style": {}
         },
         "contact" : {
             "style": {
-                "header" : {
-                    "title" : {
-                        "fontSize" : "",
-                        "fontColor" : "",
-                        "fontFamily": ""  ,
-                        "fontStyle": "",
-                    },
-                    "imageShape": ""
-                },
                 "content": {
                     "fontSize" : "",
                     "fontColor" : "",
