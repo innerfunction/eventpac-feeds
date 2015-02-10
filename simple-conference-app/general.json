@@ -1,4 +1,5 @@
 {
+    // WP BUILD
     "post-types": {
         "performers": {
             "name": "performers",
@@ -9,10 +10,7 @@
             "data-fields": [ "id", "title", "occurence", "startDate", "startTime", "endDate", "endTime", "content", "type" ],
         }
     },
-    "assets": {
-        "logo": "",
-        "splashScreen": ""
-    },
+    // FEED BUILD
     "style": {
         "title" : {
             "fontSize" : "14px",
@@ -53,5 +51,31 @@
             "alignment" : "",
             "backgroundColor":""
         }
+    },
+    // APP BUILD
+    "Defaults": {
+        "titleBarColor":                "",
+        "titleBarTextColor":            "",
+        "title":                        ""
+    },
+    "SponsorLayout": {
+        "sponsor_banner":               "images.png"
+    },
+    "ListView": {
+        "row": {
+            "style":                    "Subtitle",
+            "height":                   58,
+            "imageWidth":               50,
+            "imageHeight":              50,
+            "textColor":                "#4D4F94",
+            "detailTextColor":          "#5691EA",
+            "selectedTextColor":        "#FFFFFF",
+            "detailSelectedTextColor":  "#FFFFFF",
+            "backgroundColor":          "#FFFFFF",
+            "selectedBackgroundColor":  "#5691EA"
+        },
+    },
+    "DefaultDrawer": {
+        
     }
 }
