@@ -15,16 +15,14 @@
                 {#title}
                     <h1>{title} </h1>
                 {/title}
-                {#time.backgroundColor}
-                    {#shape}
-                        <div class="shape-time">
-                            <p><span><p>{time}</p> </span></p>
-                        </div> 
-                    {/shape}
-                {/time.backgroundColor}
+                {#time}
+                    <div class="shape-time">
+                        <p><span><p>{time}</p> </span></p>
+                    </div> 
+                {/time}
             </div>
-
         {/image}
+
         <header>
             {#date}
                 <p class="date"> {date} </p>
@@ -32,23 +30,22 @@
             {#title}
                 <h1>{title} </h1>
             {/title}
-            {#time.backgroundColor}
-                {#shape}
-                    <div class="shape-time">
-                        <p><span><p>{time}</p> </span></p>
-                    </div> 
-                {/shape}
-            {/time.backgroundColor}
-            {#image.backgroundColor}
+            {#time}
+                <div class="shape-time">
+                    <p><span><p>{time}</p> </span></p>
+                </div> 
+            {/time}
+            {#image}
                 {#shape}
                     <div class="shape-image">
                         <p><span><img src="images/friday.jpg"/></span></p>
                     </div> 
                 {/shape}
-            {/image.backgroundColor}
-        </header>        
+            {/image}
+        </header>  
+
         <div class="content {style}">
-            {#image.backgroundColor}
+            {#image}
 
             {:else}
                 <div class="shape-container  "  style=" background: url('images/friday.jpg') no-repeat top center fixed; ">
@@ -56,7 +53,7 @@
                     <p></p>                        
                 </div> 
 
-            {/image.backgroundColor}            
+            {/image}            
             
             <p>{content.html|s}</p>
 
