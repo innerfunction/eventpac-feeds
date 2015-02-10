@@ -1,13 +1,20 @@
 {
-    "feeds": {
-        "performers": [ "id", "title", "content", "photo", "type" ],
-        "events": [ "id", "title", "startDate", "startTime", "endDate", "endTime", "content", "type" ]
+    "post-types": {
+        "performers": {
+            
+            "feed": [ "id", "title", "content", "photo", "type" ],
+
+        },
+        "events": {
+            "feed": [ "id", "title", "occurence", "startDate", "startTime", "endDate", "endTime", "content", "type" ],
+
+        }
     },
     "assets": {
         "logo": "",
         "splashScreen": ""
     },
-    "generalStyle": {
+    "style": {
         "title" : {
             "fontSize" : "14px",
             "fontColor" : "red",
