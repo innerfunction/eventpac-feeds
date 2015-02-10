@@ -78,8 +78,6 @@ header, .header {
 
 }
 
-
-
 {#header}
 	header,  .header {
 		background : {backgroundColor};
@@ -140,13 +138,7 @@ header, .header {
 
 {/time}
 {#image }
-	.time {
-		font-size: {fontSize} ;
-		color: {fontColor} ;
-		font-style: {fontStyle} ;
-		font-family: {fontFamily} ;
-		background-color: {backgroundColor}	
-	}
+
 	{#shape}
 		.shape-image > p > span { 
 			width: 183px;
