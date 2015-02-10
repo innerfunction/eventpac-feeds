@@ -5,16 +5,11 @@
         <title></title>
         <link rel="stylesheet" href="styles.css">      
     </head>
-
     <body id="programme">
         {#image}
             <div class=" header fixed">
-                {#date}
-                    <p class="date"> {date} </p>
-                {/date}
-                {#title}
-                    <h1>{title} </h1>
-                {/title}
+                {#date}<p class="date"> {date} </p>{/date}
+                {#title}<h1>{title}</h1>{/title}
                 {#time}
                     <div class="shape-time">
                         <p><span><p>{time}</p> </span></p>
@@ -22,14 +17,9 @@
                 {/time}
             </div>
         {/image}
-
         <header>
-            {#date}
-                <p class="date"> {date} </p>
-            {/date}
-            {#title}
-                <h1>{title} </h1>
-            {/title}
+            {#date}<p class="date"> {date} </p>{/date}
+            {#title}<h1>{title} </h1>{/title}
             {#time}
                 <div class="shape-time">
                     <p><span><p>{time}</p> </span></p>
@@ -43,20 +33,15 @@
                 {/shape}
             {/image}
         </header>  
-
         <div class="content {style}">
             {#image}
-
             {:else}
                 <div class="shape-container  "  style=" background: url('images/friday.jpg') no-repeat top center fixed; ">
                     <p><span><img src="images/friday.jpg"/> </span></p>
                     <p></p>                        
                 </div> 
-
             {/image}            
-            
             <p>{content.html|s}</p>
-
         </div>
     </body>
 </html>
