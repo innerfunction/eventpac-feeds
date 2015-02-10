@@ -1,13 +1,12 @@
 {
     "post-types": {
         "performers": {
-            
-            "feed": [ "id", "title", "content", "photo", "type" ],
-
+            "name": "performers",
+            "data-fields": [ "id", "title", "content", "photo", "type" ],
         },
         "events": {
-            "feed": [ "id", "title", "occurence", "startDate", "startTime", "endDate", "endTime", "content", "type" ],
-
+            "name": "events",
+            "data-fields": [ "id", "title", "occurence", "startDate", "startTime", "endDate", "endTime", "content", "type" ],
         }
     },
     "assets": {
