@@ -1,4 +1,8 @@
 {
+    "feeds": {
+        "performers": [ "id", "title", "content", "photo", "type" ],
+        "events": [ "id", "title", "startDate", "startTime", "endDate", "endTime", "content", "type" ]
+    },
     "assets": {
         "logo": "",
         "splashScreen": ""
