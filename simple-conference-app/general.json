@@ -1,4 +1,5 @@
 {
+
     "appName": "",
     // WP BUILD
     "post-types": {
@@ -11,81 +12,56 @@
             "data-fields": [ "id", "title", "occurence", "startDate", "startTime", "endDate", "endTime", "content", "type" ],
         }
     },
-    // FEED BUILD
-    "Color": {
-        "tabs": {
-            "bg-color": ""      // Tabs background-color (no need for conference app)
+
+    "Style": {
+        "feed": {
+            "tabs": {
+                "bg-color": "#09AA9A"       // Tabs background-color (no need for conference app)
+            },
+            "header" : {
+                "bg-color": "#09AA9A",      // Header background color
+                "fg-color": "#f8f8f8",      // Time background-color if circle shape
+                "font-color": "#fff",       // Header font color
+            },
+            "borders": {
+                "color": "#E51C23"         
+            },
+            "content": {
+                "font-color": "#333333",    // Content font color
+                "bk-color": "#F8F8FF",      // Content background-color
+                "alignment" : "",
+            },
+            "FontFamily": "Roboto, helvetica",   // Set the font-family
+            "image":{
+                "shape": "",                // if true => circle
+            },
+            "date" : {
+                "style": "bold",
+            },
+            "time" : {
+                "shape": "",
+            }
         },
-        "header" :{
-            "bg-color": "",     // Header background color
-            "fg-color": "",     // Time background-color if circle shape
-            "font-color": "",   // Header font color
-        },
-        "borders": {
-            "color": ""         //
-        },
-        "content": {
-            "font-color": "",   // Content font color
-            "bk-color": ""      // Content background-color
-        },
-        "FontSize": {               // Setting for the font-size
-            "small": "1em",      //16px    
-            "medium": "1.56em",   //  25px
-            "large": "2.06em"     //35px
-        },
-        "FontStyle": {              // Setting for the font-style
-            "b": "bold",
-            "i": "italic",
-            "u": "underline"
-        },
-        "FontFamily": "Roboto, helvetica"   // Set the font-family
-    },
-    "style": {
-        "title" : {
-            "size": "large"
-        },
-        "content": {
-            "size": "small",
-            "alignment" : "",
-        },
-        "image":{
-            "shape": "", // if true => circle
-        },
-        "date" : {
-            "size": "large",
-            "style": "b",
-            "alignment" : ""
-        },
-        "time" : {
-            "shape": "",
-            "size": "medium",
-            "alignment" : "",
+        "app": {
+            "titleBar" : {
+                "titleBarColor": "",
+                "titleBarTextColor": ""
+            },
+            "tabList": {
+                "textColor":                "#FFFFFF",
+                "selectedTextColor":        "#CB3240",
+                "backgroundColor":          "#E51C23",
+                "selectedBackgroundColor":  "#272727",            
+            },
+            "listView": {
+                "textColor":                "#333333",
+                "detailTextColor":          "#12365A",
+                "selectedTextColor":        "#FFFFFF",
+                "detailSelectedTextColor":  "#FFFFFF",
+                "backgroundColor":          "#EBF0EC",
+                "selectedBackgroundColor":  "#12365A"
+            }
         }
+
     },
-    // APP BUILD
-    "Defaults": {
-        "titleBarColor":                "",
-        "titleBarTextColor":            "",
-        "title":                        ""
-    },
-    "SponsorLayout": {
-        "sponsor_banner":               "images.png"
-    },
-    "ListView": {
-        "row": {
-            "style":                    "Subtitle",
-            "height":                   58,
-            "imageWidth":               50,
-            "imageHeight":              50,
-            "textColor":                "#4D4F94",
-            "detailTextColor":          "#5691EA",
-            "selectedTextColor":        "#FFFFFF",
-            "detailSelectedTextColor":  "#FFFFFF",
-            "backgroundColor":          "#FFFFFF",
-            "selectedBackgroundColor":  "#5691EA"
-        },
-    },
-    "DefaultDrawer": {
-        
-    }
 }
