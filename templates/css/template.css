@@ -255,7 +255,7 @@ header.tabs {
 	.tabs.fixed { 
 		position:fixed;
 	}
-	header .scrollable { /* if we want to allow scroll part of the header */
+	.header .scrollable { /* if we want to allow scroll part of the header */
 		margin-top: 37px ;  /* tabsHeight - headerPadding (30) */
 	}
 	

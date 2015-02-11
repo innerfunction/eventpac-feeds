@@ -1,4 +1,5 @@
 {
+    "app name": "",
     // WP BUILD
     "post-types": {
         "performers": {
@@ -43,7 +44,7 @@
         },
         "time" : {
             "shape": "",
-            "circleBackground":""
+            "circleBackground":"",
             "fontSize" : "",
             "fontColor" : "",
             "fontFamily": "" ,

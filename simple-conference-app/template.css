@@ -40,13 +40,13 @@ header, .header {
 
 /* review to set any content in the shape */
 /* IMAGE SHAPES */
-.shape-image > p, .shape-time > p {
+/*.shape-image > p, .shape-time > p {
 	padding:0;
 	margin:0;
 }
 
 /* banner image */
-.shape-image, .shape-time { 
+/*.shape-image, .shape-time { 
 	margin: 0 -15px;
 	padding: 0;
 }
@@ -55,7 +55,55 @@ header, .header {
 	width: 100%;
 	height: 230px;
 	visibility: hidden;
+}*/
+.shape-container.banner {
+	margin: 0 -15px;
+	padding: 0;
 }
+.shape-container.banner  > p > span > img, .shape-container.banner  > p > span > img  {
+	width: 100%;
+	height: 230px;
+	visibility: hidden;
+}
+
+.shape-container.circle {
+	padding: 0;
+	margin: 0;
+}
+
+.shape-container.circle > p{
+	height:87.5px;
+}
+.shape-container.circle > p:first-child{
+	margin: 0 -15px;
+	background-color: {backgroundColor};
+}
+.shape-container.circle > p > span { 
+	width: 183px;
+	height: 183px;
+	padding: 4px;
+	margin: 0 auto;
+	text-align: center;
+	background-color: #fff;
+	border-radius: 100%;
+	display: block
+}
+.shape-container.circle  > p > span > p{
+	border-radius: 100%;
+	display: table-cell;
+	width: 175px;
+	height: 175px;
+	vertical-align: middle;
+	font-size: 20px;
+	background-color: #f8f8f8;
+} 
+
+.shape-container.circle  > p > span > img{
+	border-radius : 100%;
+	width:100%;
+	height:100%;
+	visibility: visible;
+} 
 
 /* content style classes */
 .dropCap > p:first-child:first-letter { 
@@ -77,104 +125,50 @@ header, .header {
 	color: #fff;
 
 }
+header,  .header {
+	background : {backgroundColor};
+}
 
-{#header}
-	header,  .header {
-		background : {backgroundColor};
-	}
-{/header}
-{#date}
-	.date{
-		font-size: {fontSize} ;
-		color: {fontColor} ;
-		font-style: {fontStyle} ;
-		font-family: {fontFamily} ;
-	}
-{/date}
-{#title}
-	header > h1,  .header > h1{
-		font-size: {fontSize} ;
-		color: {fontColor} ;
-		font-style: {fontStyle} ;
-		font-family: {fontFamily} ;
-	}
-{/title}
-{#time }
-	.time {
-		font-size: {fontSize} ;
-		color: {fontColor} ;
-		font-style: {fontStyle} ;
-		font-family: {fontFamily} ;
-		background-color: {backgroundColor}	
-	}
-	{#shape}
-		.shape-time > p > span { 
-			width: 183px;
-			padding: 4px;
-			margin: 0 auto;
-			text-align: center;
-			background-color: #fff;
-			border-radius: 100%;
-			display: block
-		}
-		.shape-time > p > span > p{
-			border-radius: 100%;
-			display: table-cell;
-			width: 175px;
-			height: 175px;
-			vertical-align: middle;
-			font-size: 20px;
-			background-color: #f8f8f8;
-		} 
+.date{
+	font-size: {fontSize} ;
+	color: {fontColor} ;
+	font-style: {fontStyle} ;
+	font-family: {fontFamily} ;
+}
 
-		.shape-time > p{
-			height:87.5px;
-		}
-		.shape-time > p:first-child{
-			margin: 0 -15px;
-			background-color: {backgroundColor};
-		}
-	{/shape}
+header > h1,  .header > h1{
+	font-size: {fontSize} ;
+	color: {fontColor} ;
+	font-style: {fontStyle} ;
+	font-family: {fontFamily} ;
+}
 
-{/time}
-{#image }
 
-	{#shape}
-		.shape-image > p > span { 
-			width: 183px;
-			height: 183px;
-			padding: 4px;
-			margin: 0 auto;
-			text-align: center;
-			background-color: #fff;
-			border-radius: 100%;
-			display: block
-		}
-		.shape-image > p > span > img{
-			border-radius : 100%;
-			width:100%;
-			height:100%;
-			visibility: visible;
-		} 
-		.shape-image > p{
-			height:87.5px;
-		}
-		.shape-image > p:first-child{
-			margin: 0 -15px;
-			background-color: {backgroundColor};
-		}
-	{/shape}
-{/image}
-{#content}
-	.content{
-		font-size: {fontSize} ;
-		color: {fontColor} ;
-		font-style: {fontStyle} ;
-		font-family: {fontFamily} ;
-		text-align: {alignment};
-		background-color: {backgroundColor}
+.time {
+	font-size: {fontSize} ;
+	color: {fontColor} ;
+	font-style: {fontStyle} ;
+	font-family: {fontFamily} ;
+	background-color: {backgroundColor}	
+}
+
+
+.content{
+	font-size: {fontSize} ;
+	color: {fontColor} ;
+	font-style: {fontStyle} ;
+	font-family: {fontFamily} ;
+	text-align: {alignment};
+	background-color: {backgroundColor}
 	}
 
-{/content}
 
+@media (min-height: 450px) {
+	.fixed { 
+		display: block;
+		position: fixed;
+		z-index: 3;
+		width: 100%;
+	}
 
+}
