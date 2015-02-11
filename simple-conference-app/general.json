@@ -12,45 +12,56 @@
         }
     },
     // FEED BUILD
+    {
+        "Color": {
+            "tabs": {
+                "bg-color": ""      // Tabs background-color (no need for conference app)
+            },
+            "header" {
+                "bg-color": "",     // Header background color
+                "fg-color": "",     // Time background-color if circle shape
+                "font-color": "",   // Header font color
+            },
+            "borders": {
+                "color": ""         //
+            },
+            "content": {
+                "font-color": "",   // Content font color
+                "bk-color": ""      // Content background-color
+            }
+        },
+        "FontSize": {               // Setting for the font-size
+            "small": "15px",        
+            "medium": "25px",
+            "large": "35px"
+        },
+        "FontStyle": {              // Setting for the font-style
+            "b": "bold",
+            "i": "italic",
+            "u": "underline"
+        }
+        "FontFamily": "Roboto, helvetica"   // Set the font-family
+    },
     "style": {
         "title" : {
-            "fontSize" : "14px",
-            "fontColor" : "red",
-            "fontStyle": "none",
-            "fontFamily": "Arial"
+            "size": "large"
         },
         "content": {
-            "fontSize" : "",
-            "fontColor" : "",
-            "fontFamily": "" ,
-            "fontStyle": "",
-            "backgroundColor": "",
+            "size": "small",
             "alignment" : "",
-            "style" : ""
-        },
-        "header": {
-            "backgroundColor" : "",
         },
         "image":{
             "shape": "", // if true => circle
-            "backgroundColor":""
         },
         "date" : {
-            "fontSize" : "",
-            "fontColor" : "",
-            "fontFamily": "" ,
-            "fontStyle": "",
+            "size": "large",
+            "style": "b",
             "alignment" : ""
         },
         "time" : {
             "shape": "",
-            "circleBackground":"",
-            "fontSize" : "",
-            "fontColor" : "",
-            "fontFamily": "" ,
-            "fontStyle": "",
+            "size": "medium",
             "alignment" : "",
-            "backgroundColor":""
         }
     },
     // APP BUILD
