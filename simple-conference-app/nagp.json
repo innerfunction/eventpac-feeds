@@ -1,0 +1,101 @@
+{
+    "font-family": "georgia"
+    "style": {
+        "event": {
+            "header": {
+                "bg-color": "#3498DA",
+                "title": {
+                    "size": "large",
+                    "color": "#fff",
+                    "align": "center"
+                },
+                "date": {
+                    "size": "medium",
+                    "color": "#fff",
+                    "align": "center"
+                }
+            },
+            "time": {
+                "shape": "banner",
+                "size": "medium",
+                "color": "#3398DA",
+                "align": "center",
+                "bg-color": "#f8f8f8",
+                "inHeader": true
+            },
+            "description": {
+                "bg-color": "#fff",
+                "color": "#555",
+                "size": "medium",
+                "align": "center"
+            },
+            "speakerLink": {
+                "title": {
+                    "color": "#3398DA",
+                    "size": "medium",
+                    "style": "bold",
+                    "align": "center"
+                },
+                "link": {
+                    "name": {
+                        "color": "#4D4F94",
+                        "size": "medium",
+                        "align": "center",
+                        "border": "solid 1px rgba(77,79,148,.5)"
+                    }
+                }
+            }
+        },
+        "speaker": {
+            "header": {
+                 "title": {
+                    "size": "large",
+                    "color": "#3498DB",
+                    "align": "center"
+                }
+            },
+             "image": {
+                "shape": "circle"
+            },
+            "description": {
+                "bg-color": "#fff",
+                "color": "#555",
+                "size": "medium",
+                "align": "center"
+            }
+        },
+        "pages": {
+            "header": {
+                "title": {
+                    "size": "large",
+                    "color": "#3498DA",
+                    "align": "center"
+                }
+            },
+            "description": {
+                "bg-color": "#fff",
+                "color": "#555",
+                "size": "medium",
+                "align": "center"
+            }
+        },
+        "locations": {
+            "header": {
+                "bg-color": "#3498DA",
+                "title": {
+                    "size": "large",
+                    "color": "#fff",
+                    "align": "center"
+                }
+            },
+            "description": {
+                "bg-color": "#fff",
+                "color": "#555",
+                "size": "medium",
+                "align": "center"
+            }
+        },
+
+    }
+}
+
