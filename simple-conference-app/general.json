@@ -12,23 +12,21 @@
         }
     },
     // FEED BUILD
-    {
-        "Color": {
-            "tabs": {
-                "bg-color": ""      // Tabs background-color (no need for conference app)
-            },
-            "header" {
-                "bg-color": "",     // Header background color
-                "fg-color": "",     // Time background-color if circle shape
-                "font-color": "",   // Header font color
-            },
-            "borders": {
-                "color": ""         //
-            },
-            "content": {
-                "font-color": "",   // Content font color
-                "bk-color": ""      // Content background-color
-            }
+    "Color": {
+        "tabs": {
+            "bg-color": ""      // Tabs background-color (no need for conference app)
+        },
+        "header" {
+            "bg-color": "",     // Header background color
+            "fg-color": "",     // Time background-color if circle shape
+            "font-color": "",   // Header font color
+        },
+        "borders": {
+            "color": ""         //
+        },
+        "content": {
+            "font-color": "",   // Content font color
+            "bk-color": ""      // Content background-color
         },
         "FontSize": {               // Setting for the font-size
             "small": "15px",        
