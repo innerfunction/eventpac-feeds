@@ -16,7 +16,7 @@
         "tabs": {
             "bg-color": ""      // Tabs background-color (no need for conference app)
         },
-        "header" {
+        "header" :{
             "bg-color": "",     // Header background color
             "fg-color": "",     // Time background-color if circle shape
             "font-color": "",   // Header font color
@@ -29,15 +29,15 @@
             "bk-color": ""      // Content background-color
         },
         "FontSize": {               // Setting for the font-size
-            "small": "15px",        
-            "medium": "25px",
-            "large": "35px"
+            "small": "1em",      //16px    
+            "medium": "1.56em",   //  25px
+            "large": "2.06em"     //35px
         },
         "FontStyle": {              // Setting for the font-style
             "b": "bold",
             "i": "italic",
             "u": "underline"
-        }
+        },
         "FontFamily": "Roboto, helvetica"   // Set the font-family
     },
     "style": {
