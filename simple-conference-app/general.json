@@ -40,8 +40,24 @@
             }
         },
         "app": {
-            "titleBarColor": "",
-            "titleBarTextColor": ""
+            "titleBar:" {
+                "titleBarColor": "",
+                "titleBarTextColor": ""
+            },
+            "tabList": {
+                "textColor":                "#FFFFFF",
+                "selectedTextColor":        "#CB3240",
+                "backgroundColor":          "#E51C23",
+                "selectedBackgroundColor":  "#272727",            
+            },
+            "listView": {
+                "textColor":                "#333333",
+                "detailTextColor":          "#12365A",
+                "selectedTextColor":        "#FFFFFF",
+                "detailSelectedTextColor":  "#FFFFFF",
+                "backgroundColor":          "#EBF0EC",
+                "selectedBackgroundColor":  "#12365A"
+            }
         }
     },
 }
