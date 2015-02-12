@@ -14,31 +14,75 @@
 
     "Style": {
         "feed": {
+            "FontFamily": "Roboto, helvetica",  
             "tabs": {
                 "bg-color": "#09AA9A"       
             },
             "header" : {
-                "bg-color": "#09AA9A",      
-                "fg-color": "#f8f8f8",      
-                "font-color": "#fff"      
+                "gradient" : "true",
+                "bg-colors" : {
+                    "color-1" : "#fff",
+                    "color-2" : "#09AA9A" 
+                },
+                "title":{
+                    "size": "large",
+                    "color": "#fff",
+                    "align": "center"
+                }    
             },
-            "borders": {
-                "color": "#E51C23"         
+            "description": {
+                "bg-color": "#fff",
+                "color": "#000",
+                "size": "small",
+                "align": "center"
             },
-            "content": {
-                "font-color": "#333333",    
-                "bk-color": "#F8F8FF",      
-                "alignment" : ""
+
+            "event": {
+                "header":{
+                    "title":{
+                        "size": "large",
+                        "color": "#fff",
+                        "align": "center"
+                    }, 
+                    "date" : {
+                        "size": "medium",
+                        "color": "#fff",
+                        "align": "center"                   
+                    }
+                },
+                 "time": {
+                    "inHeader": false,
+                    "shape": "banner",
+                    "size": "medium",
+                    "color": "#3398DA",
+                    "align": "center",
+                    "bg-color": "#f8f8f8",
+                },               
+                "speakerLink": {
+                    "speakerList": true,
+                    "title": {
+                        "color": "#3398DA",
+                        "size": "medium",
+                        "style": "bold",
+                        "align": "center"
+                    },
+                    "link": {
+                        "name": {
+                            "color": "#4D4F94",
+                            "size": "medium",
+                            "align": "center",
+                            "border": "solid 1px rgba(77,79,148,.5)",
+                            "hoverColor": "#fff",
+                            "hoverBorder": "solid 1px rgba(77,79,148,.5)",
+                            "hoverBg": "#4D4F94",
+                        }
+                    }
+                }
             },
-            "FontFamily": "Roboto, helvetica",   
-            "image":{
-                "shape": ""                
-            },
-            "date" : {
-                "style": "bold"
-            },
-            "time" : {
-                "shape": ""
+            "speaker" :{
+                "image": {
+                    "shape": "circle"
+                },
             }
         },
         "app": {
