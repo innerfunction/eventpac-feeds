@@ -131,11 +131,18 @@ header,  .header {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{color1}', endColorstr='{color2}',GradientType=1 ); */
 }
 {#postsTypes}
-	{?postsTypes.style.header}
-		#{postsTypes.name} header,  .header {
-			background : {bg-color};
-		}
-	{?postsTypes.style.header}
+	{#styles}
+		{#header}
+            #{name} header,  .header {
+                {#background}background : {.};{/background}
+            }
+            {#title}
+                #{name} .title {
+                    {#size}font-size: {.}{/size}
+                }
+            {/title}
+        {/header}
+	{/styles}
 {/postsTypes}
 .header.fixed {
 	padding: 1.875em 0; 
