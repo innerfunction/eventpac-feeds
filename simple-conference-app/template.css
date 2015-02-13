@@ -133,11 +133,11 @@ header,  .header {
 {#postsTypes}
 	{#styles}
 		{#header}
-            #{name} header,  .header {
+            #{title} header,  .header {
                 {#background}background : {.};{/background}
             }
             {#title}
-                #{name} .title {
+                #{title} .title {
                     {#size}font-size: {.};{/size}
                     {#color}font-size: {.};{/color}
                     {#align}font-size: {.};{/align}
@@ -145,7 +145,7 @@ header,  .header {
             {/title}
         {/header}
         {#description}
-        	#{name} .description {
+        	#{title} .description {
         		{#background}background : {.};{/background}
                 {#size}font-size: {.};{/size}
                 {#color}font-size: {.};{/color}
