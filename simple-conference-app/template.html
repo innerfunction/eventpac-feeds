@@ -39,6 +39,13 @@
             </div> 
                   
         {/image} 
+        {#time}
+            <div class="shape-container  {shape}" >       
+                
+                    <div><p><span>{startTime} - {endTime} <span/> </p></div>
+                    <p></p>                        
+            </div> 
+        {/time}
         <div class="content {style}">      
             <p>{content.html|s}</p>
 
