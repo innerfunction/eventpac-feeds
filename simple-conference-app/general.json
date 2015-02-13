@@ -4,9 +4,11 @@
         "performers": {
             "Name": "speakers",
             "Settings": {
-                "bg-color": {
-                    "color1": "#00a9e1",
-                    "color2": "#4dbd9d"
+                "header": {
+                    "bg-color": {
+                        "color1": "#00a9e1",
+                        "color2": "#4dbd9d"
+                    }
                 },
                 "image": {
                     "shape": "circle",
@@ -28,14 +30,26 @@
                     "size": "medium",
                     "color": "#000",
                     "align": "center",
-                    "bg-color": "#f8f8f8",
                     "inHeader": true
                 }
             }
         }
     },
     "PagesTypes": {
-        
+       "pages": {
+            "name": "pages"
+       },
+       "locations": {
+           "name": "locations",
+           "Settings": {
+               "header": {
+                   "bg-color": {
+                        "color1": "#B26EAD",
+                        "color2": "#306073"
+                   }
+                }
+            }
+        }
     },
     "ContentStyle": {
         "FontFamily": "Roboto, helvetica",  
