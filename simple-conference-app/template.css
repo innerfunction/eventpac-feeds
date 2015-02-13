@@ -138,10 +138,20 @@ header,  .header {
             }
             {#title}
                 #{name} .title {
-                    {#size}font-size: {.}{/size}
+                    {#size}font-size: {.};{/size}
+                    {#color}font-size: {.};{/color}
+                    {#align}font-size: {.};{/align}
                 }
             {/title}
         {/header}
+        {#description}
+        	#{name} .description {
+        		{#background}background : {.};{/background}
+                {#size}font-size: {.};{/size}
+                {#color}font-size: {.};{/color}
+                {#align}font-size: {.};{/align}       		
+        	}
+        {/description}
 	{/styles}
 {/postsTypes}
 .header.fixed {
