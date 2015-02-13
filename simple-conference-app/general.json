@@ -1,44 +1,33 @@
 {
-    "AppName": "AppConference1",
-    "PostsTypes": {
+    "name": "AppConference1",
+    "postsTypes": {
         "performers": {
-            "Name": "speakers",
+            "name": "speakers",
             "style": {
                 "header": {
-                    "bg-color": {
-                        "color1": "#00a9e1",
-                        "color2": "#4dbd9d"
-                    }
+                    "bg-color" : [ "#bd1664", "#f37324"],
                 }
             }
         },
         "events": {
-            "Name": "events",
-        }
-    },
-    "PagesTypes": {
-       "pages": {
-            "Name": "pages"
-       },
-       "locations": {
-           "Name": "locations",
+            "name": "events",
+        },
+        "pages": {
+            "name": "pages"
+        },
+        "locations": {
+           "name": "locations",
            "style": {
-               "header": {
-                   "bg-color": {
-                        "color1": "#B26EAD",
-                        "color2": "#306073"
-                   }
+                "header": {
+                    "bg-color" : [ "#bd1664", "#f37324"]
                 }
             }
         }
     },
-    "ContentStyle": {
-        "FontFamily": "Roboto, helvetica",  
+    "contentStyle": {
+        "fontFamily": "Roboto, helvetica",  
         "header" : {
-            "bg-color" : {
-                "color1": "#bd1664",
-                "color2": "#f37324"
-            },
+            "bg-color" : [ "#bd1664", "#f37324"],
             "title":{
                 "size": "large",
                 "color": "#fff",
@@ -67,20 +56,18 @@
         "image": {
             "shape": "circle",
             "inHeader": true
-        }
-    },
-    "AppStyle": {
-        "titleBar" : {
+        },
+         "titleBar" : {
             "titleBarColor": "#E51C23",
             "titleBarTextColor": "#FFFFFF"
         },
-        "tabList": {
+        "tabs": {
             "textColor":                "#FFFFFF",
             "selectedTextColor":        "#CB3240",
             "backgroundColor":          "#E51C23",
             "selectedBackgroundColor":  "#272727"            
         },
-        "listView": {
+        "list": {
             "textColor":                "#333333",
             "detailTextColor":          "#12365A",
             "selectedTextColor":        "#FFFFFF",
