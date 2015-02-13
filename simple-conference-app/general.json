@@ -3,39 +3,34 @@
     "PostsTypes": {
         "performers": {
             "Name": "speakers",
-            "Settings": {
-                "bg-color": {
-                    "color1": "#00a9e1",
-                    "color2": "#4dbd9d"
-                },
-                "image": {
-                    "shape": "circle",
-                    "inHeader": true
+            "style": {
+                "header": {
+                    "bg-color": {
+                        "color1": "#00a9e1",
+                        "color2": "#4dbd9d"
+                    }
                 }
             }
         },
         "events": {
             "Name": "events",
-            "Settings": {
-                "date": {
-                    "size": "large",
-                    "color": "#fff",
-                    "style": "bold",
-                    "align": "center"
-                },
-                "time": {
-                    "shape": "circle",
-                    "size": "medium",
-                    "color": "#000",
-                    "align": "center",
-                    "bg-color": "#f8f8f8",
-                    "inHeader": true
-                }
-            }
         }
     },
     "PagesTypes": {
-        
+       "pages": {
+            "Name": "pages"
+       },
+       "locations": {
+           "Name": "locations",
+           "style": {
+               "header": {
+                   "bg-color": {
+                        "color1": "#B26EAD",
+                        "color2": "#306073"
+                   }
+                }
+            }
+        }
     },
     "ContentStyle": {
         "FontFamily": "Roboto, helvetica",  
@@ -56,6 +51,23 @@
             "size": "small",
             "align": "center"
         },
+        "date": {
+            "size": "large",
+            "color": "#fff",
+            "style": "bold",
+            "align": "center"
+        },
+        "time": {
+            "shape": "circle",
+            "size": "medium",
+            "color": "#000",
+            "align": "center",
+            "inHeader": true
+        },
+        "image": {
+            "shape": "circle",
+            "inHeader": true
+        }
     },
     "AppStyle": {
         "titleBar" : {
