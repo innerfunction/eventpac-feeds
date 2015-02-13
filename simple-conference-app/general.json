@@ -51,7 +51,8 @@
             "size": "medium",
             "color": "#000",
             "align": "center",
-            "inHeader": true
+            "inHeader": true,
+            "bg-color": "#fff"
         },
         "image": {
             "shape": "circle",
