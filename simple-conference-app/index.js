@@ -5,6 +5,7 @@ var mods = {
 }
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
+var settings = require('./general');
 
 function isPublished( post ) {
     return post.status == 'published';
@@ -23,10 +24,10 @@ function buildImages( cx, updates ) {
 
 var feed = {
     active: false,
-    name: 'app-category-1',
+    name: settings.appName,
     opts: {
         exts: {
-            uriSchemes: eputils.schemes('app-category-1')
+            uriSchemes: eputils.schemes(settings.appName)
         }
     },
     types: {
