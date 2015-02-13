@@ -1,33 +1,9 @@
 {
     "name": "AppConference1",
-    "postsTypes": {
-        "performers": {
-            "name": "speakers",
-            "style": {
-                "header": {
-                    "bg-color" : [ "#bd1664", "#f37324"],
-                }
-            }
-        },
-        "events": {
-            "name": "events",
-        },
-        "pages": {
-            "name": "pages"
-        },
-        "locations": {
-           "name": "locations",
-           "style": {
-                "header": {
-                    "bg-color" : [ "#bd1664", "#f37324"]
-                }
-            }
-        }
-    },
-    "contentStyle": {
+    "styles": {
         "fontFamily": "Roboto, helvetica",  
         "header" : {
-            "bg-color" : [ "#bd1664", "#f37324"],
+            "bg-color" : [ "#bd1664", "#f37324" ],
             "title":{
                 "size": "large",
                 "color": "#fff",
@@ -35,7 +11,7 @@
             }    
         },
         "description": {
-            "bg-color": "#fff",
+            "bg-color": ["#fff"],
             "color": "#000",
             "size": "small",
             "align": "center"
@@ -75,6 +51,30 @@
             "detailSelectedTextColor":  "#FFFFFF",
             "backgroundColor":          "#EBF0EC",
             "selectedBackgroundColor":  "#12365A"
+        }
+    },
+    "postsTypes": {
+        "performers": {
+            "title": "Speakers",
+            "styles": {
+                "header": {
+                    "bg-color" : [ "#bd1664", "#f37324" ],
+                }
+            }
+        },
+        "events": {
+            "title": "Events",
+        },
+        "pages": {
+            "title": "Pages"
+        },
+        "locations": {
+           "title": "Locations",
+           "style": {
+                "header": {
+                    "bg-color" : [ "#bd1664", "#f37324" ]
+                }
+            }
         }
     }
 }
