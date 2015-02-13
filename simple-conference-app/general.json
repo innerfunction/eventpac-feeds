@@ -1,9 +1,9 @@
 {
-    "AppName": "AppConference1",
-    "PostsTypes": {
+    "name": "AppConference1",
+    "postsTypes": {
         "performers": {
-            "Name": "speakers",
-            "style": {
+            "title": "Speakers",
+            "styles": {
                 "header": {
                     "bg-color": {
                         "color1": "#00a9e1",
@@ -16,13 +16,13 @@
             "Name": "events",
         }
     },
-    "PagesTypes": {
+    "pagesTypes": {
        "pages": {
             "Name": "pages"
        },
        "locations": {
            "Name": "locations",
-           "style": {
+           "Options": {
                "header": {
                    "bg-color": {
                         "color1": "#B26EAD",
@@ -35,10 +35,7 @@
     "ContentStyle": {
         "FontFamily": "Roboto, helvetica",  
         "header" : {
-            "bg-color" : {
-                "color1": "#bd1664",
-                "color2": "#f37324"
-            },
+            "bg-color" : ["#bd1664", "#f37324"],
             "title":{
                 "size": "large",
                 "color": "#fff",
