@@ -178,9 +178,9 @@
                                 <!--<th>No</th>-->
                                 <th>Piloto</th>
                                 <th>ESC</th>
+                                <th>Puntos</th>
                                 <!--<th>VUE</th>
-                                <th>Tiempo</th>
-                                <th>Puntos</th>-->
+                                <th>Tiempo</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -210,9 +210,9 @@
                                 <!--<th>No</th>-->
                                 <th>Piloto</th>
                                 <th>ESC</th>
+                                <th>Puntos</th>
                                 <!--<th>VUE</th>
-                                <th>Tiempo</th>
-                                <th>Puntos</th>-->
+                                <th>Tiempo</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -222,7 +222,7 @@
                                 <!--<td>{performer_id}</td>-->
                                 <td><span class="flag {nationality}"></span>{title}</td>
                                 <td>{teamInitials}</td>
-                                <!--<td>{points}</td>-->
+                                <td>{points}</td>
                             <!--</tr>
                             <tr class="f16 second-r">
                                 <td colspan="3">
@@ -242,7 +242,6 @@
             $('.tab-btn').bind('click', function(e) {
                 e.preventDefault();
                 var target = $(this).attr('href');
-
                 $('#' + $(this).parent().parent().parent().parent().attr('id')).css('display', 'none');
                 $('#' + target).css('display', 'visible');
             });
@@ -251,4 +250,3 @@
 
 </body>
 </html>
-
