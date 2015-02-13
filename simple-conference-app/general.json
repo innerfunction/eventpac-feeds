@@ -11,13 +11,9 @@
             "data": [ "id", "title", "occurence", "startDate", "startTime", "endDate", "endTime", "content", "type" ]
         }
     },
-
     "Style": {
         "feed": {
             "FontFamily": "Roboto, helvetica",  
-            "tabs": {
-                "bg-color": "#09AA9A"       
-            },
             "header" : {
                 "gradient" : "true",
                 "bg-colors" : {
@@ -36,14 +32,8 @@
                 "size": "small",
                 "align": "center"
             },
-
             "event": {
                 "header":{
-                    "title":{
-                        "size": "large",
-                        "color": "#fff",
-                        "align": "center"
-                    }, 
                     "date" : {
                         "size": "medium",
                         "color": "#fff",
@@ -59,7 +49,6 @@
                     "bg-color": "#f8f8f8",
                 },               
                 "speakerLink": {
-                    "speakerList": true,
                     "title": {
                         "color": "#3398DA",
                         "size": "medium",
