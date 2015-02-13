@@ -5,21 +5,21 @@
         <title></title>
         <link rel="stylesheet" href="styles.css">      
     </head>
-    <body id="programme">
+    <body id="{name}">
         {#image}
             <div class=" header fixed">
                 {#date}<p class="date"> {date} </p>{/date}
-                {#title}<h1>{title}</h1>{/title}
+                {#title}<div class="title" >{title}</div>{/title}
                 {#time}
                     <div class="shape-time">
-                        <p><span><p>{time}</p> </span></p>
+                        <div><span><p>{time}</p> </span></div>
                     </div> 
                 {/time}
             </div>
         {/image}
         <header>
             {#date}<p class="date"> {date} </p>{/date}
-            {#title}<h1>{title} </h1>{/title}
+            {#title}<div class="title" >{title} </div>{/title}
             {#time}
                 <div class="shape-time">
                     <p><span><p>{time}</p> </span></p>
@@ -39,11 +39,13 @@
             </div> 
                   
         {/image} 
-        <div class="content {style}">
-
-    
-                
+        <div class="content {style}">      
             <p>{content.html|s}</p>
+
+            {#performer} 
+                <p class="title speakers"> {content.title} </p>
+                <p><a class="speaker-link" href="event:nav/open+view@view:SpeakerWebView+html@subs:/nagp/speaker-{id}.html">{title}</a></p>
+            {/performer}
         </div>
     </body>
     <script src="js/jquery.min.js"></script>
