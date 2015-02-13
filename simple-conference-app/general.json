@@ -1,98 +1,80 @@
 {
-    "appName": "AppConference1",
-    
-    "postsTypes": {
+    "AppName": "AppConference1",
+    "PostsTypes": {
         "performers": {
-            "name": "performers",
-            "data": [ "id", "title", "content", "photo", "type" ]
+            "Name": "speakers",
+            "Settings": {
+                "bg-color": {
+                    "color1": "#00a9e1",
+                    "color2": "#4dbd9d"
+                },
+                "image": {
+                    "shape": "circle",
+                    "inHeader": true
+                }
+            }
         },
         "events": {
-            "name": "events",
-            "data": [ "id", "title", "occurence", "startDate", "startTime", "endDate", "endTime", "content", "type" ]
-        }
-    },
-    "Style": {
-        "feed": {
-            "FontFamily": "Roboto, helvetica",  
-            "header" : {
-                "gradient" : "true",
-                "bg-colors" : {
-                    "color-1" : "#fff",
-                    "color-2" : "#09AA9A" 
-                },
-                "title":{
+            "Name": "events",
+            "Settings": {
+                "date": {
                     "size": "large",
                     "color": "#fff",
+                    "style": "bold",
                     "align": "center"
-                }    
-            },
-            "description": {
-                "bg-color": "#fff",
-                "color": "#000",
-                "size": "small",
-                "align": "center"
-            },
-            "event": {
-                "header":{
-                    "date" : {
-                        "size": "medium",
-                        "color": "#fff",
-                        "align": "center"                   
-                    }
                 },
-                 "time": {
-                    "inHeader": false,
-                    "shape": "banner",
+                "time": {
+                    "shape": "circle",
                     "size": "medium",
-                    "color": "#3398DA",
+                    "color": "#000",
                     "align": "center",
                     "bg-color": "#f8f8f8",
-                },               
-                "speakerLink": {
-                    "title": {
-                        "color": "#3398DA",
-                        "size": "medium",
-                        "style": "bold",
-                        "align": "center"
-                    },
-                    "link": {
-                        "name": {
-                            "color": "#4D4F94",
-                            "size": "medium",
-                            "align": "center",
-                            "border": "solid 1px rgba(77,79,148,.5)",
-                            "hoverColor": "#fff",
-                            "hoverBorder": "solid 1px rgba(77,79,148,.5)",
-                            "hoverBg": "#4D4F94",
-                        }
-                    }
+                    "inHeader": true
                 }
-            },
-            "speaker" :{
-                "image": {
-                    "shape": "circle"
-                },
             }
+        }
+    },
+    "PagesTypes": {
+        
+    },
+    "ContentStyle": {
+        "FontFamily": "Roboto, helvetica",  
+        "header" : {
+            "bg-color" : {
+                "color1": "#bd1664",
+                "color2": "#f37324"
+            },
+            "title":{
+                "size": "large",
+                "color": "#fff",
+                "align": "center"
+            }    
         },
-        "app": {
-            "titleBar" : {
-                "titleBarColor": "#E51C23",
-                "titleBarTextColor": "#FFFFFF"
-            },
-            "tabList": {
-                "textColor":                "#FFFFFF",
-                "selectedTextColor":        "#CB3240",
-                "backgroundColor":          "#E51C23",
-                "selectedBackgroundColor":  "#272727"            
-            },
-            "listView": {
-                "textColor":                "#333333",
-                "detailTextColor":          "#12365A",
-                "selectedTextColor":        "#FFFFFF",
-                "detailSelectedTextColor":  "#FFFFFF",
-                "backgroundColor":          "#EBF0EC",
-                "selectedBackgroundColor":  "#12365A"
-            }
+        "description": {
+            "bg-color": "#fff",
+            "color": "#000",
+            "size": "small",
+            "align": "center"
+        },
+    },
+    "AppStyle": {
+        "titleBar" : {
+            "titleBarColor": "#E51C23",
+            "titleBarTextColor": "#FFFFFF"
+        },
+        "tabList": {
+            "textColor":                "#FFFFFF",
+            "selectedTextColor":        "#CB3240",
+            "backgroundColor":          "#E51C23",
+            "selectedBackgroundColor":  "#272727"            
+        },
+        "listView": {
+            "textColor":                "#333333",
+            "detailTextColor":          "#12365A",
+            "selectedTextColor":        "#FFFFFF",
+            "detailSelectedTextColor":  "#FFFFFF",
+            "backgroundColor":          "#EBF0EC",
+            "selectedBackgroundColor":  "#12365A"
         }
     }
 }

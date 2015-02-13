@@ -1,0 +1,69 @@
+{
+    "font-family": "",
+    "basicStyle": {
+        "header": {
+            "bg-color": "#3498DA",
+            /*
+            "bg-color": {
+                "gradient": {
+                    "color1": "",
+                    "color2": ""
+                }
+            }
+            */
+            "title": {
+                "size": "large",
+                "color": "#fff",
+                "align": "center"
+            }
+        },
+        "description": {
+            "bg-color": "#fff",
+            "color": "#555",
+            "size": "medium",
+            "align": "center"
+        }
+    },
+
+}
+
+
+// Options 
+
+"date": {
+    "size": "large",
+    "color": "#fff",
+    "style": "bold",
+    "align": "center"
+}
+
+"time": {
+    "shape": "circle",
+    "size": "medium",
+    "color": "#000",
+    "align": "center",
+    "bg-color": "#f8f8f8",
+    "inHeader": true
+}
+
+"image": {
+    "shape": "circle",
+    "inHeader": true
+}
+
+"speakerLink": {
+    "title": {
+        "color": "#3398DA",
+        "size": "medium",
+        "style": "bold",
+        "align": "center"
+    },
+    "link": {
+        "name": {
+            "color": "#4D4F94",
+            "size": "medium",
+            "align": "center",
+            "border": "solid 1px rgba(77,79,148,.5)"
+        }
+    }
+}
