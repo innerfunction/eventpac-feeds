@@ -1,6 +1,6 @@
 body {
 	font-size: 16px;
-	background-color: {content.backgroundColor};
+	background-color: {contentStyle.description.bg-color};
 }
 body, div, ul, a, h1, h2, h3, span {
 	padding: 0;
@@ -41,25 +41,13 @@ header, .header {
 	padding: 1.875em ; /*30px*/
 	text-align: center;
 }
+.header.fixed {
+	padding: 1.875em 0; 
+}
 
 /* review to set any content in the shape */
 /* IMAGE SHAPES */
-/*.shape-image > p, .shape-time > p {
-	padding:0;
-	margin:0;
-}
 
-/* banner image */
-/*.shape-image, .shape-time { 
-	margin: 0 -15px;
-	padding: 0;
-}
-
-.shape-image > p > span > img, .shape-time > p > span > img  {
-	width: 100%;
-	height: 230px;
-	visibility: hidden;
-}*/
 .shape-container.banner {
 	/*margin: 0 -0.9375em; -15px*/
 	padding: 0;
@@ -80,7 +68,7 @@ header, .header {
 }
 .shape-container.circle > div:first-child{
 	margin: 0 -0.9375em; /*-15px*/
-	background-color: {backgroundColor};
+	background-color: {contentStyle.header.bg-color};
 }
 .shape-container.circle > div > p { 
 	width: 183px;/*11.4375em*/
@@ -88,7 +76,7 @@ header, .header {
 	padding:  0.25em; /*4px*/
 	margin: 0 auto;
 	text-align: center;
-	background-color: #fff;
+	background-color: {content.backgroundColor};
 	border-radius: 100%;
 	display: block
 }
@@ -132,44 +120,56 @@ header, .header {
 
 }
 header,  .header {
-	background : {header.backgroundColor};
+	background-color: {contentStyle.header.bg-color};
+
+	/*background: -moz-linear-gradient(left, {color1} 0%, {color2} 100%); 
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, {color1}), color-stop(100%,{color2})); 
+	background: -webkit-linear-gradient(left, {color1} 0%,{color2} 100%); 
+	background: -o-linear-gradient(left, {color1} 0%,{color2} 100%); 
+	background: -ms-linear-gradient(left, {color1} 0%,{color2} 100%); 
+	background: linear-gradient(to right, {color1} 0%,{color2} 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{color1}', endColorstr='{color2}',GradientType=1 ); */
 }
+{#postsTypes}
+	{?postsTypes.style.header}
+		#{postsTypes.name} header,  .header {
+			background : {bg-color};
+		}
+	{?postsTypes.style.header}
+{/postsTypes}
 .header.fixed {
 	padding: 1.875em 0; 
 }
 
 .date{
-	font-size: {FontSize.medium} ;
-	color: {fontColor} ;
-	font-style: {fontStyle} ;
-	font-family: {fontFamily} ;
+	font-size: {contentStyle.date.size} ;
+	color: {contentStyle.date.color} ;
+	font-style: {contentStyle.date.style} ;
+	font-family: {contentStyle.fontFamily} ;
 }
 
-header > h1,  .header > h1{
-	font-size: {FontSize.large} ;
-	color: {fontColor} ;
-	font-style: {fontStyle} ;
-	font-family: {fontFamily} ;
+header > div.title,  .header > div.title{
+	font-size: {contentStyle.header.title.size} ;
+	color: {contentStyle.header.title.color} ;
+	text-align: {contentStyle.header.title.align} ;
 }
 
 
 .time {
-	font-size: {FontSize.medium};
-	color: {fontColor} ;
-	font-style: {fontStyle} ;
-	font-family: {fontFamily} ;
-	background-color: {backgroundColor}	
+	font-size: {contentStyle.time.size};
+	color: {contentStyle.time.color};
+	font-style: {contentStyle.time.style};
+	background-color: {contentStyle.time.bg-color}	
 }
 
 
 .content{
-	font-size: {FontSize.medium};
-	color: {content.fontColor} ;
-	font-style: {content.fontStyle} ;
-	font-family: {content.fontFamily} ;
-	text-align: {content.alignment};
-	background-color: {content.backgroundColor}
-	}
+	font-size: {description.size};
+	color: {description.color} ;
+	font-style: {description.fontStyle} ;
+	text-align: {description.align};
+	background-color: {description.bg-color}
+}
 
 
 @media (min-height: 450px) {
