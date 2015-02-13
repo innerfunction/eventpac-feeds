@@ -83,8 +83,8 @@ header, .header {
 .shape-container.circle  > div > p > span{
 	border-radius: 100%;
 	display: table-cell;
-	width: 175px;/*10.9375em*/
-	height: 175px;/*10.9375em*/
+	width: 185px;
+	height: 185px;
 	vertical-align: middle;
 	font-size: {FontSize.medium};
 	background-color: #f8f8f8;
