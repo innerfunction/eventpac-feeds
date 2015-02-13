@@ -1,0 +1,183 @@
+body {
+	font-size: 16px;
+	background-color: {content.backgroundColor};
+}
+body, div, ul, a, h1, h2, h3, span {
+	padding: 0;
+	margin: 0;
+}
+ul { 
+	list-style: none;
+}
+p {
+	margin: 0.375em 0 ; /*6px*/
+}
+.table-responsive {
+	margin-right: -0.9375em; /*-15px*/
+	margin-left: -0.9375em; /*-15px*/
+}
+a, a:hover, a:active, a:visited { 
+	text-decoration: none; 
+	color:#000;
+}
+.position-absolute { 
+	position: absolute;
+	width:100%;
+}
+.hide { 
+	display: none;
+}
+.visible { 
+	display: visible
+}
+.block {
+	display: block;
+}
+.fixed {
+	margin-top:0 ;
+	display: none;
+}
+header, .header {
+	padding: 1.875em ; /*30px*/
+	text-align: center;
+}
+
+/* review to set any content in the shape */
+/* IMAGE SHAPES */
+/*.shape-image > p, .shape-time > p {
+	padding:0;
+	margin:0;
+}
+
+/* banner image */
+/*.shape-image, .shape-time { 
+	margin: 0 -15px;
+	padding: 0;
+}
+
+.shape-image > p > span > img, .shape-time > p > span > img  {
+	width: 100%;
+	height: 230px;
+	visibility: hidden;
+}*/
+.shape-container.banner {
+	/*margin: 0 -0.9375em; -15px*/
+	padding: 0;
+}
+.shape-container.banner  > div > p > img  {
+	width: 100%;
+	height: 250px; /*14.375em*/
+	visibility: hidden;
+}
+
+.shape-container.circle {
+	padding: 0;
+	margin: 0;
+}
+
+.shape-container.circle > p, .shape-container.circle > div{
+	height:87.5px; /*5.46875em*/
+}
+.shape-container.circle > div:first-child{
+	margin: 0 -0.9375em; /*-15px*/
+	background-color: {backgroundColor};
+}
+.shape-container.circle > div > p { 
+	width: 183px;/*11.4375em*/
+	height: 183px;/*11.4375em*/
+	padding:  0.25em; /*4px*/
+	margin: 0 auto;
+	text-align: center;
+	background-color: #fff;
+	border-radius: 100%;
+	display: block
+}
+.shape-container.circle  > div > p > span{
+	border-radius: 100%;
+	display: table-cell;
+	width: 175px;/*10.9375em*/
+	height: 175px;/*10.9375em*/
+	vertical-align: middle;
+	font-size: {FontSize.medium};
+	background-color: #f8f8f8;
+} 
+
+.shape-container.circle  > div > p > img{
+	border-radius : 100%;
+	width:100%;
+	height:100%;
+	visibility: visible;
+}
+ 
+
+/* content style classes */
+.dropCap > p:first-child:first-letter { 
+	float: left;
+	font-size: 3em;/*36pt*/
+	line-height: .8;
+	padding-right: 0.25em; /*4px*/
+	font-weight: 600;
+	padding:0.9375em ; /*30px*/
+}
+
+/* buttons */
+.btn {
+	padding:0 ;
+	width:100%;
+}
+.btn > a {
+	display: block;
+	padding:  0.625em  0.375em;/* 10px 6px */
+	color: #fff;
+
+}
+header,  .header {
+	background : {header.backgroundColor};
+}
+.header.fixed {
+	padding: 1.875em 0; 
+}
+
+.date{
+	font-size: {FontSize.medium} ;
+	color: {fontColor} ;
+	font-style: {fontStyle} ;
+	font-family: {fontFamily} ;
+}
+
+header > h1,  .header > h1{
+	font-size: {FontSize.large} ;
+	color: {fontColor} ;
+	font-style: {fontStyle} ;
+	font-family: {fontFamily} ;
+}
+
+
+.time {
+	font-size: {FontSize.medium};
+	color: {fontColor} ;
+	font-style: {fontStyle} ;
+	font-family: {fontFamily} ;
+	background-color: {backgroundColor}	
+}
+
+
+.content{
+	font-size: {FontSize.medium};
+	color: {content.fontColor} ;
+	font-style: {content.fontStyle} ;
+	font-family: {content.fontFamily} ;
+	text-align: {content.alignment};
+	background-color: {content.backgroundColor}
+	}
+
+
+@media (min-height: 450px) {
+	.fixed { 
+		display: block;
+		position: fixed;
+		z-index: 3;
+		width: 100%;
+	}
+
+}

@@ -32,7 +32,7 @@ body {
 .favourite-btn {
 	width: 72px;
 	height: 72px;
-	background-image: url(../images/favourites/flag-off.png);
+	background-image: url(images/favourites/flag-off.png);
 	background-repeat: no-repeat;
 	background-position: top center;
 
@@ -43,7 +43,7 @@ body {
 	right: 10px;
 }
 .favourite-btn.active {
-	background-image: url(../images/favourites/flag-on.png);
+	background-image: url(images/favourites/flag-on.png);
 }
 .race-title {
 	font-size: 22px;

@@ -17,18 +17,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap.min.js"></script>
 
-     <style type="text/css">
-        {#image}
-           /* div.image-banner {
-                background: url({src}) 50% 50% no-repeat;
-                height: {height}px;
-                -moz-background-size: {width}px {height}px;
-                -webkit-background-size: {width}px {height}px;
-                background-size: {width}px {height}px;
-            }*/
-        {/image}
-    </style>
-
 </head>
 <body >
 	<div class="container-fluid">
@@ -43,11 +31,8 @@
 				       <p class="date"> Desde {start}, hasta {end} </p>
 			</div>
 			<div class="cold-md-12 col-sm-12 col-xs-12 main-image">
-				<!-- <img class="img-responsive" title="Race" src="images/races/australia.png" /> -->
 				{#image}
-                <!-- <div class="image image-banner img-responsive"></div> -->
-                <img class="img-responsive" title="Race" src="{src}" />
-             
+                    <img class="img-responsive" title="Race" src="{src}" />
                 {/image}
 				<div class="favourite-btn"></div>
 				<!-- TODO: add active class when the user press the favourite-btn and add the race to the favourite list -->

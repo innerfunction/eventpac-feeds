@@ -1,0 +1,114 @@
+{
+    "assets": {
+        "logo": "",
+        "splashScreen": ""
+    },
+    "generalStyle": {
+        "title" : {
+            "fontSize" : "14px",
+            "fontColor" : "red",
+            "fontStyle": "none",
+            "fontFamily": "Arial"
+        },
+        "content": {
+            "fontSize" : "",
+            "fontColor" : "",
+            "fontFamily": "" ,
+            "fontStyle": "",
+            "backgroundColor": "",
+            "alignment" : "",
+            "style" : ""
+        },
+        "header": {
+            "backgroundColor" : "",
+            "imageShape": "" // if true => circle
+        }
+    },
+    "PageType": {
+        
+        "performers": {
+
+            "name": "performers",
+            "style" : {
+                "title" : {
+                    "fontSize" : "20px"
+
+                }
+            }
+        },
+        "eventDetail" : {
+
+            "name": "eventDetail",
+            "style" : {
+                "header" : {
+                    "date" : {
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": "",
+                        "backgroundColor": ""
+                    },
+                    "time" : {
+                        "backgroundColor": "",
+                        "shape": "",
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": ""
+                    }
+                }
+            }
+        },
+        "programme" : {
+
+            "name": "programme",
+            "style": {
+                "list": {
+                    "backgroundColor": "",
+                    "date" :{
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": ""
+                    },
+                    "description" :{
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "fontStyle": ""
+                    }
+                }
+            }
+        },
+        "location" : {
+
+            "name": "location",
+            "style": {}
+        },
+        "contact" : {
+            "name": "contact",
+            "style": {
+                "content": {
+                    "fontSize" : "",
+                    "fontColor" : "",
+                    "fontFamily": "" ,
+                    "fontStyle": "",
+                    "backgroundColor": "",
+                    "alignment" : "",
+
+                    "style" : "",
+
+                    "contactButtons": {
+                        "fontSize" : "",
+                        "fontColor" : "",
+                        "fontFamily": "" ,
+                        "backgroundColor": "",
+                        "hoverBackgroundColor" : "",
+                        "hoverFontColor": "",
+                        "hoverFontStyle": ""
+                    }
+                }
+            }
+        }
+    }
+}

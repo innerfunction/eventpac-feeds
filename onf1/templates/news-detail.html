@@ -27,20 +27,6 @@
             background-size: {width}px {height}px;
         }
     {/image}
-/*    {?galleryHeight}
-    div.gallery {
-        height: {galleryHeight}px;
-    }
-    {/galleryHeight}
-    {#images}
-        div.image-{idx} {
-            background: url({src}) 50% 50% no-repeat;
-            height: {height}px;
-            -moz-background-size: {width}px {height}px;
-            -webkit-background-size: {width}px {height}px;
-            background-size: {width}px {height}px;
-        }
-    {/images}*/
     </style>
 
 </head>
@@ -57,20 +43,7 @@
                 <div class="cold-md-12 col-sm-12 col-xs-12 image">
                     <img class="image img-responsive" src="{src}" />
                 </div>
-               <!--<div class="image image-banner news"></div> -->
             {/image}
-<!--             {?images}
-            <div class="gallery autoplay items-{images.length}">
-                {#images}
-                <div class="item image image-{idx}"></div>
-                {/images}
-                <div class="controls">
-                    {#images}
-                    <a href="#item-{idx}" class="control-button">•</a>
-                    {/images}
-                </div>
-            </div>
-            {/images} -->
         </div>
         <div class="row">
             <div class="cold-md-12 col-sm-12 col-xs-12 news-content"><p>

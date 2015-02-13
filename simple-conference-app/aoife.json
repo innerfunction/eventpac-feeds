@@ -1,0 +1,104 @@
+{
+    "style": {
+        "event": {
+            "header": {
+                "bg-color": {
+                    "gradient": {
+                        "color1": "#bd1664",
+                        "color2": "#f37324"
+                    }
+                },
+                "title": {
+                    "size": "large",
+                    "color": "#fff",
+                    "align": "center"
+                },
+                "date": {
+                    "size": "large",
+                    "color": "#fff",
+                    "style": "bold",
+                    "align": "center"
+                }
+            },
+            "time": {
+                "shape": "circle",
+                "size": "medium",
+                "color": "#000",
+                "align": "center",
+                "bg-color": "#f8f8f8",
+                "inHeader": true
+            },
+            "description": {
+                "bg-color": "#fff",
+                "color": "#000",
+                "size": "small"
+            }
+        },
+        "speaker": {
+             "header": {
+                "bg-color": {
+                    "gradient": {
+                        "color1": "#00a9e1",
+                        "color2": "#4dbd9d"
+                    }
+                },
+                "title": {
+                    "size": "large",
+                    "color": "#fff",
+                    "align": "center"
+                },
+            },
+            "image": {
+                "shape": "circle",
+                "inHeader": true
+            },
+            "description": {
+                "bg-color": "#fff",
+                "color": "#000",
+                "size": "small"
+            }
+        },
+        "pages": {
+            "header": {
+                "bg-color": {
+                    "gradient": {
+                        "color1": "#bd1664",
+                        "color2": "#f37324"
+                    }
+                },
+                "title": {
+                    "size": "large",
+                    "color": "#fff",
+                    "align": "center"
+                },
+            },
+            "description": {
+                "bg-color": "#fff",
+                "color": "#000",
+                "size": "small"
+            }
+        },
+        "locations": {
+            "header": {
+                "bg-color": {
+                    "gradient": {
+                        "color1": "#B26EAD",
+                        "color2": "#306073"
+                    }
+                },
+                "title": {
+                    "size": "large",
+                    "color": "#fff",
+                    "align": "center"
+                },
+            },
+            "description": {
+                "bg-color": "#fff",
+                "color": "#000",
+                "size": "small"
+            }
+
+        }
+
+    }
+}

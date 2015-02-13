@@ -23,10 +23,10 @@ function buildImages( cx, updates ) {
 
 var feed = {
     active: false,
-    name: 'nagp',
+    name: 'app-category-1',
     opts: {
         exts: {
-            uriSchemes: eputils.schemes('nagp')
+            uriSchemes: eputils.schemes('app-category-1')
         }
     },
     types: {
@@ -74,7 +74,7 @@ var feed = {
                     }
                 });
                 buildImages( cx, updates );
-                cx.eval('templates/event-detail.html', updates, 'event-{id}.html');
+                cx.eval('templates.html', updates, 'event-{id}.html');
                 return updates.map(function update( post ) {
                     return {
                         id:             post.id,
@@ -103,7 +103,7 @@ var feed = {
                     }
                 });
                 buildImages( cx, updates );
-                cx.eval('templates/speaker-detail.html', updates, 'speaker-{id}.html');
+                cx.eval('templates.html', updates, 'speaker-{id}.html');
                 return updates.map(function update( post ) {
                     return {
                         id:             post.id,
@@ -118,3 +118,4 @@ var feed = {
     }
 }
 module.exports = require('../inc-build').extend( feed, module );
+

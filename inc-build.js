@@ -111,6 +111,8 @@ exports.extend = function( feed, _module ) {
         });
         // Write the post to the db.
         cx.write( post );
+        // Write the feed record (this to save the last download time and current build scope).
+        cx.record( cx.applyBuildScope({}) );
         // Clean non-published posts from the db.
         cx.clean(function clean( post ) {
             // Delete posts which aren't published or aren't in the current build scope.
@@ -166,6 +168,15 @@ exports.extend = function( feed, _module ) {
         var buildTargets = getDependentTargetsForPostTypes( updatedTypes, dependencies, targets );
         // The build function result - updated posts to be written to the db section of the build meta.
         var posts = {};
+        // Try resolving posts from the previous build.
+        var prevBuild = build.prevBuild;
+        if( prevBuild ) {
+            // If previous build found then copy its posts.
+            var prevPosts = prevBuild.meta.db.posts;
+            for( var id in prevPosts ) {
+                posts[id] = prevPosts[id];
+            }
+        }
         // Invoke each build target
         buildTargets.forEach(function each( target ) {
             try {
@@ -183,6 +194,20 @@ exports.extend = function( feed, _module ) {
                 Log.error('Failed to build target %s of feed %s', target.id, feedID, e );
             }
         });
+        // Automatically add newly deleted posts to the db manifest.
+        updatedTypes.forEach(function eachType( type ) {
+            var delcount = 0;
+            updatesByType[type].forEach(function eachPost( post ) {
+                if( post.status == 'trash' ) {
+                    posts[post.id] = null;
+                    delcount++;
+                }
+            });
+            if( delcount ) {
+                Log.debug('Found %d newly deleted %s posts in feed %s', delcount, type, feedID );
+            }
+        });
+        // Return the db manifest.
         return { db: { posts: posts } };
     }
     var _exports = {
