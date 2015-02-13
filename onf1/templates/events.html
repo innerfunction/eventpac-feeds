@@ -17,18 +17,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap.min.js"></script>
 
-     <style type="text/css">
-        {#image}
-           /* div.image-image {
-                background: url({src}) 50% 50% no-repeat;
-                height: {height}px;
-                -moz-background-size: {width}px {height}px;
-                -webkit-background-size: {width}px {height}px;
-                background-size: {width}px {height}px;
-            }*/
-        {/image}
-    </style>
-
 </head>
 <body >
 
@@ -172,23 +160,27 @@
                 <div class="cold-md-12 col-sm-12 col-xs-12 results">
                     <table class="table fixed fixed-rp-event event-results ">
                         <colgroup>
-                            <col width="10%">
+                            <!--<col width="10%">
                             <col width="11%">
                             <col width="25%">
                             <col width="13%">
                             <col width="7%">
                             <col width="15%">
-                            <col width="4%">
+                            <col width="4%">-->
+                            <col width="15%">
+                            <col width="41%">
+                            <col width="41%">
+
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>No</th>
+                                <!--<th>No</th>-->
                                 <th>Piloto</th>
                                 <th>ESC</th>
-                                <th>VUE</th>
+                                <!--<th>VUE</th>
                                 <th>Tiempo</th>
-                                <th>Puntos</th>
+                                <th>Puntos</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -201,39 +193,42 @@
                 <div class="cold-md-12 col-sm-12 col-xs-12 results">
                     <table class="table table-striped event-results">
                         <colgroup>
-                            <col width="10%">
+                            <!--<col width="10%">
                             <col width="11%">
                             <col width="25%">
                             <col width="13%">
                             <col width="7%">
                             <col width="15%">
-                            <col width="4%">
+                            <col width="4%">-->
+                            <col width="15%">
+                            <col width="41%">
+                            <col width="41%">
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>No</th>
+                                <!--<th>No</th>-->
                                 <th>Piloto</th>
                                 <th>ESC</th>
-                                <th>VUE</th>
+                                <!--<th>VUE</th>
                                 <th>Tiempo</th>
-                                <th>Puntos</th>
+                                <th>Puntos</th>-->
                             </tr>
                         </thead>
                         <tbody>
                             {#individualResults}
                             <tr class="f16 first-r">
                                 <td>{id}</td>
-                                <td>{performer_id}</td>
-                                <td colspan="4"><span class="flag {nationality}"></span>{title}</td>
-                            
-                                <td>{points}</td>
-                            </tr>
+                                <!--<td>{performer_id}</td>-->
+                                <td><span class="flag {nationality}"></span>{title}</td>
+                                <td>{teamInitials}</td>
+                                <!--<td>{points}</td>-->
+                            <!--</tr>
                             <tr class="f16 second-r">
                                 <td colspan="3">
                                 <td>{teamInitials}</td>
                                 <td>{laps}</td>
-                                <td colspan="2">{timeOrRetired}</td>
+                                <td colspan="2">{timeOrRetired}</td>-->
                             </tr>
                             {/individualResults}
                         </tbody>
@@ -247,7 +242,6 @@
             $('.tab-btn').bind('click', function(e) {
                 e.preventDefault();
                 var target = $(this).attr('href');
-
                 $('#' + $(this).parent().parent().parent().parent().attr('id')).css('display', 'none');
                 $('#' + target).css('display', 'visible');
             });
@@ -256,4 +250,3 @@
 
 </body>
 </html>
-
