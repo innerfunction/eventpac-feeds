@@ -105,7 +105,7 @@ header, .header {
 	line-height: .8;
 	padding-right: 0.25em; /*4px*/
 	font-weight: 600;
-	padding:0.9375em ; /*30px*/
+	padding:0.15em ; /*30px*/
 }
 
 /* buttons */
@@ -139,8 +139,8 @@ header,  .header {
             {#title}
                 #{title} .title {
                     {#size}font-size: {.};{/size}
-                    {#color}font-size: {.};{/color}
-                    {#align}font-size: {.};{/align}
+                    {#color}color: {.};{/color}
+                    {#align}text-align: {.};{/align}
                 }
             {/title}
         {/header}
@@ -148,8 +148,8 @@ header,  .header {
         	#{title} .description {
         		{#background}background : {.};{/background}
                 {#size}font-size: {.};{/size}
-                {#color}font-size: {.};{/color}
-                {#align}font-size: {.};{/align}       		
+                {#color}font-color: {.};{/color}
+                {#align}text-align: {.};{/align}	      		
         	}
         {/description}
 	{/styles}
