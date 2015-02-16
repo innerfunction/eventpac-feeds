@@ -53,9 +53,8 @@
             "selectedBackgroundColor":  "#12365A"
         }
     },
-    "postsTypes": [
-        {
-            "post": "performers",
+    "postsTypes": {
+        "performers": {
             "title": "Speakers",
             "styles": {
                 "header": {
@@ -63,8 +62,7 @@
                 }
             }
         },
-        {
-            "post": "events",
+        "events": {
             "title": "Events",
             "styles": {
                 "header": {
@@ -72,21 +70,16 @@
                 }
             }
         },
-        {
-            "post": "pages",
+        "pages": {
             "title": "Pages"
         },
-        {
-            "post": "locations",
-            "title": "Locations",
-            "styles": {
+        "locations": {
+           "title": "Locations",
+           "styles": {
                 "header": {
                     "bgColor" : [ "#bd1664", "#f37324" ]
-                },
-                "description": {
-                    "bgColor": ["red", "blue"]
                 }
             }
         }
-   ] 
+    }
 }
