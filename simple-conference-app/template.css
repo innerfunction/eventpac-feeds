@@ -1,6 +1,6 @@
 body {
 	font-size: 16px;
-	background-color: {contentStyle.description.bg-color};
+	background-color: {description.bgColor};
 }
 body, div, ul, a, h1, h2, h3, span {
 	padding: 0;
@@ -68,7 +68,7 @@ header, .header {
 }
 .shape-container.circle > div:first-child{
 	margin: 0 -0.9375em; /*-15px*/
-	background-color: {contentStyle.header.bg-color};
+	background-color: {header.bgColor};
 }
 .shape-container.circle > div > p { 
 	width: 183px;/*11.4375em*/
