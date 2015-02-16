@@ -120,7 +120,7 @@ header, .header {
 
 }
 header,  .header {
-	background-color: {contentStyle.header.bg-color};
+	background-color: {header.bgColor};
 
 	/*background: -moz-linear-gradient(left, {color1} 0%, {color2} 100%); 
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%, {color1}), color-stop(100%,{color2})); 
@@ -159,24 +159,24 @@ header,  .header {
 }
 
 .date{
-	font-size: {contentStyle.date.size} ;
-	color: {contentStyle.date.color} ;
-	font-style: {contentStyle.date.style} ;
-	font-family: {contentStyle.fontFamily} ;
+	font-size: {date.size} ;
+	color: {date.color} ;
+	font-style: {date.style} ;
+	font-family: {fontFamily} ;
 }
 
 header > div.title,  .header > div.title{
-	font-size: {contentStyle.header.title.size} ;
-	color: {contentStyle.header.title.color} ;
-	text-align: {contentStyle.header.title.align} ;
+	font-size: {header.title.size} ;
+	color: {header.title.color} ;
+	text-align: {header.title.align} ;
 }
 
 
 .time {
-	font-size: {contentStyle.time.size};
-	color: {contentStyle.time.color};
-	font-style: {contentStyle.time.style};
-	background-color: {contentStyle.time.bg-color}	
+	font-size: {time.size};
+	color: {time.color};
+	font-style: {time.style};
+	background-color: {time.bgColor};
 }
 
 
@@ -185,7 +185,7 @@ header > div.title,  .header > div.title{
 	color: {description.color} ;
 	font-style: {description.fontStyle} ;
 	text-align: {description.align};
-	background-color: {description.bg-color}
+	background-color: {description.bgColor};
 }
 
 
