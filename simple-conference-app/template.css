@@ -51,6 +51,7 @@ header, .header {
 .shape-container.banner {
 	/*margin: 0 -0.9375em; -15px*/
 	padding: 0;
+	text-align: center;
 }
 .shape-container.banner  > div > p > img  {
 	width: 100%;
