@@ -22,6 +22,18 @@ function buildImages( cx, updates ) {
     images.resize({ width: 500, format: 'jpeg' }, true ).mapTo( updates, 'image' );
 }
 
+function gradientProperty( styles ) {
+    for (var idx in styles) {
+        var style = styles[idx];
+        if ( typeof style.backgroundColor == "object") {
+            var color1 = style.backgroundColor[0],
+                color2 = style.backgroundColor[1] || color1;
+            style.bgColor = 'linear-gradient(to right, '+ color1 +' , '+ color2 +');'
+        }                 
+    }
+    return styles;
+}
+
 var feed = {
     active: false,
     name: settings.name,
@@ -61,25 +73,15 @@ var feed = {
         style: {
             depends: '',
             build: function( cx ) {
-                var styleData = settings.styles;
-                styleData.postsTypes = settings.postsTypes;
-                //console.log(styleData);
-                for (idx in styleData.styles) {
-                    var style = styleData.styles[idx]; 
-                    if (style.bgColor && style.bgColor.length > 1) {
-                        style.bgColor = 'linear-gradient(to right, '+ style.bgColor[0] +' , '+ style.bgColor[1] +');'
-                    }                 
+                var styleData = settings;
+                var postsArray = [];
+                for (var idx in styleData.postsTypes) {
+                    var post = styleData.postsTypes[idx];
+                    post = gradientProperty(post.styles);
+                    postsArray.push(post);
                 }
-                styleData.postsTypes.filter(function( item ) {
-                    for (idx in item.styles) {
-                        var style = item.styles[idx];
-                        if (style.bgColor && style.bgColor.length > 1) {
-                            style.bgColor = 'linear-gradient(to right, '+ style.bgColor[0] +' , '+ style.bgColor[1] +');'
-                        }                 
-                    }
-                    return item;
-                });
-                console.log(styleData.postsTypes[0].styles);
+                styleData.postsTypes = postsArray;
+                styleData.styles = gradientProperty( styleData.styles );
                 cx.eval('template.css', styleData, 'newStyle.css');
             }
         },
