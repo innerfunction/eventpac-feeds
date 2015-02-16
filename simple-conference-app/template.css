@@ -1,6 +1,6 @@
 body {
 	font-size: 16px;
-	background-color: {description.bgColor};
+	background-color: {description.backgroundColor};
 }
 body, div, ul, a, h1, h2, h3, span {
 	padding: 0;
@@ -69,7 +69,7 @@ header, .header {
 }
 .shape-container.circle > div:first-child{
 	margin: 0 -0.9375em; /*-15px*/
-	background-color: {header.bgColor};
+	background-color: {header.backgroundColor};
 }
 .shape-container.circle > div > p { 
 	width: 183px;/*11.4375em*/
@@ -121,7 +121,7 @@ header, .header {
 
 }
 header,  .header {
-	background-color: {header.bgColor};
+	background-color: {header.backgroundColor};
 
 	/*background: -moz-linear-gradient(left, {color1} 0%, {color2} 100%); 
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%, {color1}), color-stop(100%,{color2})); 
@@ -135,22 +135,22 @@ header,  .header {
 	{#styles}
 		{#header}
             #{title} header,  .header {
-                {#bgColor}background : {.};{/bgColor}
+                {#backgroundColor}background : {.};{/backgroundColor}
             }
             {#title} //TODO: if title is in styles
                 #{title} .title {
-                    {#size}font-size: {.};{/size}
+                    {#fontSize}font-size: {.};{/fontSize}
                     {#color}color: {.};{/color}
-                    {#align}text-align: {.};{/align}
+                    {#textAlign}text-align: {.};{/textAlign}
                 }
             {/title}
         {/header}
         {#description}
         	#{title} .description {
-        		{#bgColor}background : {.};{/bgColor}
-                {#size}font-size: {.};{/size}
-                {#color}font-color: {.};{/color}
-                {#align}text-align: {.};{/align}	      		
+        		{#backgroundColor}background-color : {.};{/backgroundColor}
+                {#fontSize}font-size: {.};{/fontSize}
+                {#color}color: {.};{/color}
+                {#textAlign}text-align: {.};{/textAlign}	      		
         	}
         {/description}
 	{/styles}
@@ -160,33 +160,33 @@ header,  .header {
 }
 
 .date{
-	font-size: {date.size} ;
+	font-size: {date.fontSize} ;
 	color: {date.color} ;
-	font-style: {date.style} ;
+	font-style: {date.fontStyle} ;
 	font-family: {fontFamily} ;
 }
 
 header > div.title,  .header > div.title{
-	font-size: {header.title.size} ;
+	font-size: {header.title.fontSize} ;
 	color: {header.title.color} ;
-	text-align: {header.title.align} ;
+	text-align: {header.title.textAlign} ;
 }
 
 
 .time {
-	font-size: {time.size};
+	font-size: {time.fontSize};
 	color: {time.color};
-	font-style: {time.style};
-	background-color: {time.bgColor};
+	font-style: {time.fontStyle};
+	background-color: {time.backgroundColor};
 }
 
 
 .content{
-	font-size: {description.size};
+	font-size: {description.fontSize};
 	color: {description.color} ;
 	font-style: {description.fontStyle} ;
-	text-align: {description.align};
-	background-color: {description.bgColor};
+	text-align: {description.textAlign};
+	background-color: {description.backgroundColor};
 }
 
 

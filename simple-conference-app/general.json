@@ -3,32 +3,32 @@
     "styles": {
         "fontFamily": "Roboto, helvetica",  
         "header" : {
-            "bgColor" : [ "#bd1664", "#f37324" ],
+            "backgroundColor" : [ "#bd1664", "#f37324" ],
             "title":{
-                "size": "large",
+                "fontfontSize": "large",
                 "color": "#fff",
-                "align": "center"
+                "textAlign": "center"
             }    
         },
         "description": {
-            "bgColor": ["#fff"],
+            "backgroundColor": ["#fff"],
             "color": "#000",
-            "size": "small",
-            "align": "center"
+            "fontSize": "small",
+            "textAlign": "center"
         },
         "date": {
-            "size": "large",
+            "fontSize": "large",
             "color": "#fff",
-            "style": "bold",
-            "align": "center"
+            "fontStyle": "bold",
+            "textAlign": "center"
         },
         "time": {
             "shape": "circle",
-            "size": "medium",
+            "fontSize": "medium",
             "color": "#000",
-            "align": "center",
+            "textAlign": "center",
             "inHeader": true,
-            "bgColor": ["#fff"]
+            "backgroundColor": ["#fff"]
         },
         "image": {
             "shape": "circle",
@@ -58,7 +58,7 @@
             "title": "Speakers",
             "styles": {
                 "header": {
-                    "bgColor" : [ "#bd1664", "#f37324" ]
+                    "backgroundColor" : [ "#bd1664", "#f37324" ]
                 }
             }
         },
@@ -66,7 +66,7 @@
             "title": "Events",
             "styles": {
                 "header": {
-                    "bgColor" : [ "#bd1664", "#f37324" ]
+                    "backgroundColor" : [ "#bd1664", "#f37324" ]
                 }
             }
         },
@@ -77,7 +77,7 @@
            "title": "Locations",
            "styles": {
                 "header": {
-                    "bgColor" : [ "#bd1664", "#f37324" ]
+                    "backgroundColor" : [ "#bd1664", "#f37324" ]
                 }
             }
         }
