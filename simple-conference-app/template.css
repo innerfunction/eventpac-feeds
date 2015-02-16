@@ -134,9 +134,9 @@ header,  .header {
 	{#styles}
 		{#header}
             #{title} header,  .header {
-                {#background}background : {.};{/background}
+                {#bgColor}background : {.};{/bgColor}
             }
-            {#title}
+            {#title} //TODO: if title is in styles
                 #{title} .title {
                     {#size}font-size: {.};{/size}
                     {#color}color: {.};{/color}
@@ -146,7 +146,7 @@ header,  .header {
         {/header}
         {#description}
         	#{title} .description {
-        		{#background}background : {.};{/background}
+        		{#bgColor}background : {.};{/bgColor}
                 {#size}font-size: {.};{/size}
                 {#color}font-color: {.};{/color}
                 {#align}text-align: {.};{/align}	      		

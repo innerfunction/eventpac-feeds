@@ -24,10 +24,10 @@ function buildImages( cx, updates ) {
 
 var feed = {
     active: false,
-    name: settings.appName,
+    name: settings.name,
     opts: {
         exts: {
-            uriSchemes: eputils.schemes(settings.appName)
+            uriSchemes: eputils.schemes(settings.name)
         }
     },
     types: {
@@ -37,12 +37,13 @@ var feed = {
                 id:             post.id,
                 title:          post.title,
                 occurrences:    post.occurrences,
-                startDate:      mods.df( occurrence.startDateTime, 'dddd, mmmm dS'), //h:MM TT, mmmm dS, yyyy
-                startTime:      mods.df( occurrence.startDateTime, 'HH:MM'),
-                endDate:        mods.df( occurrence.endDateTime, 'dddd, mmmm dS'),
-                endTime:        mods.df( occurrence.endDateTime, 'HH:MM'),
+                startDate:      mods.df( post.occurrences.startDateTime, 'dddd, mmmm dS'), //h:MM TT, mmmm dS, yyyy
+                startTime:      mods.df( post.occurrences.startDateTime, 'HH:MM'),
+                endDate:        mods.df( post.occurrences.endDateTime, 'dddd, mmmm dS'),
+                endTime:        mods.df( post.occurrences.endDateTime, 'HH:MM'),
                 content:        post.content,
                 performer:      post.performers,
+                image:          post.photo,
                 type:           post.postType
             }
         },
@@ -57,6 +58,31 @@ var feed = {
         }
     },
     targets: {
+        style: {
+            depends: '',
+            build: function( cx ) {
+                var styleData = settings.styles;
+                styleData.postsTypes = settings.postsTypes;
+                //console.log(styleData);
+                for (idx in styleData.styles) {
+                    var style = styleData.styles[idx]; 
+                    if (style.bgColor && style.bgColor.length > 1) {
+                        style.bgColor = 'linear-gradient(to right, '+ style.bgColor[0] +' , '+ style.bgColor[1] +');'
+                    }                 
+                }
+                styleData.postsTypes.filter(function( item ) {
+                    for (idx in item.styles) {
+                        var style = item.styles[idx];
+                        if (style.bgColor && style.bgColor.length > 1) {
+                            style.bgColor = 'linear-gradient(to right, '+ style.bgColor[0] +' , '+ style.bgColor[1] +');'
+                        }                 
+                    }
+                    return item;
+                });
+                console.log(styleData.postsTypes[0].styles);
+                cx.eval('template.css', styleData, 'newStyle.css');
+            }
+        },
         events: {
             depends: 'events',
             build: function( cx, updatesByType ) {
@@ -75,7 +101,7 @@ var feed = {
                     }
                 });
                 buildImages( cx, updates );
-                cx.eval('templates.html', updates, 'event-{id}.html');
+                cx.eval('template.html', updates, 'event-{id}.html');
                 return updates.map(function update( post ) {
                     return {
                         id:             post.id,
@@ -104,7 +130,7 @@ var feed = {
                     }
                 });
                 buildImages( cx, updates );
-                cx.eval('templates.html', updates, 'speaker-{id}.html');
+                cx.eval('template.html', updates, 'speaker-{id}.html');
                 return updates.map(function update( post ) {
                     return {
                         id:             post.id,

@@ -1,9 +1,9 @@
 {
-    "name": "AppConference1",
+    "name": "nagp",
     "styles": {
         "fontFamily": "Roboto, helvetica",  
         "header" : {
-            "bg-color" : [ "#bd1664", "#f37324" ],
+            "bgColor" : [ "#bd1664", "#f37324" ],
             "title":{
                 "size": "large",
                 "color": "#fff",
@@ -11,7 +11,7 @@
             }    
         },
         "description": {
-            "bg-color": ["#fff"],
+            "bgColor": ["#fff"],
             "color": "#000",
             "size": "small",
             "align": "center"
@@ -28,7 +28,7 @@
             "color": "#000",
             "align": "center",
             "inHeader": true,
-            "bg-color": "#fff"
+            "bgColor": ["#fff"]
         },
         "image": {
             "shape": "circle",
@@ -53,28 +53,40 @@
             "selectedBackgroundColor":  "#12365A"
         }
     },
-    "postsTypes": {
-        "performers": {
+    "postsTypes": [
+        {
+            "post": "performers",
             "title": "Speakers",
             "styles": {
                 "header": {
-                    "bg-color" : [ "#bd1664", "#f37324" ],
+                    "bgColor" : [ "#bd1664", "#f37324" ]
                 }
             }
         },
-        "events": {
+        {
+            "post": "events",
             "title": "Events",
+            "styles": {
+                "header": {
+                    "bgColor" : [ "#bd1664", "#f37324" ]
+                }
+            }
         },
-        "pages": {
+        {
+            "post": "pages",
             "title": "Pages"
         },
-        "locations": {
-           "title": "Locations",
-           "style": {
+        {
+            "post": "locations",
+            "title": "Locations",
+            "styles": {
                 "header": {
-                    "bg-color" : [ "#bd1664", "#f37324" ]
+                    "bgColor" : [ "#bd1664", "#f37324" ]
+                },
+                "description": {
+                    "bgColor": ["red", "blue"]
                 }
             }
         }
-    }
+   ] 
 }
