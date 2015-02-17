@@ -1,0 +1,46 @@
+{
+    "type":                             "DetailDrawer",
+    "extends":                          "#Defaults",
+    "and:swipeable":                    false,
+    "tabList": {
+        "row": {
+            "textColor":                "#FFFFFF",
+            "selectedTextColor":        "#FF0000",
+            "backgroundColor":          "#FF0000",
+            "selectedBackgroundColor":  "#EBF0EC",
+            "imageWidth":               40,
+            "imageHeight":              40,
+            "style":                    "Subtitle"
+        }
+        "width":                        200
+    },
+    "postList": {
+        "type":                         "ListView",
+        "tableStyle":                   "Plain",
+        "row": {
+            "style":                    "Subtitle",
+            "height":                   58,
+            "imageWidth":               50,
+            "imageHeight":              50,
+            "accessory":                "DisclosureIndicator",
+            "textColor":                "#333333",
+            "detailTextColor":          "#12365A",
+            "selectedTextColor":        "#FFFFFF",
+            "detailSelectedTextColor":  "#FFFFFF",
+            "backgroundColor":          "#EBF0EC",
+            "selectedBackgroundColor":  "#272727"
+        },
+        "hideTitleBar":                 true,
+        "selected": {
+            "value":                    "$stageID"
+        },
+        "data":                         "@ds:stages"
+    },
+    "tabListButton": {
+        "image":                        "images/ic_stages_list.png"
+    },
+    "postListButton": {
+        "image":                        "images/ic_menu.png"
+    },
+    "openTab":                          "$openTab"
+}
