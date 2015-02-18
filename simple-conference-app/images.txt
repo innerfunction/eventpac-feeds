@@ -30,12 +30,12 @@ ANDROID
 		res/drawable-xhdpi/images__ic_drawer.png		32 × 32	
 		res/drawable-xxhdpi/images__ic_drawer.png		48 × 48	
 
-		res/drawable-ldpi/
+	/*	res/drawable-ldpi/
 		res/drawable-mdpi/images__ic_overflow.png		32 × 32
 		res/drawable-hdpi/images__ic_overflow.png		48 × 48
 		res/drawable-xhdpi/images__ic_overflow.png		64 × 64
 		res/drawable-xxhdpi/images__ic_overflow.png		96 × 96		
-
+    */
 	home_icon
 
 		res/drawable-ldpi/
@@ -52,7 +52,7 @@ ANDROID
 		res/drawable-xhdpi/images__ic_back.png			64 × 64
 		res/drawable-xxhdpi/images__ic_back.png			96 × 96
 
-	home_imge
+	home_image
 
 		res/drawable-ldpi/
 		res/drawable-mdpi/images__home_image_current_stage.png		320 × 214
@@ -67,7 +67,7 @@ IOS
 		images/app-icon-ipad-76@2x.png				152 × 152	
 		images/app-icon-ipad-spotlight-40.png		40 × 40
 		images/app-icon-ipad-spotlight-40@2x.png	80 × 80
-		images/app-icon-settings-29.png				29 × 29pedr
+		images/app-icon-settings-29.png				29 × 29
 		images/app-icon-spotlight-29@2x.png			58 × 58
 
 		images/icon_app.png							57 × 57
