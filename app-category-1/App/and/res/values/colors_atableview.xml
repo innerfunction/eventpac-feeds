@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    
-    <!-- ATableViewCellSelectionStyle.Blue -->
-    <color name="atv_cell_selection_style_blue_start">#000000</color>
-    <color name="atv_cell_selection_style_blue_end">#000000</color>
-    
-</resources>
