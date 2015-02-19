@@ -28,7 +28,14 @@ function gradientProperty( styles ) {
         if ( typeof style.backgroundColor == "object") {
             var color1 = style.backgroundColor[0],
                 color2 = style.backgroundColor[1] || color1;
-            style.backgroundColor = 'linear-gradient(to right, '+ color1 +' , '+ color2 +');'
+            style.backgroundColor = 'linear-gradient(to right, '+ color1 +' , '+ color2 +');'+
+            'background: -moz-linear-gradient(left, '+color1+' 0%, '+color2+' 100%); '+
+            'background: -webkit-gradient(linear, left top, right top, color-stop(0%, '+color1+'), color-stop(100%,'+color2+')); '+
+            'background: -webkit-linear-gradient(left, '+color1+' 0%,'+color2+' 100%); '+
+            'background: -o-linear-gradient(left, '+color1+' 0%,'+color2+' 100%); '+
+            'background: -ms-linear-gradient(left, '+color1+' 0%,'+color2+' 100%); '+
+            'background: linear-gradient(to right, '+color1+' 0%,'+color2+' 100%); '+
+            'filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='+color1+', endColorstr='+color2+',GradientType=1 );'; 
         }                 
     }
     return styles;
