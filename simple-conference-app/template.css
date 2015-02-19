@@ -109,7 +109,7 @@ header, .header {
 /* content style classes */
 .dropCap > p:first-child:first-letter { 
 	float: left;
-	font-size: 3em;/*36pt*/
+	font-size: 2.1em;/*36pt*/
 	line-height: .8;
 	padding-right: 0.25em; /*4px*/
 	font-weight: 600;
