@@ -68,7 +68,11 @@ header, .header {
 }
 .shape-container.circle {
 	padding: 0;
-	margin: 15px 0;
+	margin: 0 0 15px ;
+	
+}
+.shape-container.circle.time {
+	margin-bottom: 110px;
 }
 
 .shape-container.circle > p, .shape-container.circle > div{
@@ -76,6 +80,7 @@ header, .header {
 }
 .shape-container.circle > div:first-child{
 	/*margin: 0 -0.9375em; -15px*/
+	padding-top: 15px;
 	background-color: {header.backgroundColor};
 }
 .shape-container.circle > div > p { 
@@ -142,7 +147,7 @@ header, .header {
 {#types}
 	{#styles}
 		{#header}
-            #{id} header,  .header {
+            #{id} header, #{id} .header {
                 {#backgroundColor}background : {.};{/backgroundColor}
             }
         {/header}
@@ -168,7 +173,9 @@ header, .header {
 .header.fixed {
 	padding: 1.875em 0; 
 }
-
+.header.position-absolute {
+	padding:0;
+}
 {#contentStyles}
 .date{
     font-size: {date.fontSize} ;
