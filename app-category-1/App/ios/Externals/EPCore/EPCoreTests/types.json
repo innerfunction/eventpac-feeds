@@ -1,0 +1,7 @@
+{
+    "ServiceURISchemeHandler":      "IFServiceURISchemeHandler",
+    "ViewURISchemeHandler":         "EPViewURISchemeHandler",
+    "AliasURISchemeHandler":        "EPAliasURISchemeHandler",
+    "NavigationURISchemeHandler":   "EPNavigationURISchemeHandler",
+    "ViewFactoryService":           "EPViewFactoryService"
+}
