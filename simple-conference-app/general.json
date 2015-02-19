@@ -89,5 +89,15 @@
                 }
             }
         }
+    },
+    "appImages": {
+        "appIcon" : "images/app/app_icon.png",
+        "splashScreen" : "images/app/splash_screen.png",
+        "sponsorBanner":"images/app/sponsor_banner.png",
+        "homeImage" : "images/app/home_image.png",
+        "drawerIcon" :  "images/app/drawer_icon.png",
+        "homeIcon" :  "images/app/home_icon.png",
+        "backIcon" :  "images/app/back_icon.png"
+        }
     }
 }

@@ -1,6 +1,6 @@
 body {
 	font-size: 16px;
-	background-color: {contentStyles.description.backgroundColor};
+	background-color: #fff;
 }
 body, div, ul, a, h1, h2, h3, span {
 	padding: 0;
@@ -63,9 +63,6 @@ header, .header {
 	width: 100px;
 	margin:15px auto;
 }
-.shape-container.banner  > div > p {
-	margin:0;
-}
 .shape-container.circle {
 	padding: 0;
 	margin: 15px 0;
@@ -76,7 +73,7 @@ header, .header {
 }
 .shape-container.circle > div:first-child{
 	/*margin: 0 -0.9375em; -15px*/
-	background-color: {header.backgroundColor};
+	background-color: #fff;
 }
 .shape-container.circle > div > p { 
 	width: 183px;/*11.4375em*/
@@ -84,17 +81,17 @@ header, .header {
 	padding:  0.25em; /*4px*/
 	margin: 0 auto;
 	text-align: center;
-	background-color: {contentStyles.content.backgroundColor};
+	background-color: #fff;
 	border-radius: 100%;
 	display: block
 }
 .shape-container.circle  > div > p > span{
 	border-radius: 100%;
 	display: table-cell;
-	width: 185px;
-	height: 185px;
+	width: 185px;/*10.9375em*/
+	height: 185px;/*10.9375em*/
 	vertical-align: middle;
-	font-size: {FontSize.medium};
+	font-size: 16px;
 	background-color: #f8f8f8;
 } 
 
@@ -104,16 +101,16 @@ header, .header {
 	height:100%;
 	visibility: visible;
 }
- 
+
 
 /* content style classes */
 .dropCap > p:first-child:first-letter { 
 	float: left;
 	font-size: 3em;/*36pt*/
 	line-height: .8;
-	padding-right: 0.25em; /*4px*/
+	padding-right: 0.11em; /*4px*/
 	font-weight: 600;
-	padding:0.083em ; /*30px*/
+	padding:0.083em; ; /*30px*/
 }
 
 /* buttons */
@@ -127,8 +124,8 @@ header, .header {
 	color: #fff;
 
 }
-header, .header {
-	background-color: {contentStyles.header.backgroundColor};
+header,  .header {
+	background-color: #E51C23;
 
 	/*background: -moz-linear-gradient(left, {color1} 0%, {color2} 100%); 
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%, {color1}), color-stop(100%,{color2})); 
@@ -138,68 +135,43 @@ header, .header {
 	background: linear-gradient(to right, {color1} 0%,{color2} 100%); 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{color1}', endColorstr='{color2}',GradientType=1 ); */
 }
-
-{#types}
-	{#styles}
-		{#header}
-            #{id} header,  .header {
-                {#backgroundColor}background : {.};{/backgroundColor}
-            }
-        {/header}
-        {#header.title}
-            #{id} .title {
-                {#fontSize}font-size: {.};{/fontSize}
-                {#color}color: {.};{/color}
-                {#textAlign}text-align: {.};{/textAlign}
-            }
-        {/header.title}        
-        
-        {#description}
-        	#{id} .description {
-        		{#backgroundColor}background-color : {.};{/backgroundColor}
-                {#fontSize}font-size: {.};{/fontSize}
-                {#color}color: {.};{/color}
-                {#textAlign}text-align: {.};{/textAlign}	      		
-        	}
-        {/description}
-	{/styles}
-{/types}
-
+/*{#postsTypes}
+	{?postsTypes.style.header}
+		#{postsTypes.name} header,  .header {
+			background : {bg-color};
+		}
+	{?postsTypes.style.header}
+{/postsTypes}*/
 .header.fixed {
 	padding: 1.875em 0; 
 }
 
-{#contentStyles}
 .date{
-    font-size: {date.fontSize} ;
-    color: {date.color} ;
-    font-style: {date.fontStyle} ;
-    font-family: {fontFamily} ;
+	font-size: 16px ;
+	color: #ccc ;
+	font-style: normal;
+	font-family:georgia ;
 }
 
 header > div.title,  .header > div.title{
-    font-size: {header.title.fontSize} ;
-    color: {header.title.color} ;
-    text-align: {header.title.textAlign} ;
+	font-size: 35px;
+	color: #fff;
+	text-align: center ;
 }
 
-.time {
-    font-size: {time.fontSize};
-    color: {time.color};
-    font-style: {time.fontStyle};
-    background-color: {time.backgroundColor};
-}
 
 .content{
-	font-size: {description.fontSize};
-	color: {description.color} ;
-	font-style: {description.fontStyle} ;
-	text-align: {description.textAlign};
-	background-color: {description.backgroundColor};
+	font-size: 1.125em;
+	color: #ccc ;
+	font-style: normal ;
+	text-align: left;
+	background-color: #fff;
 	padding: 0.833em;
 	padding-top:0.556em;
+
 }
-{/contentStyles}
+
+
 @media (min-height: 450px) {
 	.fixed { 
 		display: block;
