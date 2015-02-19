@@ -5,7 +5,7 @@
         "header" : {
             "backgroundColor" : [ "#bd1664", "#f37324" ],
             "title":{
-                "fontfontSize": "large",
+                "fontSize": "large",
                 "color": "#fff",
                 "textAlign": "center"
             }    
@@ -53,7 +53,7 @@
             "selectedBackgroundColor":  "#12365A"
         }
     },
-    "postsTypes": {
+    "types": {
         "performers": {
             "title": "Speakers",
             "styles": {
@@ -67,6 +67,10 @@
             "styles": {
                 "header": {
                     "backgroundColor" : [ "#bd1664", "#f37324" ]
+                },
+                "description": {
+                    "color": "red",
+                    "fontSize": "medium"
                 }
             }
         },
@@ -77,7 +81,11 @@
            "title": "Locations",
            "styles": {
                 "header": {
-                    "backgroundColor" : [ "#bd1664", "#f37324" ]
+                    "backgroundColor" : [ "red", "blue" ],
+                    "title":{
+                        "color": "pink",
+                        "textAlign": "left"
+                    }    
                 }
             }
         }
