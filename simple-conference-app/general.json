@@ -98,6 +98,5 @@
         "drawerIcon" :  "images/app/drawer_icon.png",
         "homeIcon" :  "images/app/home_icon.png",
         "backIcon" :  "images/app/back_icon.png"
-        }
     }
 }
