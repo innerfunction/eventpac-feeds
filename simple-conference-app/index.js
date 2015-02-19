@@ -85,13 +85,6 @@ var feed = {
                 }
                 styleData.styles = gradientProperty( styleData.styles );
                 styleData = { contentStyles: styleData.styles, types: postsArray};
-                //styleArray = [styleData.styles];
-                /*for (var idx in styleData.styles) {
-                    var style = styleData.styles[idx];
-                    style.bodyPart = idx;
-                    styleArray.push(style);
-                }*/
-                console.log(styleData);
                 cx.eval('template.css', styleData, 'newStyle.css');
             }
         },
