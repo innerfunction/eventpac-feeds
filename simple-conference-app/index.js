@@ -28,7 +28,7 @@ function gradientProperty( styles ) {
         if ( typeof style.backgroundColor == "object") {
             var color1 = style.backgroundColor[0],
                 color2 = style.backgroundColor[1] || color1;
-            style.bgColor = 'linear-gradient(to right, '+ color1 +' , '+ color2 +');'
+            style.backgroundColor = 'linear-gradient(to right, '+ color1 +' , '+ color2 +');'
         }                 
     }
     return styles;
@@ -75,13 +75,23 @@ var feed = {
             build: function( cx ) {
                 var styleData = settings;
                 var postsArray = [];
-                for (var idx in styleData.postsTypes) {
-                    var post = styleData.postsTypes[idx];
-                    post = gradientProperty(post.styles);
+                for (var idx in styleData.types) {
+                    var post = styleData.types[idx];
+                    if (post.styles) {
+                        post.styles = gradientProperty(post.styles);
+                    }
+                    post.id = idx;
                     postsArray.push(post);
                 }
-                styleData.postsTypes = postsArray;
                 styleData.styles = gradientProperty( styleData.styles );
+                styleData = { contentStyles: styleData.styles, types: postsArray};
+                //styleArray = [styleData.styles];
+                /*for (var idx in styleData.styles) {
+                    var style = styleData.styles[idx];
+                    style.bodyPart = idx;
+                    styleArray.push(style);
+                }*/
+                console.log(styleData);
                 cx.eval('template.css', styleData, 'newStyle.css');
             }
         },
