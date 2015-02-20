@@ -1,0 +1,101 @@
+{
+    "name": "nagp",
+    "appCategory": "app-category-1",
+    "styles": {
+        "fontFamily": "Roboto, helvetica",  
+        "header" : {
+            "backgroundColor" : [ "#bd1664", "#f37324" ],
+            "title":{
+                "fontSize": "35px",
+                "color": "#fff",
+                "textAlign": "center"
+            }    
+        },
+        "description": {
+            "backgroundColor": ["#fff"],
+            "color": "#000",
+            "fontSize": "15px",
+            "textAlign": "center"
+        },
+        "date": {
+            "fontSize": "35px",
+            "color": "#fff",
+            "fontStyle": "bold",
+            "textAlign": "center"
+        },
+        "time": {
+            "shape": "circle",
+            "fontSize": "25px",
+            "color": "#000",
+            "textAlign": "center",
+            "inHeader": true,
+            "backgroundColor": ["#fff"]
+        },
+        "image": {
+            "shape": "circle",
+            "inHeader": true
+        },
+         "titleBar" : {
+            "titleBarColor": "#E51C23",
+            "titleBarTextColor": "#FFFFFF"
+        },
+        "tabs": {
+            "textColor":                "#FFFFFF",
+            "selectedTextColor":        "#CB3240",
+            "backgroundColor":          "#E51C23",
+            "selectedBackgroundColor":  "#272727"            
+        },
+        "list": {
+            "textColor":                "#333333",
+            "detailTextColor":          "#12365A",
+            "selectedTextColor":        "#FFFFFF",
+            "detailSelectedTextColor":  "#FFFFFF",
+            "backgroundColor":          "#EBF0EC",
+            "selectedBackgroundColor":  "#12365A"
+        }
+    },
+    "types": {
+        "performers": {
+            "title": "Speakers",
+            "styles": {
+                "header": {
+                    "backgroundColor" : [ "red", "blue" ]
+                }
+            }
+        },
+        "events": {
+            "title": "Events",
+            "styles": {
+                "description": {
+                    "backgroundColor": ["red"],
+                    "color": "red",
+                    "fontSize": "25px"
+                }
+            }
+        },
+        "pages": {
+            "title": "Pages"
+        },
+        "locations": {
+           "title": "Locations",
+           "styles": {
+                "header": {
+                    "backgroundColor" : [ "red", "blue" ],
+                    "title":{
+                        "color": "pink",
+                        "textAlign": "left"
+                    }    
+                }
+            }
+        }
+    },
+    "appImages": {
+        "appIcon" : "images/app/app_icon.png",
+        "splashScreen" : "images/app/splash_screen.png",
+        "sponsorBanner":"images/app/sponsor_banner.png",
+        "homeImage" : "images/app/home_image.png",
+        "drawerIcon" :  "images/app/drawer_icon.png",
+        "homeIcon" :  "images/app/home_icon.png",
+        "backIcon" :  "images/app/back_icon.png"
+    }
+}

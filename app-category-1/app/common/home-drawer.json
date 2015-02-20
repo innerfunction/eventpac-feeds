@@ -1,0 +1,30 @@
+{
+    "tabList": {
+        "rowTextColor": "#FFFFFF",
+        "rowSelectedTextColor": "#CB3240",
+        "rowBackgroundColor": "#CB3240",
+        "rowSelectedBackgroundColor": "#EBF0EC",
+        "rowStyle": "Subtitle",
+        "width": 200
+    },
+    "leftBarButtonItemTitle": "",
+    "leftBarButtonItemImage": "images/icon_star.png",
+    "and:numberOfVisibleTabs": 5,
+    "tabs": [
+        {
+            "id":           "home",
+            "title":        "HOME",
+            "image":        "ep/images/icon_home.png",
+            "navigable":    false,
+            "view":         "@view:HomeView"
+        },
+        {
+            "id":           "about",
+            "title":        "ABOUT",
+            "image":        "ep/images/icon_about.png",
+            "navigable":    true,
+            "view":         "@view:AboutView+html@cache:/subs/pages/about.html"
+        }
+    ]
+}
+
