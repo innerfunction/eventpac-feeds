@@ -82,7 +82,7 @@ header, .header {
 .shape-container.circle > div:first-child{
 	/*margin: 0 -0.9375em; -15px*/
 	padding-top: 15px;
-	background: {header.backgroundColor};
+	background: {#inHeader}{contentStyles.header.backgroundColor}{:else}{contentStyles.description.backgroundColor}{/inHeader};
 }
 .shape-container.circle > div > p { 
 	width: 183px;/*11.4375em*/
@@ -135,7 +135,6 @@ header, .header {
 }
 header, .header {
 	background: {contentStyles.header.backgroundColor};
-
 	/*background: -moz-linear-gradient(left, {color1} 0%, {color2} 100%); 
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%, {color1}), color-stop(100%,{color2})); 
 	background: -webkit-linear-gradient(left, {color1} 0%,{color2} 100%); 
@@ -148,7 +147,7 @@ header, .header {
 {#types}
 	{#styles}
 		{#header}
-            .{title} header, #{title} .header {
+            .{title} header, .{title} .header {
                 {#backgroundColor}background : {.};{/backgroundColor}
             }
         {/header}

@@ -67,6 +67,7 @@ var feed = {
                 performer:      post.performers,
                 image:          post.photo,
                 type:           settings.eventsTitle,
+                shape:          settings.timeShape
             }
         },
         performers: function( post ) {
@@ -76,6 +77,7 @@ var feed = {
                 content:        post.content,
                 image:          post.photo,
                 type:           settings.performersTitle,
+                shape:          settings.imageShape
             }
         }
     },
@@ -85,9 +87,6 @@ var feed = {
             build: function( cx, updatesByType ) {
                 var updates = updatesByType.events.map(function map( post ) {
                     var occurrence = post.occurrences[0];
-                    console.log(post.date);
-                    console.log(post.time);
-                    console.log("============");
                     return {
                         id:             post.id,
                         type:           post.type,
@@ -97,7 +96,8 @@ var feed = {
                         time:           post.time, 
                         action:         eputils.action('EventDetail', { 'eventID': post.id }),
                         image:          post.image,
-                        content:        post.content
+                        content:        post.content,
+                        shape:          post.shape
                     }
                 });
                 buildImages( cx, updates );
@@ -110,7 +110,8 @@ var feed = {
                         description:    post.description,
                         date:           post.date,
                         time:           post.time, 
-                        action:         post.action
+                        action:         post.action,
+                        shape:          post.shape
                     }
                 });
             }
@@ -126,7 +127,8 @@ var feed = {
                         description:    post.title,
                         action:         eputils.action('SpeakerDetail', { 'speakerID': post.id }),
                         image:          post.image,
-                        content:        post.content
+                        content:        post.content,
+                        shape:          post.shape
                     }
                 });
                 buildImages( cx, updates );
@@ -137,7 +139,8 @@ var feed = {
                         type:           post.type,
                         title:          post.title,
                         description:    post.description,
-                        action:         post.action
+                        action:         post.action,
+                        shape:          post.shape
                     }
                 });
             }
