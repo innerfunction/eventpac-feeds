@@ -67,8 +67,6 @@
             "title": "Events",
             "styles": {
                 "description": {
-                    "backgroundColor": ["red"],
-                    "color": "red",
                     "fontSize": "25px"
                 }
             }

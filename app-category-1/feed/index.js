@@ -55,10 +55,14 @@ var feed = {
                 id:             post.id,
                 title:          post.title,
                 occurrences:    post.occurrences,
-                startDate:      mods.df( post.occurrences.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
-                startTime:      mods.df( post.occurrences.startDateTime, 'HH:MM'),
-                endDate:        mods.df( post.occurrences.endDateTime, 'dddd, mmmm dS'),
-                endTime:        mods.df( post.occurrences.endDateTime, 'HH:MM'),
+                date: {
+                    startDate:      mods.df( post.occurrences.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
+                    endDate:        mods.df( post.occurrences.endDateTime, 'dddd, mmmm dS')
+                },
+                time: {
+                    startTime:      mods.df( post.occurrences.startDateTime, 'HH:MM'),
+                    endTime:        mods.df( post.occurrences.endDateTime, 'HH:MM')
+                },
                 content:        post.content,
                 performer:      post.performers,
                 image:          post.photo,
@@ -81,14 +85,16 @@ var feed = {
             build: function( cx, updatesByType ) {
                 var updates = updatesByType.events.map(function map( post ) {
                     var occurrence = post.occurrences[0];
-                    console.log(post.content);
+                    console.log(post.date);
+                    console.log(post.time);
+                    console.log("============");
                     return {
                         id:             post.id,
                         type:           post.type,
                         title:          post.title,
                         description:    post.title,
-                        startTime:      post.startTime,
-                        endTime:        post.endTime,
+                        date:           post.date,
+                        time:           post.time, 
                         action:         eputils.action('EventDetail', { 'eventID': post.id }),
                         image:          post.image,
                         content:        post.content
@@ -102,8 +108,8 @@ var feed = {
                         type:           post.type,
                         title:          post.title,
                         description:    post.description,
-                        startTime:      post.startTime,
-                        endTime:        post.endTime,
+                        date:           post.date,
+                        time:           post.time, 
                         action:         post.action
                     }
                 });
