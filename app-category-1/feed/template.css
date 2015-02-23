@@ -82,12 +82,12 @@ header, .header {
 .shape-container.circle.time > div:first-child{
 	/*margin: 0 -0.9375em; -15px*/
 	padding-top: 15px;
-	background: {#inHeader}{contentStyles.header.backgroundColor}{:else}{contentStyles.description.backgroundColor}{/inHeader};
+	background: {contentStyles.time.HBackgroundColor};
 }
 .shape-container.circle.image > div:first-child{
 	/*margin: 0 -0.9375em; -15px*/
 	padding-top: 15px;
-	background: {#inHeader}{contentStyles.header.backgroundColor}{:else}{contentStyles.description.backgroundColor}{/inHeader};
+	background: {contentStyles.image.HBackgroundColor};
 }
 .shape-container.circle > div > p { 
 	width: 183px;/*11.4375em*/
@@ -165,6 +165,9 @@ header, .header {
         {/header.title}        
         
         {#description}
+            body.{title}{
+                {#backgroundColor}background : {.};{/backgroundColor}
+            }
         	.{title} .content {
         		{#backgroundColor}background : {.};{/backgroundColor}
                 {#fontSize}font-size: {.};{/fontSize}

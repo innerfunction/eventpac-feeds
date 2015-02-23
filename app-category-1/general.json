@@ -33,7 +33,7 @@
         },
         "image": {
             "shape": "circle",
-            "inHeader": true
+            "inHeader": true 
         },
          "titleBar" : {
             "titleBarColor": "#E51C23",
@@ -60,6 +60,9 @@
             "styles": {
                 "header": {
                     "backgroundColor" : [ "red", "blue" ]
+                },
+                "description": {
+                    "backgroundColor": ["#ccc"]
                 }
             }
         },
@@ -67,6 +70,7 @@
             "title": "Events",
             "styles": {
                 "description": {
+                    "backgroundColor": ["#ccc"],
                     "fontSize": "25px"
                 }
             }
