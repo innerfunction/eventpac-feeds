@@ -6,6 +6,7 @@ var mods = {
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 var settings = require('./general');
+var imageSettings = require('./images-settings-test');
 
 function isPublished( post ) {
     return post.status == 'published';
@@ -81,18 +82,28 @@ var feed = {
             depends: '',
             build: function( cx ) {
                 var styleData = settings;
-                var postsArray = [];
-                for (var idx in styleData.types) {
-                    var post = styleData.types[idx];
-                    if (post.styles) {
-                        post.styles = gradientProperty(post.styles);
+                var imageInfo = imageSettings;
+                    console.log(imageInfo);
+                for (var key in styleData.appImages) {
+                    console.log("debug .....................................");
+                    console.log(key);
+
+                    var imageProperties = imageInfo[key];
+                    console.log(imageProperties);
+               
+                    var image = cx.images( styleData.appImages[key] );
+
+                    for (var indx in imageProperties) {
+                        var newImage = imageProperties[indx] ;
+                        if (key =='splashScreen' ){
+                            console.log(newImage.filename + " ..... height: " + newImage.height);
+                        }
+                        //console.log(imageProperties[indx].width +", " + imageProperties[indx].height +", " + imageProperties[indx].filename);
+                        image.resize({height: newImage.height, format: 'png' }, newImage.filename+'.{format}' );
                     }
-                    post.id = idx;
-                    postsArray.push(post);
+                    
                 }
-                styleData.styles = gradientProperty( styleData.styles );
-                styleData = { contentStyles: styleData.styles, types: postsArray};
-                cx.eval('template.css', styleData, 'newStyle.css');
+
             }
         },
         events: {
