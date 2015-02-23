@@ -79,7 +79,12 @@ header, .header {
 .shape-container.circle > p, .shape-container.circle > div{
 	height:87.5px; /*5.46875em*/
 }
-.shape-container.circle > div:first-child{
+.shape-container.circle.time > div:first-child{
+	/*margin: 0 -0.9375em; -15px*/
+	padding-top: 15px;
+	background: {#inHeader}{contentStyles.header.backgroundColor}{:else}{contentStyles.description.backgroundColor}{/inHeader};
+}
+.shape-container.circle.image > div:first-child{
 	/*margin: 0 -0.9375em; -15px*/
 	padding-top: 15px;
 	background: {#inHeader}{contentStyles.header.backgroundColor}{:else}{contentStyles.description.backgroundColor}{/inHeader};
