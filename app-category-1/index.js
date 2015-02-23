@@ -1,4 +1,5 @@
 var settings = require('./general');
+var imageSettings = require('./images-settings-test');
 
 var category = settings.appCategory;
 var name = settings.name;
@@ -64,26 +65,16 @@ module.exports = {
         cx.eval('feed/template.css', styleData, name+'/feed/base/css/contentStyle.css');
 
         // Resize images App
-        /*var appImages = settings.appImages;
+        var appImages = settings.appImages;
         var imageInfo = imageSettings;
-            console.log(imageInfo);
-        for (var key in images) {
-            console.log("debug .....................................");
-            console.log(key);
-
+        for (var key in appImages) {
             var imageProperties = imageInfo[key];
-            console.log(imageProperties);
-       
             var image = cx.images( appImages[key] );
             for (var idx in imageProperties) {
                 var newImage = imageProperties[idx] ;
-                if (key =='splashScreen' ){
-                    console.log(newImage.filename + " ..... height: " + newImage.height);
-                }
-                //console.log(imageProperties[indx].width +", " + imageProperties[indx].height +", " + imageProperties[indx].filename);
-                image.resize({height: newImage.height, format: 'png' }, newImage.filename+'.{format}' );
+                image.resize({height: newImage.height, format: 'png'}, name+'/feed/images/'+newImage.filename+'.{format}' );
             }
             
-        }*/
+        }
     }
 };
