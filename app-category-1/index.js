@@ -38,7 +38,7 @@ module.exports = {
         cx.json(settings, name+'/app/common/styles.json', true);
 
         // Copy feed folder
-        cx.file([ 'feed']).cp(name);
+        cx.file(['app', 'feed']).cp(name);
         
         // Eval settings script
         cx.eval('feed/settings.js', settings, name+'/feed/settings.js');
@@ -71,8 +71,8 @@ module.exports = {
             var imageProperties = imageInfo[key];
             var image = cx.images( appImages[key] );
             for (var idx in imageProperties) {
-                var newImage = imageProperties[idx] ;
-                image.resize({height: newImage.height, format: 'png'}, name+'/feed/images/'+newImage.filename+'.{format}' );
+                var newImage = imageProperties[idx];
+                image.resize({height: newImage.height, format: 'png'}, name+'/app/'+newImage.filename+'.{format}' );
             }
             
         }

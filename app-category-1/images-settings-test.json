@@ -3,93 +3,93 @@
 		{
 			"width": "32",
 			"height": "32",
-			"filename" : "andimg/drawable-ldpi/ic_launcher"
+			"filename" : "and/res/drawable-ldpi/ic_launcher"
 		},
 		{
 			"width": "48",
 			"height": "48",
-			"filename" : "andimg/drawable-mdpi/ic_launcher"
+			"filename" : "and/res/drawable-mdpi/ic_launcher"
 		},
 		{
 			"width": "72",
 			"height": "72",
-			"filename" : "andimg/drawable-hdpi/ic_launcher"
+			"filename" : "and/res/drawable-hdpi/ic_launcher"
 		},
 		{
 			"width": "96",
 			"height": "96",
-			"filename" : "andimg/drawable-xhdpi/ic_launcher"
+			"filename" : "and/res/drawable-xhdpi/ic_launcher"
 		},
 		{
 			"width": "144",
 			"height": "144",
-			"filename" : "andimg/drawable-xxhdpi/ic_launcher"
+			"filename" : "and/res/drawable-xxhdpi/ic_launcher"
 		},		
 		{
 			"width": "1024",
 			"height": "1024",
-			"filename" : "iosimg/images/app_store_icon"
+			"filename" : "ios/NAGP/images/app_store_icon"
 		},
 		{
 			"width": "76",
 			"height": "76",
-			"filename" :"iosimg/images/app-icon-ipad-76"
+			"filename" :"ios/NAGP/images/app-icon-ipad-76"
 		},
 		{
 			"width": "152",
 			"height": "152",
-			"filename" :"iosimg/images/app-icon-ipad-76@2x"
+			"filename" :"ios/NAGP/images/app-icon-ipad-76@2x"
 			
 		},
 		{
 			"width": "40",
 			"height": "40",
-			"filename" : "iosimg/images/app-icon-ipad-spotlight-40"
+			"filename" : "ios/NAGP/images/app-icon-ipad-spotlight-40"
 		},		{
 			"width": "40",
 			"height": "40",
-			"filename" :"iosimg/images/images/icon_app_spotlight_40"
+			"filename" :"ios/NAGP/images/images/icon_app_spotlight_40"
 			
 		},
 		{
 			"width": "80",
 			"height": "80",
-			"filename" : "iosimg/images/app-icon-ipad-spotlight-40@2x"
+			"filename" : "ios/NAGP/images/app-icon-ipad-spotlight-40@2x"
 		},
 		{
 			"width": "80",
 			"height": "80",
-			"filename" :"iosimg/images/icon_app_spotlight_40@2x"
+			"filename" :"ios/NAGP/images/icon_app_spotlight_40@2x"
 		},
 		{
 			"width": "29",
 			"height": "29",
-			"filename" :"iosimg/images/app-icon-settings-29"
+			"filename" :"ios/NAGP/images/app-icon-settings-29"
 		},
 		{
 			"width": "58",
 			"height": "58",
-			"filename" :"iosimg/images/app-icon-spotlight-29@2x"
+			"filename" :"ios/NAGP/images/app-icon-spotlight-29@2x"
 		},
 		{
 			"width": "57",
 			"height": "57",
-			"filename" :"iosimg/images/icon_app"
+			"filename" :"ios/NAGP/images/icon_app"
 		},
 		{
 			"width": "114",
 			"height": "114",
-			"filename" :"iosimg/images/icon_app@2x"
+			"filename" :"ios/NAGP/images/icon_app@2x"
 		},
 		{
 			"width": "58",
 			"height": "58",
-			"filename" :"iosimg/images/icon_app_29@2x"
+			"filename" :"ios/NAGP/images/icon_app_29@2x"
 		},
 		{
 			"width": "120",
 			"height": "120",
-			"filename" :"iosimg/images/icon_app_60@2x"
+			"filename" :"ios/NAGP/images/icon_app_60@2x"
 		}
 	],
   
@@ -97,200 +97,200 @@
 		{
 			"width": "320",
 			"height": "480",
-			"filename" : "andimg/drawable-ldpi/images__splash_screen"
+			"filename" : "and/res/drawable-ldpi/images__splash_screen"
 		},
 		{
 			"width": "320",
 			"height": "480",
-			"filename" : "andimg/drawable-mdpi/images__splash_screen"
+			"filename" : "and/res/drawable-mdpi/images__splash_screen"
 		},
 		{
 			"width": "480",
 			"height": "800",
-			"filename" : "andimg/drawable-hdpi/images__splash_screen"
+			"filename" : "and/res/drawable-hdpi/images__splash_screen"
 		},
 		{
 			"width": "720",
 			"height": "1280",
-			"filename" : "andimg/drawable-xhdpi/images__splash_screen"
+			"filename" : "and/res/drawable-xhdpi/images__splash_screen"
 		},
 		{
 			"width": "1200",
 			"height": "1920",
-			"filename" : "andimg/drawable-xxhdpi/images__splash_screen"
+			"filename" : "and/res/drawable-xxhdpi/images__splash_screen"
 		},
 		{
 			"width": "320",
 			"height": "480",
-			"filename" :"iosimg/images/Default"
+			"filename" :"ios/NAGP/images/Default"
 		},
 		{
 			"width": "640",
 			"height": "960",
-			"filename" :"iosimg/images/Default@2x"
+			"filename" :"ios/NAGP/images/Default@2x"
 		},
 		{
 			"width": "768",
 			"height": "1024",
-			"filename" :"iosimg/images/Default_iPad"
+			"filename" :"ios/NAGP/images/Default_iPad"
 		},
 		{
 			"width": "1536",
 			"height": "2048",
-			"filename" :"iosimg/images/Default_iPad@2x"
+			"filename" :"ios/NAGP/images/Default_iPad@2x"
 		},
 		{
 			"width": "1024",
 			"height": "768",
-			"filename" :"iosimg/images/Default_iPad_land"
+			"filename" :"ios/NAGP/images/Default_iPad_land"
 		},
 		{
 			"width": "2048",
 			"height": "1536",
-			"filename" :"iosimg/images/Default_iPad_land@2x"
+			"filename" :"ios/NAGP/images/Default_iPad_land@2x"
 		},
 		{
 			"width": "320",
 			"height": "568",
-			"filename" :"iosimg/images/Default_568h"
+			"filename" :"ios/NAGP/images/Default_568h"
 		},
 		{
 			"width": "640",
 			"height": "1136",
-			"filename" :"iosimg/images/Default_568h@2x"
+			"filename" :"ios/NAGP/images/Default_568h@2x"
 		}   	
     ],
     "sponsorBanner" : [
 		{
 			"width": "320",
 			"height": "40",
-			"filename" : "andimg/drawable-ldpi/images__sponsor_banner"
+			"filename" : "and/res/drawable-ldpi/images__sponsor_banner"
 		},
 		{
 			"width": "320",
 			"height": "40",
-			"filename" : "andimg/drawable-mdpi/images__sponsor_banner"
+			"filename" : "and/res/drawable-mdpi/images__sponsor_banner"
 		},
 		{
 			"width": "480",
 			"height": "60",
-			"filename" : "andimg/drawable-hdpi/images__sponsor_banner"
+			"filename" : "and/res/drawable-hdpi/images__sponsor_banner"
 		},
 		{
 			"width": "720",
 			"height": "90",
-			"filename" : "andimg/drawable-xhdpi/images__sponsor_banner"
+			"filename" : "and/res/drawable-xhdpi/images__sponsor_banner"
 		},
 		{
 			"width": "1200",
 			"height": "150",
-			"filename" : "andimg/drawable-xxhdpi/images__sponsor_banner"
+			"filename" : "and/res/drawable-xxhdpi/images__sponsor_banner"
 		},
 		{
 			"width": "320",
 			"height": "40",
-			"filename" :"iosimg/images/sponsor_banner"
+			"filename" :"ios/NAGP/images/sponsor_banner"
 		},
 		{
 			"width": "640",
 			"height": "80",
-			"filename" :"iosimg/images/sponsor_banner@2x"
+			"filename" :"ios/NAGP/images/sponsor_banner@2x"
 		},
 		{
 			"width": "320",
 			"height": "40",
-			"filename" :"iosimg/images/sponsor_banner-orig"
+			"filename" :"ios/NAGP/images/sponsor_banner-orig"
 		},
 		{
 			"width": "640",
 			"height": "80",
-			"filename" :"iosimg/images/sponsor_banner-orig@2x"
+			"filename" :"ios/NAGP/images/sponsor_banner-orig@2x"
 		}     	
     ],
     "homeImage" : [
 		{
 			"width": "320",
 			"height": "214",
-			"filename" : "andimg/drawable-mdpi/images__home_image_current_stage"
+			"filename" : "and/res/drawable-mdpi/images__home_image_current_stage"
 		},
 		{
 			"width": "480",
 			"height": "321",
-			"filename" : "andimg/drawable-hdpi/images__home_image_current_stage"
+			"filename" : "and/res/drawable-hdpi/images__home_image_current_stage"
 		},
 		{
 			"width": "720",
 			"height": "482",
-			"filename" : "andimg/drawable-xhdpi/images__home_image_current_stage"
+			"filename" : "and/res/drawable-xhdpi/images__home_image_current_stage"
 		},
 		{
 			"width": "1200",
 			"height": "803",
-			"filename" : "andimg/drawable-xxhdpi/images__home_image_current_stage"
+			"filename" : "and/res/drawable-xxhdpi/images__home_image_current_stage"
 		},
 		{
 			"width": "320",
 			"height": "266",
-			"filename" :"iosimg/images/home_image_current_stage"
+			"filename" :"ios/NAGP/images/home_image_current_stage"
 		},
 		{
 			"width": "640",
 			"height": "531",
-			"filename" :"iosimg/images/home_image_current_stage@2x"
+			"filename" :"ios/NAGP/images/home_image_current_stage@2x"
 		}  	
     ],
     "homeIcon" : [
 		{
 			"width": "32",
 			"height": "32",
-			"filename" : "andimg/drawable-mdpi/images__icon_home"
+			"filename" : "and/res/drawable-mdpi/images__icon_home"
 		},
 		{
 			"width": "48",
 			"height": "48",
-			"filename" : "andimg/drawable-hdpi/images__icon_home"
+			"filename" : "and/res/drawable-hdpi/images__icon_home"
 		},
 		{
 			"width": "64",
 			"height": "64",
-			"filename" : "andimg/drawable-xhdpi/images__icon_home"
+			"filename" : "and/res/drawable-xhdpi/images__icon_home"
 		},
 		{
 			"width": "96",
 			"height": "96",
-			"filename" : "andimg/drawable-xxhdpi/images__icon_home"
+			"filename" : "and/res/drawable-xxhdpi/images__icon_home"
 		}   	
     ],
     "drawerIcon" :[ 
 		{
 			"width": "16",
 			"height": "16",
-			"filename" : "andimg/drawable-mdpi/images__icon_home"
+			"filename" : "and/res/drawable-mdpi/images__icon_home"
 		},
 		{
 			"width": "24",
 			"height": "24",
-			"filename" : "andimg/drawable-hdpi/images__icon_home"
+			"filename" : "and/res/drawable-hdpi/images__icon_home"
 		},
 		{
 			"width": "32",
 			"height": "32",
-			"filename" : "andimg/drawable-xhdpi/images__icon_home"
+			"filename" : "and/res/drawable-xhdpi/images__icon_home"
 		},
 		{
 			"width": "48",
 			"height": "48",
-			"filename" : "andimg/drawable-xxhdpi/images__icon_home"
+			"filename" : "and/res/drawable-xxhdpi/images__icon_home"
 		},
 		{
 			"width": "40",
 			"height": "40",
-			"filename" :"iosimg/images/ic_drawer"
+			"filename" :"ios/NAGP/images/ic_drawer"
 		},
 		{
 			"width": "80",
 			"height": "80",
-			"filename" :"iosimg/images/ic_drawer@2x"
+			"filename" :"ios/NAGP/images/ic_drawer@2x"
 		}   	
     ],
 
@@ -298,32 +298,32 @@
 		{
 			"width": "32",
 			"height": "32",
-			"filename" : "andimg/drawable-mdpi/images__ic_back"
+			"filename" : "and/res/drawable-mdpi/images__ic_back"
 		},
 		{
 			"width": "48",
 			"height": "48",
-			"filename" : "andimg/drawable-hdpi/images__ic_back"
+			"filename" : "and/res/drawable-hdpi/images__ic_back"
 		},
 		{
 			"width": "64",
 			"height": "64",
-			"filename" : "andimg/drawable-xhdpi/images__ic_back"
+			"filename" : "and/res/drawable-xhdpi/images__ic_back"
 		},
 		{
 			"width": "96",
 			"height": "96",
-			"filename" : "andimg/drawable-xxhdpi/images__ic_back"
+			"filename" : "and/res/drawable-xxhdpi/images__ic_back"
 		},
 		{
 			"width": "40",
 			"height": "40",
-			"filename" :"iosimg/images/ic_back"
+			"filename" :"ios/NAGP/images/ic_back"
 		},
 		{
 			"width": "80",
 			"height": "80",
-			"filename" :"iosimg/images/ic_back@2x"
+			"filename" :"ios/NAGP/images/ic_back@2x"
 		}    	
     ]
 }
