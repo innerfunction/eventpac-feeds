@@ -72,7 +72,7 @@ module.exports = {
             var image = cx.images( appImages[key] );
             for (var idx in imageProperties) {
                 var newImage = imageProperties[idx];
-                image.resize({height: newImage.height, format: 'png'}, name+'/app/'+newImage.filename+'.{format}' );
+                image.resize({width: newImage.width, height: newImage.height, format: 'png'}, name+'/app/'+newImage.filename+'.{format}' );
             }
             
         }
