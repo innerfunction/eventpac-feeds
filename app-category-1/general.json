@@ -1,5 +1,6 @@
 {
-    "name": "nagp",
+    "name": "NAGP",
+    "id": "nagp",
     "appCategory": "app-category-1",
     "styles": {
         "fontFamily": "Roboto, helvetica",  
@@ -59,10 +60,17 @@
             "title": "Speakers",
             "styles": {
                 "header": {
-                    "backgroundColor" : [ "red", "blue" ]
+                    "backgroundColor" : [ "#fff" ],
+                    "title": {
+                        "color": "#3498DB",
+                        "fontFamily": "georgia",
+                        "fontSize": "50px"
+                    }
                 },
                 "description": {
-                    "backgroundColor": ["#ccc"]
+                    "fontFamily": "georgia",
+                    "color": "#555",
+                    "fontSize": "25px"
                 }
             }
         },

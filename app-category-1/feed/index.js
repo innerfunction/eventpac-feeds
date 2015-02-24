@@ -66,7 +66,7 @@ var feed = {
                 content:        post.content,
                 performer:      post.performers,
                 image:          post.photo,
-                type:           settings.eventsTitle,
+                type:           'events',
                 shape:          settings.timeShape
             }
         },
@@ -76,7 +76,7 @@ var feed = {
                 title:          post.title,
                 content:        post.content,
                 image:          post.photo,
-                type:           settings.performersTitle,
+                type:           'performers',
                 shape:          settings.imageShape
             }
         }

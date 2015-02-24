@@ -70,10 +70,10 @@ header, .header {
 .shape-container.circle {
 	padding: 0;
 	margin: 0 0 15px ;
-	
 }
 .shape-container.circle.time {
 	margin-bottom: 110px;
+    background: {contentStyles.time.backgroundColor};	
 }
 
 .shape-container.circle > p, .shape-container.circle > div{
@@ -152,27 +152,29 @@ header, .header {
 {#types}
 	{#styles}
 		{#header}
-            .{title} header, .{title} .header {
-                {#backgroundColor}background : {.};{/backgroundColor}
+            .{id} header, .{id} .header {
+                {#backgroundColor}background : {.}!important;{/backgroundColor}
             }
         {/header}
         {#header.title}
-            .{title} .title {
-                {#fontSize}font-size: {.};{/fontSize}
-                {#color}color: {.};{/color}
-                {#textAlign}text-align: {.};{/textAlign}
+            .{id} .title {
+                {#fontSize}font-size: {.}!important;{/fontSize}
+                {#color}color: {.}!important;{/color}
+                {#textAlign}text-align: {.}!important;{/textAlign}
+                {#fontFamily}font-family: {.} !important;{/fontFamily}
             }
         {/header.title}        
         
         {#description}
-            body.{title}{
-                {#backgroundColor}background : {.};{/backgroundColor}
+            body.{id}{
+                {#backgroundColor}background : {.}!important;{/backgroundColor}
             }
-        	.{title} .content {
-        		{#backgroundColor}background : {.};{/backgroundColor}
-                {#fontSize}font-size: {.};{/fontSize}
-                {#color}color: {.};{/color}
-                {#textAlign}text-align: {.};{/textAlign}	      		
+        	.{id} .content {
+        		{#backgroundColor}background : {.}!important;{/backgroundColor}
+                {#fontSize}font-size: {.}!important;{/fontSize}
+                {#color}color: {.} !important;{/color}
+                {#textAlign}text-align: {.}!important;{/textAlign}
+                {#fontFamily}font-family: {.} !important;{/fontFamily}
         	}
         {/description}
 	{/styles}
@@ -202,7 +204,6 @@ header > div.title,  .header > div.title{
     font-size: {time.fontSize};
     color: {time.color};
     font-style: {time.fontStyle};
-    background: {time.backgroundColor};
 }
 
 .content{

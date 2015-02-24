@@ -74,7 +74,6 @@ module.exports = {
                 var newImage = imageProperties[idx];
                 image.resize({height: newImage.height, format: 'png'}, name+'/app/'+newImage.filename+'.{format}' );
             }
-            
         }
     }
 };
