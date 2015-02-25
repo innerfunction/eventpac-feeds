@@ -4,12 +4,12 @@
     "refreshPeriodicSubscriptions": true,
     "initialContentPath": "common/subs",
     "subscriptions": {
-        "xxx": {
-            "id":           "xxx",
+        "nagp": {
+            "id":           "nagp",
             "type":         "IncrementalSubscription",
             "url":          "`http://service.eventpac.com/semo/subs/?feed={feed}&since={since}",
             "periodic":     true,
-            "zip":          "@app:/common/subs/xxx/content.zip"
+            "zip":          "@app:/common/subs/nagp/content.zip"
         }
     }
 }
