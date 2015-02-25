@@ -1,0 +1,180 @@
+{
+    "Defaults": {
+        "titleBarColor":                    "#E51C23",
+        "titleBarTextColor":                "#FFFFFF",
+        "title":                            "OnF1"
+    },
+    "SponsorSplash": {
+        "type":                             "EmptyView",
+        "extends":                          "#Defaults",
+        "layout":                           "sponsor_splash",
+        "ondelay": {
+            "delay":                        3,
+            "action":                       "nav/switch+view@HomeTabSet"
+        },
+        "hideTitleBar":                     true
+    },
+    "SponsorLayout": {
+        "type":                             "EmptyView",
+        "extends":                          "#Defaults",
+        "layout":                           "sponsor_layout",
+        "hideTitleBar":                     true,
+        "components": {
+            "sponsor_banner": {
+                "ios:tag":                  1,
+                "image":                    "images/sponsor_banner.png",
+                "action":                   "nav/open+view@SponsorView"
+            },
+            "content": {
+                "ios:tag":                  2,
+                "hideTitleBar":             false,
+                "config":                   "$content"
+            }
+        }
+    },
+    "SponsorView": {
+        "extends":                          "#Defaults",
+        "type":                             "WebView",
+        "html":                             "@subs:/onf1/sponsor.html",
+        "useHTMLTitle":                     true,
+        "title":                            "Sponsor: Yo con movil",
+        "ios:scrollViewBounces":            true,
+        "loadingImage":                     "images/sponsor_banner.png"
+    },
+    "ListView": {
+        "extends":                          "#SponsorLayout",
+        "title":                            "$title",
+        "$content": {
+            "type":                         "ListView",
+            "tableStyle":                   "Plain",
+            "row": {
+                "style":                    "Subtitle",
+                "height":                   58,
+                "imageWidth":               50,
+                "imageHeight":              50,
+                "accessory":                "DisclosureIndicator",
+                "textColor":                "#333333",
+                "detailTextColor":          "#12365A",
+                "selectedTextColor":        "#FFFFFF",
+                "detailSelectedTextColor":  "#FFFFFF",
+                "backgroundColor":          "#EBF0EC",
+                "selectedBackgroundColor":  "#12365A"
+            },
+            "decorator": {
+                "type":                     "FavouriteRowDecorator",
+                "indicatorImage":           "images/icon_favourite_indicator.png"
+            },
+            "data":                         "$data",
+            "titleBarAction":               "$titleBarAction",
+            "actionItem":                   "$actionItem"
+        }
+    },
+    "DefaultWebView": {
+        "extends":                          "#SponsorLayout",
+        "title":                            "$title",
+        "useHTMLTitle":                     true,
+        "hideTitleBar":                     false, 
+        "$content": {
+            "type":                         "WebView",
+            "extends":                      "#Defaults",
+            "useHTMLTitle":                 true,
+            "loadingImage":                 "images/webview_loading.png",
+            "html":                         "$html",
+            "ios:allowExternalURLs": [
+                "https://syndication.twitter.com/i/jot/syndication",
+                "https://platform.twitter.com/jot.html"
+            ]
+        }
+    },
+    "DefaultDrawer": {
+        "type":                             "NavigationDrawer",
+        "extends":                          "#Defaults",
+        "openTab":                          "$openTab",
+        "tabList": {
+            "row": {
+                "textColor":                "#FFFFFF",
+                "selectedTextColor":        "#CB3240",
+                "backgroundColor":          "#E51C23",
+                "selectedBackgroundColor":  "#272727",
+                "imageWidth":               40,
+                "imageHeight":              40,
+                "style":                    "Subtitle"
+            },
+            "ios:backMenuItem": {
+                "title":                    "Back",
+                "image":                    "images/ic-menu-white.png",
+                "imageWidth":               40,
+                "imageHeight":              40
+            },
+            "width":                        210
+        },
+        "ios:menuButton": {
+            "image":                        "images/ic_drawer.png"
+        }
+    },
+    "HomeTabSet": {
+        "extends":                          "#DefaultDrawer",
+        "leftBarButtonItemTitle":           "",
+        "leftBarButtonItemImage":           "images/icon_star.png",
+        "and:numberOfVisibleTabs":          5,
+        "tabs": [
+            {
+                "id":                       "home",
+                "title":                    "HOME",
+                "image":                    "images/icon_home.png",
+                "navigable":                false,
+                "view":                     "@view:HomeView"
+            },
+            {
+                "id":                       "events",
+                "title":                    "CALENDAR",
+                "image":                    "images/icon_calendar.png",
+                "navigable":                false,
+                "view":                     "@view:Events"
+            },
+            {
+                "id":                       "news",
+                "title":                    "NEWS",
+                "image":                    "images/icon_news.png",
+                "navigable":                true,
+                "view":                     "@view:NewsListView"
+            },
+            {
+                "id":                       "results",
+                "title":                    "RESULTS",
+                "image":                    "images/icon_results.png",
+                "navigable":                false,
+                "view":                     "@view:DefaultWebView+html@subs:/onf1/results.html"
+            },
+            {
+                "id":                       "twitter",
+                "title":                    "TWITTER",
+                "image":                    "images/icon_twitter.png",
+                "navigable":                false,
+                "view":                     "@view:DefaultWebView+html@subs:/onf1/twitter.html"
+            },
+            {
+                "id":                       "share",
+                "title":                    "SHARE",
+                "image":                    "images/icon_share.png",
+                "navigable":                true,
+                "view":                     "@view:DefaultWebView+html@subs:/onf1/share.html"
+            },
+            {
+                "id":                       "sponsor",
+                "title":                    "SPONSOR",
+                "image":                    "images/icon_sponsor.png",
+                "navigable":                true,
+                "view":                     "@view:SponsorView"
+            },
+            {
+                "id":                       "about",
+                "title":                    "ABOUT",
+                "image":                    "images/icon_about.png",
+                "navigable":                true,
+                "view":                     "@view:DefaultWebView+html@subs:/onf1/about.html"
+            }
+        ]
+    },
+    "HomeView":                             "@app:/common/home-view.json"
+}

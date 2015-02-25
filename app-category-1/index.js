@@ -1,5 +1,7 @@
 var settings = require('./general');
 var imageSettings = require('./images-settings-test');
+var exec = require('child_process').exec;
+var path = require('path');
 
 var category = settings.appCategory;
 var name = settings.name;
@@ -38,8 +40,20 @@ module.exports = {
         cx.json(settings, name+'/app/common/styles.json', true);
 
         // Copy feed folder
-        cx.file(['app', 'feed']).cp(name);
+        cx.file(['feed']).cp(name);
         
+        // Generate app folder
+        var cwd = path.resolve(process.cwd(), '..')+'/eventpac-feeds/scripts';
+        var output = name+'/app';
+
+        exec(cwd+'/makeclient.sh '+ name + ' '+ output, function(err, stdout, stderr) {
+            //console.log('stdout: ' + stdout);
+            //console.log('stderr: ' + stderr);
+            if (err !== null) {
+            //    console.log('exec error: ' + err);
+            }
+        });
+
         // Eval settings script
         cx.eval('feed/settings.js', settings, name+'/feed/settings.js');
         
@@ -65,7 +79,7 @@ module.exports = {
         cx.eval('feed/template.css', styleData, name+'/feed/base/css/contentStyle.css');
 
         // Resize images App
-        var appImages = settings.appImages;
+        /*var appImages = settings.appImages;
         var imageInfo = imageSettings;
         for (var key in appImages) {
             var imageProperties = imageInfo[key];
@@ -74,6 +88,6 @@ module.exports = {
                 var newImage = imageProperties[idx];
                 image.resize({width: newImage.width, height: newImage.height, format: 'png'}, name+'/app/'+newImage.filename+'.{format}' );
             }
-        }
+        }*/
     }
 };

@@ -1,0 +1,41 @@
+{
+    "mode": "LIVE",
+    "types": "@app:/{platform.name}/types.json",
+    "services": [
+        {
+            "name": "viewFactory",
+            "type": "ViewFactoryService",
+            "config": "@app:views.json"
+        },
+        {
+            "name": "subscriptions",
+            "type": "SubscriptionService",
+            "config": "@app:subscriptions-{mode}.json"
+        },
+        {
+            "name": "notifications",
+            "type": "NotificationService"
+        },
+        {
+            "name": "analytics",
+            "type": "FlurryService",
+            "config": "@app:/{platform.name}/flurry.json"
+        }
+    ],
+    "dispatcher": {
+        "schemes": {
+            "view":  { "type": "ViewSchemeHandler" },
+            "event": { "type": "EventSchemeHandler" },
+            "subs":  { "type": "SubsSchemeHandler" },
+            "ds":    { "type": "DSSchemeHandler", "sources": "@app:db/datasources.json" }
+        }
+    },
+    "settings": {
+        "favourites.alarmTrigger": 54000,
+        "favourites.localNotificationsEnabled": true
+    },
+    "db": "@app:db/schema.json",
+    "globals": "@app:globals.json",
+    "rootView": "@view:SponsorSplash",
+    "assetLocales": ["en_US","es_ES"]
+}
