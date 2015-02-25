@@ -51,6 +51,7 @@ var feed = {
     types: {
         events: function( post ) {
             var occurrence = post.occurrences[0];
+            var timeMarker  = (settings.timeShape == 'circle' ) ? ' <br/> ' : ''; 
             return {
                 id:             post.id,
                 title:          post.title,
@@ -60,8 +61,8 @@ var feed = {
                     endDate:        mods.df( post.occurrences.endDateTime, 'dddd, mmmm dS')
                 },
                 time: {
-                    startTime:      mods.df( post.occurrences.startDateTime, 'HH:MM'),
-                    endTime:        mods.df( post.occurrences.endDateTime, 'HH:MM')
+                    startTime:      mods.df( post.occurrences.startDateTime, 'HH:MM') +timeMarker ,
+                    endTime:        timeMarker + mods.df( post.occurrences.endDateTime, 'HH:MM')
                 },
                 content:        post.content,
                 performer:      post.performers,
