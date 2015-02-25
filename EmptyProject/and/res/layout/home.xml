@@ -1,0 +1,197 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
+        <ImageView
+            android:id="@+id/sponsor_banner"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:background="@android:color/white"
+            android:scaleType="fitStart"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#AAE8EAE8"
+                android:orientation="vertical"
+                android:textColor="#ffffffff" >
+
+             <ImageView
+                 android:id="@+id/current_stage_banner"
+                 android:layout_width="match_parent"
+                 android:layout_height="0dp"
+                 android:layout_weight="1"
+                 android:adjustViewBounds="false"
+                 android:scaleType="centerCrop"
+                 android:src="@drawable/images__home_image_current_stage" />
+
+            </LinearLayout>
+
+            <LinearLayout
+	    	    android:layout_width="match_parent"
+	    	    android:layout_height="wrap_content"
+	    	    android:layout_gravity="top"
+	    	    android:background="#AAE8EAE8"
+	    	    android:orientation="vertical"
+	    	    android:textColor="#ffffffff" >
+
+	    	    <LinearLayout
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:paddingTop="5dp" >
+
+	    	        <TextView
+	    	            android:id="@+id/current_stage_title"
+	    	            android:layout_width="wrap_content"
+	    	            android:layout_height="wrap_content"
+	    	            android:paddingLeft="10dp"
+	    	            android:text="Current stage"
+	    	            android:textColor="@color/red_lavuelta"
+	    	            android:textSize="14dp" />
+
+	    	        <ImageView
+	    	            android:id="@+id/imageView1"
+	    	            android:layout_width="wrap_content"
+	    	            android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp" />
+
+	    	        <TextView
+	    	            android:id="@+id/current_stage_length"
+	    	            android:layout_width="wrap_content"
+	    	            android:layout_height="wrap_content"
+	    	            android:paddingLeft="10dp"
+	    	            android:text="Stage length"
+	    	            android:textColor="@color/black" />
+
+	    	    </LinearLayout>
+
+	    	    <LinearLayout
+	    	        android:layout_width="match_parent"
+	    	        android:layout_height="wrap_content"
+	    	        android:paddingBottom="5dp"
+	    	        android:paddingLeft="10dp" >
+
+	    	        <TextView
+	    	            android:id="@+id/current_stage_description"
+	    	            android:layout_width="wrap_content"
+	    	            android:layout_height="wrap_content"
+	    	            android:paddingTop="5dp"
+	    	            android:text="Stage description"
+	    	            android:textColor="@color/black"
+	    	            android:textSize="17sp" />
+
+	    	    </LinearLayout>
+
+	    	</LinearLayout>
+	    	
+	    	<LinearLayout android:orientation="horizontal"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="top"
+		        android:background="@color/red_lavuelta"
+	    		android:textColor="#ffffffff"
+	    		android:paddingLeft="10dip">
+	    		
+				<!--  <TextView
+			        android:id="@+id/liveMessage"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="LIVE FEED" />
+			   -->
+	    	</LinearLayout>
+	    </FrameLayout>    
+		
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" 
+	        android:gravity="center"
+	        android:background="@drawable/images__home_button_bg">
+	    
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="0px"
+		        android:layout_weight="1"
+		        android:layout_gravity="center_horizontal"
+		        android:orientation="horizontal" >
+		
+		        <ImageButton
+		            android:id="@+id/button1"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent"
+		            android:layout_weight="1"
+		            android:background="@drawable/images__home_button_events"
+		            android:scaleType="center"
+		            android:text="Button" />
+		
+		        <ImageButton
+		            android:id="@+id/button2"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent"
+		            android:layout_weight="1"
+		            android:background="@drawable/images__home_button_news"
+		            android:text="Button" />
+
+		    </LinearLayout>
+		    
+		     <LinearLayout
+		         android:layout_width="match_parent"
+		         android:layout_height="0px"
+		         android:layout_weight="1"
+		         android:layout_gravity="center_horizontal"
+		         android:orientation="horizontal"
+		         android:paddingTop="0dip" >
+		
+		        <ImageButton
+		            android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+		            android:background="@drawable/images__home_button_results"
+		            android:text="Button" />
+		
+		        <ImageButton
+		            android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+		            android:background="@drawable/images__home_button_twitter"
+		            android:text="Button" />
+		    </LinearLayout>
+		    
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="0px"
+		        android:layout_weight="1"
+		        android:layout_gravity="center_horizontal"
+		        android:orientation="horizontal"
+		        android:paddingTop="0dip" >
+		
+		        <ImageButton
+		            android:id="@+id/button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+		            android:background="@drawable/images__home_button_share"
+		            android:text="Button" />
+		
+		        <ImageButton
+		            android:id="@+id/button6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+		            android:background="@drawable/images__home_button_sponsor"
+		            android:text="Button" />
+		    </LinearLayout>
+		</LinearLayout>
+
+</LinearLayout>

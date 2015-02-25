@@ -1,0 +1,15 @@
+{
+    "type": "EmptyView",
+    "layout": "home",
+    "hideTitleBar": true,
+    "and:hideActionBar": false,
+    "titleBarTextColor": "#ED3323",
+    "components": {
+        "sponsor_banner": {
+            "ios:tag": 1,
+            "image": "images/sponsor_banner.png",
+            "action": "nav/open+view@SponsorView"
+        }
+    }
+}
+

@@ -1,0 +1,11 @@
+{
+    "posts": {
+        "table": "posts",
+        "filter": {
+            "type": "?type"
+        },
+        "adapter": {
+            "type": "MultiRowDSAdapter"
+        }
+    }
+}
