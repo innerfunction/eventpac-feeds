@@ -29,12 +29,12 @@
             "fontSize": "25px",
             "color": "#000",
             "textAlign": "center",
-            "inHeader": true,
+            "inHeader": false,
             "backgroundColor": ["#fff"]
         },
         "image": {
             "shape": "circle",
-            "inHeader": true 
+            "inHeader": false 
         },
          "titleBar" : {
             "titleBarColor": "#E51C23",

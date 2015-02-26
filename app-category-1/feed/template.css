@@ -61,8 +61,13 @@ header, .header {
 	visibility: hidden;
 }
 .shape-container.banner.time  > div > p {
-	width: 100px;
-	margin:15px auto;
+	width: 200px;
+	margin: 0 auto;
+	
+	padding: 15px 0;
+}
+.shape-container.banner.time {
+	background:{contentStyles.time.HBackgroundColor};
 }
 .shape-container.banner  > div > p {
 	margin:0;
@@ -105,10 +110,14 @@ header, .header {
 	width: 185px;
 	height: 185px;
 	vertical-align: middle;
-	font-size: {FontSize.medium};
 	background-color: #f8f8f8;
 } 
-
+.shape-container.time.banner span {
+	display: inline;
+}
+.shape-container.time.banner span {
+	display: block;
+}
 .shape-container.circle  > div > p > img{
 	border-radius : 100%;
 	width:100%;
