@@ -47,7 +47,7 @@ module.exports = {
         var output = name+'/app';
 
         exec(cwd+'/makeclient.sh '+ name + ' '+ output, function(err, stdout, stderr) {
-            //console.log('stdout: ' + stdout);
+            console.log('stdout: ' + stdout);
             //console.log('stderr: ' + stderr);
             if (err !== null) {
             //    console.log('exec error: ' + err);
