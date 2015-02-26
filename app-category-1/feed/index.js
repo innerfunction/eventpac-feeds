@@ -51,7 +51,7 @@ var feed = {
     types: {
         events: function( post ) {
             var occurrence = post.occurrences[0];
-            var timeMarker  = (settings.timeShape == 'circle' ) ? ' <br/> ' : ''; 
+            var timeMarker  = (settings.timeShape == 'circle' ) ? ' <br/> ' : '';
             return {
                 id:             post.id,
                 title:          post.title,
@@ -72,13 +72,15 @@ var feed = {
             }
         },
         performers: function( post ) {
+            var banner = (settings.imageShape == "banner") ? true : false;
             return {
                 id:             post.id,
                 title:          post.title,
                 content:        post.content,
                 image:          post.photo,
                 type:           'performers',
-                shape:          settings.imageShape
+                shape:          settings.imageShape,
+                banner:         banner
             }
         }
     },
@@ -129,7 +131,8 @@ var feed = {
                         action:         eputils.action('SpeakerDetail', { 'speakerID': post.id }),
                         image:          post.image,
                         content:        post.content,
-                        shape:          post.shape
+                        shape:          post.shape,
+                        banner:         post.banner
                     }
                 });
                 buildImages( cx, updates );
@@ -141,7 +144,8 @@ var feed = {
                         title:          post.title,
                         description:    post.description,
                         action:         post.action,
-                        shape:          post.shape
+                        shape:          post.shape,
+                        banner:         post.banner
                     }
                 });
             }
