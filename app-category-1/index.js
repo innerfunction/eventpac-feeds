@@ -45,7 +45,6 @@ module.exports = {
         // Generate app folder
         var cwd = path.resolve(process.cwd(), '..')+'/eventpac-feeds/scripts';
         var output = name+'/app';
-
         exec(cwd+'/makeclient.sh '+ name + ' '+ output, function(err, stdout, stderr) {
             console.log('stdout: ' + stdout);
             //console.log('stderr: ' + stderr);
@@ -56,7 +55,7 @@ module.exports = {
 
         // Eval settings script
         cx.eval('feed/settings.js', settings, name+'/feed/settings.js');
-        
+
         // Eval content CSS
         var styleData = settings;
         var postsArray = [];
@@ -79,7 +78,7 @@ module.exports = {
         cx.eval('feed/template.css', styleData, name+'/feed/base/css/contentStyle.css');
 
         // Resize images App
-        /*var appImages = settings.appImages;
+        var appImages = settings.appImages;
         var imageInfo = imageSettings;
         for (var key in appImages) {
             var imageProperties = imageInfo[key];
@@ -88,6 +87,6 @@ module.exports = {
                 var newImage = imageProperties[idx];
                 image.resize({width: newImage.width, height: newImage.height, format: 'png'}, name+'/app/'+newImage.filename+'.{format}' );
             }
-        }*/
+        }
     }
 };
