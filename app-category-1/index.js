@@ -52,7 +52,10 @@ module.exports = {
             //    console.log('exec error: ' + err);
             }
         });
-
+        
+        // Create strings.json
+        cx.json(settings.locale, name+'/app/common/strings.json', true);
+        
         // Eval settings script
         cx.eval('feed/settings.js', settings, name+'/feed/settings.js');
 
@@ -75,7 +78,7 @@ module.exports = {
             postsArray.push(post);
         }
         styleData = { contentStyles: styleData.styles, types: postsArray};
-        cx.eval('feed/template.css', styleData, name+'/feed/base/css/contentStyle.css');
+        cx.eval('template.css', styleData, name+'/feed/base/css/contentStyle.css');
 
         // Resize images App
         var appImages = settings.appImages;

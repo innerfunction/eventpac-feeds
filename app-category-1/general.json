@@ -2,6 +2,37 @@
     "name": "NAGP",
     "id": "nagp",
     "appCategory": "app-category-1",
+    "locale": {
+        "app_name": {
+            "en": "NAGP",
+            "es": "NAGP"
+        },
+        "sponsor_view_title": {
+            "en": "DoIt Mobile",
+            "es": "DoIt Mobile"
+        },
+        "HOME": {
+            "en": "Home",
+            "es": "Inicio"
+        },
+        "SHARE": {
+            "en": "Follow us",
+            "es": "Síguenos"
+        },
+        "SPONSOR": {
+            "en": "Sponsor",
+            "es": "Sponsor"
+        },
+        "ABOUT": {
+            "en": "About",
+            "es": "About"
+        },
+        "LOCATIONS": {
+            "en":   "Tourism",
+            "es":   "Turismo",
+            "fr":   "Tourisme"
+        }
+    },
     "styles": {
         "fontFamily": "Roboto, helvetica",  
         "header" : {
@@ -25,9 +56,9 @@
             "textAlign": "center"
         },
         "time": {
-            "shape": "circle",
+            "shape": "banner",
             "fontSize": "25px",
-            "color": "#000",
+            "color": "#fff",
             "textAlign": "center",
             "inHeader": true,
             "backgroundColor": ["#fff"]
