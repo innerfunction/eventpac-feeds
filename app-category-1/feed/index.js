@@ -57,12 +57,12 @@ var feed = {
                 title:          post.title,
                 occurrences:    post.occurrences,
                 date: {
-                    startDate:      mods.df( post.occurrences.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
-                    endDate:        mods.df( post.occurrences.endDateTime, 'dddd, mmmm dS')
+                    startDate:      mods.df( occurrence.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
+                    endDate:        mods.df( occurrence.endDateTime, 'dddd, mmmm dS')
                 },
                 time: {
-                    startTime:      mods.df( post.occurrences.startDateTime, 'HH:MM') +timeMarker ,
-                    endTime:        timeMarker + mods.df( post.occurrences.endDateTime, 'HH:MM')
+                    startTime:      mods.df( occurrence.startDateTime, 'HH:MM') +timeMarker ,
+                    endTime:        timeMarker + mods.df( occurrence.endDateTime, 'HH:MM')
                 },
                 content:        post.content,
                 performer:      post.performers,
