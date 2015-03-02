@@ -328,5 +328,269 @@
 			"height": "80",
 			"filename" :"ios/{name}/images/ic_back@2x.png"
 		}    	
+    ],
+
+    "programmButton" : [
+		{
+			"width": "160",
+			"height": "135",
+			"filename" : "and/res/drawable-mdpi/images__home_button_events.png"
+		},
+		{
+			"width": "240",
+			"height": "202",
+			"filename" : "and/res/drawable-hdpi/images__home_button_events.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" : "and/res/drawable-xhdpi/images__home_button_events.png"
+		},
+		{
+			"width": "600",
+			"height": "506",
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_events.png"
+		},
+		{
+			"width": "160",
+			"height": "135",
+			"filename" :"ios/{name}/images/home_button_events.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" :"ios/{name}/images/home_button_events@2x.png"
+		}    	
+    ],
+
+    "programmButtonPress" : [
+		{
+			"width": "160",
+			"height": "135",
+			"filename" : "and/res/drawable-mdpi/images__home_button_events_press.png"
+		},
+		{
+			"width": "240",
+			"height": "202",
+			"filename" : "and/res/drawable-hdpi/images__home_button_events_press.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" : "and/res/drawable-xhdpi/images__home_button_events_press.png"
+		},
+		{
+			"width": "600",
+			"height": "506",
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_events_press.png"
+		},
+		{
+			"width": "160",
+			"height": "135",
+			"filename" :"ios/{name}/images/home_button_events_press.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" :"ios/{name}/images/home_button_events_press@2x.png"
+		}    	
+    ],
+
+    "speakersButton" : [
+		{
+			"width": "160",
+			"height": "135",
+			"filename" : "and/res/drawable-mdpi/images__home_button_speakers.png"
+		},
+		{
+			"width": "240",
+			"height": "202",
+			"filename" : "and/res/drawable-hdpi/images__home_button_speakers.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" : "and/res/drawable-xhdpi/images__home_button_speakers.png"
+		},
+		{
+			"width": "600",
+			"height": "506",
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_speakers.png"
+		},
+		{
+			"width": "160",
+			"height": "135",
+			"filename" :"ios/{name}/images/home_button_speakers.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" :"ios/{name}/images/home_button_speakers@2x.png"
+		}    	
+    ],
+
+    "speakersButtonPress" : [
+		{
+			"width": "160",
+			"height": "135",
+			"filename" : "and/res/drawable-mdpi/images__home_button_speakers_press.png.png"
+		},
+		{
+			"width": "240",
+			"height": "202",
+			"filename" : "and/res/drawable-hdpi/images__home_button_speakers_press.png.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" : "and/res/drawable-xhdpi/images__home_button_speakers_press.png.png"
+		},
+		{
+			"width": "600",
+			"height": "506",
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_speakers_press.png.png"
+		},
+		{
+			"width": "160",
+			"height": "135",
+			"filename" :"ios/{name}/images/home_button_speakers_press.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" :"ios/{name}/images/home_button_speakers_press@2x.png"
+		}    	
+    ],
+
+    "followUsButton" : [
+		{
+			"width": "160",
+			"height": "135",
+			"filename" : "and/res/drawable-mdpi/images__home_button_follow.png"
+		},
+		{
+			"width": "240",
+			"height": "202",
+			"filename" : "and/res/drawable-hdpi/images__home_button_follow.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" : "and/res/drawable-xhdpi/images__home_button_follow.png"
+		},
+		{
+			"width": "600",
+			"height": "506",
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_follow.png"
+		},
+		{
+			"width": "160",
+			"height": "135",
+			"filename" :"ios/{name}/images/home_button_follow.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" :"ios/{name}/images/home_button_follow@2x.png"
+		}    	
+    ],
+
+    "followUsButtonPress" : [
+		{
+			"width": "160",
+			"height": "135",
+			"filename" : "and/res/drawable-mdpi/images__home_button_location_press.png.png"
+		},
+		{
+			"width": "240",
+			"height": "202",
+			"filename" : "and/res/drawable-hdpi/images__home_button_location_press.png.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" : "and/res/drawable-xhdpi/images__home_button_location_press.png.png"
+		},
+		{
+			"width": "600",
+			"height": "506",
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_location_press.png.png"
+		},
+		{
+			"width": "160",
+			"height": "135",
+			"filename" :"ios/{name}/images/home_button_follow_press.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" :"ios/{name}/images/home_button_follow_press@2x.png"
+		}    	
+    ],
+
+    "locationButton" : [
+		{
+			"width": "160",
+			"height": "135",
+			"filename" : "and/res/drawable-mdpi/images__home_button_location.png"
+		},
+		{
+			"width": "240",
+			"height": "202",
+			"filename" : "and/res/drawable-hdpi/images__home_button_location.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" : "and/res/drawable-xhdpi/images__home_button_location.png"
+		},
+		{
+			"width": "600",
+			"height": "506",
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_location.png"
+		},
+		{
+			"width": "160",
+			"height": "135",
+			"filename" :"ios/{name}/images/home_button_location.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" :"ios/{name}/images/home_button_location@2x.png"
+		}    	
+    ],
+
+    "locationButtonPress" : [
+		{
+			"width": "160",
+			"height": "135",
+			"filename" : "and/res/drawable-mdpi/images__home_button_location_press.png.png"
+		},
+		{
+			"width": "240",
+			"height": "202",
+			"filename" : "and/res/drawable-hdpi/images__home_button_location_press.png.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" : "and/res/drawable-xhdpi/images__home_button_location_press.png.png"
+		},
+		{
+			"width": "600",
+			"height": "506",
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_location_press.png.png"
+		},
+		{
+			"width": "160",
+			"height": "135",
+			"filename" :"ios/{name}/images/home_button_location_press.png"
+		},
+		{
+			"width": "320",
+			"height": "270",
+			"filename" :"ios/{name}/images/home_button_location_press@2x.png"
+		}    	
     ]
 }
