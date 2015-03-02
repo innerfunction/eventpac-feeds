@@ -43,7 +43,7 @@ header, .header {
 	text-align: center;
 }
 .header.fixed {
-	padding: 1.875em 0; 
+	margin: 0 -1.875em;
 }
 
 /* review to set any content in the shape */
@@ -189,9 +189,6 @@ header, .header {
 	{/styles}
 {/types}
 
-.header.fixed {
-	padding: 1.875em 0; 
-}
 .header.position-absolute {
 	padding:0;
 }

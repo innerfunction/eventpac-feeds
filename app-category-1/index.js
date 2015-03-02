@@ -58,7 +58,7 @@ exports.build = function( cx ) {
     // Eval settings script
     cx.eval('feed/settings.js', settings, name+'/feed/settings.js');
 
-    // Eval content CSS
+// Eval content CSS
     var styleData = settings;
     var postsArray = [];
     styleData.styles = gradientProperty( styleData.styles );

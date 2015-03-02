@@ -102,7 +102,9 @@
     },
     "appImages": {
         "appIcon" : "images/app/app_icon.png",
-        "splashScreen" : "images/app/splash_screen.png",
+        "splashScreen_android" : "images/app/splash_screen_and.png",
+        "splashScreen_portrait" : "images/app/splash_screen_portrait.png",
+        "splashScreen_landscape" : "images/app/splash_screen_landscape.png",
         "sponsorBanner":"images/app/sponsor_banner.png",
         "homeImage" : "images/app/home_image.png",
         "drawerIcon" :  "images/app/drawer_icon.png",
