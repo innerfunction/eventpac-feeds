@@ -108,6 +108,14 @@
         "homeImage" : "images/app/home_image.png",
         "drawerIcon" :  "images/app/drawer_icon.png",
         "homeIcon" :  "images/app/home_icon.png",
-        "backIcon" :  "images/app/back_icon.png"
+        "backIcon" :  "images/app/back_icon.png",
+        "programmButton" :  "images/app/programm_button.png",
+        "programmButtonPress" :  "images/app/programm_button_press.png",
+        "speakersButton" :  "images/app/speakers_button.png",
+        "speakersButtonPress" :  "images/app/speakers_button_press.png",
+        "followUsButton" :  "images/app/follow_button.png",
+        "followUsButtonPress" :  "images/app/follow_button_press.png",
+        "locationButton" :  "images/app/location_button.png",
+        "locationButtonPress" :  "images/app/location_button_press.png"
     }
 }
