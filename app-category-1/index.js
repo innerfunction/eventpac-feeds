@@ -87,11 +87,7 @@ exports.build = function( cx ) {
         var image = cx.images( appImages[key] );
         for (var idx in imageProperties) {
             var newImage = imageProperties[idx];
-<<<<<<< HEAD
             image.resize({width: newImage.width, height: newImage.height, format: 'png', mode: 'crop'}, name+'/app/'+newImage.filename+'.{format}' );
-=======
-            image.resize({width: newImage.width, height: newImage.height, format: 'png', mode:'crop'}, name+'/app/'+newImage.filename+'.{format}' );
->>>>>>> 3f5ed8b3cb16ff31d864f4c0d483b6436fddecf8
         }
     }
 };
