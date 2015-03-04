@@ -77,10 +77,18 @@ exports.build = function( cx ) {
         postsArray.push(post);
     }
     styleData = { contentStyles: styleData.styles, types: postsArray};
-    cx.eval('template.css', styleData, name+'/feed/base/css/contentStyle.css');
+    var cwd = path.resolve(process.cwd(), '..')+'/eventpac-feeds/';
+    exec('lessc -x app-category-1/template.less /Users/Maria/workspace/eventpac-feeds/NAGP/feed/base/css/contentStyle.css', function(err, stdout, stderr) {
+        console.log('stdout***********************-*-*-*-*--**-*-*-*-*-*-*-*-*-*-*-*-*-: ' + stdout);
+        //console.log('stderr: ' + stderr);
+        if (err !== null) {
+            console.log('exec error------: ' + err);
+        }
+    });  
+    //cx.eval('template.css', styleData, name+'/feed/base/css/contentStyle.css');
 
     // Resize images App
-    var appImages = settings.appImages;
+   /* var appImages = settings.appImages;
     var imageInfo = imageSettings;
     for (var key in appImages) {
         var imageProperties = imageInfo[key];
@@ -89,5 +97,5 @@ exports.build = function( cx ) {
             var newImage = imageProperties[idx];
             image.resize({width: newImage.width, height: newImage.height, format: 'png', mode: 'crop'}, name+'/app/'+newImage.filename+'.{format}' );
         }
-    }
+    }*/
 };
