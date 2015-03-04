@@ -52,6 +52,8 @@ exports.build = function( cx ) {
         }
     });
     
+    cx.file(['home.xml']).cp(name+'/app/and/res/layout/home.xml');
+
     // Create strings.json
     cx.json(settings.locale, name+'/app/common/strings.json', true);
     
