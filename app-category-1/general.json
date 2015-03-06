@@ -17,9 +17,11 @@
             "backgroundColor": ["#fff"],
             "color": "#000",
             "fontSize": "15px",
-            "textAlign": "center"
+            "textAlign": "center",
+            "fontStyle" : "normal"
         },
         "date": {
+            "fontFamily": "Helvetica",
             "fontSize": "35px",
             "color": "#fff",
             "fontStyle": "bold",
@@ -31,7 +33,8 @@
             "color": "#fff",
             "textAlign": "center",
             "inHeader": true,
-            "backgroundColor": ["#fff"]
+            "backgroundColor": ["#fff"],
+            "fontStyle": "bold"
         },
         "image": {
             "shape": "circle",
