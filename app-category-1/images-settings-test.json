@@ -334,32 +334,32 @@
 		{
 			"width": "160",
 			"height": "135",
-			"filename" : "and/res/drawable-mdpi/images__home_button_events.png"
+			"filename" : "and/res/drawable-mdpi/images__home_button_events"
 		},
 		{
 			"width": "240",
 			"height": "202",
-			"filename" : "and/res/drawable-hdpi/images__home_button_events.png"
+			"filename" : "and/res/drawable-hdpi/images__home_button_events"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" : "and/res/drawable-xhdpi/images__home_button_events.png"
+			"filename" : "and/res/drawable-xhdpi/images__home_button_events"
 		},
 		{
 			"width": "600",
 			"height": "506",
-			"filename" : "and/res/drawable-xxhdpi/images__home_button_events.png"
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_events"
 		},
 		{
 			"width": "160",
 			"height": "135",
-			"filename" :"ios/{name}/images/home_button_events.png"
+			"filename" :"ios/{name}/images/home_button_events"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" :"ios/{name}/images/home_button_events@2x.png"
+			"filename" :"ios/{name}/images/home_button_events@2x"
 		}    	
     ],
 
@@ -367,32 +367,32 @@
 		{
 			"width": "160",
 			"height": "135",
-			"filename" : "and/res/drawable-mdpi/images__home_button_events_press.png"
+			"filename" : "and/res/drawable-mdpi/images__home_button_events_press"
 		},
 		{
 			"width": "240",
 			"height": "202",
-			"filename" : "and/res/drawable-hdpi/images__home_button_events_press.png"
+			"filename" : "and/res/drawable-hdpi/images__home_button_events_press"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" : "and/res/drawable-xhdpi/images__home_button_events_press.png"
+			"filename" : "and/res/drawable-xhdpi/images__home_button_events_press"
 		},
 		{
 			"width": "600",
 			"height": "506",
-			"filename" : "and/res/drawable-xxhdpi/images__home_button_events_press.png"
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_events_press"
 		},
 		{
 			"width": "160",
 			"height": "135",
-			"filename" :"ios/{name}/images/home_button_events_press.png"
+			"filename" :"ios/{name}/images/home_button_events_press"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" :"ios/{name}/images/home_button_events_press@2x.png"
+			"filename" :"ios/{name}/images/home_button_events_press@2x"
 		}    	
     ],
 
@@ -400,32 +400,32 @@
 		{
 			"width": "160",
 			"height": "135",
-			"filename" : "and/res/drawable-mdpi/images__home_button_speakers.png"
+			"filename" : "and/res/drawable-mdpi/images__home_button_speakers"
 		},
 		{
 			"width": "240",
 			"height": "202",
-			"filename" : "and/res/drawable-hdpi/images__home_button_speakers.png"
+			"filename" : "and/res/drawable-hdpi/images__home_button_speakers"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" : "and/res/drawable-xhdpi/images__home_button_speakers.png"
+			"filename" : "and/res/drawable-xhdpi/images__home_button_speakers"
 		},
 		{
 			"width": "600",
 			"height": "506",
-			"filename" : "and/res/drawable-xxhdpi/images__home_button_speakers.png"
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_speakers"
 		},
 		{
 			"width": "160",
 			"height": "135",
-			"filename" :"ios/{name}/images/home_button_speakers.png"
+			"filename" :"ios/{name}/images/home_button_speakers"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" :"ios/{name}/images/home_button_speakers@2x.png"
+			"filename" :"ios/{name}/images/home_button_speakers@2x"
 		}    	
     ],
 
@@ -433,32 +433,32 @@
 		{
 			"width": "160",
 			"height": "135",
-			"filename" : "and/res/drawable-mdpi/images__home_button_speakers_press.png.png"
+			"filename" : "and/res/drawable-mdpi/images__home_button_speakers_press"
 		},
 		{
 			"width": "240",
 			"height": "202",
-			"filename" : "and/res/drawable-hdpi/images__home_button_speakers_press.png.png"
+			"filename" : "and/res/drawable-hdpi/images__home_button_speakers_press"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" : "and/res/drawable-xhdpi/images__home_button_speakers_press.png.png"
+			"filename" : "and/res/drawable-xhdpi/images__home_button_speakers_press"
 		},
 		{
 			"width": "600",
 			"height": "506",
-			"filename" : "and/res/drawable-xxhdpi/images__home_button_speakers_press.png.png"
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_speakers_press"
 		},
 		{
 			"width": "160",
 			"height": "135",
-			"filename" :"ios/{name}/images/home_button_speakers_press.png"
+			"filename" :"ios/{name}/images/home_button_speakers_press"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" :"ios/{name}/images/home_button_speakers_press@2x.png"
+			"filename" :"ios/{name}/images/home_button_speakers_press@2x"
 		}    	
     ],
 
@@ -466,32 +466,32 @@
 		{
 			"width": "160",
 			"height": "135",
-			"filename" : "and/res/drawable-mdpi/images__home_button_follow.png"
+			"filename" : "and/res/drawable-mdpi/images__home_button_follow"
 		},
 		{
 			"width": "240",
 			"height": "202",
-			"filename" : "and/res/drawable-hdpi/images__home_button_follow.png"
+			"filename" : "and/res/drawable-hdpi/images__home_button_follow"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" : "and/res/drawable-xhdpi/images__home_button_follow.png"
+			"filename" : "and/res/drawable-xhdpi/images__home_button_follow"
 		},
 		{
 			"width": "600",
 			"height": "506",
-			"filename" : "and/res/drawable-xxhdpi/images__home_button_follow.png"
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_follow"
 		},
 		{
 			"width": "160",
 			"height": "135",
-			"filename" :"ios/{name}/images/home_button_follow.png"
+			"filename" :"ios/{name}/images/home_button_follow"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" :"ios/{name}/images/home_button_follow@2x.png"
+			"filename" :"ios/{name}/images/home_button_follow@2x"
 		}    	
     ],
 
@@ -499,32 +499,32 @@
 		{
 			"width": "160",
 			"height": "135",
-			"filename" : "and/res/drawable-mdpi/images__home_button_location_press.png.png"
+			"filename" : "and/res/drawable-mdpi/images__home_button_location_press"
 		},
 		{
 			"width": "240",
 			"height": "202",
-			"filename" : "and/res/drawable-hdpi/images__home_button_location_press.png.png"
+			"filename" : "and/res/drawable-hdpi/images__home_button_location_press"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" : "and/res/drawable-xhdpi/images__home_button_location_press.png.png"
+			"filename" : "and/res/drawable-xhdpi/images__home_button_location_press"
 		},
 		{
 			"width": "600",
 			"height": "506",
-			"filename" : "and/res/drawable-xxhdpi/images__home_button_location_press.png.png"
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_location_press"
 		},
 		{
 			"width": "160",
 			"height": "135",
-			"filename" :"ios/{name}/images/home_button_follow_press.png"
+			"filename" :"ios/{name}/images/home_button_follow_press"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" :"ios/{name}/images/home_button_follow_press@2x.png"
+			"filename" :"ios/{name}/images/home_button_follow_press@2x"
 		}    	
     ],
 
@@ -532,32 +532,32 @@
 		{
 			"width": "160",
 			"height": "135",
-			"filename" : "and/res/drawable-mdpi/images__home_button_location.png"
+			"filename" : "and/res/drawable-mdpi/images__home_button_location"
 		},
 		{
 			"width": "240",
 			"height": "202",
-			"filename" : "and/res/drawable-hdpi/images__home_button_location.png"
+			"filename" : "and/res/drawable-hdpi/images__home_button_location"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" : "and/res/drawable-xhdpi/images__home_button_location.png"
+			"filename" : "and/res/drawable-xhdpi/images__home_button_location"
 		},
 		{
 			"width": "600",
 			"height": "506",
-			"filename" : "and/res/drawable-xxhdpi/images__home_button_location.png"
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_location"
 		},
 		{
 			"width": "160",
 			"height": "135",
-			"filename" :"ios/{name}/images/home_button_location.png"
+			"filename" :"ios/{name}/images/home_button_location"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" :"ios/{name}/images/home_button_location@2x.png"
+			"filename" :"ios/{name}/images/home_button_location@2x"
 		}    	
     ],
 
@@ -565,32 +565,32 @@
 		{
 			"width": "160",
 			"height": "135",
-			"filename" : "and/res/drawable-mdpi/images__home_button_location_press.png.png"
+			"filename" : "and/res/drawable-mdpi/images__home_button_location_press"
 		},
 		{
 			"width": "240",
 			"height": "202",
-			"filename" : "and/res/drawable-hdpi/images__home_button_location_press.png.png"
+			"filename" : "and/res/drawable-hdpi/images__home_button_location_press"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" : "and/res/drawable-xhdpi/images__home_button_location_press.png.png"
+			"filename" : "and/res/drawable-xhdpi/images__home_button_location_press"
 		},
 		{
 			"width": "600",
 			"height": "506",
-			"filename" : "and/res/drawable-xxhdpi/images__home_button_location_press.png.png"
+			"filename" : "and/res/drawable-xxhdpi/images__home_button_location_press"
 		},
 		{
 			"width": "160",
 			"height": "135",
-			"filename" :"ios/{name}/images/home_button_location_press.png"
+			"filename" :"ios/{name}/images/home_button_location_press"
 		},
 		{
 			"width": "320",
 			"height": "270",
-			"filename" :"ios/{name}/images/home_button_location_press@2x.png"
+			"filename" :"ios/{name}/images/home_button_location_press@2x"
 		}    	
     ]
 }
