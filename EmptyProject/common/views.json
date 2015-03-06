@@ -1,5 +1,5 @@
 {
-    "settings": "@app:/styles.json",
+    "settings": "@app:styles.json",
     "Defaults": {
         "titleBarColor":                    "#settings.styles.titleBar.titleBarColor",
         "titleBarTextColor":                "#settings.styles.titleBar.titleBarTextColor",
@@ -134,19 +134,19 @@
                 "view":                     "@view:DefaultWebView+html@subs:/nagp/programme.html"
             },
             {
-                "id":                       "#settings.types.performers.title",
+                "id":                       "speakers",
                 "title":                    "#settings.types.performers.title",
                 "navigable":                true,
                 "view":                     "@view:SpeakersView"
             },
             {
-                "id":                       "#stylesData.name",
+                "id":                       "nagp",
                 "title":                    "#stylesData.name",
                 "navigable":                false,
                 "view":                     "@view:DefaultWebView+html@subs:/nagp/pages.html"
             },
             {
-                "id":                       "#settings.types.locations.title",
+                "id":                       "location",
                 "title":                    "#settings.types.locations.title",
                 "navigable":                false,
                 "view":                     "@view:DefaultWebView+html@subs:/nagp/locations.html"
