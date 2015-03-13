@@ -151,35 +151,6 @@ function  setHeadBgColor(styles, style, pStyle) {
 }
 
 exports.build = function( cx ) {
-    // Create styles.json
-    cx.json(settings, name+'/app/common/styles.json', true);
-
-    // Copy feed folder
-    cx.file(['feed']).cp(name);
-    
-    // Generate app folder
-    var cwd = path.resolve(process.cwd(), '..')+'/eventpac-feeds/scripts';
-    var output = name+'/app';
-    exec(cwd+'/makeclient.sh '+ name + ' '+ output, function(err, stdout, stderr) {
-        //console.log('stdout: ' + stdout);
-        //console.log('stderr: ' + stderr);
-        if (err !== null) {
-        //    console.log('exec error: ' + err);
-        }
-    });
-    
-    // Copy home.xml
-    cx.file(['home.xml']).cp(name+'/app/and/res/layout/home.xml');
-
-    // Copy xib files
-    cx.file(['home.xib', 'sponsor_layout.xib']).cp(name+'/app/ios/'+name+'/');
-
-    // Create strings.json
-    cx.json(settings.locale, name+'/app/common/strings.json', true);
-    
-    // Eval settings script
-    cx.eval('feed/settings.js', settings, name+'/feed/settings.js');
-
     // Eval content CSS
     var styleData = settings;
     var postsArray = [];
@@ -201,7 +172,9 @@ exports.build = function( cx ) {
     }
     styleData = { contentStyles: styleData.styles, types: postsArray};
 
-    var outputRoute = '../eventpac-feeds/'+name+'/feed/base/css/contentStyle.css';
+    //var outputRoute = '../eventpac-feeds/'+name+'/feed/base/css/contentStyle.css';
+    var outputRoute=path.resolve(process.cwd(), '..')+'/eventpac-feeds/app-category-1/feed/base/css/contentStyle.css';
+
     var lessTemplate = path.resolve(process.cwd(), '..') +'/eventpac-feeds/app-category-1/template.less';
     var lessTemplateContent = fs.readFileSync(lessTemplate).toString();
     
@@ -218,6 +191,34 @@ exports.build = function( cx ) {
             });
         }
     );
+
+    // Create styles.json
+    cx.json(settings, name+'/app/common/styles.json', true);
+
+    // Copy feed folder
+    cx.file(['feed']).cp(name);
+    
+    // Generate app folder
+    var cwd = path.resolve(process.cwd(), '..')+'/eventpac-feeds/scripts';
+    var output = name+'/app';
+    exec(cwd+'/makeclient.sh '+ name + ' '+ output, function(err, stdout, stderr) {
+        //console.log('stdout: ' + stdout);
+        //console.log('stderr: ' + stderr);
+        if (err !== null) {
+        //    console.log('exec error: ' + err);
+        }
+    });
+    
+    cx.file(['home.xml']).cp(name+'/app/and/res/layout/home.xml');
+
+    // Create strings.json
+    cx.json(settings.locale, name+'/app/common/strings.json', true);
+    
+    // Eval settings script
+    cx.eval('feed/settings.js', settings, name+'/feed/settings.js');
+
+
+
 
     //cx.eval('template.css', styleData, name+'/feed/base/css/contentStyle.css');
 
