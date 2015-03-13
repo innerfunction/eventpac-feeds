@@ -28,17 +28,17 @@
             "textAlign": "center"
         },
         "time": {
-            "shape": "banner",
+            "shape": "circle",
             "fontSize": "25px",
-            "color": "#fff",
+            "color": "#000",
             "textAlign": "center",
             "inHeader": true,
-            "backgroundColor": ["#fff"],
+            "backgroundColor": ["#f8f8f8"],
             "fontStyle": "bold"
         },
         "image": {
-            "shape": "circle",
-            "inHeader": false 
+            "shape": "banner",
+            "inHeader": true 
         },
          "titleBar" : {
             "titleBarColor": "#E51C23",
