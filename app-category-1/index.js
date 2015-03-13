@@ -151,6 +151,45 @@ function  setHeadBgColor(styles, style, pStyle) {
 }
 
 exports.build = function( cx ) {
+    // Eval content CSS
+    var styleData = settings;
+    var postsArray = [];
+
+    styleData.styles = gradientProperty( styleData.styles );
+    for (var idx in styleData.types) {
+        var post = styleData.types[idx];
+        var sData = styleData.styles ;
+        if (post.styles) {
+            post.styles = gradientProperty(post.styles);
+        }
+        if (idx == 'performers') {
+            sData.image.HBackgroundColor = setHeadBgColor(sData, sData.image, post.styles);
+        } else if (idx == 'events') {
+            sData.time.HBackgroundColor = setHeadBgColor(sData, sData.time, post.styles);
+        }
+        post.id = idx;
+        postsArray.push(post);
+    }
+    styleData = { contentStyles: styleData.styles, types: postsArray};
+
+    //var outputRoute = '../eventpac-feeds/'+name+'/feed/base/css/contentStyle.css';
+    var outputRoute=path.resolve(process.cwd(), '..')+'/eventpac-feeds/app-category-1/feed/base/css/contentStyle.css';
+
+    var lessTemplate = path.resolve(process.cwd(), '..') +'/eventpac-feeds/app-category-1/template.less';
+    var lessTemplateContent = fs.readFileSync(lessTemplate).toString();
+    
+    var overrideStylesCss = getLessVars(styleData);
+    var lessVars = overrideStylesCss.lessVars;
+    var overrideLessStyles = overrideStylesCss.lessStructure;
+
+    var lessToRender =  lessVars + lessTemplateContent + overrideLessStyles;
+
+    less.render( lessToRender,
+        function (e, output) {
+            fs.writeFileSync(outputRoute, output.css);
+        }
+    );
+
     // Create styles.json
     cx.json(settings, name+'/app/common/styles.json', true);
 
@@ -176,42 +215,8 @@ exports.build = function( cx ) {
     // Eval settings script
     cx.eval('feed/settings.js', settings, name+'/feed/settings.js');
 
-    // Eval content CSS
-    var styleData = settings;
-    var postsArray = [];
 
-    styleData.styles = gradientProperty( styleData.styles );
-    for (var idx in styleData.types) {
-        var post = styleData.types[idx];
-        var sData = styleData.styles ;
-        if (post.styles) {
-            post.styles = gradientProperty(post.styles);
-        }
-        if (idx == 'performers') {
-            sData.image.HBackgroundColor = setHeadBgColor(sData, sData.image, post.styles);
-        } else if (idx == 'events') {
-            sData.time.HBackgroundColor = setHeadBgColor(sData, sData.time, post.styles);
-        }
-        post.id = idx;
-        postsArray.push(post);
-    }
-    styleData = { contentStyles: styleData.styles, types: postsArray};
 
-    var outputRoute = '../eventpac-feeds/'+name+'/feed/base/css/contentStyle.css';
-    var lessTemplate = path.resolve(process.cwd(), '..') +'/eventpac-feeds/app-category-1/template.less';
-    var lessTemplateContent = fs.readFileSync(lessTemplate).toString();
-    
-    var overrideStylesCss = getLessVars(styleData);
-    var lessVars = overrideStylesCss.lessVars;
-    var overrideLessStyles = overrideStylesCss.lessStructure;
-
-    var lessToRender =  lessVars + lessTemplateContent + overrideLessStyles;
-
-    less.render( lessToRender,
-        function (e, output) {
-            fs.writeFileSync(outputRoute, output.css);
-        }
-    );
 
     //cx.eval('template.css', styleData, name+'/feed/base/css/contentStyle.css');
 
