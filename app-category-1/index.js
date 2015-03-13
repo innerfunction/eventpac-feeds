@@ -201,7 +201,7 @@ exports.build = function( cx ) {
     //cx.eval('template.css', styleData, name+'/feed/base/css/contentStyle.css');
 
     // Resize images App
-   /* var appImages = settings.appImages;
+    var appImages = settings.appImages;
     var imageInfo = imageSettings;
     for (var key in appImages) {
         var imageProperties = imageInfo[key];
@@ -210,5 +210,5 @@ exports.build = function( cx ) {
             var newImage = imageProperties[idx];
             image.resize({width: newImage.width, height: newImage.height, format: 'png', mode: 'crop'}, name+'/app/'+newImage.filename+'.{format}' );
         }
-    }*/
+    }
 };
