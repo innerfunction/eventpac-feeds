@@ -171,6 +171,9 @@ exports.build = function( cx ) {
     // Copy home.xml
     cx.file(['home.xml']).cp(name+'/app/and/res/layout/home.xml');
 
+    // Copy xib files
+    cx.file(['home.xib', 'sponsor_layout.xib']).cp(name+'/app/ios/'+name+'/');
+
     // Create strings.json
     cx.json(settings.locale, name+'/app/common/strings.json', true);
     
@@ -210,7 +213,9 @@ exports.build = function( cx ) {
 
     less.render( lessToRender,
         function (e, output) {
-            fs.writeFileSync(outputRoute, output.css);
+            fs.writeFile(outputRoute, output.css, function(err) {
+                console.log(err);   
+            });
         }
     );
 
