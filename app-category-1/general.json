@@ -17,25 +17,28 @@
             "backgroundColor": ["#fff"],
             "color": "#000",
             "fontSize": "15px",
-            "textAlign": "center"
+            "textAlign": "center",
+            "fontStyle" : "normal"
         },
         "date": {
+            "fontFamily": "Helvetica",
             "fontSize": "35px",
             "color": "#fff",
             "fontStyle": "bold",
             "textAlign": "center"
         },
         "time": {
-            "shape": "banner",
+            "shape": "circle",
             "fontSize": "25px",
-            "color": "#fff",
+            "color": "#000",
             "textAlign": "center",
             "inHeader": true,
-            "backgroundColor": ["#fff"]
+            "backgroundColor": ["#f8f8f8"],
+            "fontStyle": "bold"
         },
         "image": {
-            "shape": "circle",
-            "inHeader": false 
+            "shape": "banner",
+            "inHeader": true 
         },
          "titleBar" : {
             "titleBarColor": "#45589A",
