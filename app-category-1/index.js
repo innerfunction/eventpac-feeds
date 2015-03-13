@@ -39,7 +39,6 @@ function generateLessVars( object, data ) {
             sectionSet = (typeName =='' ) ? capitalize(sectionSet, false) : capitalize(sectionSet, true);
             var varName = '@' +typeName+ sectionSet  +capitalize(prop, true) ;
             var newVar = varName + ' : '+ property+';  \n';
-            console.log(varName);
           
             lessProperties += '        '+cssStylesProp[prop]+' : '+varName +'; \n';//newvar
          
@@ -85,26 +84,23 @@ function getLessVars( styleData ) {
             var styles = styleData.types[idx].styles;
 
             lessStructure += '.'+typeName+' {\n';
-            console.log("TYPE------------ " + typeName);
 
             for (var section in styles){
                 if(section=='description' && styles[section]['backgroundColor']){
                     lessStructure += '\n background : ' +  '@'+typeName+'DescriptionBackgroundColor; \n';
                 }
-                console.log("     SECTION------------ " + section);
+    
                 var data = {typeName: typeName, sectionName: section, sectionSet: section};
 
                 var overrideStylesCss =generateLessVars( styles[section], data );
 
                 overrideVars = overrideVars.concat(overrideStylesCss.overrideVars);                
                 lessStructure = lessStructure.concat(overrideStylesCss.lessStructure);                
-                
-
             }
             //close class parent after read types.
             lessStructure += '} \n';
         }
-        //console.log(overrideVars);
+
         var lessVars =  overrideVars + generalVars ;
 
         return {lessVars : lessVars, lessStructure: lessStructure}; 
@@ -185,8 +181,7 @@ exports.build = function( cx ) {
         postsArray.push(post);
     }
     styleData = { contentStyles: styleData.styles, types: postsArray};
-    console.log('styleData.Styles');
-    console.log(styleData.contentStyles);
+
     var outputRoute = '../eventpac-feeds/'+name+'/feed/base/css/contentStyle.css';
     var lessTemplate = path.resolve(process.cwd(), '..') +'/eventpac-feeds/app-category-1/template.less';
     var lessTemplateContent = fs.readFileSync(lessTemplate).toString();
@@ -196,7 +191,7 @@ exports.build = function( cx ) {
     var overrideLessStyles = overrideStylesCss.lessStructure;
 
     var lessToRender =  lessVars + lessTemplateContent + overrideLessStyles;
-    console.log(lessToRender);
+
     less.render( lessToRender,
         function (e, output) {
             fs.writeFileSync(outputRoute, output.css);
