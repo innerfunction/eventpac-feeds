@@ -52,6 +52,7 @@ exports.build = function( cx ) {
         }
     });
     
+    // Copy home.xml
     cx.file(['home.xml']).cp(name+'/app/and/res/layout/home.xml');
 
     // Create strings.json

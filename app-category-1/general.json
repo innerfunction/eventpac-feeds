@@ -38,22 +38,22 @@
             "inHeader": false 
         },
          "titleBar" : {
-            "titleBarColor": "#E51C23",
+            "titleBarColor": "#45589A",
             "titleBarTextColor": "#FFFFFF"
         },
         "tabs": {
             "textColor":                "#FFFFFF",
-            "selectedTextColor":        "#CB3240",
-            "backgroundColor":          "#E51C23",
-            "selectedBackgroundColor":  "#272727"            
+            "selectedTextColor":        "#FFFFFF",
+            "backgroundColor":          "#45589A",
+            "selectedBackgroundColor":  "#5691EA"
         },
         "list": {
-            "textColor":                "#333333",
-            "detailTextColor":          "#12365A",
+            "textColor":                "#4D4F94",
+            "detailTextColor":          "#5691EA",
             "selectedTextColor":        "#FFFFFF",
             "detailSelectedTextColor":  "#FFFFFF",
-            "backgroundColor":          "#EBF0EC",
-            "selectedBackgroundColor":  "#12365A"
+            "backgroundColor":          "#FFFFFF",
+            "selectedBackgroundColor":  "#5691EA"
         }
     },
     "types": {
