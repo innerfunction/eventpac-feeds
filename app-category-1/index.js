@@ -15,9 +15,14 @@ function capitalize( string, capitalize ) {
     return string;
 }
 function generateLessVars( object, data ) {
-    var sectionName = data.sectionName;
-    var sectionSet = data.sectionSet ;
-    var typeName = data.typeName;
+    //called from getLessVars.
+    //Check the properties in each section and subsections (such as title in header), and generate vars and structure from them
+
+    //object: a section
+    //data: 
+    var sectionName = data.sectionName; //Name of the section we are checking (to include less structure)
+    var sectionSet = data.sectionSet ; //Set of sections in case whe find more (to generate the vars)
+    var typeName = data.typeName; //type we want to override it styles, if generalVars typename= '''
 
     var lessStructure='', overrideVars='',lessProperties='';
 
@@ -33,17 +38,22 @@ function generateLessVars( object, data ) {
         
         var existsProp = cssStylesProp[prop] != "undefined" ? true : false;
 
+        //if is a property, generate the code.
         if ( (typeof object[prop] != 'object') && ( existsProp ) ) {
-    
+        
             var property = object[prop];
             sectionSet = (typeName =='' ) ? capitalize(sectionSet, false) : capitalize(sectionSet, true);
+            
+            //add the var
             var varName = '@' +typeName+ sectionSet  +capitalize(prop, true) ;
             var newVar = varName + ' : '+ property+';  \n';
-          
+            
+            //add the correct property with the var as a value
             lessProperties += '        '+cssStylesProp[prop]+' : '+varName +'; \n';//newvar
          
             overrideVars = overrideVars.concat(newVar);                   
-              
+        
+        //if not, is a subsection (such as title in header) and needs to be check to get its value
         } else {
             var Obj = object[prop];
     
@@ -61,11 +71,13 @@ function generateLessVars( object, data ) {
 
 }
 function getLessVars( styleData ) {
+    //generate all the vars and less structure necessary.
+
         var lessStructure='';
         var overrideVars='';
 
+        //generate generalvars 
         var generalVars =  "@fontFamily : " + styleData.contentStyles.fontFamily +";\n";
-        
         for ( var idx in styleData.contentStyles ) {
          
             if (['tabs', 'list', 'titleBar', 'fontFamily'].indexOf(idx) == -1 ){
@@ -74,10 +86,13 @@ function getLessVars( styleData ) {
                 var data = {typeName: '', sectionName: idx, sectionSet: idx};
 
                 if ( typeof section == 'object'){
+                    //in general vars don't need the less structure
                     generalVars += generateLessVars( styleData.contentStyles[idx], data ).overrideVars;
                 }
             }
         }
+
+        //generate vars to override and less structure
         for ( var idx in styleData.types ){ 
             
             var typeName = styleData.types[idx].id;
@@ -89,7 +104,7 @@ function getLessVars( styleData ) {
                 if(section=='description' && styles[section]['backgroundColor']){
                     lessStructure += '\n background : ' +  '@'+typeName+'DescriptionBackgroundColor; \n';
                 }
-    
+        
                 var data = {typeName: typeName, sectionName: section, sectionSet: section};
 
                 var overrideStylesCss =generateLessVars( styles[section], data );
@@ -97,6 +112,7 @@ function getLessVars( styleData ) {
                 overrideVars = overrideVars.concat(overrideStylesCss.overrideVars);                
                 lessStructure = lessStructure.concat(overrideStylesCss.lessStructure);                
             }
+
             //close class parent after read types.
             lessStructure += '} \n';
         }
