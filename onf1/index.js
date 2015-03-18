@@ -42,6 +42,7 @@ var feed = {
                 points:         post.points,
                 nationality:    post.nationality,
                 status:         post.status,
+                overallPosition: post.overallPosition,
                 type:			'resultsTeam'
             }
         },
@@ -56,6 +57,7 @@ var feed = {
                 teamInitials:	group.teamInitials,
                 points:         post.points,
                 status:         post.status,
+                overallPosition: post.overallPosition,
                 type:			'resultsIndividual'
             }
         },
@@ -222,6 +224,12 @@ var feed = {
                     resultsIndividual:  resultsIndividual,
                     resultsTeam:        resultsTeam
                 };
+                for( var idx in results) {
+                    results[idx] = results[idx].sort(function(obj1, obj2) {
+                        return obj1.overallPosition - obj2.overallPosition;
+                    });
+                }
+                console.log(results.resultsIndividual);
                 cx.eval('templates/all-results.html', results, 'results.html');
             }
         }
