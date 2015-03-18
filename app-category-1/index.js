@@ -39,7 +39,7 @@ function generateLessVars( object, data ) {
         var existsProp = cssStylesProp[prop] != "undefined" ? true : false;
 
         //if is a property, generate the code.
-        if ( (typeof object[prop] != 'object') && ( existsProp ) ) {
+        if ( (typeof object[prop] != 'object') && ( cssStylesProp[prop] != "undefined" ) ) {
         
             var property = object[prop];
             sectionSet = (typeName =='' ) ? capitalize(sectionSet, false) : capitalize(sectionSet, true);
@@ -53,13 +53,12 @@ function generateLessVars( object, data ) {
          
             overrideVars = overrideVars.concat(newVar);                   
         
-        //if not, is a subsection (such as title in header) and needs to be check to get its value
+        //if not, it's a subsection (such as title in header) and needs to be check to get its value
         } else {
-            var Obj = object[prop];
     
             var data = {sectionName: prop, sectionSet: sectionSet+capitalize(prop, true), typeName: typeName};
 
-            overrideStylesCss=generateLessVars(Obj, data);
+            overrideStylesCss=generateLessVars(object[prop], data);
 
             overrideVars += overrideStylesCss.overrideVars;
             lessProperties += overrideStylesCss.lessStructure; 
@@ -104,7 +103,6 @@ function getLessVars( styleData ) {
                 if(section=='description' && styles[section]['backgroundColor']){
                     lessStructure += '\n background : ' +  '@'+typeName+'DescriptionBackgroundColor; \n';
                 }
-        
                 var data = {typeName: typeName, sectionName: section, sectionSet: section};
 
                 var overrideStylesCss =generateLessVars( styles[section], data );
@@ -172,10 +170,10 @@ exports.build = function( cx ) {
     }
     styleData = { contentStyles: styleData.styles, types: postsArray};
 
-    //var outputRoute = '../eventpac-feeds/'+name+'/feed/base/css/contentStyle.css';
-    var outputRoute=path.resolve(process.cwd(), '..')+'/eventpac-feeds/app-category-1/feed/base/css/contentStyle.css';
+    var cwd = path.resolve(process.cwd(), '..');
+    var outputRoute= cwd+'/eventpac-feeds/app-category-1/feed/base/css/contentStyle.css';
 
-    var lessTemplate = path.resolve(process.cwd(), '..') +'/eventpac-feeds/app-category-1/template.less';
+    var lessTemplate = cwd +'/eventpac-feeds/app-category-1/template.less';
     var lessTemplateContent = fs.readFileSync(lessTemplate).toString();
     
     var overrideStylesCss = getLessVars(styleData);
@@ -199,7 +197,7 @@ exports.build = function( cx ) {
     cx.file(['feed']).cp(name);
     
     // Generate app folder
-    var cwd = path.resolve(process.cwd(), '..')+'/eventpac-feeds/scripts';
+    cwd += '/eventpac-feeds/scripts';
     var output = name+'/app';
     exec(cwd+'/makeclient.sh '+ name + ' '+ output, function(err, stdout, stderr) {
         //console.log('stdout: ' + stdout);
@@ -216,11 +214,6 @@ exports.build = function( cx ) {
     
     // Eval settings script
     cx.eval('feed/settings.js', settings, name+'/feed/settings.js');
-
-
-
-
-    //cx.eval('template.css', styleData, name+'/feed/base/css/contentStyle.css');
 
     // Resize images App
     var appImages = settings.appImages;
