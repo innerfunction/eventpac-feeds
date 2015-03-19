@@ -37,7 +37,6 @@ var feed = {
         groupperformers: function( post ) {
             return {
                 id:				'resultsTeam-'+post.id,
-                pos:            post.id,
                 title:          post.title,
                 points:         post.points,
                 nationality:    post.nationality,
@@ -50,7 +49,6 @@ var feed = {
             var group = (post.group && post.group[0])||{};
             return {
                 id:				'resultsIndividual-'+post.id,	
-                pos:            post.id,
                 title:          post.title,
                 nationality:    post.nationality,
                 team:           group.title||'',
@@ -229,7 +227,6 @@ var feed = {
                         return obj1.overallPosition - obj2.overallPosition;
                     });
                 }
-                console.log(results.resultsIndividual);
                 cx.eval('templates/all-results.html', results, 'results.html');
             }
         }
