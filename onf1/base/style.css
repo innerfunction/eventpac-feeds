@@ -397,7 +397,27 @@ a.tab-btn:hover{
 	color: #FFF;
 }
 .sponsor-contact button {
-    width: 75%;
+    width: 100%;
+	color:#118bd8;
+	font-weight:400;
+	font-family: helvetica, 'sans-serif';
+	margin: 5px 0;
+	padding:7px;
+	border:none;
+    background: #bacbd5; /* Old browsers */
+	background: -moz-linear-gradient(left,  #bacbd5 0%, #e7f1fb 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left , right , color-stop(0%,#bacbd5), color-stop(100%,#e7f1fb)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #bacbd5 0%,#e7f1fb 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #bacbd5 0%,#e7f1fb 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #bacbd5 0%,#e7f1fb 100%); /* IE10+ */
+	background: linear-gradient(to right,  #bacbd5 0%,#e7f1fb 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bacbd5', endColorstr='#e7f1fb',GradientType=0 ); /* IE6-9 */
+
+}
+.sponsor-contact button >a:link , .sponsor-contact button >a:hover, .sponsor-contact button >a:visited  {
+	color:#118bd8;
+	text-decoration:none;
+
 }
 #twitter-container {
 	text-align: center;
