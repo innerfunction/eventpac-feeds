@@ -6,6 +6,7 @@ var mods = {
 var format = require('util').format;
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
+var Log = require('log4js').getLogger('eventpacfeed');
 
 function isPublished( post ) {
     return post.status == 'publish';
@@ -222,6 +223,8 @@ var feed = {
                     resultsIndividual:  resultsIndividual,
                     resultsTeam:        resultsTeam
                 };
+                Log.Debug('=====');
+                Log.Debug(resultsIndividual);
                 for( var idx in results) {
                         results[idx] = results[idx].filter(function(obj) {
                             return obj.overallPosition !== 0;
