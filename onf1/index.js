@@ -223,16 +223,14 @@ var feed = {
                     resultsIndividual:  resultsIndividual,
                     resultsTeam:        resultsTeam
                 };
-                Log.Debug('=====');
-                Log.Debug(resultsIndividual);
-                for( var idx in results) {
-                        results[idx] = results[idx].filter(function(obj) {
-                            return obj.overallPosition !== 0;
-                        });
-                        results[idx] = results[idx].sort(function(obj1, obj2) {
+                /*for( var idx in results) {
+                    results[idx] = results[idx].filter(function(obj) {
+                        return obj.overallPosition !== 0;
+                    });
+                    results[idx] = results[idx].sort(function(obj1, obj2) {
                         return obj1.overallPosition - obj2.overallPosition;
                     });
-                }
+                }*/
                 cx.eval('templates/all-results.html', results, 'results.html');
             }
         }
