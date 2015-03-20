@@ -89,7 +89,6 @@ exports.extend = function( feed, _module ) {
         var post = cx.get( url )
         .posts(function( data ) {
             Log.debug('Downloaded %s posts for feed %s', data.posts && data.posts.length, feed.name );
-            Log.debug('DEBUG FEED : %s', feed);
             return data.posts
         })
         .map(function map( post ) {
