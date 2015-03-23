@@ -231,6 +231,7 @@ var feed = {
                         return obj1.overallPosition - obj2.overallPosition;
                     });
                 }*/
+                console.log(results);
                 cx.eval('templates/all-results.html', results, 'results.html');
             }
         }
