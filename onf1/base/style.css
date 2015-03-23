@@ -382,11 +382,11 @@ a.tab-btn:hover{
 	color: red;
 }
 
-.onf1-logo {
+.onf1-logo, .ongp-logo {
     margin-top: 10px;
 }
 
-.eventpac-content, .sponsor-contact, .onf1-logo{
+.eventpac-content, .sponsor-contact, .onf1-logo, .ongp-logo {
 	color: rgb(153, 153, 153);
 	font-family: Roboto, sans-serif;
 	font-size: 14px;
