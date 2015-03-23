@@ -1,0 +1,317 @@
+
+@fontFamily:	;
+
+@header-background-color:		;
+@header-title-color:	;
+@header-title-font-size:	;
+@header-title-aligment:	;
+
+
+@description-background-color:
+@description-color:		;
+@description-font-size:	;
+@description-aligment:	;
+@description-font-style:	;
+
+
+@date-color:	;
+@date-font-size:	;
+@date-aligment:	;
+@date-font-style:	;
+
+@time-background-color:	;
+@time-color:	;
+@time-font-size:	;
+@time-aligment:	;
+@time-font-style:	;
+
+//  check date and time shape and inheader
+
+body {
+	font-size: 16px;
+	background: @description-background-color;
+    font-family:@fontFamily;
+}
+body, div, ul, a, h1, h2, h3, span {
+	padding: 0;
+	margin: 0;
+}
+ul { 
+	list-style: none;
+}
+p {
+	margin: 0.375em 0 ; /*6px*/
+}
+.table-responsive {
+	margin-right: -0.9375em; /*-15px*/
+	margin-left: -0.9375em; /*-15px*/
+}
+a, a:hover, a:active, a:visited { 
+	text-decoration: none; 
+	color:#000;
+}
+.position-absolute { 
+	position: absolute;
+	width:100%;
+}
+.hide { 
+	display: none;
+}
+.visible { 
+	display: visible
+}
+.block {
+	display: block;
+}
+.fixed {
+	margin-top:0 ;
+	display: none;
+}
+header, .header {
+	padding: 1.875em ; /*30px*/
+	text-align: center;
+}
+.header.fixed {
+	margin: 0 -1.875em;
+}
+
+/* review to set any content in the shape */
+/* IMAGE SHAPES */
+
+.shape-container.banner {
+	/*margin: 0 -0.9375em; -15px*/
+	padding: 0;
+	margin:0;
+	text-align: center;
+}
+.shape-container.banner  > div > p > img  {
+	width: 100%;
+	height: 250px; /*14.375em*/
+	visibility: hidden;
+}
+.shape-container.banner.time  > div > p {
+	width: 200px;
+	margin: 0 auto;
+	
+	padding: 15px 0;
+}
+.shape-container.banner.time {
+	background:{contentStyles.time.HBackgroundColor};
+}
+.shape-container.banner  > div > p {
+	margin:0;
+}
+.shape-container.circle {
+	padding: 0;
+	margin: 0 0 15px ;
+}
+.shape-container.circle.time {
+	margin-bottom: 110px;
+    background: {contentStyles.time.backgroundColor};	
+}
+
+.shape-container.circle > p, .shape-container.circle > div{
+	height:87.5px; /*5.46875em*/
+}
+.shape-container.circle.time > div:first-child{
+	/*margin: 0 -0.9375em; -15px*/
+	padding-top: 15px;
+	background: {contentStyles.time.HBackgroundColor};
+}
+.shape-container.circle.image > div:first-child{
+	/*margin: 0 -0.9375em; -15px*/
+	padding-top: 15px;
+	background: {contentStyles.image.HBackgroundColor};
+}
+.shape-container.circle > div > p { 
+	width: 183px;/*11.4375em*/
+	height: 183px;/*11.4375em*/
+	padding:  0.25em; /*4px*/
+	margin: 0 auto;
+	text-align: center;
+	background: {contentStyles.content.backgroundColor};
+	border-radius: 100%;
+	display: block
+}
+.shape-container.circle  > div > p > span{
+	border-radius: 100%;
+	display: table-cell;
+	width: 185px;
+	height: 185px;
+	vertical-align: middle;
+	background-color: #f8f8f8;
+} 
+.shape-container.time.banner span {
+	display: inline;
+}
+.shape-container.time.banner span {
+	display: block;
+}
+.shape-container.circle  > div > p > img{
+	border-radius : 100%;
+	width:100%;
+	height:100%;
+	visibility: visible;
+}
+ 
+
+/* content style classes */
+.dropCap > p:first-child:first-letter { 
+	float: left;
+	font-size: 2.1em;/*36pt*/
+	line-height: .8;
+	padding-right: 0.25em; /*4px*/
+	font-weight: 600;
+	padding:0.083em ; /*30px*/
+}
+
+/* buttons */
+.btn {
+	padding:0 ;
+	width:100%;
+}
+.btn > a {
+	display: block;
+	padding:  0.625em  0.375em;/* 10px 6px */
+	color: #fff;
+
+}
+header, .header {
+	background: @header-background-color;
+
+}
+.performers {
+	.header, header{
+		background : #fff;
+		.title {
+			font-size: ;
+			color: ;
+			text-align: ;
+			font-family: ;
+		}
+	}
+	.description {
+		body.performers{
+			background : #fff;
+		}
+		.content {
+			background : #fff;
+			font-size: ;
+			color: ;
+			text-align: ;
+			font-family: ;		
+		}
+	}
+}
+.events {
+	.header, header{
+		background : #fff;
+		.title {
+			font-size: ;
+			color: ;
+			text-align: ;
+			font-family: ;
+		}
+
+	}
+	.description {
+		body.performers{
+			background : #fff;
+		}
+		.content {
+			background : #fff;
+			font-size: ;
+			color: ;
+			text-align: ;
+			font-family: ;		
+		}
+	}
+}
+.pages {
+	.header, header{
+		background : #fff;
+		.title {
+			font-size: ;
+			color: ;
+			text-align: ;
+			font-family: ;
+		}
+	}
+	.description {
+		body.performers{
+			background : #fff;
+		}
+		.content {
+			background : #fff;
+			font-size: ;
+			color: ;
+			text-align: ;
+			font-family: ;		
+		}
+	}
+}
+.locations {
+	.header, header{
+		background : #fff;
+		.title {
+			font-size: ;
+			color: ;
+			text-align: ;
+			font-family: ;
+		}
+	}
+	.description {
+		body.performers{
+			background : #fff;
+		}
+		.content {
+			background : #fff;
+			font-size: ;
+			color: ;
+			text-align: ;
+			font-family: ;		
+		}
+	}
+}
+
+.header.position-absolute {
+	padding:0;
+}
+
+.date{
+    font-size: @date-font-size ;
+    color: @date-color;
+    font-style: @date-font-style ;
+    font-family: @fontFamily;
+}
+
+header > div.title,  .header > div.title{
+    font-size: @header-title-font-size ;
+    color: @header-title-color;
+    text-align: @header-title-aligment ;
+}
+
+.time {
+    font-size: @time-font-size;
+    color: @time-color;
+    font-style: @time-font-style;
+}
+
+.content{
+	font-size: @description-font-size;
+	color: @description-color ;
+	font-style: @description-font-style ;
+	text-align: @description-aligment;
+	background: @description-background-color;
+	padding: 0.833em;
+	padding-top:0.556em;
+}
+@media (min-height: 450px) {
+	.fixed { 
+		display: block;
+		position: fixed;
+		z-index: 3;
+		width: 100%;
+	}
+
+}

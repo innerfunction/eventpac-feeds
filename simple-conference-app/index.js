@@ -99,7 +99,7 @@ var feed = {
                             console.log(newImage.filename + " ..... height: " + newImage.height);
                         }
                         //console.log(imageProperties[indx].width +", " + imageProperties[indx].height +", " + imageProperties[indx].filename);
-                        image.resize({height: newImage.height, format: 'png' }, newImage.filename+'.{format}' );
+                        image.resize({ width: newImage.width, height: newImage.height, format: 'png' }, newImage.filename+'.{format}' );
                     }
                     
                 }
