@@ -1,0 +1,74 @@
+{
+    "app_name": {
+        "en": "NAGP",
+        "es": "NAGP"
+    },
+    "sponsor_view_title": {
+        "en": "DoIt Mobile",
+        "es": "DoIt Mobile"
+    },
+    "no_text": {
+        "en": "No text",
+        "es": "No text"
+    },
+    "action_settings": {
+        "en": "Settings",
+        "es": "Settings"
+    },
+    "HOME": {
+        "en": "Home",
+        "es": "Inicio"
+    },
+    "SHARE": {
+        "en": "Follow us",
+        "es": "Síguenos"
+    },
+    "SPONSOR": {
+        "en": "Sponsor",
+        "es": "Sponsor"
+    },
+    "ABOUT": {
+        "en": "About",
+        "es": "About"
+    },
+    "MAP": {
+        "en":   "Map",
+        "es":   "Mapa",
+        "fr":   "Carte"
+    },
+    "LOCATIONS": {
+        "en":   "Tourism",
+        "es":   "Turismo",
+        "fr":   "Tourisme"
+    },
+    "NEWS": {
+        "en":   "Actualidad",
+        "es":   "Actualidad",
+        "fr":   "Résumé"
+    },
+    "INTERVIEWS": {
+        "en":   "Interviews",
+        "es":   "Entrevistas",
+        "fr":   "Interviews"
+    },
+    "VIDEO": {
+        "en":   "Videos",
+        "es":   "Vídeos",
+        "fr":   "Vidéos"
+    },
+    "IMAGES": {
+        "en":   "Photos",
+        "es":   "Fotos",
+        "fr":   "Photos"
+    },
+    "FavouriteLocalNotificationMessage": {
+        "en":   "{title} / {description} is due to start at {time}",
+        "es":   "{title} / {description} is due to start at {time}",
+        "fr":   "{title} / {description} is due to start at {time}"
+    },
+    "FavouriteLocalNotificationAction": {
+        "en":   "View",
+        "es":   "View",
+        "fr":   "View"
+    }
+}

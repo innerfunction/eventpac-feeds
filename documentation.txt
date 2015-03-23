@@ -1,0 +1,25 @@
+
+how to add the project (dependencies)
+(right click -> properties etc..)
+
+setenv EPCOREPATH
+
+Project build script
+json : general, image-settings
+settings : settings.js
+templates : css, html
+makeclient : emptyProject
+
+
+Create styles.json
+copy feed folder
+generate app folder
+eval settings
+eval css
+resize images
+
+Feed build script
+App build script
+
+
+TODO : update shell script with EPCORE PATH

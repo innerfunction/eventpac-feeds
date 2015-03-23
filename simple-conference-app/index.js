@@ -6,7 +6,7 @@ var mods = {
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 var settings = require('./general');
-var imageSettings = require('./images-settings-test');
+var imageSettings = require('./images-settings');
 
 function isPublished( post ) {
     return post.status == 'published';
@@ -81,20 +81,19 @@ var feed = {
         style: {
             depends: '',
             build: function( cx ) {
-                var styleData = settings;
+                var appImages = settings.appImages;
                 var imageInfo = imageSettings;
                     console.log(imageInfo);
-                for (var key in styleData.appImages) {
+                for (var key in images) {
                     console.log("debug .....................................");
                     console.log(key);
 
                     var imageProperties = imageInfo[key];
                     console.log(imageProperties);
                
-                    var image = cx.images( styleData.appImages[key] );
-
-                    for (var indx in imageProperties) {
-                        var newImage = imageProperties[indx] ;
+                    var image = cx.images( appImages[key] );
+                    for (var idx in imageProperties) {
+                        var newImage = imageProperties[idx] ;
                         if (key =='splashScreen' ){
                             console.log(newImage.filename + " ..... height: " + newImage.height);
                         }

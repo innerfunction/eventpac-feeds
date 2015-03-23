@@ -1,0 +1,77 @@
+{
+    "types": "@app:types.json",
+    "dispatcher": {
+        "schemes": {
+            "view": {
+                "type": "ViewURISchemeHandler",
+                "viewFactory": "@globals:services.viewFactory"
+            },
+            "alias": {
+                "type": "AliasURISchemeHandler",
+                "aliases": "#aliases"
+            }
+        }
+    },
+    "data": {
+        "string": "abcdefghij",
+        "number": 100,
+        "boolean": true,
+        "date": "20140212T190000Z"
+    },
+    "services": {
+        "viewFactory": {
+            "type": "ViewFactoryService",
+            "views": "#views"
+        }
+    },
+    "views": {
+        "MainTabSet": {
+            "type": "TabSet",
+            "config": {
+                "tabs": [
+                    {
+                        "id":           "list-tab",
+                        "title":        "List",
+                        "navigable":    false,
+                        "view":         "@view:SlidingImageListView+json@app:dublin/images.json"
+                    },
+                    {
+                        "id":           "home-tab",
+                        "title":        "Home",
+                        "icon":         "app:tabs/home.png",
+                        "navigable":    false,
+                        "view":         "@view:WebView+html@app:screens/home.html"
+                    }
+                ]
+            }
+        },
+        "WebView": {
+            "type": "WebView",
+            "config": {
+                "title":                "Home",
+                "readTitleFromContent": true
+            }
+        },
+        "SlidingImageListView": {
+            "type": "SlidingImageListView",
+            "config": {
+                "row": {
+                    "backgroundImage":      "@app:background.jpg",
+                    "titleLabel": {
+                        "font":             { "name": "AmericanTypewriter-Bold", "size": 27 },
+                        "textColor":        "#333333",
+                        "textBorderColor":  "#FFFFFF"
+                    },
+                    "descriptionLabel": {
+                        "font":             { "name": "Helvetica", "size": 17 },
+                        "textColor":        "#FFFFFF"
+                    }
+                }
+            }
+        }
+    },
+    "aliases": {
+        "test": "s:TestAliasIsWorking"
+    },
+    "rootView": "@view:MainTabSet"
+}

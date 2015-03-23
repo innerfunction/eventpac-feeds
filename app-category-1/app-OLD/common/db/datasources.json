@@ -1,0 +1,19 @@
+{
+    "posts": {
+        "table": "posts",
+        "filter": {
+            "type": "?type"
+        },
+        "adapter": {
+            "type": "MultiRowDSAdapter"
+        }
+    },
+    "events": {
+        "table": "posts",
+        "sql": "select * from posts where type='events' and substr(startTime,0,10)=?date order by startTime asc",
+        "and:sql": "select * from posts where type='events' and substr(startTime,0,11)=?date order by startTime asc",
+        "adapter": {
+            "type": "MultiRowDSAdapter"
+        }
+    }
+}
