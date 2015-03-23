@@ -141,7 +141,7 @@
             },
             {
                 "id":                       "nagp",
-                "title":                    "#stylesData.name",
+                "title":                    "#settings.name",
                 "navigable":                false,
                 "view":                     "@view:DefaultWebView+html@subs:/nagp/pages.html"
             },

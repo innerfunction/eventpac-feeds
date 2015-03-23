@@ -23,5 +23,6 @@
     "GalleryView":                  "com.eventpac.ui.ImageGalleryThumbnailView",
     "PostWebView":                  "com.eventpac.ui.posts.PostWebView",
     "EmptyView":                    "com.eventpac.core.ui.EPFragment",
+    "FavouriteRowDecorator":        "com.eventpac.ui.posts.PostTableCellFavouriteDecorator",
 	"ButtonWidget":					"com.eventpac.core.ui.widget.EPButtonWidget"
 }

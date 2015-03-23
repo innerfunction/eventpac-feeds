@@ -64,6 +64,8 @@ var feed = {
                     startTime:      mods.df( occurrence.startDateTime, 'HH:MM') +timeMarker ,
                     endTime:        timeMarker + mods.df( occurrence.endDateTime, 'HH:MM')
                 },
+                startTime:      occurrence.startDateTime,
+                endTime:        occurrence.endDateTime,
                 content:        post.content,
                 performer:      post.performers,
                 image:          post.photo,
@@ -96,7 +98,9 @@ var feed = {
                         title:          post.title,
                         description:    post.title,
                         date:           post.date,
-                        time:           post.time, 
+                        time:           post.time,
+                        startTime:      post.startTime,
+                        endTime:        post.endTime,
                         action:         eputils.action('EventDetail', { 'eventID': post.id }),
                         image:          post.image,
                         content:        post.content,
@@ -111,8 +115,8 @@ var feed = {
                         type:           post.type,
                         title:          post.title,
                         description:    post.description,
-                        date:           post.date,
-                        time:           post.time, 
+                        startTime:      post.startTime,
+                        endTime:        post.endTime,
                         action:         post.action,
                         shape:          post.shape
                     }
