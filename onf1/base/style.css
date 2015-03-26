@@ -204,16 +204,14 @@ div.btn-social, .btn-social {
  	padding-right:8px;
  }
  /* event results */
-.event-results>tbody>tr:nth-child(4n+1)>td, .stage-class>tbody>tr:nth-child(4n+1)>td,
-.event-results>tbody>tr:nth-child(4n+2)>td, .stage-class>tbody>tr:nth-child(4n+2)>td
+.event-results>tbody>tr:nth-child(odd)>td, .stage-class>tbody>tr:nth-child(odd)>td
 {    background-color: #f2f2f2;
 
 }
 .event-results tr, .event-results td {
 	border: none !important;
 }
-.event-results>tbody>tr:nth-child(4n+3)>td, .stage-class>tbody>tr:nth-child(4n+3)>td,
-.event-results>tbody>tr:nth-child(4n+4)>td, .stage-class>tbody>tr:nth-child(4n+4)>td
+.event-results>tbody>tr:nth-child(even)>td, .stage-class>tbody>tr:nth-child(even)>td
 {    background-color: #ffffff;
 }
 .event-results .second-r td{
