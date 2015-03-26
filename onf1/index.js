@@ -28,7 +28,7 @@ function mapImages( cx, updates ) {
 
 var feed = {
     active: true,
-    name: 'onf1',
+    name: 'ongp',
     opts: {
         exts: {
             uriSchemes: eputils.schemes('onf1')
