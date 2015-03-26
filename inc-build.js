@@ -133,16 +133,15 @@ exports.extend = function( feed, _module ) {
         if( doFullBuild ) {
             Log.info('Full build of feed %s (%d/%d)', feedID, build.seq, fullBuildEvery );
         }
-        // Copy files from last build; or use feed's base content if not previous build.
+        // Copy files from last build if any.
         if( !doFullBuild && build.prevBuild ) {
             var path = mods.path.resolve( build.prevBuild.paths.content() );
             Log.debug('Copying previous build from %s', path );
             cx.file( path+'/.' ).cp();
         }
-        else {
-            Log.debug('Copying base content');
-            cx.file('base/.').cp();
-        }
+        // Copy base content.
+        Log.debug('Copying base content');
+        cx.file('base/.').cp();
         // Generate list of posts in current build scope
         var updates;
         if( doFullBuild ) {
