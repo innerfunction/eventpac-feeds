@@ -72,8 +72,6 @@ var feed = {
             var gpOcc = occurrences.GP;
             var raceOcc = occurrences.Race||gpOcc;
             // Generate result.
-            console.log(gpOcc);
-            console.log('---');
             if (gpOcc) {
                 var start = mods.df( gpOcc.startDateTime, 'dd/mm/yyyy'),
                     end = mods.df( gpOcc.endDateTime, 'dd/mm/yyyy'),
@@ -82,7 +80,7 @@ var feed = {
             } else {
                 var start = "",
                     end = "",
-                    starTime = "",
+                    startTime = "",
                     endTime = "";
             }
             return {
