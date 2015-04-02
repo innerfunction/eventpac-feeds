@@ -72,6 +72,19 @@ var feed = {
             var gpOcc = occurrences.GP;
             var raceOcc = occurrences.Race||gpOcc;
             // Generate result.
+            console.log(gpOcc);
+            console.log('---');
+            if (gpOcc) {
+                var start = mods.df( gpOcc.startDateTime, 'dd/mm/yyyy'),
+                    end = mods.df( gpOcc.endDateTime, 'dd/mm/yyyy'),
+                    startTime = raceOcc.startDateTime,
+                    endTime = raceOcc.endDateTime;
+            } else {
+                var start = "",
+                    end = "",
+                    starTime = "",
+                    endTime = "";
+            }
             return {
                 id:                         post.id,
                 status:                     post.status,
@@ -82,10 +95,10 @@ var feed = {
                 circuit:                    post.circuit,
                 location:                   utils.cuval( post.locations ),
                 
-                start:                      mods.df( gpOcc.startDateTime, 'dd/mm/yyyy'),
-                end:                        mods.df( gpOcc.endDateTime, 'dd/mm/yyyy'),
-                startTime:                  raceOcc.startDateTime,
-                endTime:                    raceOcc.endDateTime,
+                start:                      start,
+                end:                        end,
+                startTime:                  startTime,
+                endTime:                    endTime,
 
                 laps:                       post.laps,
                 distance:                   post.distance,
