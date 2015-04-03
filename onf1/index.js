@@ -35,6 +35,7 @@ var feed = {
         }
     },
     types: {
+        /*
         groupperformers: function( post ) {
             return {
                 id:				'resultsTeam-'+post.id,
@@ -58,6 +59,27 @@ var feed = {
                 status:         post.status,
                 overallPosition: post.overallPosition,
                 type:			'resultsIndividual'
+            }
+        },
+        */
+        performers: function( post ) {
+            var group = (post.group && post.group[0])||{};
+            return {
+                id:				post.id,
+                title:          post.title,
+                nationality:    post.nationality,
+                team:           group.title||'',
+                teamInitials:	group.teamInitials,
+                points:         post.points,
+                status:         post.status,
+                overallPosition: post.overallPosition,
+                type:			'performers',
+                team: {
+                    id:                 group.id,
+                    title:              group.title,
+                    points:             group.points,
+                    overallPosition:    group.overallPosition
+                }
             }
         },
         events: function( post ) {
@@ -223,6 +245,7 @@ var feed = {
             }
         },
         results: {
+            /*
             depends: ['groupperformers','performers'],
             build: function( cx, updatesByType ) {
                 var resultsIndividual = cx.data.posts.filter(function indivResult( post ) {
@@ -241,6 +264,29 @@ var feed = {
                     });
                 }
                 Log.debug('Evaluating new results.html');
+                cx.eval('templates/all-results.html', results, 'results.html');
+            }
+            */
+            depends: ['performers'],
+            build: function( cx, updatesByType ) {
+                var results = cx.data.posts.filter(function filter( post ) {
+                    return post.type == 'performers' && post.status == 'publish';
+                });
+                var teamResults = {};
+                results.forEach(function each( result ) {
+                    var team = result.team;
+                    var _teamResult = teamResults[team.id];
+                    if( !_teamResult || _teamResult.points < team.points ) {
+                        teamResults[team.id] = team;
+                    }
+                });
+                function sort(obj1, obj2) {
+                    return obj1.overallPosition - obj2.overallPosition;
+                }
+                var results = {
+                    resultsIndividual:  results.sort( sort ),
+                    resultsTeam:        Object.keys( teamResults ).map(function map( id ) { return teamResults[id] }).sort( sort )
+                };
                 cx.eval('templates/all-results.html', results, 'results.html');
             }
         }
