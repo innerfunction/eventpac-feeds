@@ -74,15 +74,18 @@ var feed = {
             // Generate result.
             if (gpOcc) {
                 var start = mods.df( gpOcc.startDateTime, 'dd/mm/yyyy'),
-                    end = mods.df( gpOcc.endDateTime, 'dd/mm/yyyy'),
-                    startTime = raceOcc.startDateTime,
-                    endTime = raceOcc.endDateTime;
+                    end = mods.df( gpOcc.endDateTime, 'dd/mm/yyyy');
             } else {
                 var start = "",
-                    end = "",
-                    startTime = "",
-                    endTime = "";
+                    end = "";
             }
+            if (raceOcc) {
+                var startTime = raceOcc.startDateTime,
+                    endTime = raceOcc.endDateTime;
+            } else {
+                var startTime = "",
+                    endTime = "";
+            }                
             return {
                 id:                         post.id,
                 status:                     post.status,
@@ -169,7 +172,6 @@ var feed = {
                         modifiedTime:   post.modified
                     }
                 });
-
                 return updates;
             }
         },
@@ -217,7 +219,6 @@ var feed = {
                         modifiedTime:   post.modified
                     }
                 });
-
                 return updates;
             }
         },
@@ -239,6 +240,7 @@ var feed = {
                         return obj1.overallPosition - obj2.overallPosition;
                     });
                 }
+                Log.debug('Evaluating new results.html');
                 cx.eval('templates/all-results.html', results, 'results.html');
             }
         }
