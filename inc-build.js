@@ -194,6 +194,7 @@ exports.extend = function( feed, _module ) {
             }
         });
         // Automatically add newly deleted posts to the db manifest.
+        /*
         updatedTypes.forEach(function eachType( type ) {
             var delcount = 0;
             updatesByType[type].forEach(function eachPost( post ) {
@@ -204,6 +205,14 @@ exports.extend = function( feed, _module ) {
             });
             if( delcount ) {
                 Log.debug('Found %d newly deleted %s posts in feed %s', delcount, type, feedID );
+            }
+        });
+        */
+        cx.data.posts.forEach(function eachPost( post ) {
+            // Mark any trash post as deleted in the manifest.
+            // (Note: This will result in a list of *all* deleted posts).
+            if( post.status == 'trash' ) {
+                posts[post.id] = null;
             }
         });
         // Return the db manifest.
