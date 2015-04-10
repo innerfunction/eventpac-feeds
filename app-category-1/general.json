@@ -1,10 +1,10 @@
 {
-    "name": "NAGP",
-    "id": "nagp",
+    "name": "ECOMMERCEEXPO",
+    "id": "ecommerceexpo",
     "appCategory": "app-category-1",
     "locale": {},
     "styles": {
-        "fontFamily": "Roboto, helvetica",  
+        "fontFamily": "Roboto",  
         "header" : {
             "backgroundColor" : [ "#bd1664", "#f37324" ],
             "title":{
@@ -17,14 +17,14 @@
             "backgroundColor": ["#fff"],
             "color": "#000",
             "fontSize": "15px",
-            "textAlign": "center",
+            "textAlign": "left",
             "fontStyle" : "normal"
         },
         "date": {
             "fontFamily": "Helvetica",
             "fontSize": "35px",
             "color": "#fff",
-            "fontStyle": "bold",
+            "fontStyle": "normal",
             "textAlign": "center"
         },
         "time": {
@@ -37,11 +37,11 @@
             "fontStyle": "bold"
         },
         "image": {
-            "shape": "banner",
+            "shape": "circle",
             "inHeader": true 
         },
          "titleBar" : {
-            "titleBarColor": "#45589A",
+            "titleBarColor": "#FF9B00",
             "titleBarTextColor": "#FFFFFF"
         },
         "tabs": {
@@ -51,12 +51,12 @@
             "selectedBackgroundColor":  "#5691EA"
         },
         "list": {
-            "textColor":                "#4D4F94",
-            "detailTextColor":          "#5691EA",
+            "textColor":                "#FFFFFF",
+            "detailTextColor":          "#FFFFFF",
             "selectedTextColor":        "#FFFFFF",
             "detailSelectedTextColor":  "#FFFFFF",
-            "backgroundColor":          "#FFFFFF",
-            "selectedBackgroundColor":  "#5691EA"
+            "backgroundColor":          "#FF9B00",
+            "selectedBackgroundColor":  "#FF9B00"
         }
     },
     "types": {
@@ -64,27 +64,14 @@
             "title": "Speakers",
             "styles": {
                 "header": {
-                    "backgroundColor" : [ "#fff" ],
-                    "title": {
-                        "color": "#3498DB",
-                        "fontFamily": "georgia",
-                        "fontSize": "50px"
-                    }
-                },
-                "description": {
-                    "fontFamily": "georgia",
-                    "color": "#555",
-                    "fontSize": "25px"
+                    "backgroundColor" : [ "#00659A", "#004C66" ]
                 }
             }
         },
         "events": {
             "title": "Events",
             "styles": {
-                "description": {
-                    "backgroundColor": ["#ccc"],
-                    "fontSize": "25px"
-                }
+
             }
         },
         "pages": {
@@ -93,13 +80,7 @@
         "locations": {
            "title": "Locations",
            "styles": {
-                "header": {
-                    "backgroundColor" : [ "red", "blue" ],
-                    "title":{
-                        "color": "pink",
-                        "textAlign": "left"
-                    }    
-                }
+
             }
         }
     },
