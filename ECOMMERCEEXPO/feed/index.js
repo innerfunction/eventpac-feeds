@@ -71,6 +71,7 @@ var feed = {
                     startTime:      mods.df( occurrence.startDateTime, 'HH:MM') +timeMarker ,
                     endTime:        timeMarker + mods.df( occurrence.endDateTime, 'HH:MM')
                 },
+                status:         post.status,
                 startTime:      occurrence.startDateTime,
                 endTime:        occurrence.endDateTime,
                 content:        post.content,
@@ -83,13 +84,16 @@ var feed = {
         speakers: function( post ) {
             var banner = (settings.imageShape == "banner") ? true : false;
             return {
-                id:             post.id,
-                title:          post.title,
-                content:        post.content,
-                image:          post.photo,
-                type:           'performers',
-                shape:          settings.imageShape,
-                banner:         banner
+                id:                 post.id,
+                title:              post.title,
+                content:            post.content,
+                shortDescription:   post.shortDescription,
+                linkedinURL:        post.linkedinUrl1,
+                status:             post.status,
+                image:              post.photo,
+                type:               'speakers',
+                shape:              settings.imageShape,
+                banner:             banner
             }
         }
     },
@@ -151,15 +155,17 @@ var feed = {
             build: function( cx, updatesByType ) {
                 var updates = updatesByType.speakers.map(function map( post ) {
                     return {
-                        id:             post.id,
-                        type:           post.type,
-                        title:          post.title,
-                        description:    post.title,
-                        action:         eputils.action('SpeakerDetail', { 'speakerID': post.id }),
-                        image:          post.image,
-                        content:        post.content,
-                        shape:          post.shape,
-                        banner:         post.banner
+                        id:                 post.id,
+                        type:               post.type,
+                        title:              post.title,
+                        description:        post.title,
+                        shortDescription:   post.shortDescription,
+                        linkedinURL:        post.linkedinURL,
+                        action:             eputils.action('SpeakerDetail', { 'speakerID': post.id }),
+                        image:              post.image,
+                        content:            post.content,
+                        shape:              post.shape,
+                        banner:             post.banner
                     }
                 });
                 buildImages( cx, updates );
