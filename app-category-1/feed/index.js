@@ -107,7 +107,7 @@ var feed = {
                     }
                 });
                 buildImages( cx, updates );
-                cx.eval('template.html', updates, pageName.+'.html');
+                cx.eval('template.html', updates, pageName+'.html');
             }
         },
         events: {

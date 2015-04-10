@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EA43611D-7476-4795-9021-297835FDCBB8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NAGP</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>99129653-E447-4C83-BC38-3DC6F048182D</key>
+		<string>ssh://github.com/innerfunction/eventpac-feeds.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>nagp/app/ios/NAGP.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>99129653-E447-4C83-BC38-3DC6F048182D</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/innerfunction/eventpac-feeds.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>99129653-E447-4C83-BC38-3DC6F048182D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>99129653-E447-4C83-BC38-3DC6F048182D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>eventpac-feeds</string>
+		</dict>
+	</array>
+</dict>
+</plist>
