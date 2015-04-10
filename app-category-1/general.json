@@ -6,7 +6,7 @@
     "styles": {
         "fontFamily": "Roboto",  
         "header" : {
-            "backgroundColor" : [ "#bd1664", "#f37324" ],
+            "backgroundColor" : [ "#00659A", "#004C66" ],
             "title":{
                 "fontSize": "35px",
                 "color": "#fff",
@@ -62,10 +62,7 @@
     "types": {
         "performers": {
             "title": "Speakers",
-            "styles": {
-                "header": {
-                    "backgroundColor" : [ "#00659A", "#004C66" ]
-                }
+      
             }
         },
         "events": {
