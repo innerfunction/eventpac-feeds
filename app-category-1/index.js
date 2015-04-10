@@ -151,12 +151,12 @@ exports.build = function( cx ) {
     var styleData = settings;
     var postsArray = [];
 
+    // TODO: Verification of inHeader within the main Style too
     styleData.styles = gradientProperty( styleData.styles );
     for (var idx in styleData.types) {
         var post = styleData.types[idx];
         var sData = styleData.styles ;
         if (post.styles) {
-            post.styles = gradientProperty(post.styles);
             if (idx == 'performers') {
                 sData.image.HBackgroundColor = setHeadBgColor(sData, sData.image, post.styles);
             } else if (idx == 'events') {
@@ -179,7 +179,6 @@ exports.build = function( cx ) {
     var overrideLessStyles = overrideStylesCss.lessStructure;
 
     var lessToRender =  lessVars + lessTemplateContent + overrideLessStyles;
-    console.log(lessToRender);
     less.render( lessToRender,
         function (e, output) {
             console.log(e);

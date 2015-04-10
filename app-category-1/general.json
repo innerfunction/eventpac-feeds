@@ -61,10 +61,16 @@
     },
     "types": {
         "performers": {
-            "title": "Speakers"
+            "title": "Speakers",
+            "styles": {
+                "inHeader": true
+            }
         },
         "events": {
-            "title": "Events"
+            "title": "Events",
+            "styles": {
+                "inHeader": true
+            }
         },
         "pages": {
             "title": "Pages"
