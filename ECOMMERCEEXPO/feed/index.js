@@ -71,6 +71,7 @@ var feed = {
                     startTime:      mods.df( occurrence.startDateTime, 'HH:MM') +timeMarker ,
                     endTime:        timeMarker + mods.df( occurrence.endDateTime, 'HH:MM')
                 },
+                status:         post.status,
                 startTime:      occurrence.startDateTime,
                 endTime:        occurrence.endDateTime,
                 content:        post.content,
@@ -87,9 +88,10 @@ var feed = {
                 title:              post.title,
                 content:            post.content,
                 shortDescription:   post.shortDescription,
-                linkedinURL:           post.linkedinUrl1,
+                linkedinURL:        post.linkedinUrl1,
+                status:             post.status,
                 image:              post.photo,
-                type:               'performers',
+                type:               'speakers',
                 shape:              settings.imageShape,
                 banner:             banner
             }
