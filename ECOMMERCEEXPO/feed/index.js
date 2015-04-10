@@ -112,7 +112,7 @@ var feed = {
                 buildImages( cx, updates );
                 for (var idx in updates) {
                     var post = updates[idx];
-                    cx.eval('template.html', post, post.title+'.html');
+                    cx.eval('template.html', post, 'page-'+post.id+'.html');
                 }
             }
         },
