@@ -53,6 +53,7 @@ var feed = {
             return {
                 id:         post.id,
                 title:      post.title,
+                status:     post.status,
                 content:    post.content
             }
         },
@@ -101,9 +102,7 @@ var feed = {
         page: {
             depends: "page",
             build: function(cx, updatesByType) {
-                var pageName;
                 var updates = updatesByType.page.map(function map( post ) {
-                    pageName = post.title;
                     return {
                         id:         post.id,
                         title:      post.title,
@@ -111,7 +110,10 @@ var feed = {
                     }
                 });
                 buildImages( cx, updates );
-                cx.eval('template.html', updates, pageName+'.html');
+                for (var idx in updates) {
+                    var post = updates[idx];
+                    cx.eval('template.html', post, post.title+'.html');
+                }
             }
         },
         events: {
