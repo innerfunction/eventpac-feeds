@@ -89,7 +89,7 @@ var feed = {
                 title:              post.title,
                 content:            post.content,
                 shortDescription:   post.shortDescription,
-                linkedinURL:        post.linkedinUrl1,
+                linkedinURL:        post.linkedinUrl,
                 status:             post.status,
                 image:              post.photo,
                 type:               'speakers',
