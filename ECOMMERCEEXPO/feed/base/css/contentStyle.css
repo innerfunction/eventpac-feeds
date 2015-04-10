@@ -240,8 +240,16 @@ header > .short-description {
 }
 
 /* programm */
-body.programm{
+body.programme{
   background: #ECECFB;
+
+}
+.programme .img {
+  width: 100%;
+    padding: 128px 0;
+  }
+.programme .img:first-child {
+    padding: 117px 0;
 
 }
 .list { 
