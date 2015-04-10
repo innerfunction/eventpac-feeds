@@ -143,11 +143,9 @@ var feed = {
                         id:             post.id,
                         type:           post.type,
                         title:          post.title,
-                        description:    post.description,
                         startTime:      post.startTime,
                         endTime:        post.endTime,
                         action:         post.action,
-                        shape:          post.shape
                     }
                 });
             }
@@ -177,10 +175,7 @@ var feed = {
                         id:             post.id,
                         type:           post.type,
                         title:          post.title,
-                        description:    post.description,
                         action:         post.action,
-                        shape:          post.shape,
-                        banner:         post.banner
                     }
                 });
             }
