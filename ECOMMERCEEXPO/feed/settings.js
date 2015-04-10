@@ -1,0 +1,1 @@
+exports.name = "ecommerceexpo";exports.eventsTitle = "Events";exports.performersTitle = "Speakers";exports.timeShape = "circle";exports.imageShape = "circle";
