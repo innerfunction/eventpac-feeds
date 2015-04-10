@@ -245,13 +245,9 @@ body.programme{
 
 }
 .programme .img {
-  width: 100%;
-    padding: 125px 0;
+   width: 100%;
   }
-.programme .img:first-child {
-    padding: 117px 0;
 
-}
 .list { 
   list-style: none;
   padding: 0;
@@ -261,8 +257,11 @@ body.programme{
 .event { 
   color: #fff;
   width: 100%;
-  padding-top: 229px;
-    margin-bottom: 2px;
+  margin-bottom: 2px;
+  max-height:50%;
+  height:35%;
+  position:absolute;
+  top: 26% ;
 }
 
 .event > .banner >img { 
@@ -289,18 +288,18 @@ body.programme{
 
   line-height: 1.2;
   display: table-cell;
-  padding:12px;
+  padding:8px;
  
 } 
 
 .event > .details-container> .details > .date {
-  font-size: 1.2em;
+  font-size: .8em;
   font-weight: bold;
   margin:0;
 }
 
 .event > .details-container > .details > h1.desc { 
-  font-size: 1em;
+  font-size: .5em;
   font-weight: 300;
   margin:0;
   background-color: transparent;
@@ -310,7 +309,7 @@ body.programme{
 .event > .details-container >  .arrow {
   vertical-align: middle;
   display: table-cell;
-  padding-right:10px;
+  padding-right:0px;
 
 }
 
