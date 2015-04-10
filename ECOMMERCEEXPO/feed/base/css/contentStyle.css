@@ -298,16 +298,22 @@ body.programm{
   color:#fff;
   border:none;
   display:block;
-  padding:10px;
+  padding:0px;
   width:100%;
   margin: 8px 0;
   font-size: 1.2em;
   border-radius:4px;
 }
-.contact > .description > .button.call {
+.contact > .description >.button >a{
+  padding:10px;
+  color:#fff;
+  display:block;
+  width:100%;
+}
+.contact > .description > .button.call >a {
   background: #c9da3b;
 }
-.contact > .description > .button.contact {
+.contact > .description > .button.contact  >a{
   background:#21b0bd;
 }
 .contact > .description > p {
