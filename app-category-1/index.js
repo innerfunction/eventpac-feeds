@@ -47,10 +47,8 @@ function generateLessVars( object, data ) {
             //add the var
             var varName = '@' +typeName+ sectionSet  +capitalize(prop, true) ;
             var newVar = varName + ' : '+ property+';  \n';
-            
             //add the correct property with the var as a value
             lessProperties += '        '+cssStylesProp[prop]+' : '+varName +'; \n';//newvar
-         
             overrideVars = overrideVars.concat(newVar);                   
         
         //if not, it's a subsection (such as title in header) and needs to be check to get its value
@@ -123,7 +121,7 @@ function getLessVars( styleData ) {
 function gradientProperty( styles ) {
     for (var idx in styles) {
         var style = styles[idx];
-        if ( typeof style.backgroundColor == "object") {
+        if ( typeof style.backgroundColor == "object" ) {
             var color1 = style.backgroundColor[0],
                 color2 = style.backgroundColor[1] || color1;
             style.backgroundColor = 'linear-gradient(to right, '+ color1 +' , '+ color2 +')';
@@ -159,11 +157,11 @@ exports.build = function( cx ) {
         var sData = styleData.styles ;
         if (post.styles) {
             post.styles = gradientProperty(post.styles);
-        }
-        if (idx == 'performers') {
-            sData.image.HBackgroundColor = setHeadBgColor(sData, sData.image, post.styles);
-        } else if (idx == 'events') {
-            sData.time.HBackgroundColor = setHeadBgColor(sData, sData.time, post.styles);
+            if (idx == 'performers') {
+                sData.image.HBackgroundColor = setHeadBgColor(sData, sData.image, post.styles);
+            } else if (idx == 'events') {
+                sData.time.HBackgroundColor = setHeadBgColor(sData, sData.time, post.styles);
+            }
         }
         post.id = idx;
         postsArray.push(post);
@@ -181,9 +179,10 @@ exports.build = function( cx ) {
     var overrideLessStyles = overrideStylesCss.lessStructure;
 
     var lessToRender =  lessVars + lessTemplateContent + overrideLessStyles;
-
+    console.log(lessToRender);
     less.render( lessToRender,
         function (e, output) {
+            console.log(e);
             fs.writeFile(outputRoute, output.css, function(err) {
                 console.log(err);   
             });

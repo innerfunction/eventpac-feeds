@@ -61,24 +61,16 @@
     },
     "types": {
         "performers": {
-            "title": "Speakers",
-      
-            }
+            "title": "Speakers"
         },
         "events": {
-            "title": "Events",
-            "styles": {
-
-            }
+            "title": "Events"
         },
         "pages": {
             "title": "Pages"
         },
         "locations": {
-           "title": "Locations",
-           "styles": {
-
-            }
+           "title": "Locations"
         }
     },
     "appImages": {

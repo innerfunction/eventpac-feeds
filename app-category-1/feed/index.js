@@ -49,6 +49,13 @@ var feed = {
         }
     },
     types: {
+        page: function( post) {
+            return {
+                id:         post.id,
+                title:      post.title,
+                content:    post.content
+            }
+        },
         events: function( post ) {
             var occurrence = post.occurrences[0];
             var timeMarker  = (settings.timeShape == 'circle' ) ? ' <br/> ' : '';
@@ -87,6 +94,22 @@ var feed = {
         }
     },
     targets: {
+        page: {
+            depends: "page",
+            build: function(cx, updateByType) {
+                var pageName;
+                var updates = updatesByType.page.map(function map( post ) {
+                    pageName = post.title;
+                    return {
+                        id:         post.id,
+                        title:      post.title,
+                        content:    post.content
+                    }
+                });
+                buildImages( cx, updates );
+                cx.eval('template.html', updates, pageName.+'.html');
+            }
+        },
         events: {
             depends: 'events',
             build: function( cx, updatesByType ) {
