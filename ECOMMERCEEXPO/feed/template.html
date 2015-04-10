@@ -16,6 +16,7 @@
         <header>
             {#date}<p class="date"> {startDate} </p>{/date}
             {#title}<div class="title" >{title} </div>{/title}
+            {#shortDescription}<p>{shortDescription}</p>{/shortDescription}
 
 
         </header> 
@@ -40,10 +41,14 @@
         <div class="description {style}">      
             <p>{content|s}</p>
 
-            {#performer} 
-                <p class="title speakers"> {content.title} </p>
-                <p><a class="speaker-link" href="event:nav/open+view@view:SpeakerWebView+html@subs:/nagp/speaker-{id}.html">{title}</a></p>
-            {/performer}
+
+        {#linkedinURL}
+            {likedinURL}
+        {/linkedinURL}
+        {#performer}
+            <p class="title speakers"> {content.title} </p>
+            <p><a class="speaker-link" href="event:nav/open+view@view:SpeakerWebView+html@subs:/nagp/speaker-{id}.html">{title}</a></p>
+        {/performer}
         </div>
     </body>
     <script src="js/jquery.min.js"></script>
