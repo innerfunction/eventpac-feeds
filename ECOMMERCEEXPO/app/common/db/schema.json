@@ -1,0 +1,21 @@
+{
+    "name": "eventpac",
+    "version": 1,
+    "resetDatabase": false,
+    "tables": {
+        "posts": {
+            "columns": {
+                "id":               { "type": "TEXT", "tag": "id" },
+                "type":             { "type": "TEXT" },
+                "title":            { "type": "TEXT" },
+                "description":      { "type": "TEXT" },
+                "action":           { "type": "TEXT" },
+                "image":            { "type": "TEXT" },
+                "startTime":        { "type": "TEXT" },
+                "endTime":          { "type": "TEXT" },
+                "modifiedTime":     { "type": "TEXT" },
+                "favourite":        { "type": "INTEGER" }
+            }
+        }
+    }
+}
