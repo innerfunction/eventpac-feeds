@@ -3,7 +3,7 @@
 
 
 body {
-  font-size: 16px;
+  font-size: 18px;
   background: linear-gradient(to right, #ffffff, #ffffff);
   font-family: Roboto;
 }
@@ -77,8 +77,18 @@ header > div.title,
   color: #ffffff;
   text-align: center;
 }
+.header >.short-description,
+header > .short-description {
+  color: #fff;
+  line-height: 1.4;
+  padding: 8px;
+  font-style: italic;
+}
 .header.fixed {
   margin: 0 -1.875em;
+}
+.events .header .title {
+  font-weight: 600;
 }
 /* ****  shapes css **** */
 .shape-container.banner {
@@ -154,7 +164,6 @@ header > div.title,
   /*4px*/
   margin: 0 auto;
   text-align: center;
-  background: #fff;
   border-radius: 100%;
   display: block;
 }
@@ -167,6 +176,10 @@ header > div.title,
   background: linear-gradient(to right, #f8f8f8, #f8f8f8);
   background: #f8f8f8 ;
 }
+.shape-container.circle.image > div > p {
+  background-color:#FF9B00;
+
+  }
 .shape-container.time.banner span {
   display: inline;
 }
@@ -196,8 +209,9 @@ header > div.title,
   padding: 0;
 }
 .date {
-  font-size: 35px;
+  font-size: 28px;
   color: #ffffff;
+  font-weight: 100;
   font-style: normal;
   font-family: Helvetica;
 }
@@ -208,7 +222,7 @@ header > div.title,
   text-align: center;
 }
 .description {
-  font-size: 15px;
+  font-size: 18px;
   color: #000000;
   font-style: normal;
   text-align: left;
@@ -318,4 +332,31 @@ body.programm{
 }
 .contact > .description > p {
   margin-bottom:25px;
+}
+.linkedin{
+  padding: 0;
+  border: none;
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  font-size: 1.3em;
+  font-weight: 400;
+  text-align: center;
+  margin-top:16px;
+
+} 
+.linkedin a{
+  background-color: #00659b;
+  color:#fff;
+  display: block;
+  width:100%;
+  padding:10px;
+}
+.linkedin i {
+  padding: 6px 10px 10px;
+  background: #fff;
+  color: #00659b;
+  border-radius: 100%;
+  margin: 0 14px;
+  font-size: 1em;
 }
