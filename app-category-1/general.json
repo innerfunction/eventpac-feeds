@@ -1,4 +1,4 @@
-{
+    {
     "name": "ECOMMERCEEXPO",
     "id": "ecommerceexpo",
     "appCategory": "app-category-1",
@@ -47,8 +47,8 @@
         "tabs": {
             "textColor":                "#FFFFFF",
             "selectedTextColor":        "#FFFFFF",
-            "backgroundColor":          "#45589A",
-            "selectedBackgroundColor":  "#5691EA"
+            "backgroundColor":          "#FF9B00",
+            "selectedBackgroundColor":  "#FF9B00"
         },
         "list": {
             "textColor":                "#FFFFFF",
