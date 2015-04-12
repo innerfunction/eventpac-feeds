@@ -119,7 +119,7 @@ var feed = {
                 */
                 updatesByType.page.forEach(function each( update ) {
                     if( update.id == '46' ) {
-                        // Convert the sponsor page to a JSON list.
+                        // Convert the exhibitor page to a JSON list.
                         // First load the page's html.
                         var $ = mods.ch.load( update.content );
                         var items = $('a').map(function map() {
@@ -145,7 +145,7 @@ var feed = {
                                 height:                  100
                             }
                         });
-                        cx.json( data, 'sponsors.json', true );
+                        cx.json( data, 'exhibitors.json', true );
                     }
                     else {
                         cx.eval('template.html', update, 'page-{id}.html');
