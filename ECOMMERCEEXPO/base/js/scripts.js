@@ -33,7 +33,7 @@ function scrollFixedElements( $container ) {
 
         if ( $(window).height() > 450 && $banner.length > 0 && $fixedObjects.length > 0 ) {
             
-            var $pageContent = $container.find(".content  p:first");
+            var $pageContent = $container.find(".description  p:first");
             console.log($pageContent);
 
             
