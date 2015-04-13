@@ -9,7 +9,6 @@ body {
 }
 body,
 div,
-ul,
 a,
 h1,
 h2,
@@ -19,7 +18,7 @@ span {
   margin: 0;
 }
 ul {
-  list-style: none;
+  /*list-style: none;*/
 }
 p {
   margin: 0.375em 0 ;
