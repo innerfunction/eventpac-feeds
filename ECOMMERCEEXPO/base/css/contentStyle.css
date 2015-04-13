@@ -70,6 +70,7 @@ header,
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00659a', endColorstr='#004c66',GradientType=1 ); /* IE6-9 */
  
 }
+
 header > div.title,
 .header > div.title {
   font-size: 30px;
@@ -77,6 +78,10 @@ header > div.title,
   padding:.4em; /* 12 px*/
   text-align: center;
 
+}
+.events >.header > .title,
+.events >header > .title {
+  font-size: 26px;
 }
 .header >.short-description,
 header > .short-description {
@@ -91,6 +96,9 @@ header > .short-description {
 }
 .events .header .title {
   font-weight: 600;
+}
+.events .header .date {
+  padding:14px 0;
 }
 /* ****  shapes css **** */
 .shape-container.banner {
@@ -217,6 +225,9 @@ header > .short-description {
   font-style: normal;
   font-family: Helvetica;
 }
+.header >.date, header > .date {
+  padding:14px;
+}
 .time {
   font-size: 25px;
   color: #000000;
@@ -262,10 +273,7 @@ body.programme{
   color: #fff;
   width: 100%;
   margin-bottom: 2px;
-  max-height:50%;
-  height:35%;
   position:absolute;
-  top: 26% ;
 }
 
 .event > .banner >img { 
