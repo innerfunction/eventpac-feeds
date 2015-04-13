@@ -23,6 +23,15 @@ function buildImages( cx, updates ) {
     images.resize({ width: 500, format: 'jpeg' }, true ).mapTo( updates, 'image' );
 }
 
+function formatHTML( html ) {
+    return html
+    .split(/<br \/>/g)
+    .filter(function filter( s ) { return s.length > 0; })
+    .reduce(function reduce( html, p ) {
+        return html+'<p>'+p+'</p>';
+    },'');
+}
+
 function gradientProperty( styles ) {
     for (var idx in styles) {
         var style = styles[idx];
@@ -55,7 +64,7 @@ var feed = {
                 id:         post.id,
                 title:      post.title,
                 status:     post.status,
-                content:    post.content
+                content:    formatHTML( post.content )
             }
         },
         events: function( post ) {
@@ -77,7 +86,7 @@ var feed = {
                 status:         post.status,
                 startTime:      occurrence.startDateTime,
                 endTime:        occurrence.endDateTime,
-                content:        post.content,
+                content:        formatHTML( post.content ),
                 performer:      post.performers,
                 image:          post.photo,
                 type:           'events',
@@ -89,7 +98,7 @@ var feed = {
             return {
                 id:                 post.id,
                 title:              post.title,
-                content:            post.content,
+                content:            formatHTML( post.content ),
                 company:            post.company,
                 shortDescription:   post.shortDescription,
                 linkedinURL:        post.linkedinUrl,
