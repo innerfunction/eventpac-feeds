@@ -73,6 +73,7 @@ var feed = {
                     startTime:      mods.df( occurrence.startDateTime, 'HH:MM') +timeMarker ,
                     endTime:        timeMarker + mods.df( occurrence.endDateTime, 'HH:MM')
                 },
+                description:    mods.df( occurrence.startDateTime, 'HH:MM') + ' - ' + mods.df( occurrence.endDateTime, 'HH:MM'),
                 status:         post.status,
                 startTime:      occurrence.startDateTime,
                 endTime:        occurrence.endDateTime,
@@ -89,6 +90,7 @@ var feed = {
                 id:                 post.id,
                 title:              post.title,
                 content:            post.content,
+                company:            post.company,
                 shortDescription:   post.shortDescription,
                 linkedinURL:        post.linkedinUrl,
                 status:             post.status,
@@ -167,6 +169,7 @@ var feed = {
                         time:           post.time,
                         startTime:      post.startTime,
                         endTime:        post.endTime,
+                        description:    post.description,
                         action:         eputils.action('EventDetail', { 'eventID': post.id }),
                         image:          post.image,
                         content:        post.content,
@@ -180,6 +183,7 @@ var feed = {
                         id:             post.id,
                         type:           post.type,
                         title:          post.title,
+                        description:    post.description,
                         startTime:      post.startTime,
                         endTime:        post.endTime,
                         action:         post.action,
@@ -197,6 +201,7 @@ var feed = {
                         title:              post.title,
                         description:        post.title,
                         shortDescription:   post.shortDescription,
+                        company:            post.company,
                         linkedinURL:        post.linkedinURL,
                         action:             eputils.action('SpeakerDetail', { 'speakerID': post.id }),
                         image:              post.image,
@@ -212,6 +217,7 @@ var feed = {
                         id:             post.id,
                         type:           post.type,
                         title:          post.title,
+                        description:    post.company,
                         action:         post.action,
                     }
                 });
