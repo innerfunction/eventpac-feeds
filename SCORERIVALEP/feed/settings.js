@@ -1,0 +1,1 @@
+exports.name = "ScoreRivalEP";exports.eventsTitle = "Events";exports.performersTitle = "Speakers";exports.timeShape = "circle";exports.imageShape = "banner";

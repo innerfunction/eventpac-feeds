@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" x-manifest="cache.manifest">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="css/contentStyle.css">      
+    </head>
+    <body class="{type}">
+        {#image}
+            <div class=" header fixed">
+                {#date}<p class="date"> {startDate} </p>{/date}
+                {#title}<div class="title" >{title}</div>{/title}
+
+            </div>
+        {/image}
+        <header>
+            {#date}<p class="date"> {startDate} </p>{/date}
+            {#title}<div class="title" >{title} </div>{/title}
+            {#shortDescription}<p>{shortDescription}</p>{/shortDescription}
+
+
+        </header> 
+        {#image}
+       
+            <div class="shape-container image {shape}" style=" 
+                    {#banner}
+                         background: url('{src}') no-repeat center center fixed; 
+                    {/banner}"
+                    >
+                    <div><p><img src="{src}"/> </p></div>
+                    <p></p>                        
+            </div> 
+                  
+        {/image} 
+        {#time}
+            <div class="shape-container time {shape}" >       
+                
+                    <div><p><span>{startTime|s} - {endTime|s} </span> </p></div>
+            </div> 
+        {/time}
+        <div class="description {style}">      
+            <p>{content|s}</p>
+
+
+        {#linkedinURL}
+            {likedinURL}
+        {/linkedinURL}
+        {#performer}
+            <p class="title speakers"> {content.title} </p>
+            <p><a class="speaker-link" href="event:nav/open+view@view:SpeakerWebView+html@subs:/nagp/speaker-{id}.html">{title}</a></p>
+        {/performer}
+        </div>
+    </body>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/scripts.js"></script> 
+</html>

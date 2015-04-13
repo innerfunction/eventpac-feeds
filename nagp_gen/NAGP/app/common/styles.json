@@ -1,0 +1,126 @@
+{
+    "name": "NAGP",
+    "id": "nagp",
+    "appCategory": "app-category-1",
+    "locale": {},
+    "styles": {
+        "fontFamily": "Roboto, helvetica",
+        "header": {
+            "backgroundColor": "linear-gradient(to right, #bd1664 , #f37324)",
+            "title": {
+                "fontSize": "35px",
+                "color": "#fff",
+                "textAlign": "center"
+                }
+            },
+        "description": {
+            "backgroundColor": "linear-gradient(to right, #fff , #fff)",
+            "color": "#000",
+            "fontSize": "15px",
+            "textAlign": "center",
+            "fontStyle": "normal"
+            },
+        "date": {
+            "fontFamily": "Helvetica",
+            "fontSize": "35px",
+            "color": "#fff",
+            "fontStyle": "bold",
+            "textAlign": "center"
+            },
+        "time": {
+            "shape": "circle",
+            "fontSize": "25px",
+            "color": "#000",
+            "textAlign": "center",
+            "inHeader": true,
+            "backgroundColor": "linear-gradient(to right, #f8f8f8 , #f8f8f8)",
+            "fontStyle": "bold",
+            "HBackgroundColor": "linear-gradient(to right, #bd1664 , #f37324)"
+            },
+        "image": {
+            "shape": "banner",
+            "inHeader": true,
+            "HBackgroundColor": "linear-gradient(to right, #fff , #fff)"
+            },
+        "titleBar": {
+            "titleBarColor": "#45589A",
+            "titleBarTextColor": "#FFFFFF"
+            },
+        "tabs": {
+            "textColor": "#FFFFFF",
+            "selectedTextColor": "#FFFFFF",
+            "backgroundColor": "#45589A",
+            "selectedBackgroundColor": "#5691EA"
+            },
+        "list": {
+            "textColor": "#4D4F94",
+            "detailTextColor": "#5691EA",
+            "selectedTextColor": "#FFFFFF",
+            "detailSelectedTextColor": "#FFFFFF",
+            "backgroundColor": "#FFFFFF",
+            "selectedBackgroundColor": "#5691EA"
+            }
+        },
+    "types": {
+        "performers": {
+            "title": "Speakers",
+            "styles": {
+                "header": {
+                    "backgroundColor": "linear-gradient(to right, #fff , #fff)",
+                    "title": {
+                        "color": "#3498DB",
+                        "fontFamily": "georgia",
+                        "fontSize": "50px"
+                        }
+                    },
+                "description": {
+                    "fontFamily": "georgia",
+                    "color": "#555",
+                    "fontSize": "25px"
+                    }
+                },
+            "id": "performers"
+            },
+        "events": {
+            "title": "Events",
+            "styles": {
+                "description": {
+                    "backgroundColor": "linear-gradient(to right, #ccc , #ccc)",
+                    "fontSize": "25px"
+                    }
+                },
+            "id": "events"
+            },
+        "pages": {
+            "title": "Pages",
+            "id": "pages"
+            },
+        "locations": {
+            "title": "Locations",
+            "styles": {
+                "header": {
+                    "backgroundColor": "linear-gradient(to right, red , blue)",
+                    "title": {
+                        "color": "pink",
+                        "textAlign": "left"
+                        }
+                    }
+                },
+            "id": "locations"
+            }
+        },
+    "appImages": {
+        "appIcon": "images/app/app_icon.png",
+        "splashScreen_portrait": "images/app/splash_screen_portrait.png",
+        "splashScreen_landscape": "images/app/splash_screen_landscape.png",
+        "sponsorBanner": "images/app/sponsor_banner.png",
+        "homeImage": "images/app/home_image.png",
+        "drawerIcon": "images/app/drawer_icon.png",
+        "homeIcon": "images/app/home_icon.png",
+        "backIcon": "images/app/back_icon.png",
+        "locationButton": "images/app/location_button.png",
+        "speakersButton": "images/app/speakers_button.png",
+        "programmButton": "images/app/programm_button.png",
+        "followButton": "images/app/follow_button.png"
+        }
+    }
