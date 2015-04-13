@@ -49,8 +49,8 @@
         "tabs": {
             "textColor": "#FFFFFF",
             "selectedTextColor": "#FFFFFF",
-            "backgroundColor": "#FF9B00",
-            "selectedBackgroundColor": "#FF9B00"
+            "backgroundColor": "#45589A",
+            "selectedBackgroundColor": "#5691EA"
             },
         "list": {
             "textColor": "#FFFFFF",
