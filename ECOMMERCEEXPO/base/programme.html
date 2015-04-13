@@ -6,8 +6,13 @@
         <link rel="stylesheet" href="css/contentStyle.css">
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">        
     </head>
-    <body class="programme" style=" height:100%;background: url(images/program-image.png) top right no-repeat #ff9900;    background-size:100% auto">
-     <ul class="list">
+    <body class="programme" style=" height:100%;background: url(images/program-image.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+        
+
 
             <li class="event"  >
                 <img src="images/ecommerce.png" width="100%" height="auto" />
@@ -32,4 +37,12 @@
     </body>
     <script src="js/jquery.min.js"></script>
     <script src="js/scripts.js"></script> 
+    <script>
+        var $ev = $('.event');
+        var eventHeight = $('.event').height();
+        var windowHeight =$(window).height();
+        var windowHeight =$(window).height();
+        var eventPosition = (windowHeight / 2) - (eventHeight / 2)
+        $ev.css('top', eventPosition -20);
+    </script>
 </html>
