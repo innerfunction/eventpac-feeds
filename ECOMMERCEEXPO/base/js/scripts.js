@@ -57,7 +57,7 @@ function scrollFixedElements( $container ) {
 
                 /*$header.css('margin', '0 -15px');*/
 
-                var $pageContent = $($container.find(".content"));
+                var $pageContent = $($container.find(".description"));
                 if ( parseInt($pageContent.css('margin-top') )> 0  ){
                     $pageContent.css('margin-top', 0);
                 }
