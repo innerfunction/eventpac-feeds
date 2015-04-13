@@ -94,9 +94,7 @@ header > .short-description {
 .header.fixed {
  /* margin: 0 -1.875em;*/
 }
-.events .header .title {
-  font-weight: 600;
-}
+
 .events .header .date {
   padding:14px 0;
 }
