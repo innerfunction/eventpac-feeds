@@ -45,12 +45,12 @@
         },
         "button4": {
             "ios:tag": 9,
-            "backgroundImage": "images/home_button_exhibitor.png",
-            "text": "Exhibitor list",
-            "action": "nav/tab#exhibitor",
+            "backgroundImage": "images/home_button_follow.png",
+            "text": "Follow us",
+            "action": "nav/tab#follow",
             "states": {
                 "pressed": {
-                    "backgroundImage": "images/home_button_exhibitor_press.png"
+                    "backgroundImage": "images/home_button_follow_press.png"
                 }
             }
         }
