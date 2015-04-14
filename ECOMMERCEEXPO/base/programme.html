@@ -37,11 +37,12 @@
     </body>
     <script src="js/jquery.min.js"></script>
     <script>
+
         var $ev = $('.event');
         var eventHeight = $('.event').height();
         var windowHeight =$(window).height();
-        var windowHeight =$(window).height();
         var eventPosition = (windowHeight / 2) - (eventHeight / 2)
         $ev.css('top', eventPosition -20);
+        $('body').css('height', windowHeight+'px')
     </script>
 </html>
