@@ -352,7 +352,7 @@ body.programme{
 .contact > .description > p {
   margin-bottom:25px;
 }
-.linkedin{
+.linkedin, .twitter{
   padding: 0;
   border: none;
   display: block;
@@ -373,6 +373,10 @@ body.programme{
 .twitter a{
   background-color: #00aced;
   }
+.twitter i{
+  padding: 6px 10px 10px;
+
+ }
 .linkedin i{
   padding: 6px 10px 10px;
   background: #fff;
