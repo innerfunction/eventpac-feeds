@@ -60,10 +60,15 @@ var feed = {
     },
     types: {
         page: function( post) {
+            var twitterURL = "";
+            if (post.title == "Contact") {
+                twitterURL = "https://twitter.com/Ecommerce_Expo";
+            }
             return {
                 id:         post.id,
                 title:      post.title,
                 status:     post.status,
+                twitterURL: twitterURL,
                 content:    formatHTML( post.content )
             }
         },
