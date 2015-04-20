@@ -51,7 +51,7 @@ function gradientProperty( styles ) {
     return styles;
 }
 var feed = {
-    active: false,
+    active: true,
     name: settings.name,
     opts: {
         exts: {
