@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" x-manifest="cache.manifest">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="css/contentStyle.css">
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">        
+    </head>
+    <body class="programme" style=" height:100%;background: url(images/program-image.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+        
+
+
+            <li class="event"  >
+                <img src="images/ecommerce.png" width="100%" height="auto" />
+                <a class="details-container"href="event:nav/open+view@EventsView+date@2015-04-21" > 
+ 
+                    <div class="details">
+                        <p class="date"> TUESDAY 21st APRIL </p>
+                        <h1 class="desc">eCommerce Expo Ireland</h1>
+                    </div>
+                    <p class="arrow"><img src="images/listArrow-white.png" width="10px" height="auto"/></p>
+                </a>
+                
+            </li>
+            
+            
+            <!--<li class="event"  style="background: url(images/program-image-2.png) top right no-repeat ;    background-size:cover; background-position: center center">
+                <img src="images/program-image-2.png" width="100%" height="120px"/>
+            </li>-->
+
+
+        </ul>
+    </body>
+    <script src="js/jquery.min.js"></script>
+    <script>
+
+        var $ev = $('.event');
+        var eventHeight = $('.event').height();
+        var windowHeight =$(window).height();
+        var eventPosition = (windowHeight / 2) - (eventHeight / 2)
+        $ev.css('top', eventPosition -20);
+        $('body').css('height', windowHeight+'px')
+
+    </script>
+</html>
