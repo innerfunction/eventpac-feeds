@@ -130,26 +130,27 @@ var feed = {
         page: {
             depends: "page",
             build: function(cx, updatesByType) {
-                updatesByType.page.forEach(function each( page ) {
-                    var template = 'template.html';
-                    switch( page.slug ) {
-                    case 'follow-us':
-                        var $ = mods.ch.load( page.content );
-                        page.items = $('li a').map(function map() {
-                            $a = $(this);
-                            var title = $a.text();
-                            return {
-                                id:     title.toLowerCase(),
-                                url:    $a.attr('href'),
-                                title:  title
-                            };
-                        }).get();
-                        template = 'followus.html';
-                        break;
-                    default:
-                    }
-                    cx.eval( template, page, 'page-{slug}.html');
+                var updates = updatesByType.page.map(function map( page ) {
+                    var $ = mods.ch.load( page.content );
+                    $('a').each(function each() {
+                        var $a = $(this);
+                        var href = $a.attr('href');
+                        var text = $a.text();
+                        var r = /^\s*(@\w+)\s+(.*)/.exec( text );
+                        if( r ) {
+                            var data = {
+                                icon:   r[1],
+                                url:    href,
+                                title:  r[2]
+                            }
+                            var html = '<button class="social {icon}"><a href="{url}"><i class="fa fa-{icon}"></i>{title}</a></button>';
+                            $a.replaceWith( $( tt.eval( html, data ) ) );
+                        }
+                    });
+                    page.content = $.html();
+                    return page;
                 });
+                cx.eval('template.html', updates, 'page-{slug}.html');
             }
         },
         events: {
