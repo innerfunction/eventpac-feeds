@@ -1,5 +1,5 @@
 var mods = {
-    ch:     require('cheerio'),
+    //ch:     require('cheerio'),
 	df: 	require('dateformat'),
 	path:	require('path'),
 	tt:		require('semo/lib/tinytemper')
@@ -55,7 +55,7 @@ var feed = {
     name: 'nslc2015',
     opts: {
         exts: {
-            uriSchemes: eputils.schemes('nslc2015)
+            uriSchemes: eputils.schemes('nslc2015')
         }
     },
     types: {
@@ -112,6 +112,17 @@ var feed = {
                 type:               'speakers',
                 shape:              settings.imageShape,
                 banner:             banner
+            }
+        },
+        exhibitors: function( post ) {
+            return {
+                id:                 post.id,
+                type:               post.type,
+                title:              post.title,
+                content:            formatHTML( post.content ),
+                status:             post.status,
+                image:              post.photo,
+                url:                post.exhibitorUrl
             }
         }
     },
@@ -235,6 +246,40 @@ var feed = {
                         action:         post.action,
                     }
                 });
+            }
+        },
+        exhibitors: {
+            depends: 'exhibitors',
+            build: function( cx, updatesByType ) {
+                // Complete exhibitors list.
+                var exhibitors = cx.data.posts
+                .filter(function filter( post ) {
+                    return post.type == 'exhibitors';
+                });
+                // List images.
+                var srcs = exhibitors.map(function map( exhib ) {
+                    return exhib.image;
+                });
+                cx.images( srcs ).resize({ height: 100, format: 'png' }, true ).mapTo( exhibitors );
+                // List data.
+                var data = exhibitors.map(function map( exhib ) {
+                    return {
+                        accessory:                  'DisclosureIndicator',
+                        action:                     eputils.action('ExhibitorDetail', { 'exhibitorID': exhib.id }),
+                        backgroundImage:            item.image.uri('@subs'),
+                        selectedBackgroundImage:    item.image.uri('@subs'),
+                        height:                     100
+                    }
+                });
+                // List JSON.
+                cx.json( data, 'exhibitors.json' );
+
+                // Updated exhibitors.
+                exhibitors = updatesByType.exhibitors;
+                // Page images.
+                buildImages( cx, exhibitors );
+                // Build pages.
+                cx.eval('template.html', exhibitors, 'exhibitor-{id}.html');
             }
         }
     }
