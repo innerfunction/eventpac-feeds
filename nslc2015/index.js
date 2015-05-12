@@ -1,5 +1,5 @@
 var mods = {
-    //ch:     require('cheerio'),
+    ch:     require('cheerio'),
 	df: 	require('dateformat'),
 	path:	require('path'),
 	tt:		require('semo/lib/tinytemper')
@@ -130,53 +130,25 @@ var feed = {
         page: {
             depends: "page",
             build: function(cx, updatesByType) {
-                /*
-                var updates = updatesByType.page.map(function map( post ) {
-                    return {
-                        id:         post.id,
-                        title:      post.title,
-                        content:    post.content
-                    }
-                });
-                buildImages( cx, updates );
-                for (var idx in updates) {
-                    var post = updates[idx];
-                    cx.eval('template.html', post, 'page-'+post.id+'.html');
-                }
-                */
-                updatesByType.page.forEach(function each( update ) {
-                    if( update.id == '46' ) {
-                        // Convert the exhibitor page to a JSON list.
-                        // First load the page's html.
-                        var $ = mods.ch.load( update.content );
-                        var items = $('a').map(function map() {
-                            var $a = $(this);
-                            var src= $a.find('img').attr('src');
+                updatesByType.page.forEach(function each( page ) {
+                    var template = 'template.html';
+                    switch( page.slug ) {
+                    case 'follow-us':
+                        var $ = mods.ch.load( page.content );
+                        page.items = $('li a').map(function map() {
+                            $a = $(this);
+                            var title = $a.text();
                             return {
-                                href:   $a.attr('href'),
-                                image:  src
-                            }
+                                id:     title.toLowerCase(),
+                                url:    $a.attr('href'),
+                                title:  title
+                            };
                         }).get();
-                        // Extract image srcs.
-                        var srcs = items.map(function map( item ) { return item.image; });
-                        // Download and resize images.
-                        var images = cx.images( srcs );
-                        images.resize({ height: 100, format: 'jpeg' }, true ).mapTo( items, 'image' );
-                        // Generate the JSON.
-                        var data = items.map(function map( item ) {
-                            return {
-                                accessory:               'DisclosureIndicator',
-                                action:                  item.href,
-                                backgroundImage:         item.image.uri('@subs'),
-                                selectedBackgroundImage: item.image.uri('@subs'),
-                                height:                  100
-                            }
-                        });
-                        cx.json( data, 'exhibitors.json', true );
+                        template = 'followus.html';
+                        break;
+                    default:
                     }
-                    else {
-                        cx.eval('template.html', update, 'page-{id}.html');
-                    }
+                    cx.eval( template, page, 'page-{slug}.html');
                 });
             }
         },
