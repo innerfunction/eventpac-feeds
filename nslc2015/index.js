@@ -60,25 +60,20 @@ var feed = {
     },
     types: {
         page: function( post) {
-            var twitterURL = "";
-            if (post.title == "Contact") {
-                twitterURL = "https://twitter.com/Ecommerce_Expo";
-            }
             return {
                 id:         post.id,
                 title:      post.title,
                 status:     post.status,
-                twitterURL: twitterURL,
+                slug:       post.slug,
                 content:    formatHTML( post.content )
             }
         },
-        events: function( post ) {
-            var occurrence = post.occurrences[0];
+        programme: function( post ) {
+            var occurrence = post['event-date'];
             var timeMarker  = (settings.timeShape == 'circle' ) ? ' <br/> ' : '';
             return {
                 id:             post.id,
                 title:          post.title,
-                occurrences:    post.occurrences,
                 date: {
                     startDate:      mods.df( occurrence.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
                     endDate:        mods.df( occurrence.endDateTime, 'dddd, mmmm dS')
@@ -94,7 +89,7 @@ var feed = {
                 content:        formatHTML( post.content ),
                 performer:      post.performers,
                 image:          post.photo,
-                type:           'events',
+                type:           'programme',
                 shape:          settings.timeShape
             }
         },
@@ -136,15 +131,15 @@ var feed = {
                         var $a = $(this);
                         var href = $a.attr('href');
                         var text = $a.text();
-                        var r = /^\s*(@\w+)\s+(.*)/.exec( text );
+                        var r = /^\s*@([\w-]+)\s+(.*)/.exec( text );
                         if( r ) {
                             var data = {
                                 icon:   r[1],
                                 url:    href,
                                 title:  r[2]
                             }
-                            var html = '<button class="social {icon}"><a href="{url}"><i class="fa fa-{icon}"></i>{title}</a></button>';
-                            $a.replaceWith( $( tt.eval( html, data ) ) );
+                            var html = '<button class="social {icon}"><a href="{url}"><i class="fa fa-{icon}"></i>&nbsp;{title}</a></button>';
+                            $a.replaceWith( $( mods.tt.eval( html, data ) ) );
                         }
                     });
                     page.content = $.html();
@@ -153,11 +148,10 @@ var feed = {
                 cx.eval('template.html', updates, 'page-{slug}.html');
             }
         },
-        events: {
-            depends: 'events',
+        programme: {
+            depends: 'programme',
             build: function( cx, updatesByType ) {
-                var updates = updatesByType.events.map(function map( post ) {
-                    var occurrence = post.occurrences[0];
+                var updates = updatesByType.programme.map(function map( post ) {
                     return {
                         id:             post.id,
                         type:           post.type,
@@ -233,7 +227,7 @@ var feed = {
                 var srcs = exhibitors.map(function map( exhib ) {
                     return exhib.image;
                 });
-                cx.images( srcs ).resize({ height: 100, format: 'png' }, true ).mapTo( exhibitors );
+                cx.images( srcs ).resize({ height: 100, format: 'png' }, true ).mapTo( exhibitors, 'image' );
                 // List data.
                 var data = exhibitors.map(function map( exhib ) {
                     return {
