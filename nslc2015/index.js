@@ -12,7 +12,8 @@ function isPublished( post ) {
     return post.status == 'published';
 }
 
-function buildImages( cx, updates ) {
+function buildImages( cx, updates, opts ) {
+    opts = opts||{};
     var imageURLs = updates.map(function map( post ) {
         return post.image;	
     })
@@ -20,7 +21,10 @@ function buildImages( cx, updates ) {
         return !!url;
     });
     var images = cx.images( imageURLs );
-    images.resize({ width: 500, format: 'jpeg' }, true ).mapTo( updates, 'image' );
+    var size = opts.size||500;
+    var format = opts.format||'jpeg';
+    var mode = opts.mode||'crop';
+    images.resize({ width: size, height: size, format: format, mode: mode }, true ).mapTo( updates, 'image' );
 }
 
 function formatHTML( html ) {
@@ -62,6 +66,7 @@ var feed = {
         page: function( post) {
             return {
                 id:         post.id,
+                type:       'page',
                 title:      post.title,
                 status:     post.status,
                 slug:       post.slug,
@@ -69,7 +74,7 @@ var feed = {
             }
         },
         programme: function( post ) {
-            var occurrence = post['event-date'];
+            var occurrence = post['event-date'][0];
             var timeMarker  = (settings.timeShape == 'circle' ) ? ' <br/> ' : '';
             return {
                 id:             post.id,
@@ -112,7 +117,7 @@ var feed = {
         exhibitors: function( post ) {
             return {
                 id:                 post.id,
-                type:               post.type,
+                type:               'exhibitors',
                 title:              post.title,
                 content:            formatHTML( post.content ),
                 status:             post.status,
@@ -163,7 +168,7 @@ var feed = {
                         endTime:        post.endTime,
                         description:    post.description,
                         action:         eputils.action('EventDetail', { 'eventID': post.id }),
-                        image:          post.image,
+                        //image:          post.image,
                         content:        post.content,
                         shape:          post.shape
                     }
@@ -204,13 +209,15 @@ var feed = {
                 });
                 buildImages( cx, updates );
                 cx.eval('template.html', updates, 'speaker-{id}.html');
+                // List data
                 return updates.map(function update( post ) {
                     return {
                         id:             post.id,
                         type:           post.type,
                         title:          post.title,
                         description:    post.company,
-                        action:         post.action,
+                        image:          post.image && post.image.uri('@subs'),
+                        action:         post.action
                     }
                 });
             }
@@ -222,19 +229,32 @@ var feed = {
                 var exhibitors = cx.data.posts
                 .filter(function filter( post ) {
                     return post.type == 'exhibitors';
+                })
+                .map(function map( exhib ) {
+                    return {
+                        id:     exhib.id,
+                        title:  exhib.title,
+                        image:  exhib.image
+                    }
                 });
                 // List images.
                 var srcs = exhibitors.map(function map( exhib ) {
                     return exhib.image;
+                })
+                .filter(function filter( url ) {
+                    return !!url;
                 });
-                cx.images( srcs ).resize({ height: 100, format: 'png' }, true ).mapTo( exhibitors, 'image' );
+                cx.images( srcs ).resize({ height: 80, width: 280, format: 'png', mode: 'fit' }, true ).mapTo( exhibitors, 'image' );
                 // List data.
                 var data = exhibitors.map(function map( exhib ) {
+                    var imageURI = exhib.image && exhib.image.uri('@subs');
+                    var title = imageURI ? '' : exhib.title;
                     return {
                         accessory:                  'DisclosureIndicator',
                         action:                     eputils.action('ExhibitorDetail', { 'exhibitorID': exhib.id }),
-                        backgroundImage:            item.image.uri('@subs'),
-                        selectedBackgroundImage:    item.image.uri('@subs'),
+                        title:                      title,
+                        backgroundImage:            imageURI,
+                        selectedBackgroundImage:    imageURI,
                         height:                     100
                     }
                 });
