@@ -141,7 +141,7 @@ exports.extend = function( feed, _module ) {
         }
         // Copy base content.
         Log.debug('Copying base content');
-        cx.file('base/.').cp();
+        cx.file('base/*').cp();
         // Generate list of posts in current build scope
         var updates;
         if( doFullBuild ) {
