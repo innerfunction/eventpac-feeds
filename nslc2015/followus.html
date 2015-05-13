@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" x-manifest="cache.manifest">
+    <head>
+        <meta charset="utf-8">
+        <title>{title}</title>
+        <link rel="stylesheet" href="css/contentStyle.css">     
+        <link rel="stylesheet" href="css/font-awesome.css"> 
+    </head>
+    <body class="follow-us">
+        <header>
+            <div class="title">Follow us on social media</div>
+        </header>
+        <img src="images/doitmobile.png" width="100%" height="auto"/>
+        <div class="description ">
+            {#items}
+            <button class=" social {id}"> <a href="{url}"><i class=" fa fa-{id}"></i>{title}</a></button>
+            {/items}
+        </div>
+    </body>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/scripts.js"></script> 
+</html>

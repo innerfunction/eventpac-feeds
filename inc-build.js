@@ -171,7 +171,7 @@ exports.extend = function( feed, _module ) {
         var prevBuild = build.prevBuild;
         if( prevBuild ) {
             // If previous build found then copy its posts.
-            var prevPosts = prevBuild.meta.db.posts;
+            var prevPosts = prevBuild.db.posts;
             for( var id in prevPosts ) {
                 posts[id] = prevPosts[id];
             }

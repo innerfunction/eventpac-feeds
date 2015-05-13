@@ -52,10 +52,10 @@ function gradientProperty( styles ) {
 }
 var feed = {
     active: true,
-    name: settings.name,
+    name: 'nslc2015',
     opts: {
         exts: {
-            uriSchemes: eputils.schemes(settings.name)
+            uriSchemes: eputils.schemes('nslc2015')
         }
     },
     types: {
@@ -113,60 +113,44 @@ var feed = {
                 shape:              settings.imageShape,
                 banner:             banner
             }
+        },
+        exhibitors: function( post ) {
+            return {
+                id:                 post.id,
+                type:               post.type,
+                title:              post.title,
+                content:            formatHTML( post.content ),
+                status:             post.status,
+                image:              post.photo,
+                url:                post.exhibitorUrl
+            }
         }
     },
     targets: {
         page: {
             depends: "page",
             build: function(cx, updatesByType) {
-                /*
-                var updates = updatesByType.page.map(function map( post ) {
-                    return {
-                        id:         post.id,
-                        title:      post.title,
-                        content:    post.content
-                    }
-                });
-                buildImages( cx, updates );
-                for (var idx in updates) {
-                    var post = updates[idx];
-                    cx.eval('template.html', post, 'page-'+post.id+'.html');
-                }
-                */
-                updatesByType.page.forEach(function each( update ) {
-                    if( update.id == '46' ) {
-                        // Convert the exhibitor page to a JSON list.
-                        // First load the page's html.
-                        var $ = mods.ch.load( update.content );
-                        var items = $('a').map(function map() {
-                            var $a = $(this);
-                            var src= $a.find('img').attr('src');
-                            return {
-                                href:   $a.attr('href'),
-                                image:  src
+                var updates = updatesByType.page.map(function map( page ) {
+                    var $ = mods.ch.load( page.content );
+                    $('a').each(function each() {
+                        var $a = $(this);
+                        var href = $a.attr('href');
+                        var text = $a.text();
+                        var r = /^\s*(@\w+)\s+(.*)/.exec( text );
+                        if( r ) {
+                            var data = {
+                                icon:   r[1],
+                                url:    href,
+                                title:  r[2]
                             }
-                        }).get();
-                        // Extract image srcs.
-                        var srcs = items.map(function map( item ) { return item.image; });
-                        // Download and resize images.
-                        var images = cx.images( srcs );
-                        images.resize({ height: 100, format: 'jpeg' }, true ).mapTo( items, 'image' );
-                        // Generate the JSON.
-                        var data = items.map(function map( item ) {
-                            return {
-                                accessory:               'DisclosureIndicator',
-                                action:                  item.href,
-                                backgroundImage:         item.image.uri('@subs'),
-                                selectedBackgroundImage: item.image.uri('@subs'),
-                                height:                  100
-                            }
-                        });
-                        cx.json( data, 'exhibitors.json', true );
-                    }
-                    else {
-                        cx.eval('template.html', update, 'page-{id}.html');
-                    }
+                            var html = '<button class="social {icon}"><a href="{url}"><i class="fa fa-{icon}"></i>{title}</a></button>';
+                            $a.replaceWith( $( tt.eval( html, data ) ) );
+                        }
+                    });
+                    page.content = $.html();
+                    return page;
                 });
+                cx.eval('template.html', updates, 'page-{slug}.html');
             }
         },
         events: {
@@ -235,6 +219,40 @@ var feed = {
                         action:         post.action,
                     }
                 });
+            }
+        },
+        exhibitors: {
+            depends: 'exhibitors',
+            build: function( cx, updatesByType ) {
+                // Complete exhibitors list.
+                var exhibitors = cx.data.posts
+                .filter(function filter( post ) {
+                    return post.type == 'exhibitors';
+                });
+                // List images.
+                var srcs = exhibitors.map(function map( exhib ) {
+                    return exhib.image;
+                });
+                cx.images( srcs ).resize({ height: 100, format: 'png' }, true ).mapTo( exhibitors );
+                // List data.
+                var data = exhibitors.map(function map( exhib ) {
+                    return {
+                        accessory:                  'DisclosureIndicator',
+                        action:                     eputils.action('ExhibitorDetail', { 'exhibitorID': exhib.id }),
+                        backgroundImage:            item.image.uri('@subs'),
+                        selectedBackgroundImage:    item.image.uri('@subs'),
+                        height:                     100
+                    }
+                });
+                // List JSON.
+                cx.json( data, 'exhibitors.json' );
+
+                // Updated exhibitors.
+                exhibitors = updatesByType.exhibitors;
+                // Page images.
+                buildImages( cx, exhibitors );
+                // Build pages.
+                cx.eval('template.html', exhibitors, 'exhibitor-{id}.html');
             }
         }
     }
