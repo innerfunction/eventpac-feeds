@@ -8,6 +8,7 @@ var format = require('util').format;
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 var settings = require('./settings');
+var menus = require('./menus');
 var ICalDateFormat = 'UTC:yyyymmdd\'T\'HHMMss\'Z\'';
 
 function isPublished( post ) {
@@ -140,6 +141,12 @@ var feed = {
         }
     },
     targets: {
+        menus: {
+            build: function( cx ) {
+                cx.eval('menu.html', menus.si, 'simenu.html');
+                cx.eval('menu.html', menus.upcoming, 'upcoming.html');
+            }
+        },
         page: {
             depends: "page",
             build: function(cx, updatesByType) {
@@ -279,7 +286,8 @@ var feed = {
                 .filter(function filter( url ) {
                     return !!url;
                 });
-                cx.images( srcs ).resize({ height: 70, width: 250, format: 'png', mode: 'fit' }, true ).mapTo( exhibitors, 'image' );
+                var imgs = cx.images( srcs ).resize({ height: 60, width: 240, format: 'png', mode: 'fit' }, true );
+                imgs.mapTo( exhibitors, 'image' );
                 // List data.
                 var data = exhibitors.map(function map( exhib ) {
                     var imageURI = exhib.image && exhib.image.uri('@subs');
@@ -290,21 +298,26 @@ var feed = {
                         title:                      title,
                         backgroundImage:            imageURI,
                         selectedBackgroundImage:    imageURI,
-                        height:                     100
+                        height:                     60
                     }
                 });
                 // List JSON.
                 cx.json( data, 'exhibitors.json' );
 
                 // Updated exhibitors.
-                exhibitors = updatesByType.exhibitors;
-                exhibitors.forEach(function each( exhib ) {
+                exhibitors = updatesByType.exhibitors.map(function map( exhib ) {
+                    var content = exhib.content;
                     if( exhib.url ) {
-                        exhib.content += linkButtonHTML('globe', exhib.url, 'Website');
+                        content += linkButtonHTML('globe', exhib.url, 'Website');
+                    }
+                    return {
+                        id:         exhib.id,
+                        title:      exhib.title,
+                        banner:     exhib.image,
+                        content:    content
                     }
                 });
-                // Page images.
-                buildImages( cx, exhibitors );
+                imgs.mapTo( exhibitors, 'banner');
                 // Build pages.
                 cx.eval('template.html', exhibitors, 'exhibitor-{id}.html');
             }

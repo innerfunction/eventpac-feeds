@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" x-manifest="cache.manifest">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">        
+        <meta charset="utf-8">
+        <title>{title}</title>
+        <link rel="stylesheet" href="css/contentStyle.css">
+    </head>
+    <body class="programme" style="height:100%;background: url(images/program-image.png) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+    <img src="images/ecommerce.png" width="100%" height="auto" />
+    <ul>
+        {#items}
+        <li class="event"  >
+            <a class="details-container" href="event:{action}">
+                <div class="details">
+                    <p class="date">{title}</p>
+                    {?description}
+                    <h1 class="desc">{description}</h1>
+                    {/description}
+                    <p class="arrow"><img src="images/listArrow-white.png" width="10px" height="auto"/></p>
+                </div>
+            </a>
+        </li>
+        {/items}
+    </ul>
+    </body>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        var $ev = $('.event');
+        var eventHeight = $('.event').height();
+        var windowHeight =$(window).height();
+        var eventPosition = (windowHeight / 2) - (eventHeight / 2)
+        $ev.css('top', eventPosition -20);
+        $('body').css('height', windowHeight+'px')
+    </script>
+</html>
