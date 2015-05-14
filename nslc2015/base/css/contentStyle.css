@@ -58,7 +58,7 @@ header,
 .header {
   /*padding: 1.5em ;*/
   /*30px*/
-  text-align: center;
+  text-align: left;
 
   background: #00659a; /* Old browsers */
   background: -moz-linear-gradient(left, #00659a 0%, #004c66 100%); /* FF3.6+ */
@@ -75,8 +75,8 @@ header > div.title,
 .header > div.title {
   font-size: 30px;
   color: #ffffff;
-  padding:.4em; /* 12 px*/
-  text-align: center;
+  padding:.2em; /* 12 px*/
+  text-align: left;
 
 }
 .events >.header > .title,
@@ -134,6 +134,9 @@ header > .short-description {
 .shape-container.circle > div {
   height: 87.5px;
   /*5.46875em*/
+}
+.shape-container.circle  > p {
+  height: 80.5px;
 }
 .shape-container.circle.time > div:first-child {
   /*margin: 0 -0.9375em; -15px*/
@@ -243,6 +246,13 @@ header > .short-description {
   line-height: 1.4;
 
 }
+.description p {
+  margin: 9px 0px;
+}
+.description h1 {
+  line-height: 1.1;
+  margin: 8px 0;
+}
 @media (min-height: 450px) {
   .fixed {
     display: block;
@@ -331,6 +341,12 @@ body.programme{
 
 .speaker .shape-container.circle.image > div > p{
   background:#d1dd2c;
+}
+.speakers header > div.title,
+.speakers  .header > div.title {
+
+  text-align: center;
+
 }
 /*   contact   */
 .contact > .description > .button {
@@ -496,7 +512,7 @@ body.programme{
 }
 .shape-container.banner.time a{
   display: block;
-  padding:13px ;
+  padding:.2em 13px ;
     font-size: 28px;
   font-style: normal;
   font-weight: 100;
@@ -508,7 +524,7 @@ body.programme{
 }
 .title.speakers{
   line-height: 1;
-  margin-top: 5px;
+  margin: 5px 0;
   font-size:28px;
 }
 .speakers-section{
