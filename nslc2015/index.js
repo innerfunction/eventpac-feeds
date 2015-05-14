@@ -110,6 +110,28 @@ var feed = {
                 speakers:       post.speakers
             }
         },
+        upcomingevents: function( post ) {
+            var occurrence = post['event-date'][0];
+            var timeMarker = '';
+            return {
+                id:             post.id,
+                type:           'upcomingevents',
+                title:          post.title,
+                date: {
+                    startDate:      mods.df( occurrence.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
+                    endDate:        mods.df( occurrence.endDateTime, 'dddd, mmmm dS')
+                },
+                time: {
+                    startTime:      mods.df( occurrence.startDateTime, 'HH:MM') +timeMarker ,
+                    endTime:        timeMarker + mods.df( occurrence.endDateTime, 'HH:MM')
+                },
+                description:    mods.df( occurrence.startDateTime, 'HH:MM') + ' - ' + mods.df( occurrence.endDateTime, 'HH:MM'),
+                status:         post.status,
+                startTime:      occurrence.startDateTime,
+                endTime:        occurrence.endDateTime,
+                content:        formatHTML( post.content )
+            }
+        },
         speakers: function( post ) {
             var banner = (settings.imageShape == "banner") ? true : false;
             return {
@@ -144,30 +166,46 @@ var feed = {
         menus: {
             build: function( cx ) {
                 cx.eval('menu.html', menus.si, 'simenu.html');
-                cx.eval('menu.html', menus.upcoming, 'upcoming.html');
             }
         },
         page: {
             depends: "page",
             build: function(cx, updatesByType) {
-                var updates = updatesByType.page.map(function map( page ) {
+                var pages = updatesByType.page;
+                var updates = [];
+                for( var i = 0; i < pages.length; i++ ) {
+                    var page = pages[i];
                     var $ = mods.ch.load( page.content );
-                    $('a').each(function each() {
-                        var $a = $(this);
-                        var href = $a.attr('href');
-                        var text = $a.text();
-                        var r = /^\s*@([\w-]+)\s+(.*)/.exec( text );
-                        if( r ) {
-                            var icon = r[1];
-                            var url = href;
-                            var title = r[2];
-                            var html = linkButtonHTML( icon, url, title );
-                            $a.replaceWith( $( html ) );
-                        }
-                    });
-                    page.content = $.html();
-                    return page;
-                });
+                    if( page.slug == 'conference-attendees' ) {
+                        var attendees = [];
+                        $('a').each(function each() {
+                            var $a = $(this);
+                            attendees.push({
+                                accessory:  'DisclosureIndicator',
+                                title:      $a.text(),
+                                action:     $a.attr('href')
+                            });
+                        });
+                        cx.json( attendees, 'attendees.json');
+                    }
+                    else {
+                        $('a').each(function each() {
+                            var $a = $(this);
+                            var href = $a.attr('href');
+                            var text = $a.text();
+                            var r = /^\s*@([\w-]+)\s+(.*)/.exec( text );
+                            if( r ) {
+                                var icon = r[1];
+                                var url = href;
+                                var title = r[2];
+                                var html = linkButtonHTML( icon, url, title );
+                                $a.replaceWith( $( html ) );
+                            }
+                        });
+                        page.content = $.html();
+                        updates.push( page );
+                    }
+                }
                 cx.eval('template.html', updates, 'page-{slug}.html');
             }
         },
@@ -218,6 +256,35 @@ var feed = {
                         action:         post.action
                     }
                 });
+            }
+        },
+        upcomingevents: {
+            depends: 'upcomingevents',
+            build: function( cx, updatesByType ) {
+                var updates = updatesByType.upcomingevents.map(function map( post ) {
+                    return {
+                        id:             post.id,
+                        uid:            format('eventpac-%s-%s', feed.name, post.id ),
+                        type:           post.type,
+                        title:          post.title,
+                        description:    post.description,
+                        date:           post.date,
+                        time:           post.time,
+                        startTime:      post.startTime,
+                        endTime:        post.endTime,
+                        action:         eputils.action('EventDetail', { 'eventID': post.id }),
+                        content:        post.content,
+                        calendar: {
+                            startTime:  mods.df( post.startTime, ICalDateFormat ),
+                            endTime:    mods.df( post.endTime, ICalDateFormat ),
+                            nowTime:    mods.df( new Date(), ICalDateFormat ),
+                            location:   settings.name
+                        }
+                    }
+                });
+                cx.eval('icalendar.txt', updates, 'event-{id}.ics');
+                cx.eval('event-template.html', updates, 'event-{id}.html');
+                cx.eval('menu.html', menus.upcoming, 'upcoming.html');
             }
         },
         speakers: {
@@ -286,7 +353,7 @@ var feed = {
                 .filter(function filter( url ) {
                     return !!url;
                 });
-                var imgs = cx.images( srcs ).resize({ height: 60, width: 240, format: 'png', mode: 'fit' }, true );
+                var imgs = cx.images( srcs ).resize({ height: 80, width: 240, format: 'png', mode: 'fit' }, true );
                 imgs.mapTo( exhibitors, 'image' );
                 // List data.
                 var data = exhibitors.map(function map( exhib ) {
@@ -298,11 +365,11 @@ var feed = {
                         title:                      title,
                         backgroundImage:            imageURI,
                         selectedBackgroundImage:    imageURI,
-                        height:                     60
+                        height:                     80
                     }
                 });
                 // List JSON.
-                cx.json( data, 'exhibitors.json' );
+                cx.json( data, 'exhibitors.json');
 
                 // Updated exhibitors.
                 exhibitors = updatesByType.exhibitors.map(function map( exhib ) {
