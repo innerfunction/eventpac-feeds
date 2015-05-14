@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" x-manifest="cache.manifest">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <link rel="stylesheet" href="css/font-awesome.css">
+        <link rel="stylesheet" href="css/contentStyle.css">
+        <title>{title}</title>
+    </head>
+    <body class="programme">
+        <div class=" header fixed">
+            <div class="title" >{title}</div>
+        </div>
+        <header>
+            <div class="title" >{title}</div>
+        </header>
+
+        <div class="date">{date.startDate}</div>
+	    <div class="shape-container time banner" >       
+            <div>
+            <p>
+            <span>
+                <a href="event:service/document+open@subs:/nslc2015/event-{id}.ics">
+                    {time.startTime|s} - {time.endTime|s}
+                    &nbsp;
+                    <i class="fa fa-plus-circle"></i>
+                </a>
+            </span>
+            </p>
+            </div>
+	    </div> 
+
+	    <div class="description">
+            {?speakers}
+	 	    <div class="speakers-section">
+			    <p class="title speakers"> Speakers</p>
+                {#speakers}
+			        <p><a class="speaker-link" href="event:{uri}">{name}<i class="fa fa-arrow-right"></i></a></p>
+                {/speakers}
+		    </div>
+            {/speakers}
+
+            <p>{content|s}</p>
+
+	    </div>
+    </body>
+</html>
+

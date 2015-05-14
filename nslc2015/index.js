@@ -4,9 +4,11 @@ var mods = {
 	path:	require('path'),
 	tt:		require('semo/lib/tinytemper')
 };
+var format = require('util').format;
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 var settings = require('./settings');
+var ICalDateFormat = 'UTC:yyyymmdd\'T\'HHMMss\'Z\'';
 
 function isPublished( post ) {
     return post.status == 'published';
@@ -54,6 +56,17 @@ function gradientProperty( styles ) {
     }
     return styles;
 }
+
+function linkButtonHTML( icon, url, title ) {
+    var data = {
+        icon:   icon,
+        url:    url,
+        title:  title
+    };
+    var html = '<button class="social {icon}"><a href="{url}"><i class="fa fa-{icon}"></i>&nbsp;{title}</a></button>';
+    return mods.tt.eval( html, data );
+}
+
 var feed = {
     active: true,
     name: 'nslc2015',
@@ -78,6 +91,7 @@ var feed = {
             var timeMarker  = (settings.timeShape == 'circle' ) ? ' <br/> ' : '';
             return {
                 id:             post.id,
+                type:           'programme',
                 title:          post.title,
                 date: {
                     startDate:      mods.df( occurrence.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
@@ -92,10 +106,7 @@ var feed = {
                 startTime:      occurrence.startDateTime,
                 endTime:        occurrence.endDateTime,
                 content:        formatHTML( post.content ),
-                performer:      post.performers,
-                image:          post.photo,
-                type:           'programme',
-                shape:          settings.timeShape
+                speakers:       post.speakers
             }
         },
         speakers: function( post ) {
@@ -103,10 +114,12 @@ var feed = {
             return {
                 id:                 post.id,
                 title:              post.title,
+                shortDescription:   post.shortDescription,
                 content:            formatHTML( post.content ),
                 company:            post.company,
-                shortDescription:   post.shortDescription,
-                linkedinURL:        post.linkedinUrl,
+                companyUrl:         post.companyUrl,
+                linkedin:           post.linkedin,
+                twitter:            post.twitter,
                 status:             post.status,
                 image:              post.photo,
                 type:               'speakers',
@@ -138,13 +151,11 @@ var feed = {
                         var text = $a.text();
                         var r = /^\s*@([\w-]+)\s+(.*)/.exec( text );
                         if( r ) {
-                            var data = {
-                                icon:   r[1],
-                                url:    href,
-                                title:  r[2]
-                            }
-                            var html = '<button class="social {icon}"><a href="{url}"><i class="fa fa-{icon}"></i>&nbsp;{title}</a></button>';
-                            $a.replaceWith( $( mods.tt.eval( html, data ) ) );
+                            var icon = r[1];
+                            var url = href;
+                            var title = r[2];
+                            var html = linkButtonHTML( icon, url, title );
+                            $a.replaceWith( $( html ) );
                         }
                     });
                     page.content = $.html();
@@ -157,24 +168,38 @@ var feed = {
             depends: 'programme',
             build: function( cx, updatesByType ) {
                 var updates = updatesByType.programme.map(function map( post ) {
+                    var speakers;
+                    if( post.speakers ) {
+                        speakers = post.speakers.map(function map( speaker ) {
+                            return {
+                                uri:    eputils.action('SpeakerDetail', { 'speakerID': speaker.ID }),
+                                name:   speaker.post_title
+                            }
+                        });
+                    }
                     return {
                         id:             post.id,
+                        uid:            format('eventpac-%s-%s', feed.name, post.id ),
                         type:           post.type,
                         title:          post.title,
-                        description:    post.title,
+                        description:    post.description,
                         date:           post.date,
                         time:           post.time,
                         startTime:      post.startTime,
                         endTime:        post.endTime,
-                        description:    post.description,
                         action:         eputils.action('EventDetail', { 'eventID': post.id }),
-                        //image:          post.image,
                         content:        post.content,
-                        shape:          post.shape
+                        speakers:       speakers,
+                        calendar: {
+                            startTime:  mods.df( post.startTime, ICalDateFormat ),
+                            endTime:    mods.df( post.endTime, ICalDateFormat ),
+                            nowTime:    mods.df( new Date(), ICalDateFormat ),
+                            location:   settings.name
+                        }
                     }
                 });
-                buildImages( cx, updates );
-                cx.eval('template.html', updates, 'event-{id}.html');
+                cx.eval('icalendar.txt', updates, 'event-{id}.ics');
+                cx.eval('event-template.html', updates, 'event-{id}.html');
                 return updates.map(function update( post ) {
                     return {
                         id:             post.id,
@@ -183,7 +208,7 @@ var feed = {
                         description:    post.description,
                         startTime:      post.startTime,
                         endTime:        post.endTime,
-                        action:         post.action,
+                        action:         post.action
                     }
                 });
             }
@@ -192,6 +217,16 @@ var feed = {
             depends: 'speakers',
             build: function( cx, updatesByType ) {
                 var updates = updatesByType.speakers.map(function map( post ) {
+                    var content = post.content;
+                    if( post.linkedin ) {
+                        content += linkButtonHTML('linkedin', post.linkedin, 'LinkedIn');
+                    }
+                    if( post.twitter ) {
+                        content += linkButtonHTML('twitter', post.twitter, 'Twitter');
+                    }
+                    if( post.companyUrl ) {
+                        content += linkButtonHTML('globe', post.companyUrl, 'Website');
+                    }
                     return {
                         id:                 post.id,
                         type:               post.type,
@@ -202,7 +237,7 @@ var feed = {
                         linkedinURL:        post.linkedinURL,
                         action:             eputils.action('SpeakerDetail', { 'speakerID': post.id }),
                         image:              post.image,
-                        content:            post.content,
+                        content:            content,
                         shape:              post.shape,
                         banner:             post.banner
                     }
@@ -232,9 +267,9 @@ var feed = {
                 })
                 .map(function map( exhib ) {
                     return {
-                        id:     exhib.id,
-                        title:  exhib.title,
-                        image:  exhib.image
+                        id:         exhib.id,
+                        title:      exhib.title,
+                        image:      exhib.image
                     }
                 });
                 // List images.
@@ -244,7 +279,7 @@ var feed = {
                 .filter(function filter( url ) {
                     return !!url;
                 });
-                cx.images( srcs ).resize({ height: 80, width: 280, format: 'png', mode: 'fit' }, true ).mapTo( exhibitors, 'image' );
+                cx.images( srcs ).resize({ height: 70, width: 250, format: 'png', mode: 'fit' }, true ).mapTo( exhibitors, 'image' );
                 // List data.
                 var data = exhibitors.map(function map( exhib ) {
                     var imageURI = exhib.image && exhib.image.uri('@subs');
@@ -263,6 +298,11 @@ var feed = {
 
                 // Updated exhibitors.
                 exhibitors = updatesByType.exhibitors;
+                exhibitors.forEach(function each( exhib ) {
+                    if( exhib.url ) {
+                        exhib.content += linkButtonHTML('globe', exhib.url, 'Website');
+                    }
+                });
                 // Page images.
                 buildImages( cx, exhibitors );
                 // Build pages.

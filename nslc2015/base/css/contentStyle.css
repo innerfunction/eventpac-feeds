@@ -113,7 +113,7 @@ header > .short-description {
 }
 .shape-container.banner.time > div > p {
   width: 200px;
-  margin: 0 auto;
+  margin: 0 13px;
   padding: 15px 0;
 }
 .shape-container.banner.time {
@@ -452,4 +452,66 @@ body.programme{
 .follow-us .linkedin i, .follow-us .facebook i, .follow-us .twitter i{ 
   color: #fff;
   background-color:transparent;
+}
+
+
+.speaker-link{
+  padding: 7px 8px;
+  display:block;
+  background: #00659a;
+  color:#fff;
+  font-size: 23px
+
+
+}
+.speaker-link i{
+  float:right;
+  margin:3px ;
+;
+}
+
+.speaker-link:hover{
+  color:#fff;
+}
+.time a:link, .time a, .time a:active, .time a:visited, .time a:hover{
+  color:#fff;
+  text-align: left;
+}
+.date{   
+  text-align: left;
+  padding-left:13px;
+  background: -moz-linear-gradient(left, #00659a 0%, #004c66 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00659a), color-stop(100%,#004c66));
+  background: -webkit-linear-gradient(left, #00659a 0%,#004c66 100%);
+  background: -o-linear-gradient(left, #00659a 0%,#004c66 100%);
+  background: -ms-linear-gradient(left, #00659a 0%,#004c66 100%);
+  background: linear-gradient(to right, #00659a 0%,#004c66 100%);}
+.shape-container.banner.time {
+  text-align:left;
+}
+.shape-container.banner.time > div > p{
+  padding:0;
+  margin:0;
+  width:auto;
+}
+.shape-container.banner.time a{
+  display: block;
+  padding:13px ;
+    font-size: 28px;
+  font-style: normal;
+  font-weight: 100;
+}
+.shape-container.banner.time i{
+  color:#fff;
+  margin-right:4px ;
+
+}
+.title.speakers{
+  line-height: 1;
+  margin-top: 5px;
+  font-size:28px;
+}
+.speakers-section{
+  border-bottom: solid 1px #00659a ;
+  margin-bottom: 13px
 }
