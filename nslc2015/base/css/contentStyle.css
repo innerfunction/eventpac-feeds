@@ -332,10 +332,11 @@ body.programme{
   background: transparent;
 }
 
-.event > .details-container > .details > h1.desc { 
-  font-size: 1em;
-  font-weight: 300;
+.event > .details-container > .details > .date >span.desc { 
+  font-size: .8em;
+  font-weight: 100;
   margin:0;
+  line-height: .8;
   background: transparent;
   color:#fff;
 }
