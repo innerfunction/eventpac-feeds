@@ -80,10 +80,20 @@ var feed = {
         page: function( post) {
             return {
                 id:         post.id,
+                slug:       post.slug,
                 type:       'page',
                 title:      post.title,
                 status:     post.status,
+                content:    formatHTML( post.content )
+            }
+        },
+        salesinstitute: function( post) {
+            return {
+                id:         post.id,
                 slug:       post.slug,
+                type:       'salesinstitute',
+                title:      post.title,
+                status:     post.status,
                 content:    formatHTML( post.content )
             }
         },
@@ -163,9 +173,27 @@ var feed = {
         }
     },
     targets: {
-        menus: {
-            build: function( cx ) {
-                cx.eval('menu.html', menus.si, 'simenu.html');
+        salesinstitute: {
+            depends: "salesinstitute",
+            build: function( cx, updatesByType ) {
+                var updates = updatesByType.salesinstitute.map(function map( post ) {
+                    return {
+                        id:             post.id,
+                        title:          post.title,
+                        description:    post.description,
+                        action:         eputils.action('DefaultWebView', { 'html': format('subs:/nslc2015/salesinstitute-%s.html', post.id ) }),
+                        content:        post.content
+                    }
+                });
+                cx.eval('template.html', updates, 'salesinstitute-{id}.html');
+
+                var upcoming = {
+                    id:     'upcoming-events',
+                    title:  'Upcoming Events',
+                    action: eputils.action('DefaultWebView', { 'html': 'subs:/nslc2015/menu-upcoming.html' })
+                };
+                var menu = { title: 'Sales Institute', items: [ upcoming ].concat( updates ) };
+                cx.eval('menu.html', menu, 'menu-salesinstitute.html');
             }
         },
         page: {
@@ -284,7 +312,8 @@ var feed = {
                 });
                 cx.eval('icalendar.txt', updates, 'event-{id}.ics');
                 cx.eval('event-template.html', updates, 'event-{id}.html');
-                cx.eval('menu.html', menus.upcoming, 'upcoming.html');
+                var menu = { title: 'Upcoming Events', items: updates };
+                cx.eval('menu.html', menu, 'menu-upcoming.html');
             }
         },
         speakers: {
