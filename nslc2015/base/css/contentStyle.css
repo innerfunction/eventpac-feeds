@@ -275,6 +275,10 @@ body.programme{
   }
 .programme .menu-content{
   position:absolute;
+  position: absolute;
+  display: block;
+  width: 100%;
+  background-color: #fff;
 }
 .list { 
   list-style: none;
