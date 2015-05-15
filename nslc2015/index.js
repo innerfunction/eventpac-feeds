@@ -134,7 +134,7 @@ var feed = {
                     startTime:      mods.df( occurrence.startDateTime, 'HH:MM') +timeMarker ,
                     endTime:        timeMarker + mods.df( occurrence.endDateTime, 'HH:MM')
                 },
-                description:    mods.df( occurrence.startDateTime, 'HH:MM') + ' - ' + mods.df( occurrence.endDateTime, 'HH:MM'),
+                description:    mods.df( occurrence.startDateTime, 'dddd, mmmm dS'),
                 status:         post.status,
                 startTime:      occurrence.startDateTime,
                 endTime:        occurrence.endDateTime,
@@ -323,6 +323,9 @@ var feed = {
                             location:   settings.name
                         }
                     }
+                })
+                .sort(function sort( p1, p2 ) {
+                    return p1.startTime < p2.startTime ? -1 : (p1.startTime > p2.startTime ? 1 : 0)
                 });
                 cx.eval('icalendar.txt', updates, 'event-{id}.ics');
                 cx.eval('event-template.html', updates, 'event-{id}.html');
