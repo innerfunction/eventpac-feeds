@@ -54,6 +54,9 @@ a:visited {
   margin-top: 0 ;
   display: none;
 }
+.clear{
+  clear: both;
+}
 header,
 .header {
   /*padding: 1.5em ;*/
@@ -270,18 +273,29 @@ body.programme{
 .programme .img {
    width: 100%;
   }
-
+.programme .menu-content{
+  position:absolute;
+}
 .list { 
   list-style: none;
   padding: 0;
   margin: 0;
   height:100%;
+  background-color: #fff;
 }
 .event { 
   color: #fff;
   width: 100%;
   margin-bottom: 2px;
-  position:absolute;
+  padding: 8px 0;
+
+  background: -moz-linear-gradient(left, #00659a 0%, #004c66 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00659a), color-stop(100%,#004c66)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #00659a 0%,#004c66 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #00659a 0%,#004c66 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #00659a 0%,#004c66 100%); /* IE10+ */
+  background: linear-gradient(to right, #00659a 0%,#004c66 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00659a', endColorstr='#004c66',GradientType=1 ); /* IE6-9 */
 }
 
 .event > .banner >img { 
@@ -293,22 +307,15 @@ body.programme{
 .event > .details-container{
   display: table;
   width: 100%;
-  margin-right: 10px;
   margin-top:-4px;
-  background: -moz-linear-gradient(left, #00659a 0%, #004c66 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00659a), color-stop(100%,#004c66)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #00659a 0%,#004c66 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #00659a 0%,#004c66 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #00659a 0%,#004c66 100%); /* IE10+ */
-  background: linear-gradient(to right, #00659a 0%,#004c66 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00659a', endColorstr='#004c66',GradientType=1 ); /* IE6-9 */
+  
   
 }
 
 .event > .details-container> .details {
 
   line-height: 1.2;
-  display: table-cell;
+  display: block;
   padding:8px 10px;
  
 } 
@@ -317,21 +324,24 @@ body.programme{
   font-size: 1.2em;
   font-weight: bold;
   margin:0;
+  float:left;
+  background: transparent;
 }
 
 .event > .details-container > .details > h1.desc { 
   font-size: 1em;
   font-weight: 300;
   margin:0;
-  background-color: transparent;
+  background: transparent;
   color:#fff;
 }
 
-.event > .details-container >  .arrow {
+.event > .details-container >   .arrow {
   vertical-align: middle;
   display: table-cell;
   padding-right:0px;
-
+  width:60px;
+  margin-top: 2px;
 }
 /* location */
 .location .description {
