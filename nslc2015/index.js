@@ -111,7 +111,7 @@ var feed = {
             }
         },
         upcomingevents: function( post ) {
-            var occurrence = post['event-date'][0];
+            var occurrence = post['upcoming-event-date'][0];
             var timeMarker = '';
             return {
                 id:             post.id,
