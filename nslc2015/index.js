@@ -8,7 +8,6 @@ var format = require('util').format;
 var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 var settings = require('./settings');
-var menus = require('./menus');
 var ICalDateFormat = 'UTC:yyyymmdd\'T\'HHMMss\'Z\'';
 
 function isPublished( post ) {
@@ -177,12 +176,27 @@ var feed = {
             depends: "salesinstitute",
             build: function( cx, updatesByType ) {
                 var updates = updatesByType.salesinstitute.map(function map( post ) {
+                    var $ = mods.ch.load( post.content );
+                    $('a').each(function each() {
+                        var $a = $(this);
+                        var href = $a.attr('href');
+                        var text = $a.text();
+                        var r = /^\s*@([\w-]+)\s+(.*)/.exec( text );
+                        if( r ) {
+                            var icon = r[1];
+                            var url = href;
+                            var title = r[2];
+                            var html = linkButtonHTML( icon, url, title );
+                            $a.replaceWith( $( html ) );
+                        }
+                    });
+                    var content = $.html();
                     return {
                         id:             post.id,
                         title:          post.title,
                         description:    post.description,
                         action:         eputils.action('DefaultWebView', { 'html': format('subs:/nslc2015/salesinstitute-%s.html', post.id ) }),
-                        content:        post.content
+                        content:        content
                     }
                 });
                 cx.eval('template.html', updates, 'salesinstitute-{id}.html');
@@ -245,8 +259,8 @@ var feed = {
                     if( post.speakers ) {
                         speakers = post.speakers.map(function map( speaker ) {
                             return {
-                                uri:    eputils.action('SpeakerDetail', { 'speakerID': speaker.ID }),
-                                name:   speaker.post_title
+                                uri:    eputils.action('SpeakerDetail', { 'speakerID': speaker.id }),
+                                name:   speaker.title
                             }
                         });
                     }
