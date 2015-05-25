@@ -4,6 +4,7 @@
 
 body {
   font-size: 18px;
+  background:#fff;
   background: linear-gradient(to right, #ffffff, #ffffff);
   font-family: Roboto;
 }
@@ -121,7 +122,16 @@ header > .short-description {
   padding: 15px 0;
 }
 .shape-container.banner.time {
-  background: linear-gradient(to right, #00659a, #004c66);
+  background: #00659a; /* Old browsers */
+  background: -moz-linear-gradient(left, #00659a 0%, #004c66 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00659a), color-stop(100%,#004c66)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #00659a 0%,#004c66 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #00659a 0%,#004c66 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #00659a 0%,#004c66 100%); /* IE10+ */
+  background: linear-gradient(to right, #00659a 0%,#004c66 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00659a', endColorstr='#004c66',GradientType=1 ); /* IE6-9 */
+ 
+
 }
 .shape-container.banner > div > p {
   margin: 0;
@@ -132,7 +142,7 @@ header > .short-description {
 }
 .shape-container.circle.time {
   margin-bottom: 110px;
-  background: linear-gradient(to right, #f8f8f8, #f8f8f8);
+  background:  #f8f8f8;
 }
 .shape-container.circle > p,
 .shape-container.circle > div {
