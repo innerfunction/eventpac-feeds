@@ -9,6 +9,10 @@ var utils = require('semo/eventpac/utils');
 var eputils = require('../eputils');
 var settings = require('./settings');
 var ICalDateFormat = 'UTC:yyyymmdd\'T\'HHMMss\'Z\'';
+// Calculate a timezone offset to apply to each date when formatting.
+// The first term is the output timezone offset, in ms per hour;
+// The second term is the build environment's timezone offset. Date.getTimezoneOffset() returns the offset in minutes.
+var TimezoneOffset = (1 * 60 * 60 * 1000) + (new Date().getTimezoneOffset() * 60 * 1000);
 
 function isPublished( post ) {
     return post.status == 'published';
@@ -27,6 +31,12 @@ function buildImages( cx, updates, opts ) {
     var format = opts.format||'jpeg';
     var mode = opts.mode||'crop';
     images.resize({ width: size, height: size, format: format, mode: mode }, true ).mapTo( updates, 'image' );
+}
+
+function formatDate( date, format ) {
+    date = new Date( date );
+    date = new Date( date.getTime() + TimezoneOffset );
+    return mods.df( date, format );
 }
 
 function formatHTML( html ) {
@@ -104,14 +114,14 @@ var feed = {
                 type:           'programme',
                 title:          post.title,
                 date: {
-                    startDate:      mods.df( occurrence.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
-                    endDate:        mods.df( occurrence.endDateTime, 'dddd, mmmm dS')
+                    startDate:      formatDate( occurrence.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
+                    endDate:        formatDate( occurrence.endDateTime, 'dddd, mmmm dS')
                 },
                 time: {
-                    startTime:      mods.df( occurrence.startDateTime, 'HH:MM') +timeMarker ,
-                    endTime:        timeMarker + mods.df( occurrence.endDateTime, 'HH:MM')
+                    startTime:      formatDate( occurrence.startDateTime, 'HH:MM') +timeMarker ,
+                    endTime:        timeMarker + formatDate( occurrence.endDateTime, 'HH:MM')
                 },
-                description:    mods.df( occurrence.startDateTime, 'HH:MM') + ' - ' + mods.df( occurrence.endDateTime, 'HH:MM'),
+                description:    formatDate( occurrence.startDateTime, 'HH:MM') + ' - ' + formatDate( occurrence.endDateTime, 'HH:MM'),
                 status:         post.status,
                 startTime:      occurrence.startDateTime,
                 endTime:        occurrence.endDateTime,
@@ -127,14 +137,14 @@ var feed = {
                 type:           'upcomingevents',
                 title:          post.title,
                 date: {
-                    startDate:      mods.df( occurrence.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
-                    endDate:        mods.df( occurrence.endDateTime, 'dddd, mmmm dS')
+                    startDate:      formatDate( occurrence.startDateTime, 'dddd, mmmm dS'), /*h:MM TT, mmmm dS, yyyy*/
+                    endDate:        formatDate( occurrence.endDateTime, 'dddd, mmmm dS')
                 },
                 time: {
-                    startTime:      mods.df( occurrence.startDateTime, 'HH:MM') +timeMarker ,
-                    endTime:        timeMarker + mods.df( occurrence.endDateTime, 'HH:MM')
+                    startTime:      formatDate( occurrence.startDateTime, 'HH:MM') +timeMarker ,
+                    endTime:        timeMarker + formatDate( occurrence.endDateTime, 'HH:MM')
                 },
-                description:    mods.df( occurrence.startDateTime, 'dddd, mmmm dS'),
+                description:    formatDate( occurrence.startDateTime, 'dddd, mmmm dS'),
                 status:         post.status,
                 startTime:      occurrence.startDateTime,
                 endTime:        occurrence.endDateTime,
@@ -278,9 +288,9 @@ var feed = {
                         content:        post.content,
                         speakers:       speakers,
                         calendar: {
-                            startTime:  mods.df( post.startTime, ICalDateFormat ),
-                            endTime:    mods.df( post.endTime, ICalDateFormat ),
-                            nowTime:    mods.df( new Date(), ICalDateFormat ),
+                            startTime:  formatDate( post.startTime, ICalDateFormat ),
+                            endTime:    formatDate( post.endTime, ICalDateFormat ),
+                            nowTime:    formatDate( new Date(), ICalDateFormat ),
                             location:   settings.name
                         }
                     }
@@ -317,9 +327,9 @@ var feed = {
                         action:         eputils.action('EventDetail', { 'eventID': post.id }),
                         content:        post.content,
                         calendar: {
-                            startTime:  mods.df( post.startTime, ICalDateFormat ),
-                            endTime:    mods.df( post.endTime, ICalDateFormat ),
-                            nowTime:    mods.df( new Date(), ICalDateFormat ),
+                            startTime:  formatDate( post.startTime, ICalDateFormat ),
+                            endTime:    formatDate( post.endTime, ICalDateFormat ),
+                            nowTime:    formatDate( new Date(), ICalDateFormat ),
                             location:   settings.name
                         }
                     }
