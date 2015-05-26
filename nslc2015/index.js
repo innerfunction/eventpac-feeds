@@ -35,7 +35,10 @@ function buildImages( cx, updates, opts ) {
 
 function formatDate( date, format ) {
     date = new Date( date );
-    date = new Date( date.getTime() + TimezoneOffset );
+    // If output format isn't for UTC then apply timezone correction.
+    if( format.indexOf('UTC:') != 0 ) {
+        date = new Date( date.getTime() + TimezoneOffset );
+    }
     return mods.df( date, format );
 }
 
