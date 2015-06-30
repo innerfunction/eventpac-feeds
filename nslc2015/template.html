@@ -2,9 +2,9 @@
 <html lang="en" x-manifest="cache.manifest">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">  
         <link rel="stylesheet" href="css/font-awesome.css"> 
         <link rel="stylesheet" href="css/contentStyle.css"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">  
         <title>{title}</title>
     </head>
     <body class="{type}">
@@ -24,39 +24,24 @@
 
         </header> 
         {#image}
-       
-            <div class="shape-container image {shape}" style=" 
-                    {#banner}
-                         background: url('{src}') no-repeat center center fixed; 
-                    {/banner}"
-                    >
-                    <div><p><img src="{src}"/> </p></div>
-                    <p></p>                        
+            <div class="shape-container image {shape}">
+                <div><p><img src="{src}"/> </p></div>
+                <p></p>                        
             </div> 
-                  
         {/image} 
-        {#time}
-            <div class="shape-container time {shape}" >       
-                
-                    <div><p><span>{startTime|s} - {endTime|s} </span> </p></div>
+        {#banner}
+            <div class="shape-container image banner" style="background: url('{src}') no-repeat center center; height: 60px; padding: 1em 0em;">
+            &nbsp;
             </div> 
-        {/time}
+        {/banner} 
         <div class="description {style}">      
             <p>{content|s}</p>
-
-
-       {#linkedinURL}
-           <button class="linkedin"> <a href="{linkedinURL}"><i class=" fa fa-linkedin"></i>LinkedIn</a></button>
-        {/linkedinURL}
-       {#twitterURL}
-           <button class="twitter"> <a href="{twitterURL}"><i class=" fa fa-twitter"></i>Twitter</a></button>
-        {/twitterURL}
-        {#performer}
-            <p class="title speakers"> {content.title} </p>
-            <p><a class="speaker-link" href="event:nav/open+view@view:SpeakerWebView+html@subs:/nagp/speaker-{id}.html">{title}</a></p>
-        {/performer}
+            {#linkedinURL}
+               <button class="linkedin"> <a href="{linkedinURL}"><i class=" fa fa-linkedin"></i>LinkedIn</a></button>
+            {/linkedinURL}
+            {#twitterURL}
+               <button class="twitter"> <a href="{twitterURL}"><i class=" fa fa-twitter"></i>Twitter</a></button>
+            {/twitterURL}
         </div>
     </body>
-   <!-- <script src="js/jquery.min.js"></script>
-     <script src="js/scripts.js"></script> -->
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" x-manifest="cache.manifest">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">        
+        <meta charset="utf-8">
+        <title>{title}</title>
+        <link rel="stylesheet" href="css/contentStyle.css">
+    </head>
+    <body class="programme" style="height:100%; background-color:#fff">
+    <div class="menu-content">
+        <img src="images/the-institute-sales.png" width="100%" height="auto" />
+        <ul class="list">
+            {#items}
+            <li class="event"  >
+                <a class="details-container" href="event:{action}">
+                    <div class="details">
+                        <p class="date">{title}  {?description}<br/>
+                        <span class="desc">{description}</span>
+                        {/description}</p>
+                       
+
+                    </div>
+                    <p class="arrow"><img src="images/listArrow-white.png" width="10px" height="auto"/></p>
+                </a>
+            </li>
+            {/items}
+        </ul>
+    </div>
+    </body>
+    <script src="js/jquery.min.js"></script>
+    <script>
+      /*  var $menu = $('.menu-content');
+        var eventHeight = $menu.height();
+        var windowHeight =$(window).height();
+        var menuPosition = (windowHeight / 2) - (eventHeight / 2);
+        $menu.css('top', menuPosition );
+        $('body').css('height', windowHeight+'px');/*
+    </script>
+</html>
