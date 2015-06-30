@@ -15,7 +15,7 @@
 
 ## Types
 
-### Performers, events, pages, locations
+#### Performers, events, pages, locations
 
 - Title : Change the display name
 - Styles : Overwrite the main styles with specific CSS
