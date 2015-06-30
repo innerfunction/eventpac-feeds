@@ -16,20 +16,20 @@ function capitalize( string, capitalize ) {
 }
 function generateLessVars( object, data ) {
     //called from getLessVars.
-    //Check the properties in each section and subsections (such as title in header), and generate vars and structure from them
+    //Check the properties in each section and subsections (such as title is inside header), and generate vars and structure from them
 
-    //object: a section
-    //data: 
-    var sectionName = data.sectionName; //Name of the section we are checking (to include less structure)
-    var sectionSet = data.sectionSet ; //Set of sections in case whe find more (to generate the vars)
-    var typeName = data.typeName; //type we want to override it styles, if generalVars typename= '''
+                                            //object: a section to read.
+                                            //data: 
+    var typeName = data.typeName;                //page type we want to override it styles, if generalVars typename= '' '                                        
+    var sectionName = data.sectionName;          //Name of the section we are checking (to include less structure)
+    var sectionSet = data.sectionSet ;           //Set of parent sections in case whe find more than one (to generate the name vars)
 
     var lessStructure='', overrideVars='',lessProperties='';
 
     var cssStylesProp = { 'backgroundColor':'background','HBackgroundColor':'background', 'fontSize':'font-size', 'fontStyle':'font-style', 'textAlign':'text-align', 'color':'color', 'fontFamily':'font-family'};
 
-    lessStructure += '    >.'+sectionName;
-    if (sectionName =='header') {
+    lessStructure += '    > .'+sectionName;
+    if (sectionName =='header') {  // if the section is the header, we need to apply styles for class header and html element header
         lessStructure += ' , >'+ sectionName;
     } 
 
@@ -41,34 +41,43 @@ function generateLessVars( object, data ) {
         //if is a property, generate the code.
         if ( (typeof object[prop] != 'object') && ( cssStylesProp[prop] != "undefined" ) ) {
         
-            var property = object[prop];
+            var propertyValue = object[prop];
             sectionSet = (typeName =='' ) ? capitalize(sectionSet, false) : capitalize(sectionSet, true);
             
             //add the var
-            var varName = '@' +typeName+ sectionSet  +capitalize(prop, true) ;
-            var newVar = varName + ' : '+ property+';  \n';
-            //add the correct property with the var as a value
-            lessProperties += '        '+cssStylesProp[prop]+' : '+varName +'; \n';//newvar
-            overrideVars = overrideVars.concat(newVar);                   
+            var varName = '@' +typeName+ sectionSet  +capitalize(prop, true) ; //less var name. 
+
+            //less var definition with its content 
+            var newVar = varName + ' : '+ propertyValue+';  \n';  // result:    @speakerHeaderTitleHBackgroundColor: #fff
+
+            //add the correct property to the less structure with the var as a value
+            lessProperties += '        '+cssStylesProp[prop]+' : '+varName +'; \n'; // result:    background-color: @speakerHeaderTitleHBackgroundColor
+
+            overrideVars = overrideVars.concat(newVar);     //add new var to the list.              
         
-        //if not, it's a subsection (such as title in header) and needs to be check to get its value
+        //if not, it's a subsection (such as title in header) and needs to be check to get its properties
         } else {
-    
+            // data to generate the vars
+                //section name: is the name of the section to loop (title).
+                //sectionset:   section we were reading ( eg.:Header)  + section we're about to loop (eg.: title )
+
             var data = {sectionName: prop, sectionSet: sectionSet+capitalize(prop, true), typeName: typeName};
 
             overrideStylesCss=generateLessVars(object[prop], data);
 
-            overrideVars += overrideStylesCss.overrideVars;
-            lessProperties += overrideStylesCss.lessStructure; 
+            overrideVars += overrideStylesCss.overrideVars; //save generated vars
+            lessProperties += overrideStylesCss.lessStructure;  //save generated less structure
         }
     }
-    lessStructure += lessProperties + ' \n }';
+    lessStructure += lessProperties + ' \n }'; //close less block for the section.
     
     return {overrideVars: overrideVars, lessStructure:lessStructure};
 
 }
 function getLessVars( styleData ) {
     //generate all the vars and less structure necessary.
+    // styleData.contentStyles  : general styles for the app
+    // styleData.types          : styles to override styles in specific pages
 
         var lessStructure='';
         var overrideVars='';
@@ -77,39 +86,45 @@ function getLessVars( styleData ) {
         var generalVars =  "@fontFamily : " + styleData.contentStyles.fontFamily +";\n";
         for ( var idx in styleData.contentStyles ) {
          
+            //if the section is not any of this ones
             if (['tabs', 'list', 'titleBar', 'fontFamily'].indexOf(idx) == -1 ){
-   
+
                 var section = styleData.contentStyles[idx];
                 var data = {typeName: '', sectionName: idx, sectionSet: idx};
 
                 if ( typeof section == 'object'){
-                    //in general vars don't need the less structure
+                    //if section is an object, we loop on its properties to get the less vars.
+
                     generalVars += generateLessVars( styleData.contentStyles[idx], data ).overrideVars;
+                    //in general vars we don't need the less structure, so we just take the vars from the result
+
                 }
             }
         }
 
-        //generate vars to override and less structure
+        //generate vars to override styles in pages and it less structure
         for ( var idx in styleData.types ){ 
             
-            var typeName = styleData.types[idx].id;
+            var typeName = styleData.types[idx].id; // .title instead of .id if errors ?
             var styles = styleData.types[idx].styles;
 
-            lessStructure += '.'+typeName+' {\n';
+            lessStructure += '.'+typeName+' {\n'; //start to generate less structure to override, by taking as parent the pageType to override and setting inside it sections
 
             for (var section in styles){
                 if(section=='description' && styles[section]['backgroundColor']){
                     lessStructure += '\n background : ' +  '@'+typeName+'DescriptionBackgroundColor; \n';
                 }
+
                 var data = {typeName: typeName, sectionName: section, sectionSet: section};
 
+                //Read the overriden properties for the secion  and generate the correct vars and less structure.
                 var overrideStylesCss =generateLessVars( styles[section], data );
 
                 overrideVars = overrideVars.concat(overrideStylesCss.overrideVars);                
                 lessStructure = lessStructure.concat(overrideStylesCss.lessStructure);                
             }
 
-            //close class parent after read types.
+            //close class parent after read all sections in the types.
             lessStructure += '} \n';
         }
 
@@ -169,19 +184,30 @@ exports.build = function( cx ) {
     styleData = { contentStyles: styleData.styles, types: postsArray};
 
     var cwd = path.resolve(process.cwd(), '..');
+
+    //get less to render:
+
+    //route to save the css result
     var outputRoute= cwd+'/eventpac-feeds/app-category-1/feed/base/css/contentStyle.css';
 
+    //get less template content
     var lessTemplate = cwd +'/eventpac-feeds/app-category-1/template.less';
     var lessTemplateContent = fs.readFileSync(lessTemplate).toString();
     
+    //get dynamic less styles 
     var overrideStylesCss = getLessVars(styleData);
+
+    //get less vars for the styles given.
     var lessVars = overrideStylesCss.lessVars;
+    //get less structure for overriding pageTypes styles if given.
     var overrideLessStyles = overrideStylesCss.lessStructure;
 
+    //concat all less parts in the correct order to be rendered
     var lessToRender =  lessVars + lessTemplateContent + overrideLessStyles;
     less.render( lessToRender,
         function (e, output) {
             console.log(e);
+            //save the css result in the correct route.
             fs.writeFile(outputRoute, output.css, function(err) {
                 console.log(err);   
             });
